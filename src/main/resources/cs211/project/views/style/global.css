@@ -89,6 +89,10 @@
     -fx-background-color: transparent, linear-gradient(to bottom, rgba(241, 0, 0, 0.7) 0%, rgba(255, 138, 0, 0.0) 65%);;
 }
 
+.bg-gradient-yellow {
+    -fx-background-color: transparent, linear-gradient(to right, rgba(157, 176, 208, 0.70) 0%, rgba(233, 196, 89, 0.70) 100%);
+}
+
 .bg-white{
     -fx-background-color: #FFFFFF;
 }
