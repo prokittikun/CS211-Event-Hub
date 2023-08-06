@@ -91,7 +91,7 @@
 
 .bg-gradient-yellow {
     -fx-background-color: transparent, linear-gradient(to right, rgba(157, 176, 208, 0.70) 0%, rgba(233, 196, 89, 0.70) 100%);
-    -fx-background-insets: 0 0 530px 0;
+    -fx-background-insets: 0 0 485px 0;
 }
 
 
