@@ -110,3 +110,13 @@
 .font-bold{
     -fx-font-weight: bold;
 }
+
+.card{
+    -fx-background-color: #ffff;
+    -fx-padding: 15;
+    -fx-spacing: 10;
+    -fx-background-radius: 20;
+}
+.shadow{
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 2, 0, 2, 4);
+}
