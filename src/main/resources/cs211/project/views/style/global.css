@@ -117,8 +117,8 @@
 }
 
 .card-light-gray{
-    -fx-border-radius: 20px;
-    -fx-background-color: -input-bg-light, #F4F4F4;
+    -fx-background-radius: 20px;
+    -fx-background-color: #F4F4F4;
 }
 
 .shadow{
