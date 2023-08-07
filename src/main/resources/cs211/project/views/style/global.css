@@ -113,10 +113,14 @@
 
 .card{
     -fx-background-color: #ffff;
-    -fx-padding: 15;
-    -fx-spacing: 10;
-    -fx-background-radius: 20;
+    -fx-background-radius: 20px;
 }
+
+.card-light-gray{
+    -fx-border-radius: 20px;
+    -fx-background-color: -input-bg-light, #F4F4F4;
+}
+
 .shadow{
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 2, 0, 2, 4);
 }
