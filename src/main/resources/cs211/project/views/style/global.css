@@ -11,6 +11,7 @@
     -fx-border-width: 1px;
     -fx-border-color: #C73618;
     -fx-background-color: #FFF;
+    -fx-text-fill: #C73618;
     -fx-cursor: hand;
 }
 .btn-transparent{
@@ -80,6 +81,9 @@
     -fx-line-spacing: 0; /* Line height (0 to reset line spacing to default) */
 }
 
+.text-red{
+    -fx-text-fill: #C73618;
+}
 .bg-gray {
     -fx-background-radius: 8px; /* Border radius */
     -fx-fill: #E0E0E0; /* Background color */
