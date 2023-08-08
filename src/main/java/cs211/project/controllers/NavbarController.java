@@ -14,7 +14,7 @@ public class NavbarController {
     @FXML
     void onHandleGoToContactUs(ActionEvent event) {
         try {
-            FXRouter.goTo("index");
+            FXRouter.goTo("contactUs");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -23,7 +23,7 @@ public class NavbarController {
     @FXML
     void onHandleGoToHomePage(ActionEvent event) {
         try {
-            FXRouter.goTo("contactUs");
+            FXRouter.goTo("index");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
