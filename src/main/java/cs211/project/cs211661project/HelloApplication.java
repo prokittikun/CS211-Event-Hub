@@ -20,6 +20,7 @@ public class HelloApplication extends Application {
         FXRouter.when("hello", resourcesPath + "hello-view.fxml");
         FXRouter.when("myTeam", resourcesPath + "my-team-view.fxml");
         FXRouter.when("navbar", resourcesPath + "navbar.fxml");
+        FXRouter.when("index", resourcesPath + "index-view.fxml");
     }
 
 
