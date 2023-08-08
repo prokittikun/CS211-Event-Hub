@@ -12,8 +12,6 @@ public class HelloApplication extends Application {
         FXRouter.bind(this, stage, "CS211 661 Project",1200,800);
         configRoute();
 
-        FXRouter.goTo("hello");
-        FXRouter.bind(this, stage, "CS211 661 Project");
         FXRouter.goTo("login");
     }
 
@@ -24,6 +22,8 @@ public class HelloApplication extends Application {
         FXRouter.when("navbar", resourcesPath + "navbar.fxml");
         FXRouter.when("index", resourcesPath + "index-view.fxml");
         FXRouter.when("login", resourcesPath + "login-view.fxml");
+        FXRouter.when("myEvent", resourcesPath + "my-event.fxml");
+
     }
 
     public static void main(String[] args) {
