@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.MyTeamController">
+    <children>
+        <BorderPane prefHeight="800.0" prefWidth="1200.0">
+         <center>
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="634.0" prefWidth="1088.0" BorderPane.alignment="CENTER">
+               <styleClass>
+                  <String fx:value="card" />
+                  <String fx:value="shadow" />
+               </styleClass>
+               <children>
+                  <BorderPane layoutX="2.0" layoutY="-1.0" prefHeight="600.0" prefWidth="1089.0">
+                     <top>
+                        <HBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="1036.0" BorderPane.alignment="CENTER_LEFT">
+                           <children>
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="88.0" text="&lt; ย้อนกลับ">
+                                 <styleClass>
+                                    <String fx:value="text-sm" />
+                                    <String fx:value="btn-outline-danger" />
+                                 </styleClass>
+                              </Button>
+                              <Pane prefHeight="51.0" prefWidth="360.0" />
+                              <Label prefHeight="51.0" prefWidth="141.0" text="ทีมของฉัน">
+                                 <styleClass>
+                                    <String fx:value="text-3xl" />
+                                    <String fx:value="font-bold" />
+                                 </styleClass>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </top>
+                     <center>
+                        <VBox prefHeight="534.0" prefWidth="1059.0" spacing="20.0" BorderPane.alignment="CENTER_LEFT">
+                           <children>
+                              <Pane maxWidth="-Infinity" prefHeight="157.0" prefWidth="1038.0" styleClass="card-light-gray">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="159.0" prefWidth="1038.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" text="1">
+                                             <styleClass>
+                                                <String fx:value="btn-danger" />
+                                                <String fx:value="text-lg" />
+                                             </styleClass>
+                                             <HBox.margin>
+                                                <Insets left="-18.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                          <VBox alignment="CENTER_LEFT" prefHeight="159.0" prefWidth="402.0">
+                                             <children>
+                                                <Label text="ทีม PhueKhrai Party">
+                                                   <styleClass>
+                                                      <String fx:value="text-3xl" />
+                                                      <String fx:value="font-bold" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="332.0" spacing="20.0">
+                                                   <children>
+                                                      <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="125.0" text="รายละเอียด">
+                                                         <styleClass>
+                                                            <String fx:value="text-base" />
+                                                            <String fx:value="btn-danger" />
+                                                         </styleClass>
+                                                      </Button>
+                                                      <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="125.0" text="ออกจากทีม">
+                                                         <styleClass>
+                                                            <String fx:value="text-base" />
+                                                            <String fx:value="btn-outline-danger" />
+                                                         </styleClass>
+                                                      </Button>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <padding>
+                                                <Insets left="40.0" />
+                                             </padding>
+                                          </VBox>
+                                          <Pane prefHeight="159.0" prefWidth="65.0" />
+                                          <VBox alignment="CENTER_LEFT" prefHeight="159.0" prefWidth="439.0">
+                                             <children>
+                                                <Label text="KU Freshy Festival 2023">
+                                                   <styleClass>
+                                                      <String fx:value="text-3xl" />
+                                                      <String fx:value="font-bold" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="425.0" spacing="5.0">
+                                                   <children>
+                                                      <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@assets/Icons/marker.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <Label prefHeight="27.0" prefWidth="213.0" styleClass="text-lg" text="Kasetsart University" />
+                                                      <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@assets/Icons/calendar.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <Label prefHeight="27.0" prefWidth="144.0" styleClass="text-lg" text="29 ก.ค. 2566" />
+                                                      <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@assets/Icons/user.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <Label prefHeight="27.0" prefWidth="91.0" styleClass="text-lg" text="0/36" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                          <ImageView fitHeight="139.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@assets/cover/freshyFestival2023.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </Pane>
+                              <Pane maxWidth="-Infinity" prefHeight="157.0" prefWidth="1038.0" styleClass="card-light-gray">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="159.0" prefWidth="1038.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" text="2">
+                                             <styleClass>
+                                                <String fx:value="btn-danger" />
+                                                <String fx:value="text-lg" />
+                                             </styleClass>
+                                             <HBox.margin>
+                                                <Insets left="-18.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                          <VBox alignment="CENTER_LEFT" prefHeight="159.0" prefWidth="402.0">
+                                             <children>
+                                                <Label text="ทีม PhueKhrai Party">
+                                                   <styleClass>
+                                                      <String fx:value="text-3xl" />
+                                                      <String fx:value="font-bold" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="332.0" spacing="20.0">
+                                                   <children>
+                                                      <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="125.0" text="รายละเอียด">
+                                                         <styleClass>
+                                                            <String fx:value="text-base" />
+                                                            <String fx:value="btn-danger" />
+                                                         </styleClass>
+                                                      </Button>
+                                                      <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="125.0" text="ออกจากทีม">
+                                                         <styleClass>
+                                                            <String fx:value="text-base" />
+                                                            <String fx:value="btn-outline-danger" />
+                                                         </styleClass>
+                                                      </Button>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <padding>
+                                                <Insets left="40.0" />
+                                             </padding>
+                                          </VBox>
+                                          <Pane prefHeight="159.0" prefWidth="65.0" />
+                                          <VBox alignment="CENTER_LEFT" prefHeight="159.0" prefWidth="439.0">
+                                             <children>
+                                                <Label text="KU Freshy Festival 2023">
+                                                   <styleClass>
+                                                      <String fx:value="text-3xl" />
+                                                      <String fx:value="font-bold" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="425.0" spacing="5.0">
+                                                   <children>
+                                                      <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@assets/Icons/marker.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <Label prefHeight="27.0" prefWidth="213.0" styleClass="text-lg" text="Kasetsart University" />
+                                                      <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@assets/Icons/calendar.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <Label prefHeight="27.0" prefWidth="144.0" styleClass="text-lg" text="29 ก.ค. 2566" />
+                                                      <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@assets/Icons/user.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <Label prefHeight="27.0" prefWidth="91.0" styleClass="text-lg" text="0/36" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                          <ImageView fitHeight="139.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@assets/cover/freshyFestival2023.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </Pane>
+                              <Pane maxWidth="-Infinity" prefHeight="157.0" prefWidth="1038.0" styleClass="card-light-gray">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="159.0" prefWidth="1038.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" text="3">
+                                             <styleClass>
+                                                <String fx:value="btn-danger" />
+                                                <String fx:value="text-lg" />
+                                             </styleClass>
+                                             <HBox.margin>
+                                                <Insets left="-18.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                          <VBox alignment="CENTER_LEFT" prefHeight="159.0" prefWidth="402.0">
+                                             <children>
+                                                <Label text="ทีม PhueKhrai Party">
+                                                   <styleClass>
+                                                      <String fx:value="text-3xl" />
+                                                      <String fx:value="font-bold" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="332.0" spacing="20.0">
+                                                   <children>
+                                                      <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="125.0" text="รายละเอียด">
+                                                         <styleClass>
+                                                            <String fx:value="text-base" />
+                                                            <String fx:value="btn-danger" />
+                                                         </styleClass>
+                                                      </Button>
+                                                      <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="125.0" text="ออกจากทีม">
+                                                         <styleClass>
+                                                            <String fx:value="text-base" />
+                                                            <String fx:value="btn-outline-danger" />
+                                                         </styleClass>
+                                                      </Button>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <padding>
+                                                <Insets left="40.0" />
+                                             </padding>
+                                          </VBox>
+                                          <Pane prefHeight="159.0" prefWidth="65.0" />
+                                          <VBox alignment="CENTER_LEFT" prefHeight="159.0" prefWidth="439.0">
+                                             <children>
+                                                <Label text="KU Freshy Festival 2023">
+                                                   <styleClass>
+                                                      <String fx:value="text-3xl" />
+                                                      <String fx:value="font-bold" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="425.0" spacing="5.0">
+                                                   <children>
+                                                      <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@assets/Icons/marker.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <Label prefHeight="27.0" prefWidth="213.0" styleClass="text-lg" text="Kasetsart University" />
+                                                      <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@assets/Icons/calendar.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <Label prefHeight="27.0" prefWidth="144.0" styleClass="text-lg" text="29 ก.ค. 2566" />
+                                                      <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@assets/Icons/user.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <Label prefHeight="27.0" prefWidth="91.0" styleClass="text-lg" text="0/36" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                          <ImageView fitHeight="139.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@assets/cover/freshyFestival2023.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </Pane>
+                           </children>
+                           <padding>
+                              <Insets left="10.0" right="10.0" top="15.0" />
+                           </padding>
+                        </VBox>
+                     </center>
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </padding>
+                  </BorderPane>
+               </children>
+               <BorderPane.margin>
+                  <Insets top="50.0" />
+               </BorderPane.margin>
+            </Pane>
+         </center>
+         <bottom>
+            <AnchorPane fx:id="footer" />
+         </bottom>
+        </BorderPane>
+<!--          <fx:include source="navbar.fxml" fx:id="navbar" />-->
+       <AnchorPane fx:id="navbar" />
+    </children>
+</AnchorPane>
