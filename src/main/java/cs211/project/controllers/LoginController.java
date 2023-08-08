@@ -1,17 +1,27 @@
 package cs211.project.controllers;
 
+import cs211.project.services.FXRouter;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 
+import java.io.IOException;
+
 public class LoginController {
+
+    @FXML
+    private Label usernameError;
+
+    @FXML
+    private Label passwordError;
 
     @FXML
     private TextField usernameField;
@@ -31,6 +41,8 @@ public class LoginController {
     public void initialize() {
         // Disable the login button by default
         loginButton.setDisable(true);
+        usernameError.setText("");
+        passwordError.setText("");
 
         // Listener to check if both fields are filled to enable the login button
         usernameField.textProperty().addListener((observable, oldValue, newValue) -> validateFields());
@@ -52,21 +64,18 @@ public class LoginController {
 
         // TODO: Replace with your actual login logic
         if ("admin".equals(username) && "password123".equals(password)) {
-            // Successful login
-            // Navigate to another screen or show a success message
+            try {
+                FXRouter.goTo("index");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         } else {
             // Failed login
             // Show an error message or warning
-        }
-    }
+            usernameError.setText("Username is invalid");
+            passwordError.setText("Password is invalid");
 
-    @FXML
-    private void handleBackButtonClick(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("path/to/index-view.fxml"));
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
+        }
     }
 
     @FXML
