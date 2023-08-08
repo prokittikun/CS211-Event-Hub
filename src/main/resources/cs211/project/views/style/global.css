@@ -1,0 +1,130 @@
+
+.btn-danger{
+    -fx-background-radius: 12px;
+    -fx-background-color: #C73618;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+.btn-outline-danger {
+    -fx-background-radius: 12px;
+    -fx-border-radius: 12px;
+    -fx-border-width: 1px;
+    -fx-border-color: #C73618;
+    -fx-background-color: #FFF;
+    -fx-text-fill: #C73618;
+    -fx-cursor: hand;
+}
+.btn-transparent{
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+.btn-outline-danger:hover {
+    -fx-background-radius: 12px;
+    -fx-background-color: #C73618;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+
+/* Font size and line height styles for different text sizes */
+
+/* text-xs */
+.text-xs {
+    -fx-font-size: 12px; /* Font size */
+    -fx-line-spacing: 4px; /* Line height (4px to match 16px line height) */
+}
+
+/* text-sm */
+.text-sm {
+    -fx-font-size: 14px; /* Font size */
+    -fx-line-spacing: 6px; /* Line height (6px to match 20px line height) */
+}
+
+/* text-base */
+.text-base {
+    -fx-font-size: 16px; /* Font size */
+    -fx-line-spacing: 8px; /* Line height (8px to match 24px line height) */
+}
+
+/* text-lg */
+.text-lg {
+    -fx-font-size: 18px; /* Font size */
+    -fx-line-spacing: 10px; /* Line height (10px to match 28px line height) */
+}
+
+/* text-xl */
+.text-xl {
+    -fx-font-size: 20px; /* Font size */
+    -fx-line-spacing: 10px; /* Line height (10px to match 28px line height) */
+}
+
+/* text-2xl */
+.text-2xl {
+    -fx-font-size: 24px; /* Font size */
+    -fx-line-spacing: 16px; /* Line height (16px to match 32px line height) */
+}
+
+/* text-3xl */
+.text-3xl {
+    -fx-font-size: 30px; /* Font size */
+    -fx-line-spacing: 18px; /* Line height (18px to match 36px line height) */
+}
+
+/* text-4xl */
+.text-4xl {
+    -fx-font-size: 36px; /* Font size */
+    -fx-line-spacing: 20px; /* Line height (20px to match 40px line height) */
+}
+
+/* text-5xl */
+.text-5xl {
+    -fx-font-size: 48px; /* Font size */
+    -fx-line-spacing: 0; /* Line height (0 to reset line spacing to default) */
+}
+
+.text-red{
+    -fx-text-fill: #C73618;
+}
+.bg-gray {
+    -fx-background-radius: 8px; /* Border radius */
+    -fx-fill: #E0E0E0; /* Background color */
+}
+
+.bg-gradient {
+    -fx-background-color: transparent, linear-gradient(to bottom, rgba(241, 0, 0, 0.7) 0%, rgba(255, 138, 0, 0.0) 65%);;
+}
+
+.bg-gradient-yellow {
+    -fx-background-color: transparent, linear-gradient(to right, rgba(157, 176, 208, 0.70) 0%, rgba(233, 196, 89, 0.70) 100%);
+    -fx-background-insets: 0 0 468px 0;
+}
+
+
+.bg-white{
+    -fx-background-color: #FFFFFF;
+}
+
+.bg-transparent{
+    -fx-background-color: transparent;
+}
+
+.image-border{
+    -fx-stroke: linear-gradient(#DA2864, #9AE1E2); /* Set both the image and the gradient */
+}
+
+.font-bold{
+    -fx-font-weight: bold;
+}
+
+.card{
+    -fx-background-color: #ffff;
+    -fx-background-radius: 20px;
+}
+
+.card-light-gray{
+    -fx-background-radius: 20px;
+    -fx-background-color: #F4F4F4;
+}
+
+.shadow{
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 2, 0, 2, 4);
+}
