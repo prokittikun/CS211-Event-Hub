@@ -154,7 +154,7 @@
                </padding>
             </VBox>
          </children></Pane>
-      <Pane fx:id="profileDropdown" layoutX="938.0" layoutY="58.0" prefHeight="157.0" prefWidth="206.0" styleClass="card-light-gray">
+      <Pane fx:id="profileDropdown" layoutX="938.0" layoutY="58.0" prefHeight="199.0" prefWidth="206.0" styleClass="card-light-gray">
          <children>
             <VBox alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="206.0">
                <children>
@@ -202,6 +202,19 @@
                            </image>
                         </ImageView>
                         <Button mnemonicParsing="false" onMouseClicked="#onHandleGoToHistory" prefHeight="40.0" prefWidth="146.0" text="ประวัติการเข้าร่วม">
+                           <styleClass>
+                              <String fx:value="btn-transparent" />
+                              <String fx:value="text-lg" />
+                           </styleClass>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" onMouseClicked="#onHandleGoToHistory" prefHeight="46.0" prefWidth="209.0">
+                     <children>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#onHandleLogout" onMouseClicked="#onHandleGoToHistory" prefHeight="40.0" prefWidth="213.0" text="ออกจากระบบ" textFill="RED">
                            <styleClass>
                               <String fx:value="btn-transparent" />
                               <String fx:value="text-lg" />
