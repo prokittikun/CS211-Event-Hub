@@ -13,9 +13,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.MyEventController">
    <children>
-      <fx:include source="navbar.fxml" />
       <BorderPane prefHeight="800.0" prefWidth="1200.0">
          <center>
             <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1092.0" BorderPane.alignment="CENTER">
@@ -308,8 +307,15 @@
                      </center>
                   </BorderPane>
                </children>
+               <BorderPane.margin>
+                  <Insets top="50.0" />
+               </BorderPane.margin>
             </Pane>
          </center>
+         <bottom>
+            <AnchorPane fx:id="footer" prefHeight="0.0" prefWidth="1200.0" BorderPane.alignment="CENTER" />
+         </bottom>
       </BorderPane>
+      <AnchorPane fx:id="navbar" />
    </children>
 </AnchorPane>
