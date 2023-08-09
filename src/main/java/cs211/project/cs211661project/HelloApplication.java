@@ -9,17 +9,22 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+        FXRouter.bind(this, stage, "CS211 661 Project",1200,800);
         configRoute();
 
-        FXRouter.bind(this, stage, "CS211 661 Project");
-        FXRouter.goTo("hello");
+        FXRouter.goTo("login");
     }
 
     private static void configRoute() {
         String resourcesPath = "cs211/project/views/";
         FXRouter.when("hello", resourcesPath + "hello-view.fxml");
-    }
+        FXRouter.when("myTeam", resourcesPath + "my-team-view.fxml");
+        FXRouter.when("navbar", resourcesPath + "navbar.fxml");
+        FXRouter.when("index", resourcesPath + "index-view.fxml");
+        FXRouter.when("login", resourcesPath + "login-view.fxml");
+        FXRouter.when("myEvent", resourcesPath + "my-event.fxml");
 
+    }
 
     public static void main(String[] args) {
         launch();
