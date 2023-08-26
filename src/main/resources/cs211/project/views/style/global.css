@@ -94,13 +94,21 @@
 }
 
 .bg-gradient-yellow {
-    -fx-background-color: transparent, linear-gradient(to right, rgba(157, 176, 208, 0.70) 0%, rgba(233, 196, 89, 0.70) 100%);
-    -fx-background-insets: 0 0 468px 0;
+    -fx-fill: linear-gradient(to right, rgba(157, 176, 208, 0.70) 0%, rgba(233, 196, 89, 0.70) 100%);
+    /*-fx-background-insets: 0 0 468px 0;*/
 }
 
 
 .bg-white{
     -fx-background-color: #FFFFFF;
+}
+
+.bg-red{
+    -fx-background-color: #C73618;
+}
+
+.bg-blue{
+    -fx-background-color: #185EC7;
 }
 
 .bg-transparent{
@@ -127,4 +135,8 @@
 
 .shadow{
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 2, 0, 2, 4);
+}
+
+.rounded-20px{
+    -fx-background-radius: 20px;
 }
