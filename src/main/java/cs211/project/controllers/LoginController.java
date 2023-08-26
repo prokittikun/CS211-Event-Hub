@@ -72,15 +72,10 @@ public class LoginController {
 
     @FXML
     private void handleRegisterButtonClick(ActionEvent event) throws Exception {
-<<<<<<< HEAD
-        FXRouter.goTo("register");
-=======
         try {
             FXRouter.goTo("register");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
->>>>>>> feature/login
     }
-
 }
