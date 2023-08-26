@@ -30,21 +30,16 @@ public class LoginController {
     private PasswordField passwordField;
 
     @FXML
-    private Button backButton;
-
-    @FXML
     private Button loginButton;
 
     @FXML
     private Button registerButton;
 
     public void initialize() {
-        // Disable the login button by default
         loginButton.setDisable(true);
         usernameError.setText("");
         passwordError.setText("");
 
-        // Listener to check if both fields are filled to enable the login button
         usernameField.textProperty().addListener((observable, oldValue, newValue) -> validateFields());
         passwordField.textProperty().addListener((observable, oldValue, newValue) -> validateFields());
     }
@@ -62,7 +57,6 @@ public class LoginController {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        // TODO: Replace with your actual login logic
         if ("admin".equals(username) && "password123".equals(password)) {
             try {
                 FXRouter.goTo("index");
@@ -70,8 +64,6 @@ public class LoginController {
                 throw new RuntimeException(e);
             }
         } else {
-            // Failed login
-            // Show an error message or warning
             usernameError.setText("Username is invalid");
             passwordError.setText("Password is invalid");
 
@@ -87,5 +79,4 @@ public class LoginController {
         stage.show();
     }
 
-    // Add other methods as necessary for your application
 }
