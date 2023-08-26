@@ -23,7 +23,7 @@ public class HelloApplication extends Application {
         FXRouter.when("index", resourcesPath + "index-view.fxml");
         FXRouter.when("login", resourcesPath + "login-view.fxml");
         FXRouter.when("myEvent", resourcesPath + "my-event.fxml");
-
+        FXRouter.when("register", resourcesPath + "register-view.fxml");
     }
 
     public static void main(String[] args) {
