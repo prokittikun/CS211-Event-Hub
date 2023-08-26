@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.RegisterController">
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0">
+         <center>
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+               <styleClass>
+                  <String fx:value="card" />
+                  <String fx:value="shadow" />
+               </styleClass>
+               <children>
+                  <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
+                     <children>
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="200.0" />
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="400.0">
+                           <children>
+                              <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="400.0">
+                                 <children>
+                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="400.0">
+                                       <children>
+                                          <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="400.0">
+                                             <center>
+                                                <Button mnemonicParsing="false" text="back" BorderPane.alignment="CENTER">
+                                                   <styleClass>
+                                                      <String fx:value="btn-outline-danger" />
+                                                      <String fx:value="btn-transparent" />
+                                                      <String fx:value="text-xs" />
+                                                   </styleClass>
+                                                </Button>
+                                             </center>
+                                          </BorderPane>
+                                       </children>
+                                    </Pane>
+                                    <Pane prefHeight="100.0" prefWidth="400.0">
+                                       <children>
+                                          <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="400.0">
+                                             <children>
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="50.0" />
+                                                <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" styleClass="bg-transparent">
+                                                   <image>
+                                                      <Image url="@assets/logo/EventLogo.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="250.0">
+                                                   <children>
+                                                      <Pane prefHeight="25.0" prefWidth="250.0" />
+                                                      <Label prefHeight="50.0" styleClass="text-4xl" text="Register">
+                                                         <VBox.margin>
+                                                            <Insets left="20.0" />
+                                                         </VBox.margin>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </Pane>
+                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="20.0" prefWidth="400.0" />
+                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="400.0">
+                                       <children>
+                                          <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="400.0">
+                                             <children>
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="190.0">
+                                                   <children>
+                                                      <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="190.0">
+                                                         <children>
+                                                            <TextField fx:id="firstNameField" promptText="First Name">
+                                                               <styleClass>
+                                                                  <String fx:value="text-xl" />
+                                                                  <String fx:value="font-bold" />
+                                                               </styleClass>
+                                                            </TextField>
+                                                            <Label fx:id="firstNameError" text="firstNameError" textFill="RED" />
+                                                         </children>
+                                                      </VBox>
+                                                   </children>
+                                                </Pane>
+                                                <Pane prefHeight="75.0" prefWidth="20.0" />
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="190.0">
+                                                   <children>
+                                                      <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="190.0">
+                                                         <children>
+                                                            <TextField fx:id="lastNameField" promptText="Last Name">
+                                                               <styleClass>
+                                                                  <String fx:value="text-xl" />
+                                                                  <String fx:value="font-bold" />
+                                                               </styleClass>
+                                                            </TextField>
+                                                            <Label fx:id="lastNameError" text="lastNameError" textFill="RED" />
+                                                         </children>
+                                                      </VBox>
+                                                   </children>
+                                                </Pane>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </Pane>
+                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="400.0">
+                                       <children>
+                                          <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="400.0">
+                                             <children>
+                                                <TextField fx:id="usernameField" promptText="Username">
+                                                   <styleClass>
+                                                      <String fx:value="font-bold" />
+                                                      <String fx:value="text-xl" />
+                                                   </styleClass>
+                                                </TextField>
+                                                <Label fx:id="usernameError" text="usernameError" textFill="RED" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </Pane>
+                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="400.0">
+                                       <children>
+                                          <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="400.0">
+                                             <children>
+                                                <PasswordField fx:id="passwordField" promptText="Password">
+                                                   <styleClass>
+                                                      <String fx:value="text-xl" />
+                                                      <String fx:value="font-bold" />
+                                                   </styleClass>
+                                                </PasswordField>
+                                                <Label fx:id="passwordError" text="passwordError" textFill="RED" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </Pane>
+                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="400.0">
+                                       <children>
+                                          <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="400.0">
+                                             <children>
+                                                <PasswordField fx:id="confirmPasswordField" promptText="Confirm Password">
+                                                   <styleClass>
+                                                      <String fx:value="text-xl" />
+                                                      <String fx:value="font-bold" />
+                                                   </styleClass>
+                                                </PasswordField>
+                                                <Label fx:id="confirmPasswordError" text="confirmPasswordError" textFill="RED" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </Pane>
+                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="80.0" prefWidth="400.0">
+                                       <children>
+                                          <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="80.0" prefWidth="400.0">
+                                             <center>
+                                                <Button fx:id="registerButton" mnemonicParsing="false" onAction="#handleRegisterButtonClick" text="Register" BorderPane.alignment="CENTER">
+                                                   <styleClass>
+                                                      <String fx:value="btn-danger" />
+                                                      <String fx:value="text-2xl" />
+                                                   </styleClass>
+                                                </Button>
+                                             </center>
+                                          </BorderPane>
+                                       </children>
+                                    </Pane>
+                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="400.0">
+                                       <children>
+                                          <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="400.0">
+                                             <children>
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" />
+                                                <Label styleClass="text-lg" text="Already have an account ?">
+                                                   <HBox.margin>
+                                                      <Insets top="5.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="10.0" />
+                                                <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLoginButtonClick" text="Login">
+                                                   <styleClass>
+                                                      <String fx:value="text-red" />
+                                                      <String fx:value="btn-transparent" />
+                                                      <String fx:value="text-lg" />
+                                                   </styleClass>
+                                                </Button>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </Pane>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </Pane>
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="200.0" />
+                     </children>
+                  </HBox>
+               </children>
+            </Pane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
