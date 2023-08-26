@@ -34,17 +34,7 @@
                                  <children>
                                     <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="400.0">
                                        <children>
-                                          <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="400.0">
-                                             <center>
-                                                <Button mnemonicParsing="false" text="back" BorderPane.alignment="CENTER">
-                                                   <styleClass>
-                                                      <String fx:value="btn-outline-danger" />
-                                                      <String fx:value="btn-transparent" />
-                                                      <String fx:value="text-xs" />
-                                                   </styleClass>
-                                                </Button>
-                                             </center>
-                                          </BorderPane>
+                                          <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="400.0" />
                                        </children>
                                     </Pane>
                                     <Pane prefHeight="100.0" prefWidth="400.0">
