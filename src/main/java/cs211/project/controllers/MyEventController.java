@@ -1,5 +1,6 @@
 package cs211.project.controllers;
 
+import cs211.project.services.FXRouter;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -26,6 +27,14 @@ public class MyEventController {
             //Footer
             AnchorPane footerComponent = footerComponentLoader.load();
             footer.getChildren().add(footerComponent);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void goToCreateEvent(){
+        try {
+            FXRouter.goTo("createEvent");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

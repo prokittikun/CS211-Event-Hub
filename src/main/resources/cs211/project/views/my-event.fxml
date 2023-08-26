@@ -41,7 +41,7 @@
                                  </styleClass>
                               </Text>
                               <Pane prefHeight="67.0" prefWidth="325.0" />
-                              <Button mnemonicParsing="false" text="สร้างอีเวนต์">
+                              <Button mnemonicParsing="false" onAction="#goToCreateEvent" text="สร้างอีเวนต์">
                                  <styleClass>
                                     <String fx:value="btn-danger" />
                                     <String fx:value="text-sm" />
