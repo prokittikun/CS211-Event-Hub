@@ -46,18 +46,34 @@ public class RegisterController {
 
     @FXML
     private Label confirmPasswordError;
-    @FXML
-    private Button backButton;
+
     @FXML
     private Button registerButton;
+
     @FXML
     private Button loginButton;
 
-    @FXML
-    public void handleBackButtonClick(ActionEvent event) throws Exception {
-        Parent parent = FXMLLoader.load(getClass().getResource("index-view.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(parent));
+    public void initialize() {
+        registerButton.setDisable(true);
+        firstNameError.setText("");
+        lastNameError.setText("");
+        usernameError.setText("");
+        passwordError.setText("");
+        confirmPasswordError.setText("");
+
+        firstNameField.textProperty().addListener((observable, oldValue, newValue) -> validateFields());
+        lastNameField.textProperty().addListener((observable, oldValue, newValue) -> validateFields());
+        usernameField.textProperty().addListener((observable, oldValue, newValue) -> validateFields());
+        passwordField.textProperty().addListener((observable, oldValue, newValue) -> validateFields());
+        confirmPasswordField.textProperty().addListener((observable, oldValue, newValue) -> validateFields());
+    }
+
+    private void validateFields() {
+        if (!firstNameField.getText().isEmpty() && !lastNameField.getText().isEmpty() && !usernameField.getText().isEmpty() && !passwordField.getText().isEmpty() && !confirmPasswordField.getText().isEmpty()) {
+            registerButton.setDisable(false);
+        } else {
+            registerButton.setDisable(true);
+        }
     }
 
     public void handleRegisterButtonClick() {
@@ -66,13 +82,20 @@ public class RegisterController {
         validateUsername();
         validatePassword();
         validateConfirmPassword();
+        try {
+            FXRouter.goTo("index");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
     public void handleLoginButtonClick(ActionEvent event) throws Exception {
-        Parent parent = FXMLLoader.load(getClass().getResource("login-view.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(parent));
+        try {
+            FXRouter.goTo("login");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void validateFirstName() {
