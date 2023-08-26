@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import cs211.project.controllers.components.TeamMemberCard;
+
 public class TeamManagementController {
     @FXML
     private AnchorPane navbar;
