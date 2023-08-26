@@ -72,11 +72,7 @@ public class LoginController {
 
     @FXML
     private void handleRegisterButtonClick(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("path/to/register-view.fxml"));
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
+        FXRouter.goTo("register");
     }
 
 }
