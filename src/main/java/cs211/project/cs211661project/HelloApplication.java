@@ -11,7 +11,6 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXRouter.bind(this, stage, "CS211 661 Project",1200,800);
         configRoute();
-
         FXRouter.goTo("login");
     }
 
@@ -23,7 +22,8 @@ public class HelloApplication extends Application {
         FXRouter.when("index", resourcesPath + "index-view.fxml");
         FXRouter.when("login", resourcesPath + "login-view.fxml");
         FXRouter.when("myEvent", resourcesPath + "my-event.fxml");
-
+        FXRouter.when("createEvent", resourcesPath + "manage-event.fxml");
+        FXRouter.when("editEvent", resourcesPath + "manage-event.fxml");
     }
 
     public static void main(String[] args) {
