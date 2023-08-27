@@ -39,7 +39,7 @@
                               <Pane prefHeight="655.0" prefWidth="1102.0">
                                  <styleClass>
                                     <String fx:value="card" />
-                                    <String fx:value="rounded-20px" />
+                                    <String fx:value="shadow" />
                                  </styleClass>
                                  <children>
                                     <VBox alignment="TOP_CENTER" prefHeight="693.0" prefWidth="1104.0">
