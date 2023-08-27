@@ -203,3 +203,7 @@
     -fx-text-fill: red;
     -fx-padding:20px;
 }
+
+.text-area .content{
+    -fx-background-color:#F4F4F4;
+}
