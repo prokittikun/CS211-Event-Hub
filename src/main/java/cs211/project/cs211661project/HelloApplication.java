@@ -26,8 +26,7 @@ public class HelloApplication extends Application {
         FXRouter.when("myEvent", resourcesPath + "my-event-view.fxml");
         FXRouter.when("teamManagement", resourcesPath + "team-management-view.fxml");
         FXRouter.when("createActivity", resourcesPath + "create-activity-view.fxml");
-
-
+        FXRouter.when("profile", resourcesPath + "profile-view.fxml");
     }
 
     public static void main(String[] args) {
