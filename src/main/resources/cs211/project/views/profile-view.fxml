@@ -14,7 +14,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.ProfileController">
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0">
@@ -315,6 +314,9 @@
                </children>
             </HBox>
          </center>
+         <bottom>
+            <AnchorPane fx:id="footer" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="65.0" prefWidth="1200.0" BorderPane.alignment="CENTER" />
+         </bottom>
       </BorderPane>
       <AnchorPane fx:id="navbar" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="56.0" prefWidth="1200.0" />
    </children>

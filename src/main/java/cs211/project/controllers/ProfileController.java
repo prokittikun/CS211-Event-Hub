@@ -15,6 +15,8 @@ import java.io.IOException;
 public class ProfileController {
     @FXML
     private AnchorPane navbar;
+    @FXML
+    private AnchorPane footer;
 
     @FXML
     private Button saveButton;
@@ -57,9 +59,13 @@ public class ProfileController {
     private void initialize() {
 
         FXMLLoader navbarComponentLoader = new FXMLLoader(getClass().getResource("/cs211/project/views/navbar.fxml"));
+        FXMLLoader footerComponentLoader = new FXMLLoader(getClass().getResource("/cs211/project/views/footer.fxml"));
         try {
             AnchorPane navbarComponent = navbarComponentLoader.load();
             navbar.getChildren().add(navbarComponent);
+
+            AnchorPane footerComponent = footerComponentLoader.load();
+            footer.getChildren().add(footerComponent);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
