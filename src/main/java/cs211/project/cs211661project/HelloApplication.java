@@ -11,7 +11,7 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXRouter.bind(this, stage, "CS211 661 Project",1200,800);
         configRoute();
-        FXRouter.goTo("login");
+        FXRouter.goTo("listTeam");
     }
 
     private static void configRoute() {
@@ -21,11 +21,14 @@ public class HelloApplication extends Application {
         FXRouter.when("navbar", resourcesPath + "navbar.fxml");
         FXRouter.when("index", resourcesPath + "index-view.fxml");
         FXRouter.when("login", resourcesPath + "login-view.fxml");
-        FXRouter.when("myEvent", resourcesPath + "my-event.fxml");
-        FXRouter.when("createEvent", resourcesPath + "manage-event.fxml");
-        FXRouter.when("editEvent", resourcesPath + "manage-event.fxml");
         FXRouter.when("register", resourcesPath + "register-view.fxml");
+        //Event
+        FXRouter.when("createEvent", resourcesPath + "manage-event-view.fxml");
+        FXRouter.when("editEvent", resourcesPath + "manage-event-view.fxml");
         FXRouter.when("myEvent", resourcesPath + "my-event-view.fxml");
+        FXRouter.when("myEvent", resourcesPath + "my-event-view.fxml");
+        FXRouter.when("listTeam", resourcesPath + "list-team-view.fxml");
+
         FXRouter.when("teamManagement", resourcesPath + "team-management-view.fxml");
         FXRouter.when("createActivity", resourcesPath + "create-activity-view.fxml");
         FXRouter.when("profile", resourcesPath + "profile-view.fxml");
