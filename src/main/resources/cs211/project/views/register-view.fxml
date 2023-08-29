@@ -14,7 +14,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.RegisterController">
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0">
@@ -70,7 +69,7 @@
                                                    <children>
                                                       <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="190.0">
                                                          <children>
-                                                            <TextField fx:id="firstNameField" promptText="First Name">
+                                                            <TextField fx:id="firstNameField" focusTraversable="false" promptText="First Name">
                                                                <styleClass>
                                                                   <String fx:value="text-xl" />
                                                                   <String fx:value="font-bold" />
@@ -86,7 +85,7 @@
                                                    <children>
                                                       <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="190.0">
                                                          <children>
-                                                            <TextField fx:id="lastNameField" promptText="Last Name">
+                                                            <TextField fx:id="lastNameField" focusTraversable="false" promptText="Last Name">
                                                                <styleClass>
                                                                   <String fx:value="text-xl" />
                                                                   <String fx:value="font-bold" />
@@ -105,7 +104,7 @@
                                        <children>
                                           <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="400.0">
                                              <children>
-                                                <TextField fx:id="usernameField" promptText="Username">
+                                                <TextField fx:id="usernameField" focusTraversable="false" promptText="Username">
                                                    <styleClass>
                                                       <String fx:value="font-bold" />
                                                       <String fx:value="text-xl" />
@@ -120,7 +119,7 @@
                                        <children>
                                           <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="400.0">
                                              <children>
-                                                <PasswordField fx:id="passwordField" promptText="Password">
+                                                <PasswordField fx:id="passwordField" focusTraversable="false" promptText="Password">
                                                    <styleClass>
                                                       <String fx:value="text-xl" />
                                                       <String fx:value="font-bold" />
@@ -135,7 +134,7 @@
                                        <children>
                                           <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="400.0">
                                              <children>
-                                                <PasswordField fx:id="confirmPasswordField" promptText="Confirm Password">
+                                                <PasswordField fx:id="confirmPasswordField" focusTraversable="false" promptText="Confirm Password">
                                                    <styleClass>
                                                       <String fx:value="text-xl" />
                                                       <String fx:value="font-bold" />
