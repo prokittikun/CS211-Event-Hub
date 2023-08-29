@@ -48,7 +48,7 @@ public class MyEventCard {
     @FXML
     public void goToListTeam() {
         try {
-            FXRouter.goTo("teamList");
+            FXRouter.goTo("listTeam");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
