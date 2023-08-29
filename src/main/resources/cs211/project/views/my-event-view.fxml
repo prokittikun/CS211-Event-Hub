@@ -3,6 +3,7 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -51,17 +52,11 @@
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </padding>
                      <center>
-                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
-                           <BorderPane.margin>
-                              <Insets />
-                           </BorderPane.margin>
-                           <padding>
-                              <Insets left="15.0" right="15.0" />
-                           </padding>
-                           <children>
-                              <VBox fx:id="myEventComponent" prefHeight="512.0" prefWidth="1034.0" />
-                           </children>
-                        </VBox>
+                        <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <content>
+                              <VBox fx:id="myEventComponent" prefHeight="512.0" prefWidth="1037.0" />
+                           </content>
+                        </ScrollPane>
                      </center>
                   </BorderPane>
                </children>

@@ -39,8 +39,7 @@ public class MyEventController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-
+        
         //Component
         myEventCardList = MyEventCardList();
         for (MyEventCard myEventCardData : myEventCardList) {
