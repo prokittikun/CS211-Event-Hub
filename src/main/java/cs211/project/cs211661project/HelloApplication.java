@@ -30,6 +30,7 @@ public class HelloApplication extends Application {
         FXRouter.when("chat", resourcesPath + "team-chat-view.fxml");
         FXRouter.when("dashboard", resourcesPath + "dashboard-view.fxml");
         FXRouter.when("search", resourcesPath + "search-view.fxml");
+        FXRouter.when("eventHistory", resourcesPath + "event-history-view.fxml");
     }
 
     public static void main(String[] args) {
