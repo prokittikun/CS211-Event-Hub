@@ -85,4 +85,13 @@ public class TeamManagementController {
             throw new RuntimeException(e);
         }
     }
+
+    @FXML
+    void onHandleOpenChat(ActionEvent event) {
+        try {
+            FXRouter.goTo("chat");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
