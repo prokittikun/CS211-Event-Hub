@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefWidth="596.0" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.components.RightChatLayoutController">
+   <children>
+      <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="596.0" styleClass="bg-transparent" stylesheets="@../style/global.css">
+         <children>
+            <HBox maxWidth="322.0" prefHeight="46.0" prefWidth="322.0">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <children>
+                  <Text fx:id="myMessage" strokeType="OUTSIDE" strokeWidth="0.0" text="testttttttttttttes" wrappingWidth="300.0000842809677">
+                     <styleClass>
+                        <String fx:value="text-lg" />
+                        <String fx:value="text-white" />
+                     </styleClass>
+                  </Text>
+               </children>
+               <styleClass>
+                  <String fx:value="bg-red" />
+                  <String fx:value="rounded-20px" />
+               </styleClass>
+            </HBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
