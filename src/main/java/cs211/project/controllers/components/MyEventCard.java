@@ -39,7 +39,7 @@ public class MyEventCard {
     @FXML
     public void goToFormEvent() {
         try {
-            FXRouter.goTo("formEvent");
+            FXRouter.goTo("createForm");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
