@@ -11,7 +11,7 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXRouter.bind(this, stage, "CS211 661 Project",1200,800);
         configRoute();
-        FXRouter.goTo("listTeam");
+        FXRouter.goTo("createForm");
     }
 
     private static void configRoute() {
@@ -28,6 +28,8 @@ public class HelloApplication extends Application {
         FXRouter.when("myEvent", resourcesPath + "my-event-view.fxml");
         FXRouter.when("myEvent", resourcesPath + "my-event-view.fxml");
         FXRouter.when("listTeam", resourcesPath + "list-team-view.fxml");
+        FXRouter.when("createTeam", resourcesPath + "create-team-view.fxml");
+        FXRouter.when("createForm", resourcesPath + "create-form-view.fxml");
 
         FXRouter.when("teamManagement", resourcesPath + "team-management-view.fxml");
         FXRouter.when("createActivity", resourcesPath + "create-activity-view.fxml");
