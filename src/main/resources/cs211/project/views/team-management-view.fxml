@@ -43,16 +43,20 @@
                                                 <String fx:value="font-bold" />
                                              </styleClass>
                                           </Label>
-                                          <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@assets/Icons/message.png" />
-                                             </image>
-                                          </ImageView>
+                                          <Button mnemonicParsing="false" onAction="#onHandleOpenChat" styleClass="btn-transparent">
+                                             <graphic>
+                                                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@assets/Icons/message.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
                                        </children>
                                     </HBox>
-                                    <ScrollPane hbarPolicy="NEVER" prefHeight="426.0" prefWidth="353.0" styleClass="bg-transparent">
+                                    <ScrollPane hbarPolicy="NEVER" prefHeight="426.0" prefWidth="370.0" styleClass="bg-transparent">
                                        <content>
-                                          <VBox fx:id="memberVbox" prefHeight="0.0" prefWidth="351.0" />
+                                          <VBox fx:id="memberVbox" prefWidth="370.0" />
                                        </content>
                                     </ScrollPane>
                                     <HBox alignment="CENTER" prefHeight="55.0" prefWidth="374.0" spacing="25.0">
@@ -82,7 +86,7 @@
                                     </HBox>
                                  </children>
                                  <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    <Insets bottom="10.0" top="10.0" />
                                  </padding>
                               </VBox>
                            </children>
