@@ -28,7 +28,7 @@ public class HelloApplication extends Application {
         FXRouter.when("createActivity", resourcesPath + "create-activity-view.fxml");
         FXRouter.when("profile", resourcesPath + "profile-view.fxml");
         FXRouter.when("chat", resourcesPath + "team-chat-view.fxml");
-
+        FXRouter.when("dashboard", resourcesPath + "dashboard-view.fxml");
 
     }
 
