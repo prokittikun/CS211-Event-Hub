@@ -10,22 +10,28 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.AllEventController">
+<ScrollPane hbarPolicy="NEVER" minHeight="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.AllEventController">
    <content>
-      <AnchorPane prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" stylesheets="@style/global.css">
+      <AnchorPane minHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" stylesheets="@style/global.css">
          <children>
-            <BorderPane prefHeight="800.0" prefWidth="1200.0">
+            <BorderPane minHeight="800.0" prefWidth="1200.0">
                <center>
-                  <VBox prefHeight="1147.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
+                  <VBox minHeight="326.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
                      <children>
                         <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="1200.0" />
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="25.0">
+                        <HBox alignment="CENTER" prefHeight="94.0" prefWidth="1200.0" spacing="25.0">
                            <children>
-                              <TextField prefHeight="39.0" prefWidth="1013.0" styleClass="card-light-gray" />
+                              <TextField focusTraversable="false" prefHeight="39.0" prefWidth="1013.0">
+                                 <styleClass>
+                                    <String fx:value="text-lg" />
+                                    <String fx:value="card-light-gray" />
+                                 </styleClass></TextField>
                               <Button mnemonicParsing="false" text="ตกลง">
                                  <styleClass>
                                     <String fx:value="text-lg" />
@@ -33,16 +39,19 @@
                                  </styleClass>
                               </Button>
                            </children>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="567.0" prefWidth="1200.0">
+                        <HBox alignment="CENTER" minHeight="567.0" prefWidth="1200.0">
                            <children>
-                              <Pane prefHeight="655.0" prefWidth="1102.0">
+                              <Pane minHeight="500.0" prefWidth="1102.0">
                                  <styleClass>
                                     <String fx:value="card" />
                                     <String fx:value="shadow" />
                                  </styleClass>
                                  <children>
-                                    <VBox alignment="TOP_CENTER" prefHeight="693.0" prefWidth="1104.0">
+                                    <VBox alignment="TOP_CENTER" fillWidth="false" minHeight="500.0" prefWidth="1104.0">
                                        <children>
                                           <HBox prefHeight="77.0" prefWidth="1104.0">
                                              <children>
@@ -108,233 +117,14 @@
                                                 <Insets left="35.0" />
                                              </VBox.margin>
                                           </HBox>
-                                          <HBox prefHeight="468.0" prefWidth="1095.0" spacing="10.0">
-                                             <children>
-                                                <VBox alignment="TOP_CENTER" prefHeight="343.0" prefWidth="194.0" spacing="5.0">
-                                                   <children>
-                                                      <ImageView fitHeight="234.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@assets/cover/bookfair2023.jpg" />
-                                                         </image>
-                                                      </ImageView>
-                                                      <Label prefHeight="4.0" prefWidth="174.0" styleClass="text-lg" text="สัปดาห์หนังสือแห่งชาติ" />
-                                                      <Label prefHeight="0.0" prefWidth="174.0" styleClass="text-lg" text="ครั้งที่ 51">
-                                                         <VBox.margin>
-                                                            <Insets top="-10.0" />
-                                                         </VBox.margin>
-                                                      </Label>
-                                                      <HBox alignment="CENTER_LEFT" prefHeight="11.0" prefWidth="174.0">
-                                                         <children>
-                                                            <ImageView fitHeight="61.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@assets/Icons/marker.png" />
-                                                               </image>
-                                                            </ImageView>
-                                                            <Label styleClass="text-sm" text="ศูนย์การประชุมแห่งชาติสิริกิติ์" />
-                                                         </children>
-                                                      </HBox>
-                                                      <HBox alignment="CENTER_LEFT" prefHeight="18.0" prefWidth="187.0" spacing="5.0">
-                                                         <children>
-                                                            <ImageView fitHeight="44.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@assets/Icons/calendar.png" />
-                                                               </image>
-                                                            </ImageView>
-                                                            <Label prefHeight="18.0" prefWidth="81.0" text="29 ก.ค. 2566" />
-                                                            <ImageView fitHeight="32.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@assets/Icons/user.png" />
-                                                               </image>
-                                                            </ImageView>
-                                                            <Label prefHeight="18.0" prefWidth="55.0" text="250/500" />
-                                                         </children>
-                                                      </HBox>
-                                                   </children>
-                                                   <padding>
-                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                                   </padding>
-                                                </VBox>
-                                                <VBox alignment="TOP_CENTER" layoutX="65.0" layoutY="10.0" prefHeight="343.0" prefWidth="194.0" spacing="5.0">
-                                                   <children>
-                                                      <ImageView fitHeight="234.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@assets/cover/bmaexpo2023.jpg" />
-                                                         </image>
-                                                      </ImageView>
-                                                      <Label prefHeight="4.0" prefWidth="174.0" styleClass="text-lg" text="สัปดาห์หนังสือแห่งชาติ" />
-                                                      <Label prefHeight="0.0" prefWidth="174.0" styleClass="text-lg" text="ครั้งที่ 51">
-                                                         <VBox.margin>
-                                                            <Insets top="-10.0" />
-                                                         </VBox.margin>
-                                                      </Label>
-                                                      <HBox alignment="CENTER_LEFT" prefHeight="11.0" prefWidth="174.0">
-                                                         <children>
-                                                            <ImageView fitHeight="61.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@assets/Icons/marker.png" />
-                                                               </image>
-                                                            </ImageView>
-                                                            <Label styleClass="text-sm" text="ศูนย์การประชุมแห่งชาติสิริกิติ์" />
-                                                         </children>
-                                                      </HBox>
-                                                      <HBox alignment="CENTER_LEFT" prefHeight="18.0" prefWidth="187.0" spacing="5.0">
-                                                         <children>
-                                                            <ImageView fitHeight="44.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@assets/Icons/calendar.png" />
-                                                               </image>
-                                                            </ImageView>
-                                                            <Label prefHeight="18.0" prefWidth="81.0" text="29 ก.ค. 2566" />
-                                                            <ImageView fitHeight="32.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@assets/Icons/user.png" />
-                                                               </image>
-                                                            </ImageView>
-                                                            <Label prefHeight="18.0" prefWidth="55.0" text="250/500" />
-                                                         </children>
-                                                      </HBox>
-                                                   </children>
-                                                   <padding>
-                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                                   </padding>
-                                                </VBox>
-                                                <VBox alignment="TOP_CENTER" layoutX="290.0" layoutY="10.0" prefHeight="343.0" prefWidth="194.0" spacing="5.0">
-                                                   <children>
-                                                      <ImageView fitHeight="234.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@assets/cover/jobexpo2023.jpg" />
-                                                         </image>
-                                                      </ImageView>
-                                                      <Label prefHeight="4.0" prefWidth="174.0" styleClass="text-lg" text="สัปดาห์หนังสือแห่งชาติ" />
-                                                      <Label prefHeight="0.0" prefWidth="174.0" styleClass="text-lg" text="ครั้งที่ 51">
-                                                         <VBox.margin>
-                                                            <Insets top="-10.0" />
-                                                         </VBox.margin>
-                                                      </Label>
-                                                      <HBox alignment="CENTER_LEFT" prefHeight="11.0" prefWidth="174.0">
-                                                         <children>
-                                                            <ImageView fitHeight="61.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@assets/Icons/marker.png" />
-                                                               </image>
-                                                            </ImageView>
-                                                            <Label styleClass="text-sm" text="ศูนย์การประชุมแห่งชาติสิริกิติ์" />
-                                                         </children>
-                                                      </HBox>
-                                                      <HBox alignment="CENTER_LEFT" prefHeight="18.0" prefWidth="187.0" spacing="5.0">
-                                                         <children>
-                                                            <ImageView fitHeight="44.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@assets/Icons/calendar.png" />
-                                                               </image>
-                                                            </ImageView>
-                                                            <Label prefHeight="18.0" prefWidth="81.0" text="29 ก.ค. 2566" />
-                                                            <ImageView fitHeight="32.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@assets/Icons/user.png" />
-                                                               </image>
-                                                            </ImageView>
-                                                            <Label prefHeight="18.0" prefWidth="55.0" text="250/500" />
-                                                         </children>
-                                                      </HBox>
-                                                   </children>
-                                                   <padding>
-                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                                   </padding>
-                                                </VBox>
-                                                <VBox alignment="TOP_CENTER" layoutX="515.0" layoutY="10.0" prefHeight="343.0" prefWidth="194.0" spacing="5.0">
-                                                   <children>
-                                                      <ImageView fitHeight="234.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@assets/cover/rockmountain2023.jpg" />
-                                                         </image>
-                                                      </ImageView>
-                                                      <Label prefHeight="4.0" prefWidth="174.0" styleClass="text-lg" text="สัปดาห์หนังสือแห่งชาติ" />
-                                                      <Label prefHeight="0.0" prefWidth="174.0" styleClass="text-lg" text="ครั้งที่ 51">
-                                                         <VBox.margin>
-                                                            <Insets top="-10.0" />
-                                                         </VBox.margin>
-                                                      </Label>
-                                                      <HBox alignment="CENTER_LEFT" prefHeight="11.0" prefWidth="174.0">
-                                                         <children>
-                                                            <ImageView fitHeight="61.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@assets/Icons/marker.png" />
-                                                               </image>
-                                                            </ImageView>
-                                                            <Label styleClass="text-sm" text="ศูนย์การประชุมแห่งชาติสิริกิติ์" />
-                                                         </children>
-                                                      </HBox>
-                                                      <HBox alignment="CENTER_LEFT" prefHeight="18.0" prefWidth="187.0" spacing="5.0">
-                                                         <children>
-                                                            <ImageView fitHeight="44.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@assets/Icons/calendar.png" />
-                                                               </image>
-                                                            </ImageView>
-                                                            <Label prefHeight="18.0" prefWidth="81.0" text="29 ก.ค. 2566" />
-                                                            <ImageView fitHeight="32.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@assets/Icons/user.png" />
-                                                               </image>
-                                                            </ImageView>
-                                                            <Label prefHeight="18.0" prefWidth="55.0" text="250/500" />
-                                                         </children>
-                                                      </HBox>
-                                                   </children>
-                                                   <padding>
-                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                                   </padding>
-                                                </VBox>
-                                                <VBox alignment="TOP_CENTER" layoutX="740.0" layoutY="10.0" prefHeight="343.0" prefWidth="194.0" spacing="5.0">
-                                                   <children>
-                                                      <ImageView fitHeight="234.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@assets/cover/cafefest2023.jpg" />
-                                                         </image>
-                                                      </ImageView>
-                                                      <Label prefHeight="4.0" prefWidth="174.0" styleClass="text-lg" text="สัปดาห์หนังสือแห่งชาติ" />
-                                                      <Label prefHeight="0.0" prefWidth="174.0" styleClass="text-lg" text="ครั้งที่ 51">
-                                                         <VBox.margin>
-                                                            <Insets top="-10.0" />
-                                                         </VBox.margin>
-                                                      </Label>
-                                                      <HBox alignment="CENTER_LEFT" prefHeight="11.0" prefWidth="174.0">
-                                                         <children>
-                                                            <ImageView fitHeight="61.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@assets/Icons/marker.png" />
-                                                               </image>
-                                                            </ImageView>
-                                                            <Label styleClass="text-sm" text="ศูนย์การประชุมแห่งชาติสิริกิติ์" />
-                                                         </children>
-                                                      </HBox>
-                                                      <HBox alignment="CENTER_LEFT" prefHeight="18.0" prefWidth="187.0" spacing="5.0">
-                                                         <children>
-                                                            <ImageView fitHeight="44.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@assets/Icons/calendar.png" />
-                                                               </image>
-                                                            </ImageView>
-                                                            <Label prefHeight="18.0" prefWidth="81.0" text="29 ก.ค. 2566" />
-                                                            <ImageView fitHeight="32.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@assets/Icons/user.png" />
-                                                               </image>
-                                                            </ImageView>
-                                                            <Label prefHeight="18.0" prefWidth="55.0" text="250/500" />
-                                                         </children>
-                                                      </HBox>
-                                                   </children>
-                                                   <padding>
-                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                                   </padding>
-                                                </VBox>
-                                             </children>
-                                             <padding>
-                                                <Insets left="50.0" right="45.0" top="10.0" />
-                                             </padding>
-                                          </HBox>
+                                          <GridPane fx:id="showAllEvent" minHeight="359.0" prefWidth="1097.0">
+                                            <rowConstraints>
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <VBox.margin>
+                                                <Insets bottom="20.0" left="10.0" top="-20.0" />
+                                             </VBox.margin>
+                                          </GridPane>
                                        </children>
                                        <padding>
                                           <Insets top="30.0" />
@@ -345,6 +135,9 @@
                            </children>
                         </HBox>
                      </children>
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
                   </VBox>
                </center>
                <bottom>
