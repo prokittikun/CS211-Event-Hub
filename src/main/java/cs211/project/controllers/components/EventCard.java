@@ -5,6 +5,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
@@ -29,6 +30,15 @@ public class EventCard {
 
     @FXML
     private Label eventParticipant;
+    @FXML
+    void onHandleGoToEventDetail(MouseEvent event) {
+        try {
+            FXRouter.goTo("eventDetail");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     public EventCard() {
         this.eventDate = new Label();
