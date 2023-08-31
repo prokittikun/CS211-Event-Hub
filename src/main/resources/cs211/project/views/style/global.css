@@ -93,7 +93,7 @@
 }
 
 .bg-gradient {
-    -fx-background-color: transparent, linear-gradient(to bottom, rgba(241, 0, 0, 0.7) 0%, rgba(255, 138, 0, 0.0) 65%);;
+    -fx-background-color: transparent, linear-gradient(to bottom, rgba(241, 0, 0, 0.7) 0%, rgba(255, 138, 0, 0.0) 65%);
 }
 
 .bg-gradient-yellow {
@@ -134,6 +134,14 @@
 .card-light-gray{
     -fx-background-radius: 20px;
     -fx-background-color: #F4F4F4;
+}
+
+.dashed-border-red {
+    -fx-border-color: #E1ADAD;
+    -fx-border-radius: 20px;
+    -fx-border-style: dashed;
+    -fx-border-width: 3px;
+    -fx-border-insets: -2px;
 }
 
 .shadow{
