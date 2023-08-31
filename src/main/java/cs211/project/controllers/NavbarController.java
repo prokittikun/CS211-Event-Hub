@@ -4,9 +4,11 @@ import cs211.project.services.FXRouter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
 import java.io.IOException;
@@ -27,6 +29,12 @@ public class NavbarController {
     private void initialize() {
         manageDropdown.setVisible(showManageDropdown);
         profileDropdown.setVisible(showProfileDropdown);
+        setNavbarImage("https://picsum.photos/200");
+    }
+
+    public void setNavbarImage(String imagePath) {
+        Image image = new Image(imagePath);
+        navImageProfile.setFill(new ImagePattern(image));
     }
     @FXML
     void onHandleGoToContactUs(ActionEvent event) {

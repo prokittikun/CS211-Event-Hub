@@ -43,27 +43,31 @@
                                                 <String fx:value="font-bold" />
                                              </styleClass>
                                           </Label>
-                                          <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@assets/Icons/message.png" />
-                                             </image>
-                                          </ImageView>
+                                          <Button mnemonicParsing="false" onAction="#onHandleOpenChat" styleClass="btn-transparent">
+                                             <graphic>
+                                                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@assets/Icons/message.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
                                        </children>
                                     </HBox>
-                                    <ScrollPane hbarPolicy="NEVER" prefHeight="438.0" prefWidth="253.0" styleClass="bg-transparent">
+                                    <ScrollPane hbarPolicy="NEVER" prefHeight="426.0" prefWidth="370.0" styleClass="bg-transparent">
                                        <content>
-                                          <VBox fx:id="memberVbox" prefHeight="0.0" prefWidth="351.0" />
+                                          <VBox fx:id="memberVbox" prefWidth="370.0" />
                                        </content>
                                     </ScrollPane>
                                     <HBox alignment="CENTER" prefHeight="55.0" prefWidth="374.0" spacing="25.0">
                                        <children>
-                                          <TextField promptText="ชื่อผู้ใช้งาน" style="-fx-background-color: #F4F4F4;">
+                                          <TextField promptText="ชื่อผู้ใช้งาน">
                                              <HBox.margin>
                                                 <Insets left="20.0" />
                                              </HBox.margin>
                                              <styleClass>
                                                 <String fx:value="text-lg" />
-                                                <String fx:value="rounded-20px" />
+                                                <String fx:value="card-light-gray" />
                                              </styleClass>
                                           </TextField>
                                           <Button mnemonicParsing="false" text="Add">
@@ -81,6 +85,9 @@
                                        </VBox.margin>
                                     </HBox>
                                  </children>
+                                 <padding>
+                                    <Insets bottom="10.0" top="10.0" />
+                                 </padding>
                               </VBox>
                            </children>
                         </Pane>
@@ -109,7 +116,7 @@
                                              </styleClass>
                                           </Label>
                                           <Pane prefHeight="97.0" prefWidth="128.0" />
-                                          <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="58.0" text="เพิ่ม">
+                                          <Button mnemonicParsing="false" onAction="#onHandleAddActivity" prefHeight="30.0" prefWidth="58.0" text="เพิ่ม">
                                              <styleClass>
                                                 <String fx:value="btn-danger" />
                                                 <String fx:value="text-sm" />

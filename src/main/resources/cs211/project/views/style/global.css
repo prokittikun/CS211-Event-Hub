@@ -27,6 +27,9 @@
 
 /* Font size and line height styles for different text sizes */
 
+.text-white{
+    -fx-fill: white;
+}
 /* text-xs */
 .text-xs {
     -fx-font-size: 12px; /* Font size */
@@ -202,4 +205,8 @@
 .table-view .placeholder .label {
     -fx-text-fill: red;
     -fx-padding:20px;
+}
+
+.text-area .content{
+    -fx-background-color:#F4F4F4;
 }

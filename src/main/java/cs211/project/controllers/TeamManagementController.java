@@ -1,5 +1,7 @@
 package cs211.project.controllers;
 
+import cs211.project.services.FXRouter;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -25,6 +27,8 @@ public class TeamManagementController {
 
     public TeamManagementController() {
     }
+
+
 
     @FXML
     private void initialize() {
@@ -71,5 +75,23 @@ public class TeamManagementController {
             teamMemberCardList.add(teamMemberCard);
         }
         return teamMemberCardList;
+    }
+
+    @FXML
+    void onHandleAddActivity(ActionEvent event) {
+        try {
+            FXRouter.goTo("createActivity");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    void onHandleOpenChat(ActionEvent event) {
+        try {
+            FXRouter.goTo("chat");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
