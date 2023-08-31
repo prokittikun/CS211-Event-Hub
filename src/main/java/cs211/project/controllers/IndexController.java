@@ -101,7 +101,7 @@ public class IndexController {
             eventCard = new EventCard();
             eventCard.setEventImage("https://picsum.photos/200");
             eventCard.setEventName("สัปดาห์หนังสือแห่งชาติ ครั้งที่ 51");
-            eventCard.setEventDate(i + " ม.ค. 2566");
+            eventCard.setEventDate(i+1 + " ม.ค. 2566");
             eventCard.setEventLocation("ศูนย์การประชุมแห่งชาติสิริกิติ์");
             eventCard.setEventParticipant("250/500");
             eventCardList.add(eventCard);
@@ -136,4 +136,5 @@ public class IndexController {
         }
         return comingEventCardList;
     }
+
 }
