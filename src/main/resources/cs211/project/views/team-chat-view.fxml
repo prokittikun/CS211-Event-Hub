@@ -19,22 +19,22 @@
    <children>
       <BorderPane layoutX="-2.0" prefHeight="801.0" prefWidth="1203.0">
          <center>
-            <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
                <children>
-                  <Pane prefHeight="170.0" prefWidth="1099.0">
+                  <Pane prefHeight="161.0" prefWidth="1102.0">
                      <styleClass>
                         <String fx:value="card" />
                         <String fx:value="shadow" />
                      </styleClass>
                      <children>
-                        <HBox prefHeight="171.0" prefWidth="1100.0" spacing="15.0">
+                        <HBox prefHeight="163.0" prefWidth="1100.0" spacing="15.0">
                            <children>
-                              <ImageView fx:id="eventImage" fitHeight="150.0" fitWidth="137.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="eventImage" fitHeight="138.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@assets/cover/bookfair2023.jpg" />
                                  </image>
                               </ImageView>
-                              <VBox prefHeight="150.0" prefWidth="970.0">
+                              <VBox prefHeight="117.0" prefWidth="934.0">
                                  <children>
                                     <Label fx:id="eventName" text="KU Freshy Festival 2023">
                                        <styleClass>
@@ -52,19 +52,15 @@
                                           <Label fx:id="eventLocation" styleClass="text-lg" text="Kasetsart University" />
                                        </children>
                                     </HBox>
-                                    <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="922.0" spacing="5.0">
+                                    <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="922.0" spacing="10.0">
                                        <children>
-                                          <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="24.0" fitWidth="24.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@assets/Icons/calendar.png" />
                                              </image>
                                           </ImageView>
                                           <Label fx:id="eventDate" styleClass="text-lg" text="29 ก.ค. 2566" />
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="922.0" spacing="5.0">
-                                       <children>
-                                          <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="24.0" fitWidth="24.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@assets/Icons/user.png" />
                                              </image>
@@ -204,6 +200,6 @@
             <AnchorPane fx:id="footer" prefHeight="0.0" prefWidth="1200.0" BorderPane.alignment="CENTER" />
          </bottom>
       </BorderPane>
-      <AnchorPane fx:id="navbar" prefHeight="200.0" prefWidth="200.0" />
+      <AnchorPane fx:id="navbar" prefHeight="0.0" prefWidth="0.0" />
    </children>
 </AnchorPane>
