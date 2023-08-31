@@ -218,3 +218,11 @@
 .text-area .content{
     -fx-background-color:#F4F4F4;
 }
+
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
