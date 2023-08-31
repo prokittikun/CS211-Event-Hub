@@ -1,13 +1,18 @@
 package cs211.project.controllers.components;
 
+import cs211.project.services.FXRouter;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
+
+import java.io.IOException;
 
 public class EventCard {
-
+    private String eventId;
     @FXML
     private Label eventDate;
 
@@ -20,7 +25,7 @@ public class EventCard {
     private Label eventLocation;
 
     @FXML
-    private Label eventName;
+    private Text eventName;
 
     @FXML
     private Label eventParticipant;
@@ -29,13 +34,14 @@ public class EventCard {
         this.eventDate = new Label();
         this.eventImage = new Rectangle();
         this.eventLocation = new Label();
-        this.eventName = new Label();
+        this.eventName = new Text();
         this.eventParticipant = new Label();
     }
 
     @FXML
     private void initialize() {}
 
+    public String getEventId() { return eventId; }
     public String getEventDate() { return eventDate.getText(); }
 
     public String getEventImage() { return imagePath; }
@@ -45,6 +51,7 @@ public class EventCard {
     public String getEventName() { return eventName.getText(); }
 
     public String getEventParticipant() { return eventParticipant.getText(); }
+    public void setEventId(String eventId) { this.eventId = eventId; }
 
     public void setEventDate(String eventDate) { this.eventDate.setText(eventDate); }
 
@@ -59,4 +66,5 @@ public class EventCard {
     public void setEventName(String eventName) { this.eventName.setText(eventName); }
 
     public void setEventParticipant(String eventParticipant) { this.eventParticipant.setText(eventParticipant); }
+
 }

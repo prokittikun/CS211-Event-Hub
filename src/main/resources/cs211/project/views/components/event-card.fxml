@@ -8,13 +8,14 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="315.0" prefWidth="206.0" stylesheets="@../style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.components.EventCard">
    <children>
-      <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="354.0" prefWidth="194.0" spacing="5.0">
+      <VBox alignment="TOP_CENTER" layoutX="5.0" layoutY="5.0" prefHeight="354.0" prefWidth="194.0" spacing="5.0">
          <children>
             <Rectangle fx:id="eventImage" arcHeight="5.0" arcWidth="5.0" fill="#99c5ef" height="234.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="174.0" />
-            <Label fx:id="eventName" alignment="TOP_LEFT" prefHeight="152.0" prefWidth="174.0" styleClass="text-lg" text="สัปดาห์หนังสือแห่งชาติ ครั้งที่ 51" />
+            <Text fx:id="eventName" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-line-spacing: 0;" styleClass="text-lg" text="สัปดาห์หนังสือแห่งชาติ ครั้งที่ 51" wrappingWidth="175.0" />
             <HBox alignment="CENTER_LEFT" prefHeight="11.0" prefWidth="174.0">
                <children>
                   <ImageView fitHeight="61.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
@@ -32,13 +33,13 @@
                         <Image url="@../assets/Icons/calendar.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="eventDate" prefHeight="18.0" prefWidth="81.0" text="29 ก.ค. 2566" />
+                  <Label fx:id="eventDate" prefHeight="18.0" prefWidth="81.0" styleClass="text-xs" text="29 ก.ค. 2566" />
                   <ImageView fitHeight="32.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/Icons/user.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="eventParticipant" prefHeight="18.0" prefWidth="55.0" text="250/500" />
+                  <Label fx:id="eventParticipant" prefHeight="18.0" prefWidth="55.0" styleClass="text-xs" text="250/500" />
                </children>
             </HBox>
          </children>
