@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 
 public class WhiteEventCard {
 
@@ -20,7 +21,7 @@ public class WhiteEventCard {
     private Label eventLocation;
 
     @FXML
-    private Label eventName;
+    private Text eventName;
 
     @FXML
     private Label eventParticipant;
@@ -29,7 +30,7 @@ public class WhiteEventCard {
         this.eventDate = new Label();
         this.eventImage = new Rectangle();
         this.eventLocation = new Label();
-        this.eventName = new Label();
+        this.eventName = new Text();
         this.eventParticipant = new Label();
     }
 

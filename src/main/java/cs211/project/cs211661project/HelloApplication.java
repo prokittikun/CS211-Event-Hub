@@ -12,7 +12,7 @@ public class HelloApplication extends Application {
         FXRouter.bind(this, stage, "CS211 661 Project",1200,800);
         configRoute();
 
-        FXRouter.goTo("index");
+        FXRouter.goTo("allEvent");
     }
 
     private static void configRoute() {
@@ -25,6 +25,9 @@ public class HelloApplication extends Application {
         FXRouter.when("register", resourcesPath + "register-view.fxml");
         FXRouter.when("myEvent", resourcesPath + "my-event-view.fxml");
         FXRouter.when("teamManagement", resourcesPath + "team-management-view.fxml");
+        FXRouter.when("allEvent", resourcesPath + "all-event-view.fxml");
+
+
         FXRouter.when("createActivity", resourcesPath + "create-activity-view.fxml");
         FXRouter.when("profile", resourcesPath + "profile-view.fxml");
         FXRouter.when("chat", resourcesPath + "team-chat-view.fxml");
