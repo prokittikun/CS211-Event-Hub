@@ -74,7 +74,7 @@
                            </padding>
                         </HBox>
                         <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="47.0" prefWidth="1200.0" />
-                        <HBox prefHeight="160.0" prefWidth="1200.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="160.0" prefWidth="1200.0">
                            <children>
                               <VBox prefHeight="71.0" prefWidth="1020.0">
                                  <children>
@@ -86,12 +86,16 @@
                                     </Label>
                                  </children>
                               </VBox>
-                              <Label alignment="CENTER_RIGHT" prefHeight="66.0" prefWidth="141.0" text="แสดงทั้งหมด">
-                                 <styleClass>
-                                    <String fx:value="text-lg" />
-                                    <String fx:value="text-red" />
-                                 </styleClass>
-                              </Label>
+                              <Button mnemonicParsing="false" onAction="#onHandleGoToAllEvent" prefHeight="35.0" prefWidth="140.0" styleClass="btn-transparent">
+                                 <graphic>
+                                    <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="87.0" text="แสดงทั้งหมด">
+                                       <styleClass>
+                                          <String fx:value="text-lg" />
+                                          <String fx:value="text-red" />
+                                       </styleClass>
+                                    </Label>
+                                 </graphic>
+                              </Button>
                            </children>
                         </HBox>
                         <HBox fx:id="eventCardHbox" prefHeight="434.0" spacing="10.0">

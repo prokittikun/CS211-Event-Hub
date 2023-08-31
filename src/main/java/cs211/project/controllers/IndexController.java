@@ -2,6 +2,8 @@ package cs211.project.controllers;
 
 import cs211.project.controllers.components.EventCard;
 import cs211.project.controllers.components.WhiteEventCard;
+import cs211.project.services.FXRouter;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -25,6 +27,15 @@ public class IndexController {
     private List<EventCard> eventCardList;
     private List<WhiteEventCard> popularEventCardList;
     private List<WhiteEventCard> comingEventCardList;
+
+    @FXML
+    void onHandleGoToAllEvent(ActionEvent allEvent) {
+        try {
+            FXRouter.goTo("allEvent");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
     @FXML
     private void initialize() {
         eventCardList = new ArrayList<>(EventCardList());
