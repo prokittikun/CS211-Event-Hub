@@ -85,4 +85,13 @@ public class EventDetailController {
             throw new RuntimeException(e);
         }
     }
+
+    @FXML
+    void onHandleGoToPreviousPage(ActionEvent event) {
+        try {
+            FXRouter.goTo("allEvent");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

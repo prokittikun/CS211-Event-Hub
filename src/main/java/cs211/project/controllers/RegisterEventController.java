@@ -7,6 +7,8 @@ import cs211.project.controllers.components.RightChatLayoutController;
 import cs211.project.models.Chat;
 import cs211.project.models.Question;
 import cs211.project.models.collections.QuestionCollection;
+import cs211.project.services.FXRouter;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -74,6 +76,15 @@ public class RegisterEventController {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+        }
+    }
+
+    @FXML
+    void onHandleGoToEventDetail(ActionEvent event) {
+        try {
+            FXRouter.goTo("eventDetail");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }
