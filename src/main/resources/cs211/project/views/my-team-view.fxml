@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.MyTeamController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.MyTeamController">
     <children>
         <BorderPane prefHeight="800.0" prefWidth="1200.0">
          <center>
@@ -68,7 +68,7 @@
                                                 </Label>
                                                 <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="332.0" spacing="20.0">
                                                    <children>
-                                                      <Button mnemonicParsing="false" onAction="#onHandleGoToTeamManagement" prefHeight="38.0" prefWidth="125.0" text="รายละเอียด">
+                                                      <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="125.0" text="รายละเอียด">
                                                          <styleClass>
                                                             <String fx:value="text-base" />
                                                             <String fx:value="btn-danger" />

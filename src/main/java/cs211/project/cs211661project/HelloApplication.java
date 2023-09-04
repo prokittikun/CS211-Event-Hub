@@ -11,6 +11,7 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXRouter.bind(this, stage, "CS211 661 Project",1200,800);
         configRoute();
+
         FXRouter.goTo("login");
     }
 
@@ -22,31 +23,7 @@ public class HelloApplication extends Application {
         FXRouter.when("index", resourcesPath + "index-view.fxml");
         FXRouter.when("login", resourcesPath + "login-view.fxml");
         FXRouter.when("myEvent", resourcesPath + "my-event.fxml");
-        FXRouter.when("eventDetail", resourcesPath + "event-detail-view.fxml");
 
-        FXRouter.when("register", resourcesPath + "register-view.fxml");
-        FXRouter.when("joinTeam", resourcesPath + "join-team-view.fxml");
-        FXRouter.when("registerEvent", resourcesPath + "register-event-view.fxml");
-        //Event
-        FXRouter.when("createEvent", resourcesPath + "manage-event-view.fxml");
-        FXRouter.when("editEvent", resourcesPath + "manage-event-view.fxml");
-        FXRouter.when("myEvent", resourcesPath + "my-event-view.fxml");
-        FXRouter.when("myEvent", resourcesPath + "my-event-view.fxml");
-        FXRouter.when("listTeam", resourcesPath + "list-team-view.fxml");
-        FXRouter.when("createTeam", resourcesPath + "create-team-view.fxml");
-        FXRouter.when("createForm", resourcesPath + "create-form-view.fxml");
-
-        FXRouter.when("teamManagement", resourcesPath + "team-management-view.fxml");
-        FXRouter.when("allEvent", resourcesPath + "all-event-view.fxml");
-
-        FXRouter.when("contactUs", resourcesPath + "contact-us-view.fxml");
-
-        FXRouter.when("createActivity", resourcesPath + "create-activity-view.fxml");
-        FXRouter.when("profile", resourcesPath + "profile-view.fxml");
-        FXRouter.when("chat", resourcesPath + "team-chat-view.fxml");
-        FXRouter.when("dashboard", resourcesPath + "dashboard-view.fxml");
-        FXRouter.when("search", resourcesPath + "search-view.fxml");
-        FXRouter.when("eventHistory", resourcesPath + "event-history-view.fxml");
     }
 
     public static void main(String[] args) {
