@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane hbarPolicy="NEVER" minHeight="1109.0" prefWidth="1202.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.RegisterEventController">
+<ScrollPane hbarPolicy="NEVER" minHeight="1109.0" prefWidth="1202.0" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.RegisterEventController">
    <content>
       <AnchorPane minHeight="100.0" prefWidth="1200.0" styleClass="bg-white" stylesheets="@style/global.css">
          <children>
@@ -43,7 +43,7 @@
                                                    <children>
                                                       <VBox alignment="CENTER" prefHeight="100.0" prefWidth="180.0">
                                                          <children>
-                                                            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="31.2" prefWidth="89.6" text="&lt; ย้อนกลับ">
+                                                            <Button alignment="CENTER" mnemonicParsing="false" onAction="#onHandleGoToEventDetail" prefHeight="31.2" prefWidth="89.6" text="&lt; ย้อนกลับ">
                                                                <styleClass>
                                                                   <String fx:value="btn-outline-danger" />
                                                                   <String fx:value="text-sm" />

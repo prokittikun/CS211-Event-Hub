@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.EventDetailController">
+<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.EventDetailController">
    <content>
       <AnchorPane prefHeight="1382.0" prefWidth="1200.0" styleClass="bg-white" stylesheets="@style/global.css">
          <children>
@@ -38,7 +38,7 @@
                                  <children>
                                     <VBox alignment="TOP_CENTER" prefHeight="693.0" prefWidth="1104.0">
                                        <children>
-                                          <Button mnemonicParsing="false" prefWidth="89.0" text="&gt; ย้อนกลับ">
+                                          <Button mnemonicParsing="false" onAction="#onHandleGoToPreviousPage" prefWidth="89.0" text="&lt; ย้อนกลับ">
                                              <styleClass>
                                                 <String fx:value="btn-outline-danger" />
                                                 <String fx:value="text-sm" />
@@ -163,7 +163,7 @@
                   <AnchorPane fx:id="footer" prefHeight="57.0" prefWidth="1200.0" BorderPane.alignment="CENTER" />
                </bottom>
             </BorderPane>
-            <AnchorPane fx:id="navbar" prefHeight="200.0" prefWidth="200.0" />
+            <AnchorPane fx:id="navbar" prefHeight="0.0" prefWidth="0.0" />
          </children>
       </AnchorPane>
    </content>
