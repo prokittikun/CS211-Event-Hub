@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.MyEventController">
+   <children>
+      <BorderPane prefHeight="800.0" prefWidth="1200.0">
+         <center>
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1092.0" BorderPane.alignment="CENTER">
+               <styleClass>
+                  <String fx:value="card" />
+                  <String fx:value="shadow" />
+               </styleClass>
+               <BorderPane.margin>
+                  <Insets top="50.0" />
+               </BorderPane.margin>
+               <children>
+                  <VBox layoutX="2.0" layoutY="20.0" prefHeight="562.0" prefWidth="1088.0" styleClass="bg-white">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="67.0" prefWidth="1091.0">
+                           <children>
+                              <Pane prefHeight="67.0" prefWidth="432.0" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="จัดการอีเวนต์" wrappingWidth="169.2333984375">
+                                 <styleClass>
+                                    <String fx:value="text-3xl" />
+                                    <String fx:value="font-bold" />
+                                 </styleClass>
+                              </Text>
+                              <Pane prefHeight="67.0" prefWidth="325.0" />
+                              <Button mnemonicParsing="false" onAction="#goToCreateEvent" text="สร้างอีเวนต์">
+                                 <styleClass>
+                                    <String fx:value="btn-danger" />
+                                    <String fx:value="text-sm" />
+                                 </styleClass>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets left="15.0" right="15.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <ScrollPane hbarPolicy="NEVER" prefHeight="470.0" prefWidth="1088.0" styleClass="bg-white">
+                           <content>
+                              <VBox fx:id="myEventComponent" minHeight="460.0" prefHeight="453.0" prefWidth="1092.0" styleClass="bg-white">
+                                 <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </padding>
+                              </VBox>
+                           </content>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </ScrollPane>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </Pane>
+         </center>
+         <bottom>
+            <AnchorPane fx:id="footer" prefHeight="0.0" prefWidth="1200.0" BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+      <AnchorPane fx:id="navbar" />
+   </children>
+</AnchorPane>

@@ -1,22 +1,15 @@
 package cs211.project.controllers;
 
 import cs211.project.services.FXRouter;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.stage.Window;
 
 import java.io.IOException;
-import java.util.Objects;
 
-public class MyTeamController {
+public class ManageEventController {
     @FXML
     private AnchorPane navbar;
-
     @FXML
     private AnchorPane footer;
 
@@ -40,9 +33,9 @@ public class MyTeamController {
     }
 
     @FXML
-    void onHandleGoToTeamManagement(ActionEvent event) {
+    public void backToEvent(){
         try {
-            FXRouter.goTo("teamManagement");
+            FXRouter.goTo("myEvent");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
