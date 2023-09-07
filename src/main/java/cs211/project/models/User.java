@@ -13,12 +13,6 @@ public class User extends Person {
         this.events = new ArrayList<>();
     }
 
-    public boolean createEvent(String name, String date) {
-        Event newEvent = new Event(name, date);
-        events.add(newEvent);
-        return true;
-    }
-
     public String getUsername() {
         return username;
     }
