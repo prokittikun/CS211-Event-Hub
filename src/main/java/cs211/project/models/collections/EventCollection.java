@@ -1,23 +1,27 @@
 package cs211.project.models.collections;
 import cs211.project.models.Event;
-import java.util.HashMap;
-import java.util.UUID;
+import java.util.ArrayList;
 
 public class EventCollection {
-    private HashMap<UUID, Event> eventHashMap;
+    private ArrayList<Event> events;
 
     //Constructor
     public EventCollection() {
-        this.eventHashMap = new HashMap<UUID, Event>();
+        events = new ArrayList<>();
     }
 
     //Getter
-    public HashMap<UUID, Event> getEventHashMap() {
-        return eventHashMap;
+    public ArrayList<Event> getEvents() {
+        return events;
     }
 
     //Setter
-    public void setEventHashMap(HashMap<UUID, Event> eventHashMap) {
-        this.eventHashMap = eventHashMap;
+    public void setEvents(ArrayList<Event> events) {
+        this.events = events;
+    }
+
+    //Method
+    public void addEvent (Event event){
+        this.events.add(event);
     }
 }
