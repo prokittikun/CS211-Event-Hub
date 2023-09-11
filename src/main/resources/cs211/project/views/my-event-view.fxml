@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.MyEventController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.MyEventController">
    <children>
       <BorderPane prefHeight="800.0" prefWidth="1200.0">
          <center>
@@ -52,7 +52,7 @@
                         </HBox>
                         <ScrollPane hbarPolicy="NEVER" prefHeight="470.0" prefWidth="1088.0" styleClass="bg-white">
                            <content>
-                              <VBox fx:id="myEventComponent" minHeight="460.0" prefHeight="453.0" prefWidth="1092.0" styleClass="bg-white">
+                              <VBox fx:id="myEventComponent" minHeight="460.0" prefWidth="1092.0" spacing="10.0" styleClass="bg-white">
                                  <padding>
                                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                  </padding>
