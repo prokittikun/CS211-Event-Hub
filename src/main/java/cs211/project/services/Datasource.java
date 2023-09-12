@@ -1,4 +1,4 @@
-package ku.cs.services;
+package cs211.project.services;
 
 import java.util.Map;
 
@@ -47,4 +47,11 @@ public interface Datasource<T> {
      * @param newValues จะเป็น Map โดย key จะเป็นชื่อ column และ value จะเป็นค่าใหม่ที่จะใส่ลงไปใน column ที่ต้องการอัพเดท
      */
     void updateColumnsById(String id, Map<String, String> newValues);
+
+    T findById(String id);
+
+    T findAllByColumnsAndValue(Map<String, String> conditions);
+
+    T query(String query);
+
 }
