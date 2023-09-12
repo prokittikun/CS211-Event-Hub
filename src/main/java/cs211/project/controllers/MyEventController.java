@@ -1,15 +1,20 @@
 package cs211.project.controllers;
 
 import cs211.project.controllers.components.MyEventCard;
+import cs211.project.models.Event;
+import cs211.project.models.JoinEvent;
+import cs211.project.models.collections.EventCollection;
+import cs211.project.models.collections.JoinEventCollection;
+import cs211.project.services.Datasource;
+import cs211.project.services.EventListFileDatasource;
 import cs211.project.services.FXRouter;
+import cs211.project.services.JoinEventListFileDatasource;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MyEventController {
@@ -19,8 +24,10 @@ public class MyEventController {
     private AnchorPane footer;
     @FXML
     private VBox myEventComponent;
-
-    private List<MyEventCard> myEventCardList;
+    private Datasource<EventCollection> datasource;
+    private Datasource<JoinEventCollection> datasourceJoinEvent;
+    private EventCollection myEventList;
+    private JoinEventCollection joinEventList;
 
     @FXML
     private void initialize() {
@@ -39,22 +46,35 @@ public class MyEventController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        
+
+        //Datasource
+        datasource = new EventListFileDatasource("data/event", "event.csv");
+        myEventList = datasource.readData();
+
+        //Filter JoinEvent by eventId
+        datasourceJoinEvent = new JoinEventListFileDatasource("data/event", "joinEvent.csv");
+        joinEventList = datasourceJoinEvent.readData();
+
         //Component
-        myEventCardList = MyEventCardList();
-        for (MyEventCard myEventCardData : myEventCardList) {
+        int i = 0;
+        for (Event myEventCardData : myEventList.getEvents()) {
             try {
                 FXMLLoader myEventCardControllerLoader = new FXMLLoader();
                 myEventCardControllerLoader.setLocation(getClass().getResource("/cs211/project/views/components/my-event-card.fxml"));
-                Pane myEventCardComponent = myEventCardControllerLoader.load();
-                MyEventCard myEventCard= myEventCardControllerLoader.getController();
+                AnchorPane myEventCardComponent = myEventCardControllerLoader.load();
+                MyEventCard myEventCard = myEventCardControllerLoader.getController();
                 //Set Value in List
-                myEventCard.setEventDate(myEventCardData.getEventDate());
-                myEventCard.setEventImage(myEventCardData.getEventImage());
-                myEventCard.setEventLocation(myEventCardData.getEventLocation());
-                myEventCard.setParticipantEvent(myEventCardData.getParticipantEvent());
-                myEventCard.setEventTitle(myEventCardData.getEventTitle());
-                myEventCard.setOrderNumber(myEventCardData.getOrderNumber());
+                myEventCard.setEventTitle(myEventCardData.getName());
+                myEventCard.setEventDate(myEventCardData.getStartDate());
+                myEventCard.setEventImage(myEventCardData.getImage());
+                myEventCard.setEventLocation(myEventCardData.getLocation());
+
+                //Filter JoinEvent by eventId
+                List<JoinEvent> filteredJoinEvents = joinEventList.filterByEventId(myEventCardData.getId());
+                myEventCard.setParticipantEvent(filteredJoinEvents.size() + "/" + myEventCardData.getMaxParticipant());
+                i++;
+
+                myEventCard.setOrderNumber(String.valueOf(i));
                 //Insert to Component
                 myEventComponent.getChildren().add(myEventCardComponent);
             } catch (IOException e) {
@@ -63,24 +83,6 @@ public class MyEventController {
         }
     }
 
-    //HardCode
-    private List<MyEventCard> MyEventCardList(){
-        List<MyEventCard> myEventCardList = new ArrayList<>();
-        MyEventCard myEventCard;
-        for (int i = 0; i < 1; i++){
-            myEventCard = new MyEventCard();
-            //Set Value in List
-            myEventCard.setEventImage("https://picsum.photos/200");
-            myEventCard.setOrderNumber(""+ (i+1));
-            myEventCard.setEventTitle("KU Freshy Festival");
-            myEventCard.setEventLocation("Kasetsart University");
-            myEventCard.setParticipantEvent("30/40");
-            myEventCard.setEventDate("30 Aug 2066");
-            //Append in List
-            myEventCardList.add(myEventCard);
-        }
-        return myEventCardList;
-    }
 
     public void goToCreateEvent(){
         try {
