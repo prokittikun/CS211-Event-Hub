@@ -1,11 +1,12 @@
 package cs211.project.services;
-
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class DataFileManager {
     private final String directoryName;
@@ -108,15 +109,46 @@ public class DataFileManager {
 
     }
 
-    public HashMap<String, String> findById(String id) {
+    public ArrayList<HashMap<String, String>> findById(String id) {
         readData();
+
+        ArrayList<HashMap<String, String>> foundItems = new ArrayList<>();
+
         for (HashMap<String, String> item : data) {
             if (item.get(headers.get(0)).equals(id)) {
-                return item;
+                foundItems.add(item);
             }
         }
-        return null;
+
+        return foundItems;
     }
+
+    public ArrayList<HashMap<String, String>> findAllByColumnsAndValue(Map<String, String> conditions) {
+        readData();
+
+        ArrayList<HashMap<String, String>> foundItems = new ArrayList<>();
+
+        for (HashMap<String, String> item : data) {
+            boolean allConditionsMatch = true;
+
+            for (Map.Entry<String, String> entry : conditions.entrySet()) {
+                String column = entry.getKey();
+                String value = entry.getValue();
+
+                if (!item.containsKey(column) || !item.get(column).equals(value)) {
+                    allConditionsMatch = false;
+                    break;
+                }
+            }
+
+            if (allConditionsMatch) {
+                foundItems.add(item);
+            }
+        }
+
+        return foundItems;
+    }
+
     public ArrayList<HashMap<String, String>> getData(){
         readData();
         return this.data;
@@ -171,6 +203,78 @@ public class DataFileManager {
 
         return true;
     }
+
+    public ArrayList<HashMap<String, String>> query(String queryString) {
+        readData();
+
+        // Parse the query string into conditions
+        Predicate<HashMap<String, String>> condition = parseQuery(queryString);
+
+        // Apply the condition to filter the data
+        ArrayList<HashMap<String, String>> result = data.stream()
+                .filter(condition)
+                .collect(Collectors.toCollection(ArrayList::new));
+
+        return result;
+    }
+
+    private Predicate<HashMap<String, String>> parseQuery(String queryString) {
+        // Implement a parser to handle more complex queries.
+        // For simplicity, we'll handle a basic query with OR and AND operators.
+        String[] subQueries = queryString.split("\\s+AND\\s+");
+
+        Predicate<HashMap<String, String>> finalCondition = item -> true;
+
+        for (String subQuery : subQueries) {
+            boolean orFlag = false;
+            if (subQuery.contains(" OR ")) {
+                orFlag = true;
+                subQuery = subQuery.replace(" OR ", " ");
+            }
+
+            boolean notFlag = false;
+            if (subQuery.contains("NOT ")) {
+                notFlag = true;
+                subQuery = subQuery.replace("NOT ", "");
+            }
+
+
+            String[] tokens = subQuery.split("\\s+");
+
+            String columnName = tokens[0];
+            String operator = tokens[1];
+            String value = tokens[2];
+
+            Predicate<HashMap<String, String>> subCondition = item -> {
+                String itemValue = item.get(columnName);
+
+                switch (operator) {
+                    case "=":
+                        return itemValue.equals(value);
+                    case ">":
+                        return Integer.parseInt(itemValue) > Integer.parseInt(value);
+                    case "<":
+                        return Integer.parseInt(itemValue) < Integer.parseInt(value);
+                    // Add more operators as needed.
+                    default:
+                        return false;
+                }
+            };
+
+            if (notFlag) {
+                subCondition = subCondition.negate();
+            }
+
+            if (orFlag) {
+                finalCondition = finalCondition.or(subCondition);
+            } else {
+                finalCondition = finalCondition.and(subCondition);
+            }
+        }
+
+        return finalCondition;
+    }
+
     public void deleteByConditions(Map<String, String> conditions) {
         readData();
 
@@ -178,7 +282,6 @@ public class DataFileManager {
 
         saveData();
     }
-
 
     private void saveData() {
         String filePath = directoryName + File.separator + fileName;
