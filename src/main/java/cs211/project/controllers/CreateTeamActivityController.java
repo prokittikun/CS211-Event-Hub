@@ -16,7 +16,7 @@ import javafx.scene.shape.Circle;
 
 import java.io.IOException;
 
-public class CreateTeamActivity {
+public class CreateTeamActivityController {
     @FXML
     private Circle activityCreatorImage;
 
