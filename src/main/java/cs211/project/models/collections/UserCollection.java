@@ -3,6 +3,7 @@ package cs211.project.models.collections;
 import cs211.project.models.User;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -60,6 +61,13 @@ public class UserCollection {
 
     public List<User> getAllUsers() {
         return users;
+    }
+
+    public void loadUsersFromHashMaps(List<HashMap<String, String>> userMaps) {
+        for (HashMap<String, String> userMap : userMaps) {
+            User user = new User(userMap);
+            this.addUser(user);
+        }
     }
 
 }
