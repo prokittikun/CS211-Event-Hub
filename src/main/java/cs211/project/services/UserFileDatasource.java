@@ -62,36 +62,48 @@ public class UserFileDatasource implements Datasource<UserCollection> {
 
     @Override
     public void deleteAllByColumnAndValue(String column, String value) {
-
+        dataFileManager.deleteByColumnAndValue(value, column);
     }
 
     @Override
     public void deleteByConditions(Map<String, String> conditions) {
-
+        dataFileManager.deleteByConditions(conditions);
     }
 
     @Override
     public void updateColumnById(String id, String targetColumn, String newValue) {
-
+        dataFileManager.updateColumnById(id, targetColumn, newValue);
     }
 
     @Override
     public void updateColumnsById(String id, Map<String, String> newValues) {
-
+        dataFileManager.updateColumnsById(id, newValues);
     }
 
     @Override
     public UserCollection findById(String id) {
-        return null;
+        UserCollection users = new UserCollection();
+        for (HashMap<String, String> data : dataFileManager.findById(id)) {
+            users.addUser(new User(data));
+        }
+        return users;
     }
 
     @Override
     public UserCollection findAllByColumnsAndValue(Map<String, String> conditions) {
-        return null;
+        UserCollection users = new UserCollection();
+        for (HashMap<String, String> item : dataFileManager.findAllByColumnsAndValue(conditions)) {
+            users.addUser(new User(item));
+        }
+        return users;
     }
 
     @Override
     public UserCollection query(String query) {
-        return null;
+        UserCollection users = new UserCollection();
+        for (HashMap<String, String> item : dataFileManager.query(query)) {
+            users.addUser(new User(item));
+        }
+        return users;
     }
 }
