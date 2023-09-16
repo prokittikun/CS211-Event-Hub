@@ -3,17 +3,13 @@ package cs211.project.controllers.components;
 import cs211.project.controllers.MyTeamController;
 import cs211.project.models.collections.TeamMemberCollection;
 import cs211.project.services.Datasource;
-import cs211.project.services.TeamMemberListFIleDatasource;
+import cs211.project.services.TeamMemberListFileDatasource;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -60,7 +56,7 @@ public class MyTeamCardController {
         this.startDate = new Label();
         this.teamName = new Label();
 
-        datasourceTeamMember = new TeamMemberListFIleDatasource("data/team", "teamMember.csv");
+        datasourceTeamMember = new TeamMemberListFileDatasource("data/team", "teamMember.csv");
     }
 
 

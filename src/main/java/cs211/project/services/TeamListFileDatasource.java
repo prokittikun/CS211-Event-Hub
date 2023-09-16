@@ -107,5 +107,10 @@ public class TeamListFileDatasource implements Datasource<TeamCollection> {
         }
         return teams;
     }
+
+    @Override
+    public TeamCollection queryWithOffsetAndLimit(String query, int offset, int limit) {
+        return null;
+    }
 }
 

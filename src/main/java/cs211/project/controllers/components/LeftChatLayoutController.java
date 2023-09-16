@@ -17,12 +17,19 @@ public class LeftChatLayoutController {
     @FXML
     private Label senderName;
 
+    @FXML
+    private Label timestamp;
+
     public String getSenderMessage() {
         return senderMessage.getText();
     }
 
     public String getSenderName() {
         return senderName.getText();
+    }
+
+    public String getTimestamp(){
+        return timestamp.getText();
     }
 
     public void setSenderName(String name) {
@@ -34,5 +41,9 @@ public class LeftChatLayoutController {
 
     public void setSenderImage(String imagePath) {
         senderImage.setFill(new ImagePattern(new Image(imagePath)));
+    }
+
+    public void setTimestamp(String timestamp){
+        this.timestamp.setText(timestamp);
     }
 }

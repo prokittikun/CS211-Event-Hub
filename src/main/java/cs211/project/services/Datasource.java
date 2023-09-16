@@ -54,4 +54,6 @@ public interface Datasource<T> {
 
     T query(String query);
 
+    T queryWithOffsetAndLimit(String query, int offset, int limit);
+
 }

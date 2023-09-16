@@ -13,9 +13,8 @@ public class User extends Person {
     private String username;
     private String password;
     private String role;
-    private Date lastLogin;
-    private Date createdAt;
-    private List<Event> events;
+    private String lastLogin;
+    private String createdAt;
 
     public User(HashMap<String, String> userMap) {
         super(userMap.get("firstName"), userMap.get("lastName"));
@@ -24,9 +23,8 @@ public class User extends Person {
         this.username = userMap.get("username");
         this.password = userMap.get("password");
         this.role = userMap.get("role");
-        this.lastLogin = new Date(Long.parseLong(userMap.get("lastLogin")));
-        this.createdAt = new Date(Long.parseLong(userMap.get("createdAt")));
-        this.events = new ArrayList<>();
+        this.lastLogin = userMap.get("lastLogin");
+        this.createdAt = userMap.get("createdAt");
     }
 
     public String getId() {
@@ -69,32 +67,23 @@ public class User extends Person {
         this.role = role;
     }
 
-    public Date getLastLogin() {
+    public String getLastLogin() {
         return lastLogin;
     }
 
-    public void setLastLogin(Date lastLogin) {
+    public void setLastLogin(String  lastLogin) {
         this.lastLogin = lastLogin;
     }
 
-    public Date getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 
-    public List<Event> getEvents() {
-        return events;
-    }
-
-    public void addEvent(Event event) {
-        this.events.add(event);
-    }
-
     public HashMap<String, String> toHashMap() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         HashMap<String, String> userMap = new HashMap<>();
         userMap.put("id", this.id.toString());
         userMap.put("avatar", this.avatar);
@@ -103,8 +92,8 @@ public class User extends Person {
         userMap.put("username", this.username);
         userMap.put("password", this.password);
         userMap.put("role", this.role);
-        userMap.put("lastLogin", dateFormat.format(this.lastLogin));
-        userMap.put("createdAt", dateFormat.format(this.createdAt));
+        userMap.put("lastLogin", this.lastLogin);
+        userMap.put("createdAt",this.createdAt);
         return userMap;
     }
 }

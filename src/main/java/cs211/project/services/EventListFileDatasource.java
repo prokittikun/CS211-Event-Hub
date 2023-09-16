@@ -107,4 +107,9 @@ public class EventListFileDatasource implements Datasource<EventCollection> {
         }
         return events;
     }
+
+    @Override
+    public EventCollection queryWithOffsetAndLimit(String query, int offset, int limit) {
+        return null;
+    }
 }
