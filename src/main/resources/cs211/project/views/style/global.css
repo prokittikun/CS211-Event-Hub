@@ -234,7 +234,3 @@
 .scroll-pane > .viewport {
     -fx-background-color: transparent;
 }
-
-.text-danger{
-    -fx-text-fill: #C73618;
-}

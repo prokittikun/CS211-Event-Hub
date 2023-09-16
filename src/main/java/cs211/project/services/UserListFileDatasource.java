@@ -9,12 +9,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UserFileDatasource implements Datasource<UserCollection> {
+public class UserListFileDatasource implements Datasource<UserCollection> {
     private String directoryName;
     private String fileName;
     private DataFileManager dataFileManager;
 
-    public UserFileDatasource(String directoryName, String fileName) {
+    public UserListFileDatasource(String directoryName, String fileName) {
         this.directoryName = directoryName;
         this.fileName = fileName;
         checkFileIsExisted();
@@ -105,5 +105,10 @@ public class UserFileDatasource implements Datasource<UserCollection> {
             users.addUser(new User(item));
         }
         return users;
+    }
+
+    @Override
+    public UserCollection queryWithOffsetAndLimit(String query, int offset, int limit) {
+        return null;
     }
 }

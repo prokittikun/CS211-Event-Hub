@@ -218,6 +218,23 @@ public class DataFileManager {
         return result;
     }
 
+    public ArrayList<HashMap<String, String>> queryWithOffsetAndLimit(String queryString, int offset, int limit) {
+        readData();
+
+        // Parse the query string into conditions
+        Predicate<HashMap<String, String>> condition = parseQuery(queryString);
+
+        // Apply the condition to filter the data with offset and limit
+        ArrayList<HashMap<String, String>> result = data.stream()
+                .filter(condition)
+                .skip(offset) // Skip the first 'offset' rows
+                .limit(limit) // Limit the result to 'limit' rows
+                .collect(Collectors.toCollection(ArrayList::new));
+
+        return result;
+    }
+
+
     private Predicate<HashMap<String, String>> parseQuery(String queryString) {
         // Implement a parser to handle more complex queries.
         // For simplicity, we'll handle a basic query with OR and AND operators.

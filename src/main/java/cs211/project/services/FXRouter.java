@@ -92,7 +92,7 @@ public final class FXRouter {
         loadNewRoute(route);
     }
 
-    public static void goTo(String routeLabel, Object data) throws IOException {
+    public static void goTo(String routeLabel,HashMap<String, Object>  data) throws IOException {
         RouteScene route = (RouteScene)routes.get(routeLabel);
         route.data = data;
         loadNewRoute(route);
@@ -107,13 +107,22 @@ public final class FXRouter {
         window.setScene(new Scene(resource, route.sceneWidth, route.sceneHeight));
         window.show();
         routeAnimation(resource);
+
+        HashMap<String, Object> data = route.data;
+
+        if (data != null) {
+            // Handle the user data
+            Object userId = data.get("userId");
+            Object teamId = data.get("teamId");
+            Object eventId = data.get("eventId");
+        }
     }
 
     public static void startFrom(String routeLabel) throws Exception {
         goTo(routeLabel);
     }
 
-    public static void startFrom(String routeLabel, Object data) throws Exception {
+    public static void startFrom(String routeLabel, HashMap<String , Object> data) throws Exception {
         goTo(routeLabel, data);
     }
 
@@ -147,7 +156,7 @@ public final class FXRouter {
         }
     }
 
-    public static Object getData() {
+    public static HashMap<String, Object> getData() {
         return currentRoute.data;
     }
 
@@ -156,7 +165,7 @@ public final class FXRouter {
         private String windowTitle;
         private double sceneWidth;
         private double sceneHeight;
-        private Object data;
+        private  HashMap<String, Object> data;
 
         private RouteScene(String scenePath) {
             this(scenePath, getWindowTitle(), getWindowWidth(), getWindowHeight());

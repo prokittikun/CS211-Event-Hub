@@ -1,6 +1,8 @@
 package cs211.project.services;
 
+import cs211.project.models.Chat;
 import cs211.project.models.Team;
+import cs211.project.models.collections.ChatCollection;
 import cs211.project.models.collections.TeamCollection;
 
 import java.io.File;
@@ -9,13 +11,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TeamListFileDatasource implements Datasource<TeamCollection> {
+public class ChatListFileDatasource implements Datasource<ChatCollection> {
     private String directoryName;
     private String fileName;
     private DataFileManager dataFileManager;
 
     //Constructor เพื่อกำหนดที่อยู่ file csv ที่จะอ่าน
-    public TeamListFileDatasource(String directoryName, String fileName) {
+    public ChatListFileDatasource(String directoryName, String fileName) {
         this.directoryName = directoryName;
         this.fileName = fileName;
         checkFileIsExisted();
@@ -41,20 +43,20 @@ public class TeamListFileDatasource implements Datasource<TeamCollection> {
 
     //return type อย่าลืมแก้นะจ้ะ
     @Override
-    public TeamCollection readData() {
-        TeamCollection teams = new TeamCollection();
+    public ChatCollection readData() {
+        ChatCollection chatList = new ChatCollection();
         for (HashMap<String, String> data : dataFileManager.getData()) {
-            teams.addTeam(new Team(data));
+            chatList.addNewChat(new Chat(data));
         }
-        return teams;
+        return chatList;
     }
 
     //parameter type อย่าลืมแก้นะจ้ะ
     @Override
-    public void writeData(TeamCollection data) {
+    public void writeData(ChatCollection data) {
         ArrayList<HashMap<String, String>> dataToWrite = new ArrayList<>();
-        for (Team team : data.getTeams()) {
-            dataToWrite.add(team.toHashMap());
+        for (Chat chat : data.getChats()) {
+            dataToWrite.add(chat.toHashMap());
         }
         dataFileManager.writeData(dataToWrite);
     }
@@ -82,35 +84,39 @@ public class TeamListFileDatasource implements Datasource<TeamCollection> {
     }
 
     @Override
-    public TeamCollection findById(String id) {
-        TeamCollection teams = new TeamCollection();
+    public ChatCollection findById(String id) {
+        ChatCollection chatList = new ChatCollection();
         for (HashMap<String, String> data : dataFileManager.findById(id)) {
-            teams.addTeam(new Team(data));
+            chatList.addNewChat(new Chat(data));
         }
-        return teams;
+        return chatList;
     }
 
     @Override
-    public TeamCollection findAllByColumnsAndValue(Map<String, String> conditions) {
-        TeamCollection teams = new TeamCollection();
+    public ChatCollection findAllByColumnsAndValue(Map<String, String> conditions) {
+        ChatCollection chatList = new ChatCollection();
         for (HashMap<String, String> item : dataFileManager.findAllByColumnsAndValue(conditions)) {
-            teams.addTeam(new Team(item));
+            chatList.addNewChat(new Chat(item));
         }
-        return teams;
+        return chatList;
     }
 
     @Override
-    public TeamCollection query(String query) {
-        TeamCollection teams = new TeamCollection();
+    public ChatCollection query(String query) {
+        ChatCollection chatList = new ChatCollection();
         for (HashMap<String, String> item : dataFileManager.query(query)) {
-            teams.addTeam(new Team(item));
+            chatList.addNewChat(new Chat(item));
         }
-        return teams;
+        return chatList;
     }
 
     @Override
-    public TeamCollection queryWithOffsetAndLimit(String query, int offset, int limit) {
-        return null;
+    public ChatCollection queryWithOffsetAndLimit(String query, int offset, int limit) {
+        ChatCollection chatList = new ChatCollection();
+        for (HashMap<String, String> item : dataFileManager.queryWithOffsetAndLimit(query, offset, limit)) {
+            chatList.addNewChat(new Chat(item));
+        }
+        return chatList;
     }
 }
 

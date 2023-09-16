@@ -36,7 +36,10 @@ public class TeamMember {
     }
 
     public String getIsLeader() {
-        return isLeader;
+        if(isLeader.equals("1"))
+            return "Leader";
+        else
+            return "Member";
     }
 
     public void setId(String id) {

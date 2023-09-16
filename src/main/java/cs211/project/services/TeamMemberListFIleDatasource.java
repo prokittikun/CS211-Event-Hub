@@ -9,13 +9,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TeamMemberListFIleDatasource implements Datasource<TeamMemberCollection>{
+public class TeamMemberListFileDatasource implements Datasource<TeamMemberCollection>{
     private String directoryName;
     private String fileName;
     private DataFileManager dataFileManager;
 
     //Constructor เพื่อกำหนดที่อยู่ file csv ที่จะอ่าน
-    public TeamMemberListFIleDatasource(String directoryName, String fileName) {
+    public TeamMemberListFileDatasource(String directoryName, String fileName) {
         this.directoryName = directoryName;
         this.fileName = fileName;
         checkFileIsExisted();
@@ -106,5 +106,10 @@ public class TeamMemberListFIleDatasource implements Datasource<TeamMemberCollec
             teamMemberList.addTeamMember(new TeamMember(item));
         }
         return teamMemberList;
+    }
+
+    @Override
+    public TeamMemberCollection queryWithOffsetAndLimit(String query, int offset, int limit) {
+        return null;
     }
 }

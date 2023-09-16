@@ -2,10 +2,9 @@ package cs211.project.controllers;
 import cs211.project.controllers.components.LeftChatLayoutController;
 import cs211.project.controllers.components.ProfileImageController;
 import cs211.project.controllers.components.RightChatLayoutController;
-import cs211.project.controllers.components.TeamMemberCard;
-import cs211.project.models.Chat;
-import cs211.project.models.collections.ChatCollection;
-import cs211.project.services.FXRouter;
+import cs211.project.models.*;
+import cs211.project.models.collections.*;
+import cs211.project.services.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,17 +13,23 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class TeamChatController {
+
+    private UUID teamId;
+    private UUID userId;
     @FXML
     private Label eventDate;
 
@@ -65,25 +70,32 @@ public class TeamChatController {
 
     private List<ProfileImageController> profileImageControllerList;
 
+    private Datasource<ChatCollection>  chatDatasource;
+
+    private Datasource<TeamCollection>  teamCollectionDatasource;
+
+    private Datasource<TeamMemberCollection>  teamMemberCollectionDatasource;
+
+    private Datasource<EventCollection>  eventDatasource;
+
+    private Datasource<JoinEventCollection> joinEventCollectionDatasource;
+    private ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+
+
     @FXML
     private void initialize() {
+        HashMap<String, Object> data = FXRouter.getData(); // get data from router
+        teamId = UUID.fromString((String) data.get("teamId"));
+
+        userId = UUID.fromString("b1e473a8-5175-11ee-be56-0242ac120002");
+        chatDatasource = new ChatListFileDatasource("data/team", "chat.csv");
+        eventDatasource = new EventListFileDatasource("data/event", "event.csv");
+        teamCollectionDatasource = new TeamListFileDatasource("data/team", "team.csv");
+        joinEventCollectionDatasource = new JoinEventListFileDatasource("data/event", "joinEvent.csv");
+        teamMemberCollectionDatasource = new TeamMemberListFileDatasource("data/team", "teamMember.csv");
         chatList = new ChatCollection();
-        Chat newChat = new Chat("John", "Hello!", "https://picsum.photos/200");
-        chatList.addNewChat(newChat);
-        newChat = new Chat("Mark", "Hi", "https://picsum.photos/200");
-        chatList.addNewChat(newChat);
-        newChat = new Chat("John", "what is ur name hehe", "https://picsum.photos/200");
-        chatList.addNewChat(newChat);
-        newChat = new Chat("Jane", "Hi, my name is Jane!", "https://picsum.photos/200");
-        chatList.addNewChat(newChat);
-        newChat = new Chat("Mark", "my name is Mark", "https://picsum.photos/200");
-        chatList.addNewChat(newChat);
-        newChat = new Chat("John", "Nice to meet u", "https://picsum.photos/200");
-        chatList.addNewChat(newChat);
-        newChat = new Chat("Jane", "Nice to meet you too", "https://picsum.photos/200");
-        chatList.addNewChat(newChat);
-        newChat = new Chat("John", "what time to start of the event?", "https://picsum.photos/200");
-        chatList.addNewChat(newChat);
+
+        this.initHeader();
         this.initAllMemberProfile();
         this.initChat();
         //Navbar
@@ -115,7 +127,12 @@ public class TeamChatController {
     @FXML
     void onHandleSendMessage(ActionEvent event) {
         if(!inputMessage.getText().isEmpty()){
-            chatList.addNewChat(new Chat("John", inputMessage.getText(), "https://picsum.photos/200"));
+            String timestamp = DateTimeService.toString(DateTimeService.getCurrentDate()) + " " + DateTimeService.getCurrentTime();
+            Chat newChat = new Chat(this.userId.toString(), inputMessage.getText(), this.teamId.toString(), timestamp);
+            ChatCollection newChatList = new ChatCollection();
+            chatList.addNewChat(newChat);
+            newChatList.addNewChat(newChat);
+            chatDatasource.writeData(newChatList);
             try {
                 FXMLLoader chatMessageLoader = new FXMLLoader();
                 AnchorPane chatLayoutComponent;
@@ -123,6 +140,7 @@ public class TeamChatController {
                 chatLayoutComponent = chatMessageLoader.load();
                 RightChatLayoutController rightChatLayoutController = chatMessageLoader.getController();
                 rightChatLayoutController.setMyMessage(inputMessage.getText());
+                rightChatLayoutController.setTimestamp(timestamp);
                 showChat.getChildren().add(chatLayoutComponent);
                 inputMessage.setText("");
 
@@ -134,24 +152,40 @@ public class TeamChatController {
             return;
         }
     }
-
+    private void initHeader(){
+        Team team = teamCollectionDatasource.query("id = " + teamId.toString()).getTeams().get(0);
+        Event event = eventDatasource.query("id = " + team.getEventId()).getEvents().get(0);
+        eventName.setText(event.getName());
+        eventLocation.setText(event.getLocation());
+        eventImage.setImage(new Image(event.getImage()));
+        JoinEventCollection joinEventCollection = joinEventCollectionDatasource.query("eventId = " + event.getId());
+        eventParticipant.setText(joinEventCollection.getJoinEvents().size() + "/" + event.getMaxParticipant());
+        eventDate.setText(DateTimeService.toString(event.getStartDate()) + " - " + DateTimeService.toString(event.getEndDate()));
+        teamName.setText(team.getName());
+    }
     private void initChat(){
+        chatList = chatDatasource.query("teamId = " + this.teamId.toString());
         for (Chat chat : chatList.getChats()) {
             try {
                 FXMLLoader chatMessageLoader = new FXMLLoader();
                 AnchorPane chatLayoutComponent;
-                if(chat.getSender().equals("John")) {
+                if(chat.getSenderUserId().equals(this.userId.toString())) {
                     chatMessageLoader.setLocation(getClass().getResource("/cs211/project/views/components/right-chat-layout-component.fxml"));
                     chatLayoutComponent = chatMessageLoader.load();
                     RightChatLayoutController rightChatLayoutController = chatMessageLoader.getController();
                     rightChatLayoutController.setMyMessage(chat.getMessage());
+                    rightChatLayoutController.setTimestamp(chat.getTimestamp());
                 }else{
                     chatMessageLoader.setLocation(getClass().getResource("/cs211/project/views/components/left-chat-layout-component.fxml"));
                     chatLayoutComponent = chatMessageLoader.load();
                     LeftChatLayoutController leftChatLayoutController = chatMessageLoader.getController();
-                    leftChatLayoutController.setSenderName(chat.getSender());
+                    Datasource<UserCollection> userDatasource = new UserListFileDatasource("data", "user.csv");
+                    User user = userDatasource.query("id = " + chat.getSenderUserId()).getAllUsers().get(0);
+
+                    leftChatLayoutController.setSenderName(user.getFirstName() + " " + user.getLastName());
                     leftChatLayoutController.setSenderMessage(chat.getMessage());
-                    leftChatLayoutController.setSenderImage(chat.getSenderImagePath());
+                    leftChatLayoutController.setTimestamp(chat.getTimestamp());
+                    leftChatLayoutController.setSenderImage(user.getAvatar());
                 }
 
                 showChat.getChildren().add(chatLayoutComponent);
@@ -163,40 +197,48 @@ public class TeamChatController {
     }
 
     private void initAllMemberProfile(){
-        profileImageControllerList = new ArrayList<>(memberProfiles());
-        int column = 0;
-        int row = 1;
+        executorService.submit(() -> {
+
+        TeamMemberCollection teamMemberCollection = teamMemberCollectionDatasource.query("teamId = " + this.teamId.toString());
+
+            final int[] column = {0};
+            final int[] row = {1};
         try {
-            for (ProfileImageController profileImageController : profileImageControllerList) {
+            for (TeamMember member : teamMemberCollection.getTeamMembers()){
                 FXMLLoader imageProfileLoader = new FXMLLoader();
                 AnchorPane imageProfileComponent;
                 imageProfileLoader.setLocation(getClass().getResource("/cs211/project/views/components/profile-image-component.fxml"));
                 imageProfileComponent = imageProfileLoader.load();
                 ProfileImageController imageProfileController = imageProfileLoader.getController();
-                imageProfileController.setProfileImage(profileImageController.getImagePath());
-                if (column == 5) {
-                    column = 0;
-                    ++row;
-                }
+                User user = new UserListFileDatasource("data", "user.csv").query("id = " + member.getUserId()).getAllUsers().get(0);
+                imageProfileController.setProfileImage(user.getAvatar());
+                javafx.application.Platform.runLater(() -> {
 
-                showMember.add(imageProfileComponent, column++, row);
+                if (column[0] == 5) {
+                    column[0] = 0;
+                    ++row[0];
+                }
+                    showMember.add(imageProfileComponent, column[0]++, row[0]);
                 GridPane.setMargin(imageProfileComponent, new Insets(10));
+                });
+
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        });
     }
 
-    private List<ProfileImageController> memberProfiles(){
-        List<ProfileImageController> profileImageControllerList = new ArrayList<>();
-        ProfileImageController profileImageController;
-        for (int i = 0; i < 10; i++){
-            profileImageController = new ProfileImageController("https://picsum.photos/200");
-//            profileImageController.setProfileImage("https://picsum.photos/200");
-            profileImageControllerList.add(profileImageController);
-        }
-        return profileImageControllerList;
-    }
+//    private List<ProfileImageController> memberProfiles(){
+//        List<ProfileImageController> profileImageControllerList = new ArrayList<>();
+//        ProfileImageController profileImageController;
+//        for (int i = 0; i < 10; i++){
+//            profileImageController = new ProfileImageController("https://picsum.photos/200");
+////            profileImageController.setProfileImage("https://picsum.photos/200");
+//            profileImageControllerList.add(profileImageController);
+//        }
+//        return profileImageControllerList;
+//    }
 
     private static void ensureVisible(ScrollPane pane, Node node) {
         double contentHeight = pane.getContent().getBoundsInLocal().getHeight();

@@ -109,4 +109,9 @@ public class JoinEventListFileDatasource implements Datasource<JoinEventCollecti
         }
         return joinList;
     }
+
+    @Override
+    public JoinEventCollection queryWithOffsetAndLimit(String query, int offset, int limit) {
+        return null;
+    }
 }

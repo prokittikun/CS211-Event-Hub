@@ -59,31 +59,31 @@
                                           <VBox fx:id="memberVbox" prefWidth="370.0" />
                                        </content>
                                     </ScrollPane>
-                                    <HBox alignment="CENTER" prefHeight="55.0" prefWidth="374.0" spacing="25.0">
-                                       <children>
-                                          <TextField promptText="ชื่อผู้ใช้งาน">
-                                             <HBox.margin>
-                                                <Insets left="20.0" />
-                                             </HBox.margin>
-                                             <styleClass>
-                                                <String fx:value="text-lg" />
-                                                <String fx:value="card-light-gray" />
-                                             </styleClass>
-                                          </TextField>
-                                          <Button mnemonicParsing="false" text="Add">
-                                             <styleClass>
-                                                <String fx:value="btn-danger" />
-                                                <String fx:value="text-sm" />
-                                             </styleClass>
-                                          </Button>
-                                       </children>
-                                       <opaqueInsets>
-                                          <Insets left="20.0" />
-                                       </opaqueInsets>
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                    </HBox>
+<!--                                    <HBox alignment="CENTER" prefHeight="55.0" prefWidth="374.0" spacing="25.0">-->
+<!--                                       <children>-->
+<!--                                          <TextField promptText="ชื่อผู้ใช้งาน">-->
+<!--                                             <HBox.margin>-->
+<!--                                                <Insets left="20.0" />-->
+<!--                                             </HBox.margin>-->
+<!--                                             <styleClass>-->
+<!--                                                <String fx:value="text-lg" />-->
+<!--                                                <String fx:value="card-light-gray" />-->
+<!--                                             </styleClass>-->
+<!--                                          </TextField>-->
+<!--                                          <Button mnemonicParsing="false" text="Add">-->
+<!--                                             <styleClass>-->
+<!--                                                <String fx:value="btn-danger" />-->
+<!--                                                <String fx:value="text-sm" />-->
+<!--                                             </styleClass>-->
+<!--                                          </Button>-->
+<!--                                       </children>-->
+<!--                                       <opaqueInsets>-->
+<!--                                          <Insets left="20.0" />-->
+<!--                                       </opaqueInsets>-->
+<!--                                       <VBox.margin>-->
+<!--                                          <Insets />-->
+<!--                                       </VBox.margin>-->
+<!--                                    </HBox>-->
                                  </children>
                                  <padding>
                                     <Insets bottom="10.0" top="10.0" />
