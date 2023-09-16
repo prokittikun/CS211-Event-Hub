@@ -14,6 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -38,10 +39,14 @@ public class MyTeamController {
     private Datasource<TeamMemberCollection> teamMemberDatasource;
 
     private Datasource<EventCollection> eventDatasource;
+    private HashMap<String, Object> data;
 
+    private String userId;
 
     @FXML
     private void initialize() {
+        data = FXRouter.getData();
+        userId = (String) data.get("userId");
         teamMemberDatasource = new TeamMemberListFileDatasource("data/team", "teamMember.csv");
         teamDatasource = new TeamListFileDatasource("data/team", "team.csv");
         eventDatasource = new EventListFileDatasource("data/event", "event.csv");
@@ -69,7 +74,7 @@ public class MyTeamController {
 
     private void initMyTeam() {
         executorService.submit(() -> {
-            teamMemberCollection = teamMemberDatasource.query("userId = b1e473a8-5175-11ee-be56-0242ac120002");
+            teamMemberCollection = teamMemberDatasource.query("userId = "+this.userId);
             int i = 0;
             for (TeamMember teamMember : teamMemberCollection.getTeamMembers()) {
                 try {
@@ -79,11 +84,11 @@ public class MyTeamController {
                     System.out.println(event.getName());
 
                     FXMLLoader myTeamCardLoader = new FXMLLoader();
-//                AnchorPane teamComponent;
                     myTeamCardLoader.setLocation(getClass().getResource("/cs211/project/views/components/my-team-card-component.fxml"));
                     AnchorPane teamComponent = myTeamCardLoader.load();
                     MyTeamCardController myTeamCardController = myTeamCardLoader.getController();
                     myTeamCardController.setTeamId(team.getId());
+                    myTeamCardController.setUserId(this.userId);
                     myTeamCardController.setEventImage(event.getImage());
                     myTeamCardController.setEventName(event.getName());
                     myTeamCardController.setEventLocation(event.getLocation());

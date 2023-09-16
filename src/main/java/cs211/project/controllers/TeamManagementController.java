@@ -40,12 +40,13 @@ public class TeamManagementController {
     private Datasource<UserCollection> userDatasource;
 
     private TeamMemberCollection teamMemberCollection;
+    private HashMap<String, Object> data;
 
     private ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 
     @FXML
     private void initialize() {
-
+        data = FXRouter.getData();
         initTeamMember();
         //Navbar
         FXMLLoader navbarComponentLoader = new FXMLLoader(getClass().getResource("/cs211/project/views/navbar.fxml"));
@@ -67,7 +68,7 @@ public class TeamManagementController {
     void initTeamMember() {
         executorService.submit(() -> {
 
-            teamId = UUID.fromString("c623dc8c-5175-11ee-be56-0242ac120002");
+            teamId = UUID.fromString(data.get("teamId").toString());
             teamMemberDatasource = new TeamMemberListFileDatasource("data/team", "teamMember.csv");
             userDatasource = new UserListFileDatasource("data", "user.csv");
             teamMemberCollection = teamMemberDatasource.query("teamId = " + this.teamId.toString());
