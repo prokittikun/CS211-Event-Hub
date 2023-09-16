@@ -11,27 +11,37 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import javafx.scene.control.MenuBar;
 
 public class ToastAlert {
-    public static void show(String message) {
+    public enum AlertType {
+        SUCCESS, ERROR
+    }
+
+    public static void show(String message, AlertType alertType) {
         Stage stage = new Stage();
-        stage.initOwner(null); // Null owner means it's a standalone window
-        stage.initStyle(StageStyle.UTILITY);
+        stage.initOwner(null);
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.setAlwaysOnTop(true);
 
         Label label = new Label(message);
-        label.getStyleClass().add("toast-label");
+        label.setStyle("-fx-font-size: 14px; -fx-text-fill: white;");
 
         StackPane stackPane = new StackPane(label);
         stackPane.setAlignment(Pos.TOP_RIGHT);
-        stackPane.setPrefWidth(300); // Adjust width as needed
+        stackPane.setPrefWidth(300);
         stackPane.setPadding(new Insets(10));
-        stackPane.getStyleClass().add("toast-background");
+
+        String backgroundColor = alertType == AlertType.SUCCESS ? "rgba(0, 128, 0, 0.7)" : "rgba(255, 0, 0, 0.7)";
+        stackPane.setStyle("-fx-background-color: " + backgroundColor + ";" +
+                "-fx-border-color: white;" +
+                "-fx-border-width: 1px;" +
+                "-fx-border-radius: 5px;");
 
         Scene scene = new Scene(stackPane);
         stage.setScene(scene);
 
-        // Animation for fade-in and fade-out
+
         Timeline timeline = new Timeline(
                 new KeyFrame(Duration.seconds(0), new KeyValue(stage.opacityProperty(), 0)),
                 new KeyFrame(Duration.seconds(0.5), new KeyValue(stage.opacityProperty(), 1)),
@@ -41,8 +51,6 @@ public class ToastAlert {
 
         timeline.setOnFinished(event -> stage.close());
         timeline.play();
-
-        scene.getStylesheets().add("cs211/project/views/style/global.css");
 
         stage.show();
     }

@@ -1,10 +1,11 @@
 package cs211.project.controllers;
 
 import cs211.project.services.FXRouter;
+import cs211.project.services.alert.AlertProviderService;
+import cs211.project.services.alert.ToastAlert;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -110,6 +111,11 @@ public class CreateTeamActivityController {
 
     @FXML
     void onHandleSaveButton(ActionEvent event) {
+//        AlertProviderService alertProvider = new AlertProviderService();
+//        alertProvider.showInfoAlert("This is an info message.");
+//        alertProvider.showErrorAlert("This is an error message.");
+
+        ToastAlert.show("This is a toast-like alert.", ToastAlert.AlertType.SUCCESS);
 
     }
 
