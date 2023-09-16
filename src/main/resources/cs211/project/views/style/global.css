@@ -1,3 +1,11 @@
+@font-face {
+    font-family: "Kanit";
+    src: url("../assets/fonts/Kanit-Regular.ttf");
+}
+
+.root {
+    -fx-font-family: 'Kanit', 'sans-serif';
+}
 
 .btn-danger{
     -fx-background-radius: 12px;
@@ -123,7 +131,7 @@
 }
 
 .font-bold{
-    -fx-font-weight: bold;
+    -fx-font-weight: 700;
 }
 
 .card{
@@ -225,4 +233,8 @@
 
 .scroll-pane > .viewport {
     -fx-background-color: transparent;
+}
+
+.text-danger{
+    -fx-text-fill: #C73618;
 }
