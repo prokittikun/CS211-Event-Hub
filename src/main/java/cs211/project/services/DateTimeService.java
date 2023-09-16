@@ -52,4 +52,7 @@ public class DateTimeService {
         }
     }
 
+    public static String getCurrentDateTime() {
+        return getCurrentDate() + " " + getCurrentTime();
+    }
 }
