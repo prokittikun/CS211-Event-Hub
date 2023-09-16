@@ -1,10 +1,6 @@
 package cs211.project.services;
 
-import cs211.project.models.Event;
-import cs211.project.models.JoinEvent;
 import cs211.project.models.Team;
-import cs211.project.models.collections.EventCollection;
-import cs211.project.models.collections.JoinEventCollection;
 import cs211.project.models.collections.TeamCollection;
 
 import java.io.File;
@@ -13,19 +9,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class JoinEventListFileDatasource implements Datasource<JoinEventCollection> {
-    private final String directoryName;
-    private final String fileName;
-    private final DataFileManager dataFileManager;
+public class TeamListFileDatasource implements Datasource<TeamCollection> {
+    private String directoryName;
+    private String fileName;
+    private DataFileManager dataFileManager;
 
-    //Constructor
-    public JoinEventListFileDatasource(String directoryName, String fileName) {
+    //Constructor เพื่อกำหนดที่อยู่ file csv ที่จะอ่าน
+    public TeamListFileDatasource(String directoryName, String fileName) {
         this.directoryName = directoryName;
         this.fileName = fileName;
         checkFileIsExisted();
         dataFileManager = new DataFileManager(directoryName, fileName);
     }
 
+    // ตรวจสอบว่ามีไฟล์ให้อ่านหรือไม่ ถ้าไม่มีให้สร้างไฟล์เปล่า
     private void checkFileIsExisted() {
         File file = new File(directoryName);
         if (!file.exists()) {
@@ -42,20 +39,22 @@ public class JoinEventListFileDatasource implements Datasource<JoinEventCollecti
         }
     }
 
+    //return type อย่าลืมแก้นะจ้ะ
     @Override
-    public JoinEventCollection readData() {
-        JoinEventCollection eventList = new JoinEventCollection();
+    public TeamCollection readData() {
+        TeamCollection teams = new TeamCollection();
         for (HashMap<String, String> data : dataFileManager.getData()) {
-            eventList.addJoinEvent(new JoinEvent(data));
+            teams.addTeam(new Team(data));
         }
-        return eventList;
+        return teams;
     }
 
+    //parameter type อย่าลืมแก้นะจ้ะ
     @Override
-    public void writeData(JoinEventCollection data) {
+    public void writeData(TeamCollection data) {
         ArrayList<HashMap<String, String>> dataToWrite = new ArrayList<>();
-        for (JoinEvent joinEvent : data.getJoinEvents()) {
-            dataToWrite.add(joinEvent.toHashMap());
+        for (Team team : data.getTeams()) {
+            dataToWrite.add(team.toHashMap());
         }
         dataFileManager.writeData(dataToWrite);
     }
@@ -65,12 +64,16 @@ public class JoinEventListFileDatasource implements Datasource<JoinEventCollecti
         dataFileManager.deleteById(id);
     }
     @Override
-    public void deleteAllByColumnAndValue(String value, String column){
+    public void deleteAllByColumnAndValue(String column, String value){
         dataFileManager.deleteByColumnAndValue(value, column);
     }
     @Override
     public void updateColumnById(String id, String targetColumn, String newValue){
         dataFileManager.updateColumnById(id, targetColumn, newValue);
+    }
+    @Override
+    public void deleteByConditions(Map<String, String> conditions){
+        dataFileManager.deleteByConditions(conditions);
     }
 
     @Override
@@ -79,34 +82,30 @@ public class JoinEventListFileDatasource implements Datasource<JoinEventCollecti
     }
 
     @Override
-    public void deleteByConditions(Map<String, String> conditions){
-        dataFileManager.deleteByConditions(conditions);
-    }
-
-    @Override
-    public JoinEventCollection findById(String id) {
-        JoinEventCollection joinList = new JoinEventCollection();
+    public TeamCollection findById(String id) {
+        TeamCollection teams = new TeamCollection();
         for (HashMap<String, String> data : dataFileManager.findById(id)) {
-            joinList.addJoinEvent(new JoinEvent(data));
+            teams.addTeam(new Team(data));
         }
-        return joinList;
+        return teams;
     }
 
     @Override
-    public JoinEventCollection findAllByColumnsAndValue(Map<String, String> conditions) {
-        JoinEventCollection joinList = new JoinEventCollection();
+    public TeamCollection findAllByColumnsAndValue(Map<String, String> conditions) {
+        TeamCollection teams = new TeamCollection();
         for (HashMap<String, String> item : dataFileManager.findAllByColumnsAndValue(conditions)) {
-            joinList.addJoinEvent(new JoinEvent(item));
+            teams.addTeam(new Team(item));
         }
-        return joinList;
+        return teams;
     }
 
     @Override
-    public JoinEventCollection query(String query) {
-        JoinEventCollection joinList = new JoinEventCollection();
+    public TeamCollection query(String query) {
+        TeamCollection teams = new TeamCollection();
         for (HashMap<String, String> item : dataFileManager.query(query)) {
-            joinList.addJoinEvent(new JoinEvent(item));
+            teams.addTeam(new Team(item));
         }
-        return joinList;
+        return teams;
     }
 }
+

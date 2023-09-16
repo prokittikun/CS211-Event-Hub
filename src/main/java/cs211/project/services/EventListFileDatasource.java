@@ -1,7 +1,9 @@
 package cs211.project.services;
 
 import cs211.project.models.Event;
+import cs211.project.models.Team;
 import cs211.project.models.collections.EventCollection;
+import cs211.project.models.collections.TeamCollection;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -77,5 +79,32 @@ public class EventListFileDatasource implements Datasource<EventCollection> {
     @Override
     public void deleteByConditions(Map<String, String> conditions){
         dataFileManager.deleteByConditions(conditions);
+    }
+
+    @Override
+    public EventCollection findById(String id) {
+        EventCollection events = new EventCollection();
+        for (HashMap<String, String> data : dataFileManager.findById(id)) {
+            events.addEvent(new Event(data));
+        }
+        return events;
+    }
+
+    @Override
+    public EventCollection findAllByColumnsAndValue(Map<String, String> conditions) {
+        EventCollection events = new EventCollection();
+        for (HashMap<String, String> item : dataFileManager.findAllByColumnsAndValue(conditions)) {
+            events.addEvent(new Event(item));
+        }
+        return events;
+    }
+
+    @Override
+    public EventCollection query(String query) {
+        EventCollection events = new EventCollection();
+        for (HashMap<String, String> item : dataFileManager.query(query)) {
+            events.addEvent(new Event(item));
+        }
+        return events;
     }
 }
