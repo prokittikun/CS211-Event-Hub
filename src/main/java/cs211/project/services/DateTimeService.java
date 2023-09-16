@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -32,6 +33,28 @@ public class DateTimeService {
         String formattedTime = currentTime.format(timeFormatter);
 
         return formattedTime;
+    }
+
+    public static String convertDateFormat(String inputDate) {
+        try {
+            // Define the input date format
+            SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+
+            // Parse the input date string
+            Date date = inputFormat.parse(inputDate);
+
+            // Add 543 to the year
+            SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
+            date.setYear(date.getYear() + 543);
+
+            // Format the date into the desired output format
+            String formattedDate = outputFormat.format(date);
+
+            return formattedDate;
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return "Invalid Date";
+        }
     }
 
     public static String toString(String inputDate) {
