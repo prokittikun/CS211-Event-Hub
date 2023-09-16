@@ -109,5 +109,14 @@ public class ChatListFileDatasource implements Datasource<ChatCollection> {
         }
         return chatList;
     }
+
+    @Override
+    public ChatCollection queryWithOffsetAndLimit(String query, int offset, int limit) {
+        ChatCollection chatList = new ChatCollection();
+        for (HashMap<String, String> item : dataFileManager.queryWithOffsetAndLimit(query, offset, limit)) {
+            chatList.addNewChat(new Chat(item));
+        }
+        return chatList;
+    }
 }
 
