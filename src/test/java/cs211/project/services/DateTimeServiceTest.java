@@ -27,4 +27,13 @@ class DateTimeServiceTest {
         String actual = DateTimeService.toString("12/09/2566");
         System.out.println(actual);
     }
+
+    @Test
+    @DisplayName("convert format date")
+    void convertDateFormat(){
+        String actual = DateTimeService.convertDateFormat("2022-09-07");
+        String s = DateTimeService.toString(actual);
+
+        System.out.println(s);
+    }
 }

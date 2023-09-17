@@ -3,6 +3,7 @@ package cs211.project.controllers.components;
 import cs211.project.controllers.MyTeamController;
 import cs211.project.models.collections.TeamMemberCollection;
 import cs211.project.services.Datasource;
+import cs211.project.services.FXRouter;
 import cs211.project.services.TeamMemberListFileDatasource;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -69,6 +71,10 @@ public class MyTeamCardController {
     public void setTeamId(String teamId){
         this.teamId = UUID.fromString(teamId);
     }
+
+    public void setUserId(String userId){
+        this.userId = UUID.fromString(userId);
+    }
     public void setApplicants(String applicants) {
         this.applicants.setText(applicants);
     }
@@ -101,7 +107,9 @@ public class MyTeamCardController {
     public String getTeamId(){
         return this.teamId.toString();
     }
-
+    public String getUserId(){
+        return this.userId.toString();
+    }
     public String getApplicants() {
         return applicants.getText();
     }
@@ -133,14 +141,20 @@ public class MyTeamCardController {
 
     @FXML
     void onHandleGoToTeamManagement(ActionEvent event) {
-
+        try {
+            HashMap<String, Object> data = new HashMap<>();
+            data.put("teamId", teamId.toString());
+            FXRouter.goTo("teamManagement", data);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
     void onHandleLeaveTeam(ActionEvent event) {
         Map<String, String> conditions = new HashMap<>();
         conditions.put("teamId", this.teamId.toString());
-        conditions.put("userId", "b1e473a8-5175-11ee-be56-0242ac120002");
+        conditions.put("userId", this.userId.toString());
         datasourceTeamMember.deleteByConditions(conditions);
 
         this.myTeamController.reloadData();
