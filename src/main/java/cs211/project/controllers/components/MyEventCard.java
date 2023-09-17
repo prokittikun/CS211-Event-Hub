@@ -8,32 +8,26 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 public class MyEventCard {
     @FXML
     private Label eventDate;
-
     @FXML
     private ImageView eventImage;
-
     @FXML
     private Label eventLocation;
-
     @FXML
     private Label eventTitle;
-
     @FXML
     private Button eventToggleStatus;
-
     @FXML
     private Button orderNumber;
-
     @FXML
     private Label participantEvent;
-
     private String pathEventImage = "";
-
     private boolean statusEvent = true;
+    private HashMap<String, Object> data;
 
     //Route
     @FXML
@@ -57,7 +51,8 @@ public class MyEventCard {
     @FXML
     public void goToEditEvent() {
         try {
-            FXRouter.goTo("editEvent");
+            FXRouter.goTo("editEvent", data);
+            System.out.println(data.get("eventId"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -73,9 +68,13 @@ public class MyEventCard {
     public void onHandleEventStatus() {
         statusEvent = !statusEvent;
         if(statusEvent){
-            eventToggleStatus.setText("Open");
+            eventToggleStatus.setText("เปิด");
+            eventToggleStatus.getStyleClass().remove("btn-danger");
+            eventToggleStatus.getStyleClass().add("btn-success");
         }else{
-            eventToggleStatus.setText("Close");
+            eventToggleStatus.setText("ปิด");
+            eventToggleStatus.getStyleClass().remove("btn-success");
+            eventToggleStatus.getStyleClass().add("btn-danger");
         }
     }
 
@@ -114,13 +113,17 @@ public class MyEventCard {
         return participantEvent.getText();
     }
 
+    public HashMap<String, Object> getData() {
+        return data;
+    }
+
     //Setter
     public void setEventDate(String eventDate) {
         this.eventDate.setText(eventDate);
     }
 
     public void setEventImage(String path) {
-        Image image = new Image(path);
+        Image image = new Image("file:"+path);
         eventImage.setImage(image);
         this.pathEventImage = path;
     }
@@ -139,5 +142,9 @@ public class MyEventCard {
 
     public void setParticipantEvent(String participantEvent) {
         this.participantEvent.setText(participantEvent);
+    }
+
+    public void setData(HashMap<String, Object> data) {
+        this.data = data;
     }
 }
