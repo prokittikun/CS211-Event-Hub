@@ -12,34 +12,43 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.UUID;
 
 public class NavbarController {
     @FXML
     private Circle navImageProfile;
-
     @FXML
     private Pane manageDropdown;
-
     private Boolean showManageDropdown = false;
     private Boolean showProfileDropdown = false;
-
+    private HashMap<String, Object> data;
     @FXML
     private Pane profileDropdown;
+
     @FXML
     private void initialize() {
+        data = new HashMap<String, Object>();
         manageDropdown.setVisible(showManageDropdown);
         profileDropdown.setVisible(showProfileDropdown);
         setNavbarImage("https://picsum.photos/200");
     }
 
+    //Setter
     public void setNavbarImage(String imagePath) {
         Image image = new Image(imagePath);
         navImageProfile.setFill(new ImagePattern(image));
     }
+
+    public void setData(HashMap<String, Object> data) {
+        this.data = data;
+    }
+
+    //Method
     @FXML
     void onHandleGoToContactUs(ActionEvent event) {
         try {
-            FXRouter.goTo("contactUs");
+            FXRouter.goTo("contactUs", data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -48,7 +57,7 @@ public class NavbarController {
     @FXML
     void onHandleGoToHomePage(ActionEvent event) {
         try {
-            FXRouter.goTo("index");
+            FXRouter.goTo("index", data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -57,7 +66,7 @@ public class NavbarController {
     @FXML
     void onHandleGoToMyEvent(MouseEvent event) {
         try {
-            FXRouter.goTo("myEvent");
+            FXRouter.goTo("myEvent", data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -66,7 +75,7 @@ public class NavbarController {
     @FXML
     void onHandleGoToMyTeam(MouseEvent  event) {
         try {
-            FXRouter.goTo("myTeam");
+            FXRouter.goTo("myTeam", data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -75,7 +84,7 @@ public class NavbarController {
     @FXML
     void onHandleGoToMyProfile(MouseEvent event) {
         try {
-            FXRouter.goTo("profile");
+            FXRouter.goTo("profile", data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -84,7 +93,7 @@ public class NavbarController {
     @FXML
     void onHandleGoToHistory(MouseEvent event) {
         try {
-            FXRouter.goTo("history");
+            FXRouter.goTo("history", data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -93,14 +102,11 @@ public class NavbarController {
     @FXML
     void onHandleGoToDashboard(MouseEvent event) {
         try {
-            FXRouter.goTo("dashboard");
+            FXRouter.goTo("dashboard", data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-
-
-
 
     @FXML
     void onHandleManageDropdown(MouseEvent event) {
