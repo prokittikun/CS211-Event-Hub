@@ -157,7 +157,7 @@ public class ManageEventController {
             String.valueOf(event.getMaxParticipant())
         );
         try {
-            Image image = new Image(new FileInputStream(event.getImage()));
+            Image image = new Image(new FileInputStream("data/image/event/"+event.getImage()));
             imageView.setImage(image);
             //Set Image File
             imageFile = new File(event.getImage());
@@ -328,7 +328,7 @@ public class ManageEventController {
       //Copy Image
       try {
         // CREATE FOLDER IF NOT EXIST
-        File destDir = new File("data/event/images");
+        File destDir = new File("data/image/event");
         if (!destDir.exists()) destDir.mkdirs();
         // RENAME FILE
         String[] fileSplit = imageFile.getName().split("\\.");
@@ -364,7 +364,7 @@ public class ManageEventController {
                     endDate,
                     endTime,
                     maxParticipant,
-                    destDir + "/" + filename
+                    filename
             );
             //Collection
             EventCollection eventCollection = new EventCollection();
@@ -381,7 +381,7 @@ public class ManageEventController {
                     endDate,
                     endTime,
                     maxParticipant,
-                    destDir + "/" + filename
+                    filename
             );
           eventDatasource.updateColumnsById(data.get("eventId").toString(), event.toHashMap());
         }
