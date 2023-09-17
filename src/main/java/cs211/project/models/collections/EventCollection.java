@@ -24,4 +24,14 @@ public class EventCollection {
     public void addEvent (Event event){
         this.events.add(event);
     }
+
+    public ArrayList<Event> filterByUserId(String userId){
+        ArrayList<Event> filteredEvents = new ArrayList<>();
+        for (Event event : events) {
+            if (event.getUserId().equals(userId)) {
+                filteredEvents.add(event);
+            }
+        }
+        return filteredEvents;
+    }
 }
