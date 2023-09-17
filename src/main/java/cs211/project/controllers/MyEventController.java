@@ -96,7 +96,7 @@ public class MyEventController {
             }
 
             //Reset data
-            data = new HashMap<>();
+            dataEventComponent = new HashMap<>();
         }
     }
 
