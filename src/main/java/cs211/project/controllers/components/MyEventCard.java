@@ -52,7 +52,6 @@ public class MyEventCard {
     public void goToEditEvent() {
         try {
             FXRouter.goTo("editEvent", data);
-            System.out.println(data.get("eventId"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -123,7 +122,7 @@ public class MyEventCard {
     }
 
     public void setEventImage(String path) {
-        Image image = new Image("file:"+path);
+        Image image = new Image("file:"+"data/image/event/"+path);
         eventImage.setImage(image);
         this.pathEventImage = path;
     }
