@@ -1,6 +1,10 @@
 package cs211.project.controllers;
 
+import cs211.project.models.User;
+import cs211.project.models.collections.UserCollection;
+import cs211.project.services.DateTimeService;
 import cs211.project.services.FXRouter;
+import cs211.project.services.UserListFileDatasource;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -9,6 +13,8 @@ import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.UUID;
 
 public class RegisterController {
 
@@ -48,6 +54,9 @@ public class RegisterController {
     @FXML
     private Button loginButton;
 
+    private UserListFileDatasource userListFileDatasource = new UserListFileDatasource("data", "user.csv");
+    private UserCollection userCollection;
+
     public void initialize() {
         registerButton.setDisable(true);
         firstNameError.setText("");
@@ -61,6 +70,8 @@ public class RegisterController {
         usernameField.textProperty().addListener((observable, oldValue, newValue) -> validateFields());
         passwordField.textProperty().addListener((observable, oldValue, newValue) -> validateFields());
         confirmPasswordField.textProperty().addListener((observable, oldValue, newValue) -> validateFields());
+
+        userCollection = userListFileDatasource.readData();
     }
 
     private void validateFields() {
@@ -77,10 +88,33 @@ public class RegisterController {
         validateUsername();
         validatePassword();
         validateConfirmPassword();
-        try {
-            FXRouter.goTo("index");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+
+        if (firstNameError.getText().isEmpty() &&
+                lastNameError.getText().isEmpty() &&
+                usernameError.getText().isEmpty() &&
+                passwordError.getText().isEmpty() &&
+                confirmPasswordError.getText().isEmpty()) {
+
+            HashMap<String, String> userData = new HashMap<>();
+            userData.put("id", UUID.randomUUID().toString());
+            userData.put("firstName", firstNameField.getText());
+            userData.put("lastName", lastNameField.getText());
+            userData.put("username", usernameField.getText());
+            userData.put("password", passwordField.getText());
+            userData.put("role", "user");
+            userData.put("createdAt", DateTimeService.getCurrentDate());
+
+            User newUser = new User(userData);
+
+            userCollection.addUser(newUser);
+
+            userListFileDatasource.writeData(userCollection);
+
+            try {
+                FXRouter.goTo("login");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
