@@ -1,16 +1,15 @@
 package cs211.project.controllers;
 
+import cs211.project.models.User;
+import cs211.project.models.collections.UserCollection;
 import cs211.project.services.FXRouter;
+import cs211.project.services.DateTimeService;
+import cs211.project.services.UserListFileDatasource;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
@@ -35,7 +34,11 @@ public class LoginController {
     @FXML
     private Button registerButton;
 
+    private UserListFileDatasource userListFileDatasource;
+
     public void initialize() {
+        userListFileDatasource = new UserListFileDatasource("data", "user.csv");
+
         loginButton.setDisable(true);
         usernameError.setText("");
         passwordError.setText("");
@@ -57,7 +60,20 @@ public class LoginController {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        if ("admin".equals(username) && "password123".equals(password)) {
+        UserCollection users = userListFileDatasource.readData();
+
+        User loggedInUser = null;
+        for (User user : users.getAllUsers()) {
+            if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {
+                loggedInUser = user;
+                break;
+            }
+        }
+
+        if (loggedInUser != null) {
+            String lastLoginTime = DateTimeService.getCurrentDateTime();
+            loggedInUser.setLastLogin(lastLoginTime);
+            userListFileDatasource.writeData(users);
             try {
                 FXRouter.goTo("index");
             } catch (IOException e) {
@@ -66,7 +82,6 @@ public class LoginController {
         } else {
             usernameError.setText("Username is invalid");
             passwordError.setText("Password is invalid");
-
         }
     }
 
