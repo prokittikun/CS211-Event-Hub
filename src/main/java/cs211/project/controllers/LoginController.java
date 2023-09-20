@@ -62,15 +62,15 @@ public class LoginController {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        User user = userListFileDatasource.query("username = "+username+" AND password = "+password).getAllUsers().get(0);
+        User user = userListFileDatasource.query("username = " + username + " AND password = " + password).getAllUsers().get(0);
 
         if (user != null) {
             String lastLoginTime = DateTimeService.getCurrentDateTime();
-            userListFileDatasource.updateColumnById(user.getId(),"lastLogin", lastLoginTime);
+            userListFileDatasource.updateColumnById(user.getId(), "lastLogin", lastLoginTime);
             try {
-                HashMap<String, Object> data = new HashMap<>(); // อาจจะประกาศเป็น private ไว้ที่ field ของ class ก็ได้
-                data.put("userId", user.getId()); //key(String) = teamId,value(String) = "UUID"
-                FXRouter.goTo("index",data);
+                HashMap<String, Object> data = new HashMap<>();
+                data.put("userId", user.getId());
+                FXRouter.goTo("profile", data);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

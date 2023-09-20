@@ -1,6 +1,10 @@
 package cs211.project.controllers;
 
+import cs211.project.models.User;
+import cs211.project.models.collections.UserCollection;
+import cs211.project.services.Datasource;
 import cs211.project.services.FXRouter;
+import cs211.project.services.UserListFileDatasource;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -11,6 +15,8 @@ import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.UUID;
 
 public class ProfileController {
     @FXML
@@ -49,19 +55,30 @@ public class ProfileController {
     @FXML
     private Label confirmNewPasswordError;
 
-    private String currentFirstName = "Pro";
-    private String currentLastName = "Kittikhun";
-    private String currentUsername = "pro.xx";
-    private String currentRegisterDate = "";
-    private String currentLastLoginDate = "";
+    private String currentFirstName;
+    private String currentLastName;
+    private String currentUsername;
+    private String currentRegisterDate;
+    private String currentLastLoginDate;
+
+    private UUID userId;
+
+    private HashMap<String, Object> data;
+    private Datasource<UserCollection> userListFileDatasource;
 
     @FXML
     private void initialize() {
+        userListFileDatasource = new UserListFileDatasource("data", "user.csv");
+
+        data = FXRouter.getData();
+        userId = UUID.fromString((String) data.get("userId"));
 
         FXMLLoader navbarComponentLoader = new FXMLLoader(getClass().getResource("/cs211/project/views/navbar.fxml"));
         FXMLLoader footerComponentLoader = new FXMLLoader(getClass().getResource("/cs211/project/views/footer.fxml"));
         try {
             AnchorPane navbarComponent = navbarComponentLoader.load();
+            NavbarController navbarController = navbarComponentLoader.getController();
+            navbarController.setData(data);
             navbar.getChildren().add(navbarComponent);
 
             AnchorPane footerComponent = footerComponentLoader.load();
@@ -70,27 +87,39 @@ public class ProfileController {
             throw new RuntimeException(e);
         }
 
+        User user = userListFileDatasource.query("id = " + userId).getAllUsers().get(0);
+
         nameError.setText("");
         usernameError.setText("");
         currentPasswordError.setText("");
         newPasswordError.setText("");
         confirmNewPasswordError.setText("");
 
-        registerDateLabel.setText(currentRegisterDate);
-        lastLoginDateLabel.setText(currentLastLoginDate);
+        registerDateLabel.setText(user.getCreatedAt());
+        lastLoginDateLabel.setText(user.getLastLogin());
 
-        firstNameField.setPromptText(currentFirstName);
-        lastNameField.setPromptText(currentLastName);
-        usernameField.setPromptText(currentUsername);
+        firstNameField.setPromptText(user.getFirstName());
+        lastNameField.setPromptText(user.getLastName());
+        usernameField.setPromptText(user.getUsername());
     }
 
     @FXML
     private void handleSaveButtonClick(ActionEvent event) {
-        validateName();
-        validateUsername();
-        validateCurrentPassword();
-        validateNewPassword();
-        validateConfirmNewPassword();
+        if (!currentPasswordField.getText().isEmpty() || !newPasswordField.getText().isEmpty() || !confirmNewPasswordField.getText().isEmpty()) {
+            validateCurrentPassword();
+            validateNewPassword();
+            validateConfirmNewPassword();
+        }
+        User user = userListFileDatasource.query("id = " + userId).getAllUsers().get(0);
+        if(!firstNameField.getText().isEmpty()){
+            userListFileDatasource.updateColumnById(user.getId(), "firstName", firstNameField.getText());
+        }
+        if(!lastNameField.getText().isEmpty()){
+            userListFileDatasource.updateColumnById(user.getId(), "lastName", lastNameField.getText());
+        }
+        if(!usernameField.getText().isEmpty()){
+            userListFileDatasource.updateColumnById(user.getId(), "userName", usernameField.getText());
+        }
     }
 
     @FXML
@@ -99,27 +128,6 @@ public class ProfileController {
             FXRouter.goTo("index");
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }
-    }
-
-    private void validateName() {
-        String firstName = firstNameField.getText();
-        String lastName = lastNameField.getText();
-
-        if (firstName.isEmpty() || lastName.isEmpty()) {
-            nameError.setText("Name are required.");
-        } else {
-            nameError.setText("");
-        }
-    }
-
-    private void validateUsername() {
-        String username = usernameField.getText();
-
-        if (username.isEmpty()) {
-            usernameError.setText("Username is required.");
-        } else {
-            usernameError.setText("");
         }
     }
 
@@ -148,7 +156,7 @@ public class ProfileController {
         String confirmNewPassword = confirmNewPasswordField.getText();
 
         if (!confirmNewPassword.equals(newPassword)) {
-            confirmNewPasswordError.setText("Passwords do not match.");
+            confirmNewPasswordError.setText("รหัสผ่านไม่ตรงกัน");
         } else {
             confirmNewPasswordError.setText("");
         }
