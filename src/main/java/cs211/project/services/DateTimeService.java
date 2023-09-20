@@ -14,15 +14,9 @@ public class DateTimeService {
     public static String getCurrentDate() {
         LocalDate now = LocalDate.now(ZoneId.of("Asia/Bangkok"));
 
-        int buddhistEraYear = now.getYear() + 543;
+        int year = now.getYear();
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.US);
-
-        String formattedDate = String.format("%02d", now.getDayOfMonth()) + "/" +
-                String.format("%02d", now.getMonthValue()) + "/" +
-                String.format("%04d", buddhistEraYear);
-
-        return formattedDate;
+        return String.format("%04d", year) + "-" + String.format("%02d", now.getMonthValue()) + "-" + String.format("%02d", now.getDayOfMonth());
     }
 
     public static String getCurrentTime() {
@@ -38,19 +32,16 @@ public class DateTimeService {
     public static String convertDateFormat(String inputDate) {
         try {
             // Define the input date format
-            SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+            SimpleDateFormat inputFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
 
             // Parse the input date string
             Date date = inputFormat.parse(inputDate);
 
             // Add 543 to the year
-            SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
-            date.setYear(date.getYear() + 543);
+            SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+//            date.setYear(date.getYear() + 543);
 
-            // Format the date into the desired output format
-            String formattedDate = outputFormat.format(date);
-
-            return formattedDate;
+            return outputFormat.format(date);
         } catch (ParseException e) {
             e.printStackTrace();
             return "Invalid Date";
@@ -59,10 +50,10 @@ public class DateTimeService {
 
     public static String toString(String inputDate) {
         try {
-            SimpleDateFormat inputFormat = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
 
             Date date = inputFormat.parse(inputDate);
-
+            date.setYear(date.getYear() + 543);
             int gregorianYear = Integer.parseInt(new SimpleDateFormat("yyyy").format(date));
 
             SimpleDateFormat thaiDateFormat = new SimpleDateFormat("dd MMMM yyyy", new Locale("th", "TH"));
