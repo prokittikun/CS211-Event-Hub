@@ -105,10 +105,10 @@ public class RegisterController {
             userData.put("createdAt", DateTimeService.getCurrentDate());
 
             User newUser = new User(userData);
+            UserCollection newUserCollection = new UserCollection();
+            newUserCollection.addUser(newUser);
 
-            userCollection.addUser(newUser);
-
-            userListFileDatasource.writeData(userCollection);
+            userListFileDatasource.writeData(newUserCollection);
 
             try {
                 FXRouter.goTo("login");
