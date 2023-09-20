@@ -1,19 +1,20 @@
 package cs211.project.controllers;
 
+import cs211.project.models.User;
+import cs211.project.models.collections.UserCollection;
+import cs211.project.services.Datasource;
 import cs211.project.services.FXRouter;
+import cs211.project.services.DateTimeService;
+import cs211.project.services.UserListFileDatasource;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 public class LoginController {
 
@@ -35,7 +36,11 @@ public class LoginController {
     @FXML
     private Button registerButton;
 
+    private Datasource<UserCollection> userListFileDatasource;
+
     public void initialize() {
+        userListFileDatasource = new UserListFileDatasource("data", "user.csv");
+
         loginButton.setDisable(true);
         usernameError.setText("");
         passwordError.setText("");
@@ -57,16 +62,21 @@ public class LoginController {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        if ("admin".equals(username) && "password123".equals(password)) {
+        User user = userListFileDatasource.query("username = "+username+" AND password = "+password).getAllUsers().get(0);
+
+        if (user != null) {
+            String lastLoginTime = DateTimeService.getCurrentDateTime();
+            userListFileDatasource.updateColumnById(user.getId(),"lastLogin", lastLoginTime);
             try {
-                FXRouter.goTo("index");
+                HashMap<String, Object> data = new HashMap<>(); // อาจจะประกาศเป็น private ไว้ที่ field ของ class ก็ได้
+                data.put("userId", user.getId()); //key(String) = teamId,value(String) = "UUID"
+                FXRouter.goTo("index",data);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         } else {
             usernameError.setText("Username is invalid");
             passwordError.setText("Password is invalid");
-
         }
     }
 
