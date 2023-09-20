@@ -2,6 +2,7 @@ package cs211.project.controllers;
 
 import cs211.project.models.User;
 import cs211.project.models.collections.UserCollection;
+import cs211.project.services.Datasource;
 import cs211.project.services.FXRouter;
 import cs211.project.services.DateTimeService;
 import cs211.project.services.UserListFileDatasource;
@@ -13,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 public class LoginController {
 
@@ -34,7 +36,7 @@ public class LoginController {
     @FXML
     private Button registerButton;
 
-    private UserListFileDatasource userListFileDatasource;
+    private Datasource<UserCollection> userListFileDatasource;
 
     public void initialize() {
         userListFileDatasource = new UserListFileDatasource("data", "user.csv");
@@ -60,22 +62,15 @@ public class LoginController {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        UserCollection users = userListFileDatasource.readData();
+        User user = userListFileDatasource.query("username = "+username+" AND password = "+password).getAllUsers().get(0);
 
-        User loggedInUser = null;
-        for (User user : users.getAllUsers()) {
-            if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {
-                loggedInUser = user;
-                break;
-            }
-        }
-
-        if (loggedInUser != null) {
+        if (user != null) {
             String lastLoginTime = DateTimeService.getCurrentDateTime();
-            loggedInUser.setLastLogin(lastLoginTime);
-            userListFileDatasource.writeData(users);
+            userListFileDatasource.updateColumnById(user.getId(),"lastLogin", lastLoginTime);
             try {
-                FXRouter.goTo("index");
+                HashMap<String, Object> data = new HashMap<>(); // อาจจะประกาศเป็น private ไว้ที่ field ของ class ก็ได้
+                data.put("userId", user.getId()); //key(String) = teamId,value(String) = "UUID"
+                FXRouter.goTo("index",data);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
