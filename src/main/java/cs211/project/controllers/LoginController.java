@@ -62,10 +62,11 @@ public class LoginController {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        User user = userListFileDatasource.query("username = " + username + " AND password = " + password).getAllUsers().get(0);
+        UserCollection users = userListFileDatasource.query("username = " + username + " AND password = " + password);
 
-        if (user != null) {
+        if (!users.getAllUsers().isEmpty()) {
             String lastLoginTime = DateTimeService.getCurrentDateTime();
+            User user = users.getAllUsers().get(0);
             userListFileDatasource.updateColumnById(user.getId(), "lastLogin", lastLoginTime);
             try {
                 HashMap<String, Object> data = new HashMap<>();
