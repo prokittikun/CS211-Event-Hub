@@ -135,7 +135,7 @@ public class ProfileController {
         String currentPassword = currentPasswordField.getText();
 
         if (currentPassword.isEmpty()) {
-            currentPasswordError.setText("Current password is required.");
+            currentPasswordError.setText("โปรดระบุรหัสผ่านปัจจุบัน");
         } else {
             currentPasswordError.setText("");
         }
@@ -145,7 +145,7 @@ public class ProfileController {
         String newPassword = newPasswordField.getText();
 
         if (newPassword.isEmpty()) {
-            newPasswordError.setText("New password is required.");
+            newPasswordError.setText("โปรดระบุรหัสผ่านใหม่");
         } else {
             newPasswordError.setText("");
         }
