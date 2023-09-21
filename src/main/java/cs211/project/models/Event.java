@@ -17,7 +17,11 @@ public class Event {
     private boolean status;
 
     //Constructor
-    public Event(String userId, String name, String detail, String location, String startDate, String startTime, String endDate, String endTime, int maxParticipant, String image) {
+    public Event(String userId, String name, String detail,
+                 String location, String startDate, String startTime,
+                 String endDate, String endTime, int maxParticipant,
+                 String image) {
+
         this.id = UUID.randomUUID();
         this.userId = UUID.fromString(userId);
         this.name = name;
@@ -47,7 +51,6 @@ public class Event {
         this.image = data.get("image").trim();
         this.status = Boolean.parseBoolean(data.get("status").trim());
     }
-
 
     //Getter
     public String getId() {
@@ -150,6 +153,7 @@ public class Event {
         data.put("userId", userId.toString());
         data.put("image", image);
         data.put("name", name);
+        data.put("detail", detail);
         data.put("location", location);
         data.put("startDate", startDate);
         data.put("startTime", startTime);

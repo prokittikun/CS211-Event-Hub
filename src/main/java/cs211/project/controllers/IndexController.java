@@ -10,6 +10,7 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import javafx.scene.layout.HBox;
 
@@ -27,6 +28,7 @@ public class IndexController {
     private List<EventCard> eventCardList;
     private List<WhiteEventCard> popularEventCardList;
     private List<WhiteEventCard> comingEventCardList;
+    private HashMap<String, Object> data;
 
     @FXML
     void onHandleGoToAllEvent(ActionEvent allEvent) {
@@ -38,6 +40,26 @@ public class IndexController {
     }
     @FXML
     private void initialize() {
+        data = FXRouter.getData();
+
+        //Navbar
+        FXMLLoader navbarComponentLoader = new FXMLLoader(getClass().getResource("/cs211/project/views/navbar.fxml"));
+        //Footer
+        FXMLLoader footerComponentLoader = new FXMLLoader(getClass().getResource("/cs211/project/views/footer.fxml"));
+        try {
+            //Navbar
+            AnchorPane navbarComponent = navbarComponentLoader.load();
+            NavbarController navbarController = navbarComponentLoader.getController();
+            navbarController.setData(data);
+            navbar.getChildren().add(navbarComponent);
+
+            //Footer
+            AnchorPane footerComponent = footerComponentLoader.load();
+            footer.getChildren().add(footerComponent);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         eventCardList = new ArrayList<>(EventCardList());
         for (EventCard eventCard : eventCardList) {
             try {
@@ -88,21 +110,6 @@ public class IndexController {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        }
-        //Navbar
-        FXMLLoader navbarComponentLoader = new FXMLLoader(getClass().getResource("/cs211/project/views/navbar.fxml"));
-        //Footer
-        FXMLLoader footerComponentLoader = new FXMLLoader(getClass().getResource("/cs211/project/views/footer.fxml"));
-        try {
-            //Navbar
-            AnchorPane navbarComponent = navbarComponentLoader.load();
-            navbar.getChildren().add(navbarComponent);
-
-            //Footer
-            AnchorPane footerComponent = footerComponentLoader.load();
-            footer.getChildren().add(footerComponent);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
     }
     private List<EventCard> EventCardList(){
