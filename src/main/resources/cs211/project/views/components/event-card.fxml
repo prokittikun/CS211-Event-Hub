@@ -6,6 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
@@ -26,7 +27,7 @@
                   <Label fx:id="eventLocation" styleClass="text-sm" text="ศูนย์การประชุมแห่งชาติสิริกิติ์" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="18.0" prefWidth="187.0" spacing="5.0">
+            <HBox alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="187.0" spacing="5.0">
                <children>
                   <ImageView fitHeight="44.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -34,12 +35,17 @@
                      </image>
                   </ImageView>
                   <Label fx:id="eventDate" prefHeight="18.0" prefWidth="81.0" styleClass="text-xs" text="29 ก.ค. 2566" />
-                  <ImageView fitHeight="32.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/Icons/user.png" />
-                     </image>
-                  </ImageView>
-                  <Label fx:id="eventParticipant" prefHeight="18.0" prefWidth="55.0" styleClass="text-xs" text="250/500" />
+                  <HBox alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="103.0">
+                     <children>
+                        <ImageView fitHeight="32.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/Icons/user.png" />
+                           </image>
+                        </ImageView>
+                        <Pane prefHeight="18.0" prefWidth="4.0" />
+                        <Label fx:id="eventParticipant" prefHeight="18.0" styleClass="text-xs" text="250/500000" />
+                     </children>
+                  </HBox>
                </children>
             </HBox>
          </children>

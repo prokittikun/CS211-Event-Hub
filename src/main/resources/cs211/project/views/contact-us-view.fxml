@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-
+<?import javafx.scene.shape.Circle?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.ContactUsController">
    <children>
@@ -84,11 +84,7 @@
                                           <Label styleClass="text-3xl" text="อาจารย์ที่ปรึกษา" />
                                           <HBox alignment="CENTER" prefHeight="26.0" prefWidth="1103.0" spacing="20.0">
                                              <children>
-                                                <ImageView fitHeight="63.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true" styleClass="image-border">
-                                                   <image>
-                                                      <Image url="@assets/user/kittikun.jpg" />
-                                                   </image>
-                                                </ImageView>
+                                                <Circle fx:id="professor1" fill="DODGERBLUE" radius="32.0" stroke="BLACK" strokeType="INSIDE" styleClass="image-border" />
                                                 <VBox alignment="CENTER_LEFT" prefHeight="63.0" prefWidth="292.0">
                                                    <children>
                                                       <Label text="อ.ศรชัย ลักษณะปิติ">
@@ -100,14 +96,10 @@
                                                    </children>
                                                 </VBox>
                                                 <Pane prefHeight="63.0" prefWidth="74.0" />
-                                                <ImageView fitHeight="63.0" fitWidth="77.0" layoutX="404.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" styleClass="image-border">
-                                                   <image>
-                                                      <Image url="@assets/user/kittikun.jpg" />
-                                                   </image>
-                                                </ImageView>
+                                                <Circle fx:id="professor2" fill="DODGERBLUE" layoutX="161.0" layoutY="42.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" styleClass="image-border" />
                                                 <VBox alignment="CENTER_LEFT" layoutX="488.0" layoutY="10.0" prefHeight="63.0" prefWidth="292.0">
                                                    <children>
-                                                      <Label text="ผศ.ดรอุษา สัมมาพันธ์">
+                                                      <Label text="ผศ.ดร.อุษา สัมมาพันธ์">
                                                          <styleClass>
                                                             <String fx:value="text-xl" />
                                                             <String fx:value="font-bold" />
@@ -122,11 +114,7 @@
                                           </HBox>
                                           <HBox alignment="CENTER" layoutX="10.0" layoutY="56.0" prefHeight="26.0" prefWidth="1103.0" spacing="20.0">
                                              <children>
-                                                <ImageView fitHeight="63.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true" styleClass="image-border">
-                                                   <image>
-                                                      <Image url="@assets/user/kittikun.jpg" />
-                                                   </image>
-                                                </ImageView>
+                                                <Circle fx:id="professor3" fill="DODGERBLUE" radius="32.0" stroke="BLACK" strokeType="INSIDE" styleClass="image-border" />
                                                 <VBox alignment="CENTER_LEFT" prefHeight="63.0" prefWidth="292.0">
                                                    <children>
                                                       <Label text="ผศ.ดร.ธรรมกร แซ่ตั้ง">
@@ -138,11 +126,7 @@
                                                    </children>
                                                 </VBox>
                                                 <Pane prefHeight="63.0" prefWidth="74.0" />
-                                                <ImageView fitHeight="63.0" fitWidth="77.0" layoutX="404.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" styleClass="image-border">
-                                                   <image>
-                                                      <Image url="@assets/user/kittikun.jpg" />
-                                                   </image>
-                                                </ImageView>
+                                                <Circle fx:id="professor4" fill="DODGERBLUE" radius="32.0" stroke="BLACK" strokeType="INSIDE" styleClass="image-border" />
                                                 <VBox alignment="CENTER_LEFT" layoutX="488.0" layoutY="10.0" prefHeight="63.0" prefWidth="292.0">
                                                    <children>
                                                       <Label text="อ.สุทธิพงษ์ หมื่นตาบุตร">
@@ -168,11 +152,7 @@
                                           <Label styleClass="text-3xl" text="คณะผู้จัดทำ" />
                                           <HBox alignment="CENTER" prefHeight="63.0" prefWidth="1070.0" spacing="20.0">
                                              <children>
-                                                <ImageView fitHeight="63.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true" styleClass="image-border">
-                                                   <image>
-                                                      <Image url="@assets/user/kittikun.jpg" />
-                                                   </image>
-                                                </ImageView>
+                                                <Circle fx:id="admin1" fill="DODGERBLUE" radius="32.0" stroke="BLACK" strokeType="INSIDE" styleClass="image-border" />
                                                 <VBox alignment="CENTER_LEFT" prefHeight="63.0" prefWidth="292.0">
                                                    <children>
                                                       <Label text="นายกิตติคุณ บุญต่อยุทธ">
@@ -185,11 +165,7 @@
                                                    </children>
                                                 </VBox>
                                                 <Pane prefHeight="63.0" prefWidth="74.0" />
-                                                <ImageView fitHeight="63.0" fitWidth="77.0" layoutX="404.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" styleClass="image-border">
-                                                   <image>
-                                                      <Image url="@assets/user/kittikun.jpg" />
-                                                   </image>
-                                                </ImageView>
+                                                <Circle fx:id="admin2" fill="DODGERBLUE" radius="32.0" stroke="BLACK" strokeType="INSIDE" styleClass="image-border" />
                                                 <VBox alignment="CENTER_LEFT" layoutX="488.0" layoutY="10.0" prefHeight="63.0" prefWidth="292.0">
                                                    <children>
                                                       <Label text="นายณัฐดนัย พิณะเวศน์">
@@ -208,11 +184,7 @@
                                           </HBox>
                                           <HBox alignment="CENTER" layoutX="10.0" layoutY="56.0" prefHeight="26.0" prefWidth="1103.0" spacing="20.0">
                                              <children>
-                                                <ImageView fitHeight="63.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true" styleClass="image-border">
-                                                   <image>
-                                                      <Image url="@assets/user/kittikun.jpg" />
-                                                   </image>
-                                                </ImageView>
+                                                <Circle fx:id="admin3" fill="DODGERBLUE" radius="32.0" stroke="BLACK" strokeType="INSIDE" styleClass="image-border" />
                                                 <VBox alignment="CENTER_LEFT" prefHeight="63.0" prefWidth="292.0">
                                                    <children>
                                                       <Label text="นายจิรภัทร โควินทวงศ์">
@@ -225,11 +197,7 @@
                                                    </children>
                                                 </VBox>
                                                 <Pane prefHeight="63.0" prefWidth="74.0" />
-                                                <ImageView fitHeight="63.0" fitWidth="77.0" layoutX="404.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" styleClass="image-border">
-                                                   <image>
-                                                      <Image url="@assets/user/kittikun.jpg" />
-                                                   </image>
-                                                </ImageView>
+                                                <Circle fx:id="admin4" fill="DODGERBLUE" radius="32.0" stroke="BLACK" strokeType="INSIDE" styleClass="image-border" />
                                                 <VBox alignment="CENTER_LEFT" layoutX="488.0" layoutY="10.0" prefHeight="63.0" prefWidth="292.0">
                                                    <children>
                                                       <Label text="นางสาวญาดา รัตนวราหะ">

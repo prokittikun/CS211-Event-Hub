@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.EventDetailController">
+<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.EventDetailController">
    <content>
       <AnchorPane prefHeight="1382.0" prefWidth="1200.0" styleClass="bg-white" stylesheets="@style/global.css">
          <children>
@@ -48,35 +48,42 @@
                                              <children>
                                                 <VBox alignment="TOP_CENTER" prefHeight="642.0" prefWidth="361.0" spacing="20.0">
                                                    <children>
-                                                      <ImageView fitHeight="360.0" fitWidth="292.0" pickOnBounds="true" preserveRatio="true">
+                                                      <ImageView fx:id="eventImage" fitHeight="360.0" fitWidth="292.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
                                                             <Image url="@assets/cover/bookfair2023.jpg" />
                                                          </image>
                                                       </ImageView>
-                                                      <HBox alignment="CENTER" prefHeight="20.0" prefWidth="262.0">
+                                                      <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="282.0">
                                                          <children>
+                                                            <Pane prefHeight="30.0" prefWidth="38.0" />
                                                             <ImageView fitHeight="25.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                                                                <image>
                                                                   <Image url="@assets/Icons/marker.png" />
                                                                </image>
                                                             </ImageView>
-                                                            <Label styleClass="text-xl" text="ศูนย์การประชุมแห่งชาติสิริกิติ์ " />
+                                                            <Label fx:id="eventLocation" styleClass="text-xl" text="ศูนย์การประชุมแห่งชาติสิริกิติ์ " />
                                                          </children>
                                                       </HBox>
-                                                      <HBox alignment="CENTER" prefHeight="18.0" prefWidth="187.0" spacing="5.0">
+                                                      <HBox alignment="CENTER_LEFT" prefHeight="18.0" prefWidth="187.0" spacing="5.0">
                                                          <children>
+                                                            <Pane prefHeight="30.0" prefWidth="38.0" />
                                                             <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                                                                <image>
                                                                   <Image url="@assets/Icons/calendar.png" />
                                                                </image>
                                                             </ImageView>
-                                                            <Label prefHeight="30.0" prefWidth="111.0" styleClass="text-xl" text="29 ก.ค. 2566" />
-                                                            <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@assets/Icons/user.png" />
-                                                               </image>
-                                                            </ImageView>
-                                                            <Label prefHeight="30.0" prefWidth="75.0" styleClass="text-xl" text="250/500" />
+                                                            <Label fx:id="eventStartDate" prefHeight="30.0" prefWidth="111.0" styleClass="text-xl" text="29 ก.ค. 2566" />
+                                                            <HBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="112.0">
+                                                               <children>
+                                                                  <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                                                     <image>
+                                                                        <Image url="@assets/Icons/user.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <Pane prefHeight="30.0" prefWidth="7.0" />
+                                                                  <Label fx:id="eventParticipant" prefHeight="30.0" styleClass="text-xl" text="250/500" />
+                                                               </children>
+                                                            </HBox>
                                                          </children>
                                                          <VBox.margin>
                                                             <Insets top="-20.0" />
@@ -97,6 +104,7 @@
                                                             <Insets top="-10.0" />
                                                          </VBox.margin>
                                                       </Button>
+                                                      <HBox prefHeight="100.0" prefWidth="200.0" />
                                                    </children>
                                                    <padding>
                                                       <Insets bottom="10.0" left="10.0" right="20.0" top="30.0" />
@@ -104,13 +112,13 @@
                                                 </VBox>
                                                 <VBox prefHeight="643.0" prefWidth="731.0" spacing="10.0">
                                                    <children>
-                                                      <Label text="สัปดาห์หนังสือแห่งชาติ ครั้งที่ 51">
+                                                      <Label fx:id="eventName" text="สัปดาห์หนังสือแห่งชาติ ครั้งที่ 51">
                                                          <styleClass>
                                                             <String fx:value="text-5xl" />
                                                             <String fx:value="font-bold" />
                                                          </styleClass>
                                                       </Label>
-                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-xl" text="งานสัปดาห์หนังสือแห่งชาติ ครั้งที่ 51 และสัปดาห์หนังสือนานาชาติ ครั้งที่ 21 Sponsored by BOOK☆WALKER  จัดระหว่างวันที่ 30 มีนาคม - 9 เมษายน 2566 รวม 11 วัน โดยเวลาเปิดและปิดงานสำหรับประชาชนทั่วไปดังนี้          วันที่ 30 มีนาคม 2566 เวลา 17.00 – 24.00 น.          วันที่ 31 มีนาคม – 1 เมษายน 2566 เวลา 10.00 – 24.00 น.          วันที่ 2 - 9 เมษายน 2566 เวลา 10.00 – 21.00 น.งานสัปดาห์หนังสือฯ ครั้งนี้ จัดภายใต้แนวคิด “Bookfluencer” อินฟลูสายนำอ่าน เป็นเทรนด์ใหม่ที่สร้างแรงดึงดูด เปลี่ยนมุมมองใหม่ให้คนทั่วไปมองว่า อ่านแล้วมัน Smart ขึ้นได้ขนาดไหน สิ่งใหม่ๆ ที่ได้อ่านจากหนังสือจะเปลี่ยนให้คุณเป็นคนใหม่ ในเวอร์ชันที่ดีกว่า ดังนั้นไม่ว่าใครๆ ก็สามารถเป็น “Bookfluencer” ได้นักอ่านจะได้พบกับหมวดหนังสือ 7 โซน ได้แก่ โซนหนังสือทั่วไป โซนหนังสือนิยายและวรรณกรรม โซนหนังสือนิยายวาย (Wonder Y) โซนหนังสือการ์ตูนและวัยรุ่น (Book Wonderland) โซนหนังสือเด็กและการศึกษา โซนหนังสือเก่า และโซนหนังสือต่างประเทศ  พร้อมมีกิจกรรมจากหน่วยงานต่างๆ มากมาย ที่สอดคล้องกับความเป็นอินฟลูสายนำอ่าน อาทิ TikTok / TK Park / BOOK☆WALKER  ฯลฯ นอกจากนี้ยังมี โปรโมชั่นพิเศษ พบกับส่วนลดจากสำนักพิมพ์ต่างๆ สูงสุด 80%  ติดตามรายละเอียดต่างๆ ของงานได้ทาง Facebook Fanpage: Thai Book Fair" wrappingWidth="705.3364868164062" />
+                                                      <Text fx:id="eventDetail" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-xl" text="งานสัปดาห์หนังสือแห่งชาติ ครั้งที่ 51 และสัปดาห์หนังสือนานาชาติ ครั้งที่ 21 Sponsored by BOOK☆WALKER  จัดระหว่างวันที่ 30 มีนาคม - 9 เมษายน 2566 รวม 11 วัน โดยเวลาเปิดและปิดงานสำหรับประชาชนทั่วไปดังนี้          วันที่ 30 มีนาคม 2566 เวลา 17.00 – 24.00 น.          วันที่ 31 มีนาคม – 1 เมษายน 2566 เวลา 10.00 – 24.00 น.          วันที่ 2 - 9 เมษายน 2566 เวลา 10.00 – 21.00 น.งานสัปดาห์หนังสือฯ ครั้งนี้ จัดภายใต้แนวคิด “Bookfluencer” อินฟลูสายนำอ่าน เป็นเทรนด์ใหม่ที่สร้างแรงดึงดูด เปลี่ยนมุมมองใหม่ให้คนทั่วไปมองว่า อ่านแล้วมัน Smart ขึ้นได้ขนาดไหน สิ่งใหม่ๆ ที่ได้อ่านจากหนังสือจะเปลี่ยนให้คุณเป็นคนใหม่ ในเวอร์ชันที่ดีกว่า ดังนั้นไม่ว่าใครๆ ก็สามารถเป็น “Bookfluencer” ได้นักอ่านจะได้พบกับหมวดหนังสือ 7 โซน ได้แก่ โซนหนังสือทั่วไป โซนหนังสือนิยายและวรรณกรรม โซนหนังสือนิยายวาย (Wonder Y) โซนหนังสือการ์ตูนและวัยรุ่น (Book Wonderland) โซนหนังสือเด็กและการศึกษา โซนหนังสือเก่า และโซนหนังสือต่างประเทศ  พร้อมมีกิจกรรมจากหน่วยงานต่างๆ มากมาย ที่สอดคล้องกับความเป็นอินฟลูสายนำอ่าน อาทิ TikTok / TK Park / BOOK☆WALKER  ฯลฯ นอกจากนี้ยังมี โปรโมชั่นพิเศษ พบกับส่วนลดจากสำนักพิมพ์ต่างๆ สูงสุด 80%  ติดตามรายละเอียดต่างๆ ของงานได้ทาง Facebook Fanpage: Thai Book Fair" wrappingWidth="705.3364868164062" />
                                                    </children>
                                                    <HBox.margin>
                                                       <Insets top="20.0" />

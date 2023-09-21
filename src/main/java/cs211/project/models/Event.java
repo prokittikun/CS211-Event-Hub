@@ -159,4 +159,14 @@ public class Event {
         data.put("status", String.valueOf(status));
         return data;
     }
+
+//    @Override
+//    public int compareTo(Object o) {
+//        Event event = (Event) o;
+//        if (event.getMaxParticipant() >= this.getMaxParticipant()) {
+//            return 1;
+//        } else {
+//            return -1;
+//        }
+//    }
 }

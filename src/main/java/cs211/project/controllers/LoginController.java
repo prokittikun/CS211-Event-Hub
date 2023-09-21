@@ -68,9 +68,9 @@ public class LoginController {
             String lastLoginTime = DateTimeService.getCurrentDateTime();
             userListFileDatasource.updateColumnById(user.getId(),"lastLogin", lastLoginTime);
             try {
-                HashMap<String, Object> data = new HashMap<>(); // อาจจะประกาศเป็น private ไว้ที่ field ของ class ก็ได้
-                data.put("userId", user.getId()); //key(String) = teamId,value(String) = "UUID"
-                FXRouter.goTo("index",data);
+                HashMap<String, Object> data = new HashMap<>();
+                data.put("userId", "b1e473a8-5175-11ee-be56-0242ac120002");
+                FXRouter.goTo("index", data);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -88,4 +88,5 @@ public class LoginController {
             throw new RuntimeException(e);
         }
     }
+
 }
