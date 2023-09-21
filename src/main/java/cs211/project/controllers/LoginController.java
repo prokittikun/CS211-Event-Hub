@@ -76,8 +76,8 @@ public class LoginController {
                 throw new RuntimeException(e);
             }
         } else {
-            usernameError.setText("Username is invalid");
-            passwordError.setText("Password is invalid");
+            usernameError.setText("ชื่อผู้ใช้ไม่ถูกต้อง");
+            passwordError.setText("รหัสผ่านไม่ถูกต้อง");
         }
     }
 

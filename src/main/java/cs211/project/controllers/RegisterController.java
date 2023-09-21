@@ -129,7 +129,7 @@ public class RegisterController {
 
     private void validateFirstName() {
         if (firstNameField.getText().isEmpty()) {
-            firstNameError.setText("First Name is required.");
+            firstNameError.setText("โปรดระบุชื่อ");
         } else {
             firstNameError.setText("");
         }
@@ -137,7 +137,7 @@ public class RegisterController {
 
     private void validateLastName() {
         if (lastNameField.getText().isEmpty()) {
-            lastNameError.setText("Last Name is required.");
+            lastNameError.setText("โปรดระบุนามสกุล");
         } else {
             lastNameError.setText("");
         }
@@ -145,7 +145,7 @@ public class RegisterController {
 
     private void validateUsername() {
         if (usernameField.getText().isEmpty()) {
-            usernameError.setText("Username is required.");
+            usernameError.setText("โปรดระบุชื่อผู้ใช้");
         } else {
             usernameError.setText("");
         }
@@ -153,7 +153,7 @@ public class RegisterController {
 
     private void validatePassword() {
         if (passwordField.getText().isEmpty()) {
-            passwordError.setText("Password is required.");
+            passwordError.setText("โปรดระบุรหัสผ่าน");
         } else {
             passwordError.setText("");
         }
@@ -161,7 +161,7 @@ public class RegisterController {
 
     private void validateConfirmPassword() {
         if (!confirmPasswordField.getText().equals(passwordField.getText())) {
-            confirmPasswordError.setText("Passwords do not match.");
+            confirmPasswordError.setText("รหัสผ่านไม่ตรงกัน");
         } else {
             confirmPasswordError.setText("");
         }
