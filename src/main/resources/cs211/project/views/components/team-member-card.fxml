@@ -30,7 +30,7 @@
                         <Label fx:id="role" styleClass="text-xl" text="หัวหน้า" />
                      </children>
                   </VBox>
-                  <ImageView fitHeight="35.0" fitWidth="35.0" onMouseClicked="#onHandleMenuDropdownClick" pickOnBounds="true" preserveRatio="true" styleClass="cursor-hand">
+                  <ImageView fx:id="dropdown" fitHeight="35.0" fitWidth="35.0" onMouseClicked="#onHandleMenuDropdownClick" pickOnBounds="true" preserveRatio="true" styleClass="cursor-hand">
                      <image>
                         <Image url="@../assets/Icons/dot-menu.png" />
                      </image>
@@ -42,22 +42,22 @@
             </HBox>
          </children>
       </Pane>
-      <Pane fx:id="menuDropdown" layoutX="164.0" layoutY="5.0" prefHeight="68.0" prefWidth="155.0">
+      <Pane fx:id="menuDropdown" layoutX="164.0" layoutY="2.0" prefWidth="155.0">
          <styleClass>
             <String fx:value="shadow" />
             <String fx:value="card-light-gray" />
          </styleClass>
          <children>
-            <VBox alignment="CENTER" prefHeight="62.0" prefWidth="155.0">
+            <VBox fx:id="dropdownVBox" alignment="CENTER" prefWidth="155.0">
                <children>
-                  <Button mnemonicParsing="false" text="เพิ่มความเป็นหัวหน้าทีม">
+                  <Button fx:id="changeRoleButton" mnemonicParsing="false" onAction="#onHandleChangeRole" text="เพิ่มความเป็นหัวหน้าทีม">
                      <styleClass>
                         <String fx:value="btn-transparent" />
                         <String fx:value="text-sm" />
                      </styleClass>
                   </Button>
-                  <Pane prefHeight="1.0" prefWidth="146.0" style="-fx-background-color: #868686;" styleClass="bg-white" />
-                  <Button mnemonicParsing="false" text="ลบสมาชิก">
+                  <Pane fx:id="border" prefHeight="1.0" prefWidth="146.0" style="-fx-background-color: #868686;" styleClass="bg-white" />
+                  <Button fx:id="deleteTeamMemberButton" mnemonicParsing="false" onAction="#onHandleDeleteTeamMember" text="ลบสมาชิก">
                      <styleClass>
                         <String fx:value="btn-transparent" />
                         <String fx:value="text-red" />

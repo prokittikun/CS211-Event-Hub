@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,8 +24,13 @@ public class MyTeamCardController {
 
     private UUID userId;
 
+    private UUID eventId;
+
     @FXML
     private Label applicants;
+
+    @FXML
+    private Label teamApplicants;
 
     @FXML
     private ImageView eventImage;
@@ -57,6 +63,7 @@ public class MyTeamCardController {
         this.order = new Button();
         this.startDate = new Label();
         this.teamName = new Label();
+        this.teamApplicants = new Label();
 
         datasourceTeamMember = new TeamMemberListFileDatasource("data/team", "teamMember.csv");
     }
@@ -68,6 +75,11 @@ public class MyTeamCardController {
         this.myTeamController = parentController;
     }
 
+
+    public void setTeamApplicants(String  teamApplicants) {
+        this.teamApplicants.setText(teamApplicants);
+    }
+
     public void setTeamId(String teamId){
         this.teamId = UUID.fromString(teamId);
     }
@@ -75,12 +87,17 @@ public class MyTeamCardController {
     public void setUserId(String userId){
         this.userId = UUID.fromString(userId);
     }
+
+    public void setEventId(String eventId){
+        this.eventId = UUID.fromString(eventId);
+    }
     public void setApplicants(String applicants) {
         this.applicants.setText(applicants);
     }
 
-    public void setEventImage(String imagePath) {
-        this.eventImage.setImage(new Image(imagePath));
+    public void setEventImage(String imageName) {
+        Image image = new Image("file:data" + File.separator + "image" + File.separator + "event" + File.separator + imageName);
+        this.eventImage.setImage(image);
     }
 
     public void setEventName(String eventName) {
@@ -113,7 +130,9 @@ public class MyTeamCardController {
     public String getApplicants() {
         return applicants.getText();
     }
-
+    public String getEventId(){
+        return this.eventId.toString();
+    }
     public String getEventImage() {
         return eventImage.getImage().getUrl();
     }
@@ -138,12 +157,18 @@ public class MyTeamCardController {
         return teamName.getText();
     }
 
+    public String getTeamApplicants() {
+        return teamApplicants.getText();
+    }
+
 
     @FXML
     void onHandleGoToTeamManagement(ActionEvent event) {
         try {
             HashMap<String, Object> data = new HashMap<>();
             data.put("teamId", teamId.toString());
+            data.put("userId", userId.toString());
+            data.put("eventId", eventId.toString());
             FXRouter.goTo("teamManagement", data);
         } catch (IOException e) {
             throw new RuntimeException(e);

@@ -26,26 +26,43 @@
                         <Insets left="-18.0" />
                      </HBox.margin>
                   </Button>
-                  <VBox alignment="CENTER_LEFT" prefHeight="105.0" prefWidth="402.0">
+                  <VBox alignment="CENTER_LEFT" prefHeight="126.0" prefWidth="426.0">
                      <children>
-                        <Label fx:id="teamName" prefHeight="8.0" prefWidth="277.0" text="ทีม PhueKhrai Party">
-                           <styleClass>
-                              <String fx:value="text-3xl" />
-                              <String fx:value="font-bold" />
-                           </styleClass>
-                        </Label>
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <Label fx:id="teamName" minWidth="100.0" prefHeight="46.0" text="ทีม PhueKhrai Party">
+                                 <styleClass>
+                                    <String fx:value="text-3xl" />
+                                    <String fx:value="font-bold" />
+                                 </styleClass>
+                              </Label>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/Icons/user.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <Label fx:id="teamApplicants" prefHeight="27.0" prefWidth="91.0" styleClass="text-lg" text="0/36">
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="332.0" spacing="20.0">
                            <children>
                               <Button mnemonicParsing="false" onAction="#onHandleGoToTeamManagement" prefHeight="38.0" prefWidth="125.0" text="รายละเอียด">
                                  <styleClass>
                                     <String fx:value="text-base" />
-                                    <String fx:value="btn-danger" />
+                                    <String fx:value="btn-outline-danger" />
                                  </styleClass>
                               </Button>
                               <Button mnemonicParsing="false" onAction="#onHandleLeaveTeam" prefHeight="38.0" prefWidth="125.0" text="ออกจากทีม">
                                  <styleClass>
                                     <String fx:value="text-base" />
-                                    <String fx:value="btn-outline-danger" />
+                                    <String fx:value="btn-danger" />
                                  </styleClass>
                               </Button>
                            </children>
@@ -55,7 +72,7 @@
                         <Insets left="40.0" />
                      </padding>
                   </VBox>
-                  <Pane prefHeight="159.0" prefWidth="65.0" />
+                  <Pane prefHeight="126.0" prefWidth="48.0" />
                   <VBox alignment="CENTER_LEFT" prefHeight="159.0" prefWidth="439.0">
                      <children>
                         <Label fx:id="eventName" text="KU Freshy Festival 2023">
