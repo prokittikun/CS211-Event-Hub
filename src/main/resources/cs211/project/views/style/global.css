@@ -22,13 +22,6 @@
     -fx-text-fill: #C73618;
     -fx-cursor: hand;
 }
-.btn-success{
-    -fx-background-radius: 12px;
-    -fx-background-color: #1E9E1E;
-    -fx-text-fill: white;
-    -fx-cursor: hand;
-}
-
 .btn-transparent{
     -fx-background-color: transparent;
     -fx-cursor: hand;
@@ -191,6 +184,9 @@
 .table-view .column-header .label{
     -fx-font-weight: bold;
     -fx-alignment: center;
+}
+.table-view .table-cell {
+    -fx-text-fill: black;
 }
 /* This is just magic */
 .table-row-cell:filled {

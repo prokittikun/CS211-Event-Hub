@@ -7,20 +7,20 @@ public class TeamMember {
     private UUID id;
     private UUID userId;
     private UUID teamId;
-    private String isLeader;
+//    private String isLeader;
 
-    public TeamMember(String id, String userId, String teamId, String isLeader) {
+    public TeamMember(String id, String userId, String teamId) {
         this.id = UUID.fromString(id);
         this.userId = UUID.fromString(userId);
         this.teamId = UUID.fromString(teamId);
-        this.isLeader = isLeader;
+//        this.isLeader = isLeader;
     }
 
     public TeamMember(HashMap<String, String> teamMember) {
         this.id = UUID.fromString(teamMember.get("id"));
         this.userId = UUID.fromString(teamMember.get("userId"));
         this.teamId = UUID.fromString(teamMember.get("teamId"));
-        this.isLeader = teamMember.get("isLeader");
+//        this.isLeader = teamMember.get("isLeader");
     }
 
     public String getId() {
@@ -35,12 +35,12 @@ public class TeamMember {
         return teamId.toString();
     }
 
-    public String getIsLeader() {
-        if(isLeader.equals("1"))
-            return "Leader";
-        else
-            return "Member";
-    }
+//    public String getIsLeader() {
+//        if(isLeader.equals("1"))
+//            return "หัวหน้าทีม";
+//        else
+//            return "สมาชิก";
+//    }
 
     public void setId(String id) {
         this.id = UUID.fromString(id);
@@ -54,9 +54,9 @@ public class TeamMember {
         this.teamId = UUID.fromString(teamId);
     }
 
-    public void setIsLeader(String isLeader) {
-        this.isLeader = isLeader;
-    }
+//    public void setIsLeader(String isLeader) {
+//        this.isLeader = isLeader;
+//    }
 
     //toHashMap
     public HashMap<String, String> toHashMap() {
@@ -64,7 +64,7 @@ public class TeamMember {
         teamMember.put("id", this.id.toString());
         teamMember.put("userId", this.userId.toString());
         teamMember.put("teamId", this.teamId.toString());
-        teamMember.put("isLeader", this.isLeader);
+//        teamMember.put("isLeader", this.isLeader);
         return teamMember;
     }
 
