@@ -3,6 +3,7 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -71,7 +72,7 @@
                                           <Circle fx:id="activityCreatorImage" fill="WHITE" radius="29.0" stroke="BLACK" strokeType="INSIDE" styleClass="image-border" />
                                           <VBox prefHeight="66.0" prefWidth="903.0">
                                              <children>
-                                                <Label fx:id="teamName" prefHeight="32.0" prefWidth="115.0" text="ทีมพิธีกร">
+                                                <Label fx:id="teamName" prefHeight="32.0" text="ทีมพิธีกร">
                                                    <styleClass>
                                                       <String fx:value="text-3xl" />
                                                       <String fx:value="font-bold" />
@@ -111,7 +112,7 @@
                                           <String fx:value="font-bold" />
                                        </styleClass>
                                     </Label>
-                                    <TableView fx:id="scheduleTable" prefHeight="420.0" prefWidth="413.0" styleClass="text-lg">
+                                    <TableView fx:id="scheduleTable" prefHeight="420.0" prefWidth="413.0" style="-fx-text-fill: black;" styleClass="text-lg">
                                       <columns>
                                         <TableColumn fx:id="nameColumn" prefWidth="129.06669664382935" text="ชื่อ" />
                                         <TableColumn fx:id="dateColumn" prefWidth="130.13336181640625" text="วันที่" />
@@ -132,7 +133,7 @@
                               <String fx:value="shadow" />
                            </styleClass>
                            <children>
-                              <VBox prefHeight="485.0" prefWidth="647.0" spacing="3.0">
+                              <VBox prefHeight="485.0" prefWidth="647.0" spacing="10.0">
                                  <padding>
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                  </padding>
@@ -157,103 +158,167 @@
                                           <Insets left="10.0" right="10.0" />
                                        </VBox.margin>
                                     </HBox>
-                                    <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="622.0">
-                                       <children>
-                                          <Label prefHeight="70.0" prefWidth="161.0" text="ชื่อกิจกรรม">
-                                             <styleClass>
-                                                <String fx:value="text-xl" />
-                                                <String fx:value="font-bold" />
-                                             </styleClass>
-                                          </Label>
-                                          <Pane prefHeight="70.0" prefWidth="39.0" />
-                                          <TextField fx:id="inputActivityName" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="407.0" promptText="กรุณาระบุ ชื่อกิจกรรม">
-                                             <styleClass>
-                                                <String fx:value="card-light-gray" />
-                                                <String fx:value="text-lg" />
-                                             </styleClass>
-                                          </TextField>
-                                       </children>
+                                    <VBox alignment="CENTER">
                                        <VBox.margin>
                                           <Insets left="10.0" right="10.0" />
                                        </VBox.margin>
-                                    </HBox>
-                                    <HBox prefHeight="151.0" prefWidth="626.0">
                                        <children>
-                                          <Label alignment="TOP_LEFT" prefHeight="151.0" prefWidth="196.0" text="รายละเอียด">
+                                          <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="622.0">
+                                             <children>
+                                                <Label prefHeight="70.0" prefWidth="161.0" text="ชื่อกิจกรรม">
+                                                   <styleClass>
+                                                      <String fx:value="text-xl" />
+                                                      <String fx:value="font-bold" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Pane prefHeight="70.0" prefWidth="39.0" />
+                                                <TextField fx:id="inputActivityName" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="407.0" promptText="กรุณาระบุ ชื่อกิจกรรม">
+                                                   <styleClass>
+                                                      <String fx:value="card-light-gray" />
+                                                      <String fx:value="text-lg" />
+                                                   </styleClass>
+                                                </TextField>
+                                             </children>
+                                          </HBox>
+                                          <Label fx:id="errorActivityName" prefHeight="27.0" prefWidth="194.0" text="กรุณากรอกชื่อกิจกรรม">
                                              <styleClass>
-                                                <String fx:value="text-xl" />
-                                                <String fx:value="font-bold" />
+                                                <String fx:value="text-lg" />
+                                                <String fx:value="text-red" />
                                              </styleClass>
                                           </Label>
-                                          <Pane prefHeight="151.0" prefWidth="10.0" />
-                                          <TextArea fx:id="inputActivityDetail" prefHeight="151.0" prefWidth="403.0" promptText="กรุณาระบุ รายละเอียดของอีเวนต์" styleClass="text-lg" />
                                        </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER">
                                        <VBox.margin>
                                           <Insets left="10.0" right="10.0" />
                                        </VBox.margin>
-                                    </HBox>
-                                    <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="614.0">
                                        <children>
-                                          <Label prefHeight="70.0" prefWidth="195.0" text="วัน/เดือน/ปี ที่เริ่ม">
+                                          <HBox prefHeight="151.0" prefWidth="626.0">
+                                             <children>
+                                                <Label alignment="TOP_LEFT" prefHeight="151.0" prefWidth="196.0" text="รายละเอียด">
+                                                   <styleClass>
+                                                      <String fx:value="text-xl" />
+                                                      <String fx:value="font-bold" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Pane prefHeight="151.0" prefWidth="10.0" />
+                                                <TextArea fx:id="inputActivityDetail" prefHeight="151.0" prefWidth="403.0" promptText="กรุณาระบุ รายละเอียดของกิจกรรม" styleClass="text-lg" />
+                                             </children>
+                                          </HBox>
+                                          <Label fx:id="errorActivityDetail" text="กรุณากรอกรายละเอียดกิจกรรม">
                                              <styleClass>
-                                                <String fx:value="text-xl" />
-                                                <String fx:value="font-bold" />
+                                                <String fx:value="text-lg" />
+                                                <String fx:value="text-red" />
                                              </styleClass>
                                           </Label>
-                                          <Pane prefHeight="70.0" prefWidth="13.0" />
-                                          <TextField fx:id="inputActivityDateStart" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="176.0" promptText="กรุณาระบุ วัน/เดือน/ปี">
-                                             <styleClass>
-                                                <String fx:value="card-light-gray" />
-                                                <String fx:value="text-lg" />
-                                             </styleClass>
-                                          </TextField>
-                                          <Pane prefHeight="70.0" prefWidth="13.0" />
-                                          <Label prefHeight="70.0" prefWidth="45.0" text="เวลา">
-                                             <styleClass>
-                                                <String fx:value="text-xl" />
-                                                <String fx:value="font-bold" />
-                                             </styleClass>
-                                          </Label>
-                                          <Pane prefHeight="70.0" prefWidth="13.0" />
-                                          <TextField fx:id="inputActivityTimeStart" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="162.0" promptText="กรุณาระบุ เวลา">
-                                             <styleClass>
-                                                <String fx:value="card-light-gray" />
-                                                <String fx:value="text-lg" />
-                                             </styleClass>
-                                          </TextField>
                                        </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="614.0">
+                                    </VBox>
+                                    <VBox alignment="CENTER">
                                        <children>
-                                          <Label prefHeight="70.0" prefWidth="195.0" text="วัน/เดือน/ปี ที่สิ้นสุด">
-                                             <styleClass>
-                                                <String fx:value="text-xl" />
-                                                <String fx:value="font-bold" />
-                                             </styleClass>
-                                          </Label>
-                                          <Pane prefHeight="70.0" prefWidth="13.0" />
-                                          <TextField fx:id="inputActivityDateEnd" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="176.0" promptText="กรุณาระบุ วัน/เดือน/ปี">
-                                             <styleClass>
-                                                <String fx:value="card-light-gray" />
-                                                <String fx:value="text-lg" />
-                                             </styleClass>
-                                          </TextField>
-                                          <Pane prefHeight="70.0" prefWidth="13.0" />
-                                          <Label prefHeight="70.0" prefWidth="45.0" text="เวลา">
-                                             <styleClass>
-                                                <String fx:value="text-xl" />
-                                                <String fx:value="font-bold" />
-                                             </styleClass>
-                                          </Label>
-                                          <Pane prefHeight="70.0" prefWidth="13.0" />
-                                          <TextField fx:id="inputActivityTimeEnd" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="161.0" promptText="กรุณาระบุ เวลา">
-                                             <styleClass>
-                                                <String fx:value="card-light-gray" />
-                                                <String fx:value="text-lg" />
-                                             </styleClass>
-                                          </TextField>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="614.0">
+                                             <children>
+                                                <Label prefHeight="70.0" prefWidth="195.0" text="วัน/เดือน/ปี ที่เริ่ม">
+                                                   <styleClass>
+                                                      <String fx:value="text-xl" />
+                                                      <String fx:value="font-bold" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Pane prefHeight="70.0" prefWidth="13.0" />
+                                                <DatePicker fx:id="inputActivityDateStart" prefHeight="30.0" prefWidth="173.0" promptText="กรุณาระบุวันที่เริ่ม">
+                                                   <styleClass>
+                                                      <String fx:value="card-light-gray" />
+                                                      <String fx:value="text-sm" />
+                                                   </styleClass>
+                                                </DatePicker>
+                                                <Pane prefHeight="70.0" prefWidth="13.0" />
+                                                <Label prefHeight="70.0" prefWidth="45.0" text="เวลา">
+                                                   <styleClass>
+                                                      <String fx:value="text-xl" />
+                                                      <String fx:value="font-bold" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Pane prefHeight="70.0" prefWidth="13.0" />
+                                                <TextField fx:id="inputActivityTimeStart" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="162.0" promptText="กรุณาระบุ เวลา">
+                                                   <styleClass>
+                                                      <String fx:value="card-light-gray" />
+                                                      <String fx:value="text-lg" />
+                                                   </styleClass>
+                                                </TextField>
+                                             </children>
+                                          </HBox>
+                                          <HBox>
+                                             <children>
+                                                <Pane prefHeight="27.0" prefWidth="213.0" />
+                                                <Label fx:id="errorInputStartDate" text="กรุณาระบุวันที่เริ่ม">
+                                                   <styleClass>
+                                                      <String fx:value="text-lg" />
+                                                      <String fx:value="text-red" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Pane prefHeight="27.0" prefWidth="131.0" />
+                                                <Label fx:id="errorInputStartTime" text="กรุณาระบุเวลาเริ่ม">
+                                                   <styleClass>
+                                                      <String fx:value="text-lg" />
+                                                      <String fx:value="text-red" />
+                                                   </styleClass>
+                                                </Label>
+                                             </children>
+                                          </HBox>
                                        </children>
-                                    </HBox>
+                                    </VBox>
+                                    <VBox>
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="614.0">
+                                             <children>
+                                                <Label prefHeight="70.0" prefWidth="195.0" text="วัน/เดือน/ปี ที่สิ้นสุด">
+                                                   <styleClass>
+                                                      <String fx:value="text-xl" />
+                                                      <String fx:value="font-bold" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Pane prefHeight="70.0" prefWidth="13.0" />
+                                                <DatePicker fx:id="inputActivityDateEnd" prefWidth="173.0" promptText="กรุณาระบุวันที่สิ้นสุด">
+                                                   <styleClass>
+                                                      <String fx:value="card-light-gray" />
+                                                      <String fx:value="text-sm" />
+                                                   </styleClass>
+                                                </DatePicker>
+                                                <Pane prefHeight="70.0" prefWidth="13.0" />
+                                                <Label prefHeight="70.0" prefWidth="45.0" text="เวลา">
+                                                   <styleClass>
+                                                      <String fx:value="text-xl" />
+                                                      <String fx:value="font-bold" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Pane prefHeight="70.0" prefWidth="13.0" />
+                                                <TextField fx:id="inputActivityTimeEnd" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="161.0" promptText="กรุณาระบุ เวลา">
+                                                   <styleClass>
+                                                      <String fx:value="card-light-gray" />
+                                                      <String fx:value="text-lg" />
+                                                   </styleClass>
+                                                </TextField>
+                                             </children>
+                                          </HBox>
+                                          <HBox>
+                                             <children>
+                                                <Pane prefHeight="27.0" prefWidth="213.0" />
+                                                <Label fx:id="errorInputEndDate" text="กรุณาระบุเวลาสิ้นสุด">
+                                                   <styleClass>
+                                                      <String fx:value="text-lg" />
+                                                      <String fx:value="text-red" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Pane prefHeight="27.0" prefWidth="105.0" />
+                                                <Label fx:id="errorInputEndTime" text="กรุณาระบุเวลาสิ้นสุด">
+                                                   <styleClass>
+                                                      <String fx:value="text-lg" />
+                                                      <String fx:value="text-red" />
+                                                   </styleClass>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
                                     <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="614.0">
                                        <children>
                                           <Pane prefHeight="65.0" prefWidth="296.0" />

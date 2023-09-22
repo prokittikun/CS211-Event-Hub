@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.components.MyEventCard">
+<AnchorPane stylesheets="@../style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.components.MyEventCard">
    <children>
       <Pane layoutX="15.0" prefHeight="125.0" prefWidth="1023.0" styleClass="card-light-gray" stylesheets="@../style/global.css">
          <children>
@@ -64,14 +63,14 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="15.0" prefWidth="418.0" spacing="10.0">
                            <children>
-                              <Button fx:id="eventToggleStatus" mnemonicParsing="false" onAction="#onHandleEventStatus" styleClass="btn-danger" text="Open" />
+                              <Button fx:id="eventToggleStatus" mnemonicParsing="false" onAction="#onHandleEventStatus" styleClass="btn-success" text="เปิด" />
                               <Button fx:id="goToParticipant" mnemonicParsing="false" styleClass="btn-outline-danger" text="รายชื่อผู้เข้าร่วม" />
                            </children>
                         </HBox>
                      </children>
                   </VBox>
-                  <Pane prefHeight="126.0" prefWidth="189.0" />
-                  <VBox alignment="CENTER" prefHeight="126.0" prefWidth="221.0" spacing="4.0">
+                  <Pane prefHeight="126.0" prefWidth="177.0" />
+                  <VBox alignment="CENTER" prefHeight="126.0" prefWidth="245.0" spacing="4.0">
                      <children>
                         <Label text="บริหารจัดการ">
                            <styleClass>

@@ -62,21 +62,22 @@ public class LoginController {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        User user = userListFileDatasource.query("username = "+username+" AND password = "+password).getAllUsers().get(0);
+        UserCollection users = userListFileDatasource.query("username = " + username + " AND password = " + password);
 
-        if (user != null) {
+        if (!users.getAllUsers().isEmpty()) {
             String lastLoginTime = DateTimeService.getCurrentDateTime();
-            userListFileDatasource.updateColumnById(user.getId(),"lastLogin", lastLoginTime);
+            User user = users.getAllUsers().get(0);
+            userListFileDatasource.updateColumnById(user.getId(), "lastLogin", lastLoginTime);
             try {
                 HashMap<String, Object> data = new HashMap<>();
-                data.put("userId", "b1e473a8-5175-11ee-be56-0242ac120002");
-                FXRouter.goTo("index", data);
+                data.put("userId", user.getId());
+                FXRouter.goTo("profile", data);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         } else {
-            usernameError.setText("Username is invalid");
-            passwordError.setText("Password is invalid");
+            usernameError.setText("ชื่อผู้ใช้ไม่ถูกต้อง");
+            passwordError.setText("รหัสผ่านไม่ถูกต้อง");
         }
     }
 

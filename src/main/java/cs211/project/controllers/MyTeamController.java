@@ -5,6 +5,7 @@ import cs211.project.models.Event;
 import cs211.project.models.Team;
 import cs211.project.models.TeamMember;
 import cs211.project.models.collections.EventCollection;
+import cs211.project.models.collections.JoinEventCollection;
 import cs211.project.models.collections.TeamCollection;
 import cs211.project.models.collections.TeamMemberCollection;
 import cs211.project.services.*;
@@ -39,6 +40,8 @@ public class MyTeamController {
     private Datasource<TeamMemberCollection> teamMemberDatasource;
 
     private Datasource<EventCollection> eventDatasource;
+
+    private Datasource<JoinEventCollection> joinEventDatasource;
     private HashMap<String, Object> data;
 
     private String userId;
@@ -50,7 +53,7 @@ public class MyTeamController {
         teamMemberDatasource = new TeamMemberListFileDatasource("data/team", "teamMember.csv");
         teamDatasource = new TeamListFileDatasource("data/team", "team.csv");
         eventDatasource = new EventListFileDatasource("data/event", "event.csv");
-
+        joinEventDatasource = new JoinEventListFileDatasource("data/event", "joinEvent.csv");
 //        teamList
         initMyTeam();
 
@@ -61,6 +64,9 @@ public class MyTeamController {
         try {
             //Navbar
             AnchorPane navbarComponent = navbarComponentLoader.load();
+            //get controller
+            NavbarController navbarController = navbarComponentLoader.getController();
+            navbarController.setData(data);
             navbar.getChildren().add(navbarComponent);
 
             //Footer
@@ -89,13 +95,16 @@ public class MyTeamController {
                     MyTeamCardController myTeamCardController = myTeamCardLoader.getController();
                     myTeamCardController.setTeamId(team.getId());
                     myTeamCardController.setUserId(this.userId);
+                    myTeamCardController.setEventId(event.getId());
+                    JoinEventCollection joinEventCollection = joinEventDatasource.query("eventId = " + event.getId());
+                    myTeamCardController.setApplicants(joinEventCollection.getJoinEvents().size() + "/" + event.getMaxParticipant());
                     myTeamCardController.setEventImage(event.getImage());
                     myTeamCardController.setEventName(event.getName());
                     myTeamCardController.setEventLocation(event.getLocation());
                     myTeamCardController.setStartDate(event.getStartDate());
                     myTeamCardController.setTeamName(team.getName());
                     TeamMemberCollection teamMemberCollection1 = teamMemberDatasource.query("teamId = " + team.getId());
-                    myTeamCardController.setApplicants(String.valueOf(teamMemberCollection1.getTeamMembers().size()) + " / " + team.getMaxMember());
+                    myTeamCardController.setTeamApplicants(String.valueOf(teamMemberCollection1.getTeamMembers().size()) + " / " + team.getMaxMember());
                     myTeamCardController.setOrder(String.valueOf(++i));
                     myTeamCardController.setParentController(this);
 

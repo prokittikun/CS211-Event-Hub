@@ -7,7 +7,6 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,6 +14,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.TeamManagementController">
    <children>
@@ -100,15 +100,25 @@
                            <children>
                               <VBox prefHeight="602.0" prefWidth="685.0">
                                  <children>
-                                    <HBox alignment="CENTER" prefHeight="107.0" prefWidth="691.0" spacing="10.0">
+                                    <HBox alignment="BOTTOM_CENTER" prefHeight="3.0" prefWidth="665.0" spacing="10.0">
                                        <children>
-                                          <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="95.0" text="&lt; ย้อนกลับ">
+                                          <Label fx:id="teamName" text="ทีมพิธีกร">
+                                             <styleClass>
+                                                <String fx:value="text-3xl" />
+                                                <String fx:value="font-bold" />
+                                             </styleClass>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="51.0" prefWidth="665.0" spacing="10.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" onAction="#onHandleBackToMyTeam" prefHeight="31.0" prefWidth="95.0" text="&lt; ย้อนกลับ">
                                              <styleClass>
                                                 <String fx:value="btn-outline-danger" />
                                                 <String fx:value="text-sm" />
                                              </styleClass>
                                           </Button>
-                                          <Pane prefHeight="97.0" prefWidth="109.0" />
+                                          <Pane prefHeight="97.0" prefWidth="110.0" />
                                           <Label text="ตารางกิจกรรม">
                                              <styleClass>
                                                 <String fx:value="text-3xl" />
@@ -116,7 +126,7 @@
                                              </styleClass>
                                           </Label>
                                           <Pane prefHeight="97.0" prefWidth="128.0" />
-                                          <Button mnemonicParsing="false" onAction="#onHandleAddActivity" prefHeight="30.0" prefWidth="58.0" text="เพิ่ม">
+                                          <Button fx:id="addActivityButton" mnemonicParsing="false" onAction="#onHandleAddActivity" prefHeight="30.0" prefWidth="58.0" text="เพิ่ม">
                                              <styleClass>
                                                 <String fx:value="btn-danger" />
                                                 <String fx:value="text-sm" />
@@ -126,10 +136,11 @@
                                     </HBox>
                                     <TableView fx:id="scheduleTable" prefHeight="495.0" prefWidth="686.0" stylesheets="@style/global.css">
                                       <columns>
-                                        <TableColumn fx:id="orderColumn" prefWidth="149.86673867702484" text="ลำดับที่" />
-                                        <TableColumn fx:id="nameColumn" prefWidth="200.5332489013672" text="ชื่อ" />
-                                          <TableColumn fx:id="dateColumn" prefWidth="147.466552734375" text="วันที่" />
-                                          <TableColumn fx:id="timestampColumn" minWidth="0.0" prefWidth="167.46664428710938" text="เวลาเริ่ม" />
+                                        <TableColumn fx:id="orderColumn" prefWidth="86.1332106590271" text="ลำดับที่" />
+                                        <TableColumn fx:id="nameColumn" prefWidth="156.26660919189453" text="ชื่อ" />
+                                          <TableColumn fx:id="dateColumn" prefWidth="162.9333953857422" text="วันที่" />
+                                          <TableColumn fx:id="timestampColumn" minWidth="0.0" prefWidth="150.93325805664062" text="เวลาเริ่ม" />
+                                          <TableColumn fx:id="tool" minWidth="0.0" prefWidth="108.800048828125" text="เครื่องมือ" />
                                       </columns>
                                        <styleClass>
                                           <String fx:value="text-lg" />
@@ -152,6 +163,46 @@
             </AnchorPane>
          </center>
       </BorderPane>
+      <AnchorPane fx:id="backDrop" prefHeight="801.0" prefWidth="1201.0" style="-fx-background-color: rgba(0, 0, 0, 0.15);">
+         <children>
+            <Pane fx:id="modal" layoutX="386.0" layoutY="112.0" prefHeight="558.0" prefWidth="417.0">
+               <styleClass>
+                  <String fx:value="card" />
+                  <String fx:value="shadow" />
+               </styleClass>
+               <children>
+                  <VBox alignment="CENTER" layoutX="5.0" layoutY="16.200000762939453">
+                     <children>
+                        <Label text="รายละเอียดกิจกรรม">
+                           <styleClass>
+                              <String fx:value="text-3xl" />
+                              <String fx:value="font-bold" />
+                           </styleClass>
+                        </Label>
+                        <ScrollPane hbarPolicy="NEVER" prefHeight="483.0" prefWidth="406.0">
+                           <content>
+                              <VBox alignment="TOP_CENTER" prefWidth="412.0">
+                                 <children>
+                                    <Text fx:id="activityDetail" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-lg" text="asd" wrappingWidth="350.0" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
+                  <Button fx:id="closeModal" layoutX="370.0" layoutY="8.0" mnemonicParsing="false" onAction="#onHandleCloseModal" text="ปิด">
+                     <styleClass>
+                        <String fx:value="btn-danger" />
+                        <String fx:value="text-sm" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
       <AnchorPane fx:id="navbar" layoutY="-3.0" prefHeight="0.0" prefWidth="0.0" />
    </children>
 </AnchorPane>

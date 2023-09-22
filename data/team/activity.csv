@@ -1,3 +1,1 @@
-id,name,detail,startDate,endDate,startTime,endTime,teamId
-8b4c9108-97c0-48f5-80a0-73ada89b717d,asd,asdasd,2023-09-22,2023-09-30,123,123,b1e473a8-5175-11ee-be56-0242ac120007
-598c5142-bba4-4af9-9257-72f36c80b72e,asd,asd,2023-09-21,2023-09-22,12.20,13.00,b1e473a8-5175-11ee-be56-0242ac120008
+id,name,detail,startDate,endDate,startTime,endTime,userId
