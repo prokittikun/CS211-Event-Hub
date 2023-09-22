@@ -1,20 +1,33 @@
 package cs211.project.controllers;
 
-import cs211.project.services.FXRouter;
+import cs211.project.models.Activity;
+import cs211.project.models.Event;
+import cs211.project.models.Team;
+import cs211.project.models.User;
+import cs211.project.models.collections.*;
+import cs211.project.services.*;
 import cs211.project.services.alert.ToastAlert;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
+import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 public class CreateTeamActivityController {
     @FXML
@@ -24,7 +37,7 @@ public class CreateTeamActivityController {
     private Label activityCreatorName;
 
     @FXML
-    private TableColumn<?, ?> dateColumn;
+    private TableColumn<Activity, String> dateColumn;
 
     @FXML
     private Label eventDate;
@@ -42,10 +55,28 @@ public class CreateTeamActivityController {
     private Label eventParticipant;
 
     @FXML
-    private TextField inputActivityDateEnd;
+    private Label errorActivityDetail;
 
     @FXML
-    private TextField inputActivityDateStart;
+    private Label errorActivityName;
+
+    @FXML
+    private Label errorInputEndDate;
+
+    @FXML
+    private Label errorInputEndTime;
+
+    @FXML
+    private Label errorInputStartDate;
+
+    @FXML
+    private Label errorInputStartTime;
+
+    @FXML
+    private DatePicker inputActivityDateEnd;
+
+    @FXML
+    private DatePicker inputActivityDateStart;
 
     @FXML
     private TextArea inputActivityDetail;
@@ -60,16 +91,16 @@ public class CreateTeamActivityController {
     private TextField inputActivityTimeStart;
 
     @FXML
-    private TableColumn<?, ?> nameColumn;
+    private TableColumn<Activity, String> nameColumn;
 
     @FXML
-    private TableView<?> scheduleTable;
+    private TableView<Activity> scheduleTable;
 
     @FXML
     private Label teamName;
 
     @FXML
-    private TableColumn<?, ?> timestampColumn;
+    private TableColumn<Activity, String> timestampColumn;
 
     @FXML
     private Label titlePage;
@@ -80,8 +111,50 @@ public class CreateTeamActivityController {
     @FXML
     private AnchorPane footer;
 
+    private Datasource<EventCollection> eventDatasource;
+
+    private Datasource<JoinEventCollection> joinEventDatasource;
+
+    private Datasource<UserCollection> userDatasource;
+
+    private Datasource<TeamCollection> teamDatasource;
+    private Datasource<ActivityCollection> activityDatasource;
+
+    private HashMap<String, Object> data;
+
+    private UUID eventId;
+    private UUID teamId;
+
+    private UUID userId;
+
+    private UUID activityId;
+
+    private ActivityCollection activityCollection;
+    private boolean isEdit = false;
+
     @FXML
     private void initialize() {
+        this.errorActivityDetail.setVisible(false);
+        this.errorActivityName.setVisible(false);
+        this.errorInputEndDate.setVisible(false);
+        this.errorInputEndTime.setVisible(false);
+        this.errorInputStartDate.setVisible(false);
+        this.errorInputStartTime.setVisible(false);
+        data = FXRouter.getData();
+        eventId = UUID.fromString(data.get("eventId").toString());
+        teamId = UUID.fromString(data.get("teamId").toString());
+        userId = UUID.fromString(data.get("userId").toString());
+        if(data.get("activityId") != null){
+            activityId = UUID.fromString(data.get("activityId").toString());
+        }else{
+            activityId = null;
+        }
+        eventDatasource = new EventListFileDatasource("data/event", "event.csv");
+        joinEventDatasource = new JoinEventListFileDatasource("data/event", "joinEvent.csv");
+        userDatasource = new UserListFileDatasource("data", "user.csv");
+        teamDatasource = new TeamListFileDatasource("data/team", "team.csv");
+        activityDatasource = new ActivityListFileDatasource("data/team", "activity.csv");
+        initHeader();
         //Navbar
         FXMLLoader navbarComponentLoader = new FXMLLoader(getClass().getResource("/cs211/project/views/navbar.fxml"));
         //Footer
@@ -89,6 +162,9 @@ public class CreateTeamActivityController {
         try {
             //Navbar
             AnchorPane navbarComponent = navbarComponentLoader.load();
+            //get controller
+            NavbarController navbarController = navbarComponentLoader.getController();
+            navbarController.setData(data);
             navbar.getChildren().add(navbarComponent);
 
             //Footer
@@ -97,12 +173,71 @@ public class CreateTeamActivityController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+
+
+        showTable();
+
+
+        if(activityId != null){
+            Activity activity = activityDatasource.query("id = " + activityId.toString()).getActivities().get(0);
+            inputActivityName.setText(activity.getName());
+            inputActivityDetail.setText(activity.getDetail());
+
+            inputActivityDateStart.setValue(LocalDate.parse(activity.getStartDate()));
+            inputActivityDateEnd.setValue(LocalDate.parse(activity.getEndDate()));
+            inputActivityTimeStart.setText(activity.getStartTime());
+            inputActivityTimeEnd.setText(activity.getEndTime());
+            isEdit = true;
+            titlePage.setText("แก้ไขกิจกรรม");
+        }else{
+            titlePage.setText("สร้างกิจกรรม");
+        }
     }
 
+    private void showTable() {
+        activityCollection = activityDatasource.query("teamId = " + teamId.toString());
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("startDate"));
+
+        timestampColumn.setCellValueFactory(new PropertyValueFactory<>("startTime"));
+
+
+        // ล้าง column เดิมทั้งหมดที่มีอยู่ใน table แล้วเพิ่ม column ใหม่
+        scheduleTable.getColumns().clear();
+        scheduleTable.getColumns().add(nameColumn);
+        scheduleTable.getColumns().add(dateColumn);
+        scheduleTable.getColumns().add(timestampColumn);
+
+        scheduleTable.getItems().clear();
+
+        for (Activity activity: activityCollection.getActivities()) {
+            scheduleTable.getItems().add(activity);
+        }
+    }
+
+    void initHeader() {
+        Event event = eventDatasource.query("id = " + eventId.toString()).getEvents().get(0);
+        eventName.setText(event.getName());
+        eventLocation.setText(event.getLocation());
+        eventDate.setText(DateTimeService.toString(event.getStartDate()) + " - " + DateTimeService.toString(event.getEndDate()));
+        JoinEventCollection joinEventCollection = joinEventDatasource.query("eventId = " + event.getId());
+        eventParticipant.setText(joinEventCollection.getJoinEvents().size() + "/" + event.getMaxParticipant());
+        Image image = new Image("file:data" + File.separator + "image" + File.separator + "event" + File.separator + event.getImage());
+        eventImage.setImage(image);
+        User creator = userDatasource.query("id = " + this.userId).getAllUsers().get(0);
+        Image creatorImage = new Image("file:data" + File.separator + "image" + File.separator + "avatar" + File.separator + creator.getAvatar());
+        activityCreatorImage.setFill(new ImagePattern(creatorImage));
+        activityCreatorName.setText(creator.getFirstName() + " " + creator.getLastName());
+        Team team = teamDatasource.query("id = " + teamId.toString()).getTeams().get(0);
+        teamName.setText("ทีม " + team.getName());
+
+    }
     @FXML
     void onHandleBackToPreviousPage(ActionEvent event) {
         try {
-            FXRouter.goTo("teamManagement");
+            FXRouter.goTo("teamManagement", data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -110,12 +245,80 @@ public class CreateTeamActivityController {
 
     @FXML
     void onHandleSaveButton(ActionEvent event) {
-//        AlertProviderService alertProvider = new AlertProviderService();
-//        alertProvider.showInfoAlert("This is an info message.");
-//        alertProvider.showErrorAlert("This is an error message.");
+        boolean isAllInputValid = true;
+        //check all input is not empty
+        if (inputActivityName.getText().isEmpty()) {
+            this.errorActivityName.setVisible(true);
+            isAllInputValid = false;
+        } else {
+            this.errorActivityName.setVisible(false);
+        }
+        if (inputActivityDetail.getText().isEmpty()) {
+            this.errorActivityDetail.setVisible(true);
+            isAllInputValid = false;
+        } else {
+            this.errorActivityDetail.setVisible(false);
+        }
+        if (inputActivityDateStart.getValue() == null) {
+            this.errorInputStartDate.setVisible(true);
+            isAllInputValid = false;
+        } else {
+            this.errorInputStartDate.setVisible(false);
+        }
+        if (inputActivityDateEnd.getValue() == null) {
+            this.errorInputEndDate.setVisible(true);
+            isAllInputValid = false;
+        } else {
+            this.errorInputEndDate.setVisible(false);
+        }
+        if (inputActivityTimeStart.getText().isEmpty()) {
+            this.errorInputStartTime.setVisible(true);
+            isAllInputValid = false;
+        } else {
+            this.errorInputStartTime.setVisible(false);
+        }
+        if (inputActivityTimeEnd.getText().isEmpty()) {
+            this.errorInputEndTime.setVisible(true);
+            isAllInputValid = false;
+        } else {
+            this.errorInputEndTime.setVisible(false);
+        }
 
-        ToastAlert.show("This is a toast-like alert.", ToastAlert.AlertType.SUCCESS);
+        if(isAllInputValid){
+            if(!isEdit){
+                ActivityCollection activityCollectionForWriteData = new ActivityCollection();
+                Activity newActivity = new Activity(UUID.randomUUID().toString(), teamId.toString(), inputActivityName.getText(), inputActivityDetail.getText(), inputActivityDateStart.getValue().toString(), inputActivityTimeStart.getText(), inputActivityDateEnd.getValue().toString(), inputActivityTimeEnd.getText());
+                activityCollectionForWriteData.addNewActivity(newActivity);
+                activityCollection.addNewActivity(newActivity);
+                scheduleTable.getItems().add(newActivity);
+                activityDatasource.writeData(activityCollectionForWriteData);
+                clearInput();
+                ToastAlert.show("Success.", ToastAlert.AlertType.SUCCESS);
+            }else{
+                Map<String, String> updateData = new HashMap<>();
+                updateData.put("name", inputActivityName.getText());
+                updateData.put("detail", inputActivityDetail.getText());
+                updateData.put("startDate", inputActivityDateStart.getValue().toString());
+                updateData.put("startTime", inputActivityTimeStart.getText());
+                updateData.put("endDate", inputActivityDateEnd.getValue().toString());
+                updateData.put("endTime", inputActivityTimeEnd.getText());
+
+                activityDatasource.updateColumnsById(activityId.toString(), updateData);
+                showTable();
+                ToastAlert.show("Success.", ToastAlert.AlertType.SUCCESS);
+            }
+        }
 
     }
+
+    void clearInput(){
+        inputActivityName.setText("");
+        inputActivityDetail.setText("");
+        inputActivityDateStart.setValue(null);
+        inputActivityDateEnd.setValue(null);
+        inputActivityTimeStart.setText("");
+        inputActivityTimeEnd.setText("");
+    }
+
 
 }
