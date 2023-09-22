@@ -4,6 +4,7 @@ import cs211.project.controllers.components.EventCard;
 import cs211.project.controllers.components.JoinTeamCard;
 import cs211.project.models.Event;
 import cs211.project.models.Team;
+import cs211.project.models.TeamMember;
 import cs211.project.models.collections.EventCollection;
 import cs211.project.models.collections.JoinEventCollection;
 import cs211.project.models.collections.TeamCollection;
@@ -119,7 +120,11 @@ public class JoinTeamController {
 
                     TeamMemberCollection teamMemberCollection = teamMemberDatasource.query("teamId = " + team.getId());
                     joinTeamCard.setTeamParticipant(teamMemberCollection.getTeamMembers().size() + "/" + team.getMaxMember());
-
+                    TeamMember isMe = teamMemberCollection.findTeamMemberById((String) data.get("userId"));
+                    System.out.println(isMe.getUserId());
+                    if(isMe != null){
+                        joinTeamCard.isJoinedTeam();
+                    }
                     joinTeamCard.setTeamName(team.getName());
                     joinTeamCard.setTeamOrder(++i + "");
                     joinTeamCard.setTeamId(team.getId());

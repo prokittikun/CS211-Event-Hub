@@ -50,7 +50,15 @@ public class JoinTeamCard {
     @FXML
     void onHandleJoinTeam(ActionEvent event) {
         TeamMemberCollection newMember = new TeamMemberCollection();
-        TeamMember teamMember = new TeamMember()
+        TeamMember teamMember = new TeamMember(UUID.randomUUID().toString(),userId.toString(),teamId.toString());
+        newMember.addTeamMember(teamMember);
+        teamMemberDatasource.writeData(newMember);
+        isJoinedTeam();
+    }
+
+    public void isJoinedTeam(){
+        joinTeamButton.setDisable(true);
+        joinTeamButton.setText("เข้าร่วมแล้ว");
     }
     public String getTeamParticipant() { return teamParticipant.getText(); }
 

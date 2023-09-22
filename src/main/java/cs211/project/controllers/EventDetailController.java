@@ -8,6 +8,8 @@ import cs211.project.services.Datasource;
 import cs211.project.services.EventListFileDatasource;
 import cs211.project.services.FXRouter;
 import cs211.project.services.JoinEventListFileDatasource;
+import cs211.project.models.JoinEvent;
+import cs211.project.services.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -131,11 +133,14 @@ public class EventDetailController {
 
     @FXML
     void onHandleRegisterEvent(ActionEvent registerEvent) {
-        try {
-            FXRouter.goTo("registerEvent", data);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        JoinEventCollection newJoinEventCollection = new JoinEventCollection();
+        newJoinEventCollection.addJoinEvent(new JoinEvent(UUID.randomUUID().toString(),eventId.toString(),userId.toString(), DateTimeService.getCurrentDate(),"0"));
+        joinEventDatasource.writeData(newJoinEventCollection);
+//        try {
+//            FXRouter.goTo("registerEvent", data);
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
     @FXML
