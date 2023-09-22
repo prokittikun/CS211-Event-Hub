@@ -83,7 +83,7 @@ public class TeamManagementController {
                     TeamMemberCard teamMemberCard = teamMemberCardLoader.getController();
                     teamMemberCard.setImage(user.getAvatar());
                     teamMemberCard.setName(user.getFirstName() + " " + user.getLastName());
-                    teamMemberCard.setRole(member.getIsLeader());
+//                    teamMemberCard.setRole(member.getIsLeader());
 
                     javafx.application.Platform.runLater(() -> {
                         memberVbox.getChildren().add(teamMemberCardComponent);
