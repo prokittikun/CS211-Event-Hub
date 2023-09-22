@@ -18,4 +18,14 @@ public class TeamMemberCollection {
     public ArrayList<TeamMember> getTeamMembers() {
         return teamMembers;
     }
+
+    public TeamMember findTeamMemberById(String userId) {
+        for (TeamMember teamMember : teamMembers) {
+            if (teamMember.getUserId().equals(userId)) {
+                return teamMember;
+            }
+        }
+        return null;
+    }
+
 }
