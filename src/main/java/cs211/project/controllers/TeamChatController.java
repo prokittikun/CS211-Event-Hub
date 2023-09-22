@@ -19,6 +19,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -80,14 +81,14 @@ public class TeamChatController {
 
     private Datasource<JoinEventCollection> joinEventCollectionDatasource;
     private ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
-
+    private HashMap<String, Object> data;
 
     @FXML
     private void initialize() {
-        HashMap<String, Object> data = FXRouter.getData(); // get data from router
+        data = FXRouter.getData(); // get data from router
         teamId = UUID.fromString((String) data.get("teamId"));
 
-        userId = UUID.fromString("b1e473a8-5175-11ee-be56-0242ac120002");
+        userId = UUID.fromString((String) data.get("userId"));
         chatDatasource = new ChatListFileDatasource("data/team", "chat.csv");
         eventDatasource = new EventListFileDatasource("data/event", "event.csv");
         teamCollectionDatasource = new TeamListFileDatasource("data/team", "team.csv");
@@ -105,6 +106,9 @@ public class TeamChatController {
         try {
             //Navbar
             AnchorPane navbarComponent = navbarComponentLoader.load();
+            //get controller
+            NavbarController navbarController = navbarComponentLoader.getController();
+            navbarController.setData(data);
             navbar.getChildren().add(navbarComponent);
 
             //Footer
@@ -118,7 +122,7 @@ public class TeamChatController {
     @FXML
     void onHandleBackToPreviousPage(ActionEvent event) {
         try {
-            FXRouter.goTo("teamManagement");
+            FXRouter.goTo("teamManagement", data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -157,7 +161,8 @@ public class TeamChatController {
         Event event = eventDatasource.query("id = " + team.getEventId()).getEvents().get(0);
         eventName.setText(event.getName());
         eventLocation.setText(event.getLocation());
-        eventImage.setImage(new Image(event.getImage()));
+        Image image = new Image("file:data" + File.separator + "image" + File.separator + "event" + File.separator + event.getImage());
+        eventImage.setImage(image);
         JoinEventCollection joinEventCollection = joinEventCollectionDatasource.query("eventId = " + event.getId());
         eventParticipant.setText(joinEventCollection.getJoinEvents().size() + "/" + event.getMaxParticipant());
         eventDate.setText(DateTimeService.toString(event.getStartDate()) + " - " + DateTimeService.toString(event.getEndDate()));
@@ -197,7 +202,7 @@ public class TeamChatController {
     }
 
     private void initAllMemberProfile(){
-        executorService.submit(() -> {
+            executorService.submit(() -> {
 
         TeamMemberCollection teamMemberCollection = teamMemberCollectionDatasource.query("teamId = " + this.teamId.toString());
 
