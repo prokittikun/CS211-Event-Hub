@@ -5,6 +5,8 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
+import java.io.File;
+
 public class ProfileImageController {
 
     @FXML
@@ -20,9 +22,9 @@ public class ProfileImageController {
         this.imagePath = imagePath;
         profileImage.setFill(new ImagePattern(new Image(imagePath)));
     }
-    public void setProfileImage(String imagePath) {
-        this.imagePath = imagePath;
-        profileImage.setFill(new ImagePattern(new Image(imagePath)));
+    public void setProfileImage(String imageName) {
+        Image image = new Image("file:data" + File.separator + "image" + File.separator + "avatar" + File.separator + imageName);
+        profileImage.setFill(new ImagePattern(image));
     }
 
     public String getImagePath() {
