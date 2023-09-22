@@ -1,7 +1,5 @@
 package cs211.project.models.collections;
-
 import cs211.project.models.Question;
-
 import java.util.ArrayList;
 
 public class QuestionCollection {
@@ -13,4 +11,5 @@ public class QuestionCollection {
     public ArrayList<Question> getQuestions() {
         return questions;
     }
+
 }

@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane hbarPolicy="NEVER" minHeight="1109.0" prefWidth="1202.0" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.RegisterEventController">
+<ScrollPane hbarPolicy="NEVER" minHeight="1109.0" prefWidth="1202.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.RegisterEventController">
    <content>
       <AnchorPane minHeight="100.0" prefWidth="1200.0" styleClass="bg-white" stylesheets="@style/global.css">
          <children>
@@ -62,9 +62,9 @@
                                                 </Label>
                                              </children>
                                           </VBox>
-                                          <VBox alignment="CENTER" prefHeight="391.0" prefWidth="1103.0">
+                                          <VBox fx:id="showConfirmText" alignment="CENTER" prefHeight="391.0" prefWidth="1103.0">
                                              <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-xl" text="                  งานหนังสือที่หลายคนรอคอย “มหกรรมหนังสือระดับชาติ ครั้งที่ 27” (Book Expo Thailand 2022) เริ่มต้นแล้ว โดยหนนี้พิเศษเพราะเป็นการพางานหนังสือกลับบ้าน คือ ได้กลับมาจัดที่ศูนย์การประชุมแห่งชาติสิริกิติ์เหมือนเดิม เพิ่มเติมคือใหญ่มากขึ้นงานหนังสือรอบนี้ จัดขึ้นภายใต้คอนเซ็ปต์ “BOOKTOPIA มหานครนักอ่าน” เพื่อส่งเสริมการอ่านและการเรียนรู้ให้กับนักอ่าน ทุกเพศ ทุกวัย ตั้งแต่วันที่ 12 – 23 ตุลาคม 2565 เวลา 10.00 – 21.00 น. ณ ชั้น LG ฮอลล์ 5-7 ศูนย์การประชุมแห่งชาติสิริกิติ์การกลับบ้านของงานหนังสือรอบนี้ ถือเป็นการกลับมาจัดงานที่บ้านเดิมอีกครั้งบนพื้นที่ใหญ่กว่าเดิม กับจุดแข็งที่ตอบโจทย์เหล่านักอ่านได้เป็นอย่างดี ทั้งการเดินทางที่สะดวกด้วยขนส่งสาธารณะ อยู่ใจกลางเมือง กว้างขวาง และสะดวกสบาย และนอกจากการจำหน่ายหนังสือและแบบเรียนจากสำนักพิมพ์ต่างๆ แล้ว ยังมีกิจกรรมและนิทรรศการที่หลากหลาย ที่ช่วยสร้างแรงบันดาลใจในการอ่าน-สร้าง-เมือง&quot;กรุงเทพธุรกิจออนไลน์&quot; รวบรวมข้อมูลน่าสนใจ ตั้งแต่วิธีการเดินทางไปเที่ยวงานหนังสือ ไปจนถึงกิจกรรมน่าสนใจบนเวทีใหญ่ ตลอดทุกวันตั้งแต่ 12 - 23 ตุลาคม 2565 รวมมาไว้ให้แล้ว" wrappingWidth="991.7367842197418" />
+                                                <Text fx:id="confirmText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-xl" text="                  งานหนังสือที่หลายคนรอคอย “มหกรรมหนังสือระดับชาติ ครั้งที่ 27” (Book Expo Thailand 2022) เริ่มต้นแล้ว โดยหนนี้พิเศษเพราะเป็นการพางานหนังสือกลับบ้าน คือ ได้กลับมาจัดที่ศูนย์การประชุมแห่งชาติสิริกิติ์เหมือนเดิม เพิ่มเติมคือใหญ่มากขึ้นงานหนังสือรอบนี้ จัดขึ้นภายใต้คอนเซ็ปต์ “BOOKTOPIA มหานครนักอ่าน” เพื่อส่งเสริมการอ่านและการเรียนรู้ให้กับนักอ่าน ทุกเพศ ทุกวัย ตั้งแต่วันที่ 12 – 23 ตุลาคม 2565 เวลา 10.00 – 21.00 น. ณ ชั้น LG ฮอลล์ 5-7 ศูนย์การประชุมแห่งชาติสิริกิติ์การกลับบ้านของงานหนังสือรอบนี้ ถือเป็นการกลับมาจัดงานที่บ้านเดิมอีกครั้งบนพื้นที่ใหญ่กว่าเดิม กับจุดแข็งที่ตอบโจทย์เหล่านักอ่านได้เป็นอย่างดี ทั้งการเดินทางที่สะดวกด้วยขนส่งสาธารณะ อยู่ใจกลางเมือง กว้างขวาง และสะดวกสบาย และนอกจากการจำหน่ายหนังสือและแบบเรียนจากสำนักพิมพ์ต่างๆ แล้ว ยังมีกิจกรรมและนิทรรศการที่หลากหลาย ที่ช่วยสร้างแรงบันดาลใจในการอ่าน-สร้าง-เมือง&quot;กรุงเทพธุรกิจออนไลน์&quot; รวบรวมข้อมูลน่าสนใจ ตั้งแต่วิธีการเดินทางไปเที่ยวงานหนังสือ ไปจนถึงกิจกรรมน่าสนใจบนเวทีใหญ่ ตลอดทุกวันตั้งแต่ 12 - 23 ตุลาคม 2565 รวมมาไว้ให้แล้ว" wrappingWidth="991.7367842197418" />
                                              </children>
                                              <VBox.margin>
                                                 <Insets top="-20.0" />
@@ -73,7 +73,7 @@
                                           <VBox fx:id="showQuestion" prefWidth="1100.0" />
                                           <VBox alignment="CENTER" prefHeight="110.0" prefWidth="1103.0">
                                              <children>
-                                                <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="162.0" text="ลงทะเบียน">
+                                                <Button mnemonicParsing="false" onAction="#onHandleRegisterEvent" prefHeight="51.0" prefWidth="162.0" text="ลงทะเบียน">
                                                    <styleClass>
                                                       <String fx:value="btn-danger" />
                                                       <String fx:value="text-2xl" />

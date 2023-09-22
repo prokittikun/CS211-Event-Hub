@@ -1,77 +1,82 @@
 package cs211.project.controllers.components;
 
+import cs211.project.models.TeamMember;
+import cs211.project.models.collections.TeamCollection;
+import cs211.project.models.collections.TeamMemberCollection;
+import cs211.project.services.Datasource;
+import cs211.project.services.TeamMemberListFileDatasource;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+
+import java.io.File;
 import java.lang.String;
+import java.util.HashMap;
+import java.util.UUID;
 
 public class JoinTeamCard {
 
+    private UUID teamId;
+    private UUID userId;
     @FXML
-    private Label eventDate;
+    private Button joinTeamButton;
 
     @FXML
-    private Rectangle eventImage;
-    @FXML
-    private String imagePath;
-
-    @FXML
-    private Label eventLocation;
-
-    @FXML
-    private Label eventName;
-
-    @FXML
-    private Label eventParticipant;
+    private Label teamParticipant;
 
     @FXML
     private Label teamName;
 
     @FXML
     private Button teamOrder;
+    private HashMap<String, Object> data;
+
+    private Datasource<TeamMemberCollection> teamMemberDatasource;
 
     public JoinTeamCard() {
-        this.eventDate = new Label();
-        this.eventImage = new Rectangle();
-        this.eventLocation = new Label();
-        this.eventName = new Label();
-        this.eventParticipant = new Label();
+        this.teamParticipant = new Label();
         this.teamName = new Label();
         this.teamOrder = new Button();
     }
     @FXML
-    private void initialize() {}
-    public String getEventDate() { return eventDate.getText(); }
+    private void initialize() {
+        teamMemberDatasource = new TeamMemberListFileDatasource("data/team", "teamMember.csv");
+    }
 
-    public String getEventImage() { return imagePath; }
-
-    public String getEventLocation() { return eventLocation.getText(); }
-
-    public String getEventName() { return eventName.getText(); }
-
-    public String getEventParticipant() { return eventParticipant.getText(); }
+    @FXML
+    void onHandleJoinTeam(ActionEvent event) {
+        TeamMemberCollection newMember = new TeamMemberCollection();
+        TeamMember teamMember = new TeamMember()
+    }
+    public String getTeamParticipant() { return teamParticipant.getText(); }
 
     public String getTeamName() { return teamName.getText(); }
 
     public String getTeamOrder() { return teamOrder.getText(); }
 
-    public void setEventDate(String eventDate) { this.eventDate.setText(eventDate); }
-
-    public void setEventImage(String eventImage) {
-        Image randomImage = new Image(eventImage);
-        imagePath = eventImage;
-        this.eventImage.setFill(new ImagePattern(randomImage));
+    public String getTeamId() {
+        return teamId.toString();
     }
-    public void setEventLocation(String eventLocation) { this.eventLocation.setText(eventLocation); }
 
-        public void setEventName(String eventName) { this.eventName.setText(eventName); }
+    public String getUserId() {
+        return userId.toString();
+    }
 
-        public void setEventParticipant(String eventParticipant) { this.eventParticipant.setText(eventParticipant); }
+    public void setTeamParticipant(String teamParticipant) { this.teamParticipant.setText(teamParticipant); }
 
-        public void setTeamName(String teamName) { this.teamName.setText(teamName); }
+    public void setTeamName(String teamName) { this.teamName.setText(teamName); }
 
-        public void setTeamOrder(String teamOrder) { this.teamOrder.setText(teamOrder); }
+    public void setTeamOrder(String teamOrder) { this.teamOrder.setText(teamOrder); }
+
+    public void setTeamId(String teamId) {
+        this.teamId = UUID.fromString(teamId);
+    }
+
+    public void setUserId(String userId) {
+        this.userId = UUID.fromString(userId);
+    }
 }

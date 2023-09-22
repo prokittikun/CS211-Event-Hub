@@ -7,6 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
@@ -48,16 +49,22 @@
                         <String fx:value="text-white" />
                         <String fx:value="text-xs" />
                      </styleClass></Label>
-                  <ImageView fitHeight="32.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/Icons/white_user.png" />
-                     </image>
-                  </ImageView>
-                  <Label fx:id="eventParticipant" prefHeight="18.0" prefWidth="55.0" text="250/500" textFill="WHITE">
-                     <styleClass>
-                        <String fx:value="text-white" />
-                        <String fx:value="text-xs" />
-                     </styleClass></Label>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="103.0">
+                     <children>
+                        <ImageView fitHeight="32.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/Icons/white_user.png" />
+                           </image>
+                        </ImageView>
+                        <Pane prefHeight="200.0" prefWidth="4.0" />
+                        <Label fx:id="eventParticipant" prefHeight="18.0" text="250/500" textFill="WHITE">
+                           <styleClass>
+                              <String fx:value="text-white" />
+                              <String fx:value="text-xs" />
+                           </styleClass>
+                        </Label>
+                     </children>
+                  </HBox>
                </children>
             </HBox>
          </children>
