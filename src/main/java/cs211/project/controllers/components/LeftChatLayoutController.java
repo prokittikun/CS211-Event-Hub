@@ -7,6 +7,8 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 
+import java.io.File;
+
 public class LeftChatLayoutController {
     @FXML
     private Circle senderImage;
@@ -39,8 +41,9 @@ public class LeftChatLayoutController {
         senderMessage.setText(message);
     }
 
-    public void setSenderImage(String imagePath) {
-        senderImage.setFill(new ImagePattern(new Image(imagePath)));
+    public void setSenderImage(String imageName) {
+        Image image = new Image("file:data" + File.separator + "image" + File.separator + "avatar" + File.separator + imageName);
+        senderImage.setFill(new ImagePattern(image));
     }
 
     public void setTimestamp(String timestamp){
