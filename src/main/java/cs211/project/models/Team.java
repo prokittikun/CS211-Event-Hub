@@ -4,19 +4,27 @@ import java.util.HashMap;
 import java.util.UUID;
 
 public class Team {
-    UUID id;
-    String name;
-    UUID eventId;
-    UUID leaderId;
+    private UUID id;
+    private String name;
+    private UUID eventId;
+    private UUID leaderId;
+    private String maxMember;
+    private String startDate;
+    private String endDate;
+    private String startTime;
+    private String endTime;
 
-    String maxMember;
-
-    public Team(String id, String name, String eventId, String leaderId, String maxMember) {
+    public Team(String id, String name, String eventId, String leaderId, String maxMember
+            , String startDate, String endDate, String startTime, String endTime) {
         this.id = UUID.fromString(id);
         this.name = name;
         this.eventId = UUID.fromString(eventId);
         this.leaderId = UUID.fromString(leaderId);
         this.maxMember = maxMember;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.startTime = startTime;
+        this.endTime = endTime;
     }
 
     //constructor overloading hash map
@@ -26,10 +34,13 @@ public class Team {
         this.eventId = UUID.fromString(team.get("eventId"));
         this.leaderId = UUID.fromString(team.get("leaderId"));
         this.maxMember = team.get("maxMember");
+        this.startDate = team.get("startDate");
+        this.endDate = team.get("endDate");
+        this.startTime = team.get("startTime");
+        this.endTime = team.get("endTime");
     }
 
-    //getter
-
+    //Getter
     public String getId() {
         return id.toString();
     }
@@ -50,9 +61,23 @@ public class Team {
         return maxMember;
     }
 
+    public String getStartDate() {
+        return startDate;
+    }
 
-    //setter
+    public String getEndDate() {
+        return endDate;
+    }
 
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    //Setter
     public void setId(String id) {
         this.id = UUID.fromString(id);
     }
@@ -73,6 +98,22 @@ public class Team {
         this.maxMember = maxMember;
     }
 
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
     //toHashMap
     public HashMap<String, String> toHashMap() {
         HashMap<String, String> team = new HashMap<>();
@@ -81,9 +122,10 @@ public class Team {
         team.put("eventId", this.eventId.toString());
         team.put("leaderId", this.leaderId.toString());
         team.put("maxMember", this.maxMember);
+        team.put("startDate", this.startDate);
+        team.put("endDate", this.endDate);
+        team.put("startTime", this.startTime);
+        team.put("endTime", this.endTime);
         return team;
     }
-
-
-
 }
