@@ -35,7 +35,7 @@
                   </Label>
                   <HBox alignment="CENTER_LEFT" prefHeight="13.0" prefWidth="342.0">
                      <children>
-                        <ImageView fitHeight="19.0" fitWidth="19.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="21.0" fitWidth="13.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../assets/Icons/user.png" />
                            </image>
@@ -57,7 +57,8 @@
                   <HBox alignment="CENTER" prefHeight="13.0" prefWidth="342.0" spacing="10.0">
                      <children>
                         <Button fx:id="goToSettingTeam" mnemonicParsing="false" onAction="#getGoToSettingTeam" styleClass="btn-outline-danger" text="ตั้งค่าทีม" />
-                        <Button fx:id="onHandleDeleteTeam" mnemonicParsing="false" styleClass="btn-danger" text="ลบทีม" />
+                        <Button mnemonicParsing="false" onAction="#goToEditTeam" styleClass="btn-danger" text="แก้ไขทีม" />
+                        <Button mnemonicParsing="false" onAction="#onHandleDeleteTeam" styleClass="btn-danger" text="ลบทีม" />
                      </children>
                   </HBox>
                </children>
