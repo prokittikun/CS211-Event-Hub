@@ -33,6 +33,7 @@ public class ListTeamCard {
     }
 
     //Method
+    @FXML
     public void getGoToSettingTeam() {
         try {
             FXRouter.goTo("manageTeam");
@@ -41,6 +42,16 @@ public class ListTeamCard {
         }
     }
 
+    @FXML
+    public void goToEditTeam(){
+        try {
+            FXRouter.goTo("editTeam");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
     public void onHandleDeleteTeam() {
 
     }
@@ -65,7 +76,7 @@ public class ListTeamCard {
 
     //Setter
     public void setHeadTeamImage(String path) {
-        Image image = new Image(path);
+        Image image = new Image("file:"+"data/image/user/"+path);
         headTeamImageCircle.setFill(new ImagePattern(image));
         this.pathHeadTeamImage = path;
     }
