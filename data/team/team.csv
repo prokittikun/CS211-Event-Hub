@@ -1,1 +1,1 @@
-id,name,eventId,leaderId,maxMember
+id,name,eventId,leaderId,maxMember, startDate, startTime, endDate, endTime
