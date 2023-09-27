@@ -1,19 +1,20 @@
 package cs211.project.controllers;
 
+import cs211.project.models.User;
+import cs211.project.models.collections.UserCollection;
+import cs211.project.services.Datasource;
 import cs211.project.services.FXRouter;
+import cs211.project.services.DateTimeService;
+import cs211.project.services.UserListFileDatasource;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 public class LoginController {
 
@@ -38,8 +39,11 @@ public class LoginController {
     @FXML
     private Button registerButton;
 
+    private Datasource<UserCollection> userListFileDatasource;
+
     public void initialize() {
-        // Disable the login button by default
+        userListFileDatasource = new UserListFileDatasource("data", "user.csv");
+
         loginButton.setDisable(true);
         usernameError.setText("");
         passwordError.setText("");
@@ -62,19 +66,22 @@ public class LoginController {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        // TODO: Replace with your actual login logic
-        if ("admin".equals(username) && "password123".equals(password)) {
+        UserCollection users = userListFileDatasource.query("username = " + username + " AND password = " + password);
+
+        if (!users.getAllUsers().isEmpty()) {
+            String lastLoginTime = DateTimeService.getCurrentDateTime();
+            User user = users.getAllUsers().get(0);
+            userListFileDatasource.updateColumnById(user.getId(), "lastLogin", lastLoginTime);
             try {
-                FXRouter.goTo("index");
+                HashMap<String, Object> data = new HashMap<>();
+                data.put("userId", user.getId());
+                FXRouter.goTo("profile", data);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         } else {
-            // Failed login
-            // Show an error message or warning
-            usernameError.setText("Username is invalid");
-            passwordError.setText("Password is invalid");
-
+            usernameError.setText("ชื่อผู้ใช้ไม่ถูกต้อง");
+            passwordError.setText("รหัสผ่านไม่ถูกต้อง");
         }
     }
 
@@ -87,5 +94,4 @@ public class LoginController {
         stage.show();
     }
 
-    // Add other methods as necessary for your application
 }

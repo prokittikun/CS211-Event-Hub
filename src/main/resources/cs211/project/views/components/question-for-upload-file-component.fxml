@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="143.0" prefWidth="1047.0" styleClass="bg-white" stylesheets="@../style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.components.QuestionForUploadFileController">
+   <children>
+      <VBox layoutX="-4.0" layoutY="3.0" prefHeight="140.0" prefWidth="1103.0">
+         <children>
+            <HBox prefHeight="70.0" prefWidth="1103.0">
+               <children>
+                  <Pane prefHeight="70.0" prefWidth="85.0" />
+                  <Label fx:id="order" prefHeight="70.0" prefWidth="178.0" text="คำถามที่ 1">
+                     <styleClass>
+                        <String fx:value="text-xl" />
+                        <String fx:value="font-bold" />
+                     </styleClass>
+                  </Label>
+                  <Label fx:id="question" layoutX="10.0" layoutY="10.0" prefHeight="70.0" prefWidth="930.0" styleClass="text-xl" text="กรุณาอัพโหลด Portfolio" />
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="10.0" prefHeight="70.0" prefWidth="1103.0">
+               <children>
+                  <Pane prefHeight="70.0" prefWidth="85.0" />
+                  <Label prefHeight="70.0" prefWidth="122.0" text="คำตอบ">
+                     <styleClass>
+                        <String fx:value="text-xl" />
+                        <String fx:value="font-bold" />
+                     </styleClass>
+                  </Label>
+                  <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="482.0">
+                     <children>
+                        <VBox alignment="BOTTOM_LEFT" prefHeight="70.0" prefWidth="232.0">
+                           <children>
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#onHandleUploadButton" prefHeight="38.0" prefWidth="204.0" text="อัพโหลดไฟล์">
+                                 <styleClass>
+                                    <String fx:value="btn-outline-danger" />
+                                    <String fx:value="text-base" />
+                                 </styleClass>
+                                 <VBox.margin>
+                                    <Insets left="-10.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Label fx:id="errorLabelUpload" alignment="CENTER" prefHeight="18.0" prefWidth="102.0" styleClass="text-red" text="errorLabelUpload" />
+                           </children>
+                        </VBox>
+                        <ImageView fx:id="imageView" fitHeight="64.0" fitWidth="78.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

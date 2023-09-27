@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane stylesheets="@../style/global.css" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.components.MyTeamCardController">
+   <children>
+      <Pane layoutX="17.600000381469727" maxWidth="-Infinity" prefHeight="125.0" prefWidth="1023.0" styleClass="card-light-gray">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="125.0" prefWidth="1023.0">
+               <children>
+                  <Button fx:id="order" mnemonicParsing="false" text="1">
+                     <styleClass>
+                        <String fx:value="btn-danger" />
+                        <String fx:value="text-lg" />
+                     </styleClass>
+                     <HBox.margin>
+                        <Insets left="-18.0" />
+                     </HBox.margin>
+                  </Button>
+                  <VBox alignment="CENTER_LEFT" prefHeight="126.0" prefWidth="426.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <Label fx:id="teamName" minWidth="100.0" prefHeight="46.0" text="ทีม PhueKhrai Party">
+                                 <styleClass>
+                                    <String fx:value="text-3xl" />
+                                    <String fx:value="font-bold" />
+                                 </styleClass>
+                              </Label>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/Icons/user.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <Label fx:id="teamApplicants" prefHeight="27.0" prefWidth="91.0" styleClass="text-lg" text="0/36">
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="332.0" spacing="20.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#onHandleGoToTeamManagement" prefHeight="38.0" prefWidth="125.0" text="รายละเอียด">
+                                 <styleClass>
+                                    <String fx:value="text-base" />
+                                    <String fx:value="btn-outline-danger" />
+                                 </styleClass>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#onHandleLeaveTeam" prefHeight="38.0" prefWidth="125.0" text="ออกจากทีม">
+                                 <styleClass>
+                                    <String fx:value="text-base" />
+                                    <String fx:value="btn-danger" />
+                                 </styleClass>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                  </VBox>
+                  <Pane prefHeight="126.0" prefWidth="48.0" />
+                  <VBox alignment="CENTER_LEFT" prefHeight="159.0" prefWidth="439.0">
+                     <children>
+                        <Label fx:id="eventName" text="KU Freshy Festival 2023">
+                           <styleClass>
+                              <String fx:value="text-3xl" />
+                              <String fx:value="font-bold" />
+                           </styleClass>
+                        </Label>
+                        <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="425.0" spacing="5.0">
+                           <children>
+                              <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/Icons/marker.png" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="eventLocation" prefHeight="27.0" prefWidth="174.0" styleClass="text-lg" text="Test" />
+                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/Icons/calendar.png" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="startDate" prefHeight="27.0" prefWidth="144.0" styleClass="text-lg" text="29 ก.ค. 2566" />
+                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/Icons/user.png" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="applicants" prefHeight="27.0" prefWidth="91.0" styleClass="text-lg" text="0/36" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <ImageView fx:id="eventImage" fitHeight="113.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/cover/freshyFestival2023.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

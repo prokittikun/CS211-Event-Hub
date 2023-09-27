@@ -1,0 +1,149 @@
+package cs211.project.controllers.components;
+
+import cs211.project.services.FXRouter;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+import java.io.IOException;
+import java.util.HashMap;
+
+public class MyEventCard {
+    @FXML
+    private Label eventDate;
+    @FXML
+    private ImageView eventImage;
+    @FXML
+    private Label eventLocation;
+    @FXML
+    private Label eventTitle;
+    @FXML
+    private Button eventToggleStatus;
+    @FXML
+    private Button orderNumber;
+    @FXML
+    private Label participantEvent;
+    private String pathEventImage = "";
+    private boolean statusEvent = true;
+    private HashMap<String, Object> data;
+
+    //Route
+    @FXML
+    public void goToFormEvent() {
+        try {
+            FXRouter.goTo("createForm");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    public void goToListTeam() {
+        try {
+            FXRouter.goTo("listTeam");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    public void goToEditEvent() {
+        try {
+            FXRouter.goTo("editEvent", data);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    public void goToParticipant(){
+
+    }
+
+    //Toggle
+    @FXML
+    public void onHandleEventStatus() {
+        statusEvent = !statusEvent;
+        if(statusEvent){
+            eventToggleStatus.setText("เปิด");
+            eventToggleStatus.getStyleClass().remove("btn-danger");
+            eventToggleStatus.getStyleClass().add("btn-success");
+        }else{
+            eventToggleStatus.setText("ปิด");
+            eventToggleStatus.getStyleClass().remove("btn-success");
+            eventToggleStatus.getStyleClass().add("btn-danger");
+        }
+    }
+
+    //Init
+    public MyEventCard(){
+        eventDate = new Label();
+        eventImage = new ImageView();
+        eventLocation = new Label();
+        eventTitle = new Label();
+        orderNumber = new Button();
+        participantEvent = new Label();
+    }
+
+    //Getter
+    public String getEventDate() {
+        return eventDate.getText();
+    }
+
+    public String getEventImage() {
+        return pathEventImage;
+    }
+
+    public String getEventLocation() {
+        return eventLocation.getText();
+    }
+
+    public String getEventTitle() {
+        return eventTitle.getText();
+    }
+
+    public String getOrderNumber() {
+        return orderNumber.getText();
+    }
+
+    public String getParticipantEvent() {
+        return participantEvent.getText();
+    }
+
+    public HashMap<String, Object> getData() {
+        return data;
+    }
+
+    //Setter
+    public void setEventDate(String eventDate) {
+        this.eventDate.setText(eventDate);
+    }
+
+    public void setEventImage(String path) {
+        Image image = new Image("file:"+"data/image/event/"+path);
+        eventImage.setImage(image);
+        this.pathEventImage = path;
+    }
+
+    public void setEventLocation(String eventLocation) {
+        this.eventLocation.setText(eventLocation);
+    }
+
+    public void setEventTitle(String eventTitle) {
+        this.eventTitle.setText(eventTitle);
+    }
+
+    public void setOrderNumber(String orderNumber) {
+        this.orderNumber.setText(orderNumber);
+    }
+
+    public void setParticipantEvent(String participantEvent) {
+        this.participantEvent.setText(participantEvent);
+    }
+
+    public void setData(HashMap<String, Object> data) {
+        this.data = data;
+    }
+}

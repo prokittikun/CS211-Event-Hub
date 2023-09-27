@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="148.0" prefWidth="1081.0" styleClass="bg-white" stylesheets="@../style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.components.JoinTeamCard">
+   <children>
+      <Pane layoutX="28.0" layoutY="2.0" prefHeight="146.0" prefWidth="1040.0" styleClass="card-light-gray">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="149.0" prefWidth="1022.0">
+               <children>
+                  <Button fx:id="teamOrderButton" mnemonicParsing="false" text="1">
+                     <styleClass>
+                        <String fx:value="btn-danger" />
+                        <String fx:value="text-lg" />
+                     </styleClass>
+                     <HBox.margin>
+                        <Insets left="-15.0" />
+                     </HBox.margin>
+                  </Button>
+                  <VBox prefHeight="150.0" prefWidth="399.0">
+                     <children>
+                        <Label fx:id="teamName" prefHeight="88.0" prefWidth="420.0" styleClass="text-3xl" text="ทีม PhuKhai Party" />
+                        <Button fx:id="joinTeamButton" mnemonicParsing="false" onAction="#onHandleJoinTeam" prefHeight="40.0" prefWidth="101.0" text="เข้าร่วมทีม">
+                           <styleClass>
+                              <String fx:value="btn-danger" />
+                              <String fx:value="text-lg" />
+                           </styleClass>
+                           <VBox.margin>
+                              <Insets top="-10.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox alignment="CENTER_RIGHT" prefHeight="150.0" prefWidth="563.0">
+                     <children>
+                        <Label prefHeight="46.0" prefWidth="223.0" styleClass="text-3xl" text="จำนวนสมาชิกในทีม" />
+                        <Pane prefHeight="4.0" prefWidth="584.0" />
+                        <HBox alignment="CENTER_RIGHT" prefHeight="11.0" prefWidth="174.0">
+                           <children>
+                              <ImageView fitHeight="48.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/Icons/user.png" />
+                                 </image>
+                              </ImageView>
+                              <Pane prefHeight="46.0" prefWidth="16.0" />
+                              <Label fx:id="teamParticipant" alignment="CENTER" prefHeight="46.0" styleClass="text-2xl" text="250/50000" />
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
