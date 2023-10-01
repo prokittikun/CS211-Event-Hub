@@ -26,21 +26,21 @@
                <children>
                   <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
                      <children>
-                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="200.0" />
-                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="400.0">
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="100.0" />
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="600.0">
                            <children>
-                              <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="400.0">
+                              <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="600.0">
                                  <children>
-                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="400.0">
+                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="600.0">
                                        <children>
                                           <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="400.0" />
                                        </children>
                                     </Pane>
-                                    <Pane prefHeight="100.0" prefWidth="400.0">
+                                    <Pane prefHeight="100.0" prefWidth="600.0">
                                        <children>
-                                          <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="400.0">
+                                          <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="600.0">
                                              <children>
-                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="50.0" />
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="150.0" />
                                                 <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" styleClass="bg-transparent">
                                                    <image>
                                                       <Image url="@assets/logo/EventLogo.png" />
@@ -61,10 +61,16 @@
                                        </children>
                                     </Pane>
                                     <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="20.0" prefWidth="400.0" />
-                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="400.0">
+                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="600.0">
                                        <children>
-                                          <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="400.0">
+                                          <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="600.0">
                                              <children>
+                                                <Label prefWidth="150.0" text="ชื่อ - นามสกุล">
+                                                   <styleClass>
+                                                      <String fx:value="text-2xl" />
+                                                      <String fx:value="font-bold" />
+                                                   </styleClass>
+                                                </Label>
                                                 <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="190.0">
                                                    <children>
                                                       <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="190.0">
@@ -81,7 +87,7 @@
                                                       </VBox>
                                                    </children>
                                                 </Pane>
-                                                <Pane prefHeight="75.0" prefWidth="20.0" />
+                                                <Pane prefHeight="75.0" prefWidth="70.0" />
                                                 <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="190.0">
                                                    <children>
                                                       <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="190.0">
@@ -102,9 +108,15 @@
                                           </HBox>
                                        </children>
                                     </Pane>
-                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="400.0">
+                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="600.0">
                                        <children>
-                                          <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="400.0">
+                                          <Label prefWidth="150.0" text="ชื่อผู้ใช้">
+                                             <styleClass>
+                                                <String fx:value="text-2xl" />
+                                                <String fx:value="font-bold" />
+                                             </styleClass>
+                                          </Label>
+                                          <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="600.0">
                                              <children>
                                                 <TextField fx:id="usernameField" focusTraversable="false">
                                                    <styleClass>
@@ -115,12 +127,21 @@
                                                 </TextField>
                                                 <Label fx:id="usernameError" text="usernameError" textFill="RED" />
                                              </children>
+                                             <padding>
+                                                <Insets left="150.0" />
+                                             </padding>
                                           </VBox>
                                        </children>
                                     </Pane>
-                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="400.0">
+                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="600.0">
                                        <children>
-                                          <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="400.0">
+                                          <Label prefWidth="150.0" text="รหัสผ่าน">
+                                             <styleClass>
+                                                <String fx:value="text-2xl" />
+                                                <String fx:value="font-bold" />
+                                             </styleClass>
+                                          </Label>
+                                          <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="600.0">
                                              <children>
                                                 <PasswordField fx:id="passwordField" focusTraversable="false">
                                                    <styleClass>
@@ -131,12 +152,21 @@
                                                 </PasswordField>
                                                 <Label fx:id="passwordError" text="passwordError" textFill="RED" />
                                              </children>
+                                             <padding>
+                                                <Insets left="150.0" />
+                                             </padding>
                                           </VBox>
                                        </children>
                                     </Pane>
-                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="400.0">
+                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="600.0">
                                        <children>
-                                          <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="400.0">
+                                          <Label prefWidth="150.0" text="ยืนยันรหัสผ่าน">
+                                             <styleClass>
+                                                <String fx:value="text-2xl" />
+                                                <String fx:value="font-bold" />
+                                             </styleClass>
+                                          </Label>
+                                          <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="600.0">
                                              <children>
                                                 <PasswordField fx:id="confirmPasswordField" focusTraversable="false">
                                                    <styleClass>
@@ -147,12 +177,15 @@
                                                 </PasswordField>
                                                 <Label fx:id="confirmPasswordError" text="confirmPasswordError" textFill="RED" />
                                              </children>
+                                             <padding>
+                                                <Insets left="150.0" />
+                                             </padding>
                                           </VBox>
                                        </children>
                                     </Pane>
-                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="80.0" prefWidth="400.0">
+                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="80.0" prefWidth="600.0">
                                        <children>
-                                          <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="80.0" prefWidth="400.0">
+                                          <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="80.0" prefWidth="600.0">
                                              <center>
                                                 <Button fx:id="registerButton" mnemonicParsing="false" onAction="#handleRegisterButtonClick" text="สมัครสมาชิก" BorderPane.alignment="CENTER">
                                                    <styleClass>
@@ -164,11 +197,11 @@
                                           </BorderPane>
                                        </children>
                                     </Pane>
-                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="400.0">
+                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="600.0">
                                        <children>
-                                          <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="400.0">
+                                          <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="600.0">
                                              <children>
-                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="200.0" />
                                                 <Label styleClass="text-lg" text="มีบัญชีผู้ใช้แล้ว ?">
                                                    <HBox.margin>
                                                       <Insets top="5.0" />
@@ -190,7 +223,7 @@
                               </VBox>
                            </children>
                         </Pane>
-                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="200.0" />
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="100.0" />
                      </children>
                   </HBox>
                </children>

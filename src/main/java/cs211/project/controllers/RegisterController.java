@@ -109,7 +109,7 @@ public class RegisterController {
             userData.put("username", usernameField.getText());
             userData.put("password", passwordField.getText());
             userData.put("role", "user");
-            userData.put("createdAt", DateTimeService.getCurrentDate());
+            userData.put("createdAt", DateTimeService.getCurrentDateTime());
 
             User newUser = new User(userData);
             UserCollection newUserCollection = new UserCollection();
