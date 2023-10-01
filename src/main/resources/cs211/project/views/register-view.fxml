@@ -49,7 +49,7 @@
                                                 <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="250.0">
                                                    <children>
                                                       <Pane prefHeight="25.0" prefWidth="250.0" />
-                                                      <Label prefHeight="50.0" styleClass="text-4xl" text="Register">
+                                                      <Label prefHeight="50.0" styleClass="text-4xl" text="สมัครสมาชิก">
                                                          <VBox.margin>
                                                             <Insets left="20.0" />
                                                          </VBox.margin>
@@ -69,9 +69,10 @@
                                                    <children>
                                                       <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="190.0">
                                                          <children>
-                                                            <TextField fx:id="firstNameField" focusTraversable="false" promptText="First Name">
+                                                            <TextField fx:id="firstNameField" focusTraversable="false">
                                                                <styleClass>
                                                                   <String fx:value="text-xl" />
+                                                                  <String fx:value="card-light-gray" />
                                                                   <String fx:value="font-bold" />
                                                                </styleClass>
                                                             </TextField>
@@ -85,9 +86,10 @@
                                                    <children>
                                                       <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="190.0">
                                                          <children>
-                                                            <TextField fx:id="lastNameField" focusTraversable="false" promptText="Last Name">
+                                                            <TextField fx:id="lastNameField" focusTraversable="false">
                                                                <styleClass>
                                                                   <String fx:value="text-xl" />
+                                                                  <String fx:value="card-light-gray" />
                                                                   <String fx:value="font-bold" />
                                                                </styleClass>
                                                             </TextField>
@@ -104,9 +106,10 @@
                                        <children>
                                           <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="400.0">
                                              <children>
-                                                <TextField fx:id="usernameField" focusTraversable="false" promptText="Username">
+                                                <TextField fx:id="usernameField" focusTraversable="false">
                                                    <styleClass>
                                                       <String fx:value="font-bold" />
+                                                      <String fx:value="card-light-gray" />
                                                       <String fx:value="text-xl" />
                                                    </styleClass>
                                                 </TextField>
@@ -119,9 +122,10 @@
                                        <children>
                                           <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="400.0">
                                              <children>
-                                                <PasswordField fx:id="passwordField" focusTraversable="false" promptText="Password">
+                                                <PasswordField fx:id="passwordField" focusTraversable="false">
                                                    <styleClass>
                                                       <String fx:value="text-xl" />
+                                                      <String fx:value="card-light-gray" />
                                                       <String fx:value="font-bold" />
                                                    </styleClass>
                                                 </PasswordField>
@@ -134,9 +138,10 @@
                                        <children>
                                           <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="400.0">
                                              <children>
-                                                <PasswordField fx:id="confirmPasswordField" focusTraversable="false" promptText="Confirm Password">
+                                                <PasswordField fx:id="confirmPasswordField" focusTraversable="false">
                                                    <styleClass>
                                                       <String fx:value="text-xl" />
+                                                      <String fx:value="card-light-gray" />
                                                       <String fx:value="font-bold" />
                                                    </styleClass>
                                                 </PasswordField>
@@ -149,7 +154,7 @@
                                        <children>
                                           <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="80.0" prefWidth="400.0">
                                              <center>
-                                                <Button fx:id="registerButton" mnemonicParsing="false" onAction="#handleRegisterButtonClick" text="Register" BorderPane.alignment="CENTER">
+                                                <Button fx:id="registerButton" mnemonicParsing="false" onAction="#handleRegisterButtonClick" text="สมัครสมาชิก" BorderPane.alignment="CENTER">
                                                    <styleClass>
                                                       <String fx:value="btn-danger" />
                                                       <String fx:value="text-2xl" />
@@ -163,14 +168,14 @@
                                        <children>
                                           <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="400.0">
                                              <children>
-                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" />
-                                                <Label styleClass="text-lg" text="Already have an account ?">
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="80.0" />
+                                                <Label styleClass="text-lg" text="มีบัญชีผู้ใช้แล้ว ?">
                                                    <HBox.margin>
                                                       <Insets top="5.0" />
                                                    </HBox.margin>
                                                 </Label>
                                                 <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="10.0" />
-                                                <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLoginButtonClick" text="Login">
+                                                <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLoginButtonClick" text="เข้าสู่ระบบ">
                                                    <styleClass>
                                                       <String fx:value="text-red" />
                                                       <String fx:value="btn-transparent" />

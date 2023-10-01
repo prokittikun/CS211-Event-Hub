@@ -65,6 +65,12 @@ public class RegisterController {
         passwordError.setText("");
         confirmPasswordError.setText("");
 
+        firstNameField.setPromptText("ชื่อ");
+        lastNameField.setPromptText("นามสกุล");
+        usernameField.setPromptText("ชื่อผู้ใช้");
+        passwordField.setPromptText("รหัสผ่าน");
+        confirmPasswordField.setPromptText("ยืนยันรหัสผ่าน");
+
         firstNameField.textProperty().addListener((observable, oldValue, newValue) -> validateFields());
         lastNameField.textProperty().addListener((observable, oldValue, newValue) -> validateFields());
         usernameField.textProperty().addListener((observable, oldValue, newValue) -> validateFields());
