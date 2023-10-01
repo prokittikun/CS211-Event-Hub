@@ -164,7 +164,24 @@ public class Event {
         return data;
     }
 
-//    @Override
+    @Override
+    public String toString() {
+        return "Event{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", name='" + name + '\'' +
+                ", detail='" + detail + '\'' +
+                ", location='" + location + '\'' +
+                ", startDate='" + startDate + '\'' +
+                ", startTime='" + startTime + '\'' +
+                ", endDate='" + endDate + '\'' +
+                ", endTime='" + endTime + '\'' +
+                ", maxParticipant=" + maxParticipant +
+                ", image='" + image + '\'' +
+                ", status=" + status +
+                '}';
+    }
+    //    @Override
 //    public int compareTo(Object o) {
 //        Event event = (Event) o;
 //        if (event.getMaxParticipant() >= this.getMaxParticipant()) {

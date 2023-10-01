@@ -1,16 +1,20 @@
 package cs211.project.controllers.components;
 
+import cs211.project.services.FXRouter;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 
 public class WhiteEventCard {
+    private String eventId;
 
     @FXML
     private Label eventDate;
@@ -42,6 +46,19 @@ public class WhiteEventCard {
 
     @FXML
     private void initialize() {}
+
+    @FXML
+    void onHandleGoToEventDetail(MouseEvent event) {
+        try {
+            FXRouter.goTo("eventDetail", data);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public String getEventId() {
+        return eventId;
+    }
 
     public String getEventDate() { return eventDate.getText(); }
 

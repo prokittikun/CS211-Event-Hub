@@ -46,6 +46,8 @@ public class IndexController {
     @FXML
     private void initialize() {
         data = FXRouter.getData();
+        data.remove("eventId");
+        data.remove("teamId");
         eventDatasource = new EventListFileDatasource("data/event", "event.csv");
         joinEventDatasource = new JoinEventListFileDatasource("data/event", "joinEvent.csv");
         eventCollection = new EventCollection();
@@ -105,8 +107,9 @@ public class IndexController {
         executorService.submit(() -> {
             EventCollection allEvent;
             allEvent = eventDatasource.readData();
-            System.out.println(allEvent.getClosestEvents().size());
+            System.out.println("test"+allEvent.getClosestEvents().size());
             JoinEventCollection joinEventCollection = joinEventDatasource.readData();
+            System.out.println(joinEventCollection);
             for (Event cloesestEvent : allEvent.getPopularEvent(joinEventCollection)) {
                 try {
                     FXMLLoader popularEventCardLoader = new FXMLLoader();
@@ -134,16 +137,15 @@ public class IndexController {
                 }
             }
         });
-
     }
 
     void initClosestEvent() {
         executorService.submit(() -> {
             EventCollection allEvent;
             allEvent = eventDatasource.readData();
+            System.out.println("work");
 
             for (Event popularEvent : allEvent.getClosestEvents()) {
-                System.out.println("1");
                 try {
                     FXMLLoader popularEventCardLoader = new FXMLLoader();
                     popularEventCardLoader.setLocation(getClass().getResource("/cs211/project/views/components/white-event-card.fxml"));
@@ -173,76 +175,11 @@ public class IndexController {
 
     }
 
-//        comingEventCardList = new ArrayList<>(ComingEventCardList());
-//        for (WhiteEventCard comingEventCard : comingEventCardList) {
-//            try {
-//                FXMLLoader comingEventCardLoader = new FXMLLoader();
-//                comingEventCardLoader.setLocation(getClass().getResource("/cs211/project/views/components/white-event-card.fxml"));
-//                AnchorPane eventComponent = comingEventCardLoader.load();
-//                WhiteEventCard indexComingEventCard = comingEventCardLoader.getController();
-//                indexComingEventCard.setEventImage(comingEventCard.getEventImage());
-//                indexComingEventCard.setEventName(comingEventCard.getEventName());
-//                indexComingEventCard.setEventDate(comingEventCard.getEventDate());
-//                indexComingEventCard.setEventLocation(comingEventCard.getEventLocation());
-//                indexComingEventCard.setEventParticipant(comingEventCard.getEventParticipant());
-//                comingEventCardHbox.getChildren().add(eventComponent);
-//            } catch (IOException e) {
-//                throw new RuntimeException(e);
-//            }
-//        }
-//    }
-
-//    private List<EventCard> EventCardList() {
-//        List<EventCard> eventCardList = new ArrayList<>();
-//        EventCard eventCard;
-//        for (int i = 0; i < 5; i++) {
-//            eventCard = new EventCard();
-//            eventCard.setEventImage("https://picsum.photos/200");
-//            eventCard.setEventName("สัปดาห์หนังสือแห่งชาติ ครั้งที่ 51");
-//            eventCard.setEventDate(i + 1 + " ม.ค. 2566");
-//            eventCard.setEventLocation("ศูนย์การประชุมแห่งชาติสิริกิติ์");
-//            eventCard.setEventParticipant("250/500");
-//            eventCardList.add(eventCard);
-//        }
-//        return eventCardList;
-//    }
-//
-//    private List<WhiteEventCard> PopularEventCardList() {
-//        List<WhiteEventCard> popularEventCardList = new ArrayList<>();
-//        WhiteEventCard popularEventCard;
-//        for (int i = 0; i < 2; i++) {
-//            popularEventCard = new WhiteEventCard();
-//            popularEventCard.setEventImage("https://picsum.photos/200");
-//            popularEventCard.setEventName("สัปดาห์หนังสือแห่งชาติ ครั้งที่ 51");
-//            popularEventCard.setEventDate(i + " ม.ค. 2566");
-//            popularEventCard.setEventLocation("ศูนย์การประชุมแห่งชาติสิริกิติ์");
-//            popularEventCard.setEventParticipant("250/500");
-//            popularEventCardList.add(popularEventCard);
-//        }
-//        return popularEventCardList;
-//    }
-//
-//    private List<WhiteEventCard> ComingEventCardList() {
-//        List<WhiteEventCard> comingEventCardList = new ArrayList<>();
-//        WhiteEventCard comingEventCard;
-//        for (int i = 0; i < 2; i++) {
-//            comingEventCard = new WhiteEventCard();
-//            comingEventCard.setEventImage("https://picsum.photos/200");
-//            comingEventCard.setEventName("สัปดาห์หนังสือแห่งชาติ ครั้งที่ 51");
-//            comingEventCard.setEventDate(i + " ม.ค. 2566");
-//            comingEventCard.setEventLocation("ศูนย์การประชุมแห่งชาติสิริกิติ์");
-//            comingEventCard.setEventParticipant("250/500");
-//            comingEventCardList.add(comingEventCard);
-//        }
-//        return comingEventCardList;
-//    }
-
     @FXML
     void onHandleGoToAllEvent(ActionEvent allEvent) {
         try {
             HashMap<String, Object> data = new HashMap<>();
-
-            data.put("userId", "b1e473a8-5175-11ee-be56-0242ac120002");
+            data.put("userId", (String)this.data.get("userId"));
             FXRouter.goTo("allEvent", data);
         } catch (IOException e) {
             throw new RuntimeException(e);

@@ -75,6 +75,7 @@ public class EventCollection {
     }
 
     public ArrayList<Event> getPopularEvent(JoinEventCollection joinEventCollection) {
+        System.out.println("test");
         HashMap<String, Double> filteredEvents = new HashMap<>();
         for (Event event : events) {
             int participants = joinEventCollection.filterByEventId(event.getId()).size();
@@ -90,6 +91,7 @@ public class EventCollection {
                 return Double.compare(entry2.getValue(), entry1.getValue());
             }
         });
+        System.out.println("entryList"+ entryList);
 
         ArrayList<Event> sortedEvents = new ArrayList<>();
 
@@ -106,7 +108,6 @@ public class EventCollection {
                 count++;
             }
         }
-
         return sortedEvents;
     }
 
