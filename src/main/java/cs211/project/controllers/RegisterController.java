@@ -103,6 +103,7 @@ public class RegisterController {
 
             HashMap<String, String> userData = new HashMap<>();
             userData.put("id", UUID.randomUUID().toString());
+            userData.put("avatar", "default.jpg");
             userData.put("firstName", firstNameField.getText());
             userData.put("lastName", lastNameField.getText());
             userData.put("username", usernameField.getText());
