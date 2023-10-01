@@ -7,6 +7,7 @@ import cs211.project.services.FXRouter;
 import cs211.project.services.UserListFileDatasource;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -15,9 +16,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
+import javafx.stage.FileChooser;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.*;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -28,7 +32,6 @@ public class ProfileController {
     private AnchorPane navbar;
     @FXML
     private AnchorPane footer;
-
     @FXML
     private Button saveButton;
     @FXML
@@ -61,15 +64,8 @@ public class ProfileController {
     private PasswordField confirmNewPasswordField;
     @FXML
     private Label confirmNewPasswordError;
-
-    private String currentFirstName;
-    private String currentLastName;
-    private String currentUsername;
-    private String currentRegisterDate;
-    private String currentLastLoginDate;
-
     private UUID userId;
-
+    private File avatarFile;
     private HashMap<String, Object> data;
     private Datasource<UserCollection> userListFileDatasource;
 
@@ -101,7 +97,7 @@ public class ProfileController {
         currentPasswordError.setText("");
         newPasswordError.setText("");
         confirmNewPasswordError.setText("");
-        avatarPicture.setImage(new Image("file:data"+ File.separator+"image"+File.separator+"avatar"+File.separator+user.getAvatar()));
+        avatarPicture.setImage(new Image("file:data" + File.separator + "image" + File.separator + "avatar" + File.separator + user.getAvatar()));
 
         registerDateLabel.setText(user.getCreatedAt());
         lastLoginDateLabel.setText(user.getLastLogin());
@@ -119,21 +115,46 @@ public class ProfileController {
             validateConfirmNewPassword();
         }
         User user = userListFileDatasource.query("id = " + userId).getAllUsers().get(0);
-        if(!firstNameField.getText().isEmpty()){
+        if (!firstNameField.getText().isEmpty()) {
             userListFileDatasource.updateColumnById(user.getId(), "firstName", firstNameField.getText());
         }
-        if(!lastNameField.getText().isEmpty()){
+        if (!lastNameField.getText().isEmpty()) {
             userListFileDatasource.updateColumnById(user.getId(), "lastName", lastNameField.getText());
         }
-        if(!usernameField.getText().isEmpty()){
+        if (!usernameField.getText().isEmpty()) {
             userListFileDatasource.updateColumnById(user.getId(), "userName", usernameField.getText());
+        }
+        if (avatarFile != null) {
+            String[] fileSplit = avatarFile.getName().split("\\.");
+            String filename = user.getUsername() + "." + fileSplit[fileSplit.length - 1];
+            Path dest = Paths.get("data" + File.separator + "image" + File.separator + "avatar" + File.separator + filename);
+            try {
+                Files.copy(avatarFile.toPath(), dest, StandardCopyOption.REPLACE_EXISTING);
+                userListFileDatasource.updateColumnById(user.getId(), "avatar", filename);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
     @FXML
     void handleEditAvatarButtonClick(ActionEvent event) {
-
+        FileChooser chooser = new FileChooser();
+        chooser.setInitialDirectory(new File(System.getProperty("user.dir")));
+        chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.jpeg"));
+        Node source = (Node) event.getSource();
+        File imageFile = chooser.showOpenDialog(source.getScene().getWindow());
+        if (imageFile != null) {
+            avatarFile = imageFile;
+            try (FileInputStream fis = new FileInputStream(imageFile)) {
+                Image image = new Image(fis);
+                avatarPicture.setImage(image);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
+
 
     @FXML
     private void handleBackButtonClick(ActionEvent event) {
