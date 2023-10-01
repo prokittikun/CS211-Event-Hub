@@ -19,10 +19,7 @@ import java.util.HashMap;
 public class LoginController {
 
     @FXML
-    private Label usernameError;
-
-    @FXML
-    private Label passwordError;
+    private Label loginError;
 
     @FXML
     private TextField usernameField;
@@ -42,8 +39,7 @@ public class LoginController {
         userListFileDatasource = new UserListFileDatasource("data", "user.csv");
 
         loginButton.setDisable(true);
-        usernameError.setText("");
-        passwordError.setText("");
+        loginError.setText("");
 
         usernameField.textProperty().addListener((observable, oldValue, newValue) -> validateFields());
         passwordField.textProperty().addListener((observable, oldValue, newValue) -> validateFields());
@@ -71,13 +67,12 @@ public class LoginController {
             try {
                 HashMap<String, Object> data = new HashMap<>();
                 data.put("userId", user.getId());
-                FXRouter.goTo("profile", data);
+                FXRouter.goTo("index", data);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         } else {
-            usernameError.setText("ชื่อผู้ใช้ไม่ถูกต้อง");
-            passwordError.setText("รหัสผ่านไม่ถูกต้อง");
+            loginError.setText("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง");
         }
     }
 

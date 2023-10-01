@@ -89,7 +89,11 @@
                                     </ImageView>
                                     <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="401.0">
                                        <children>
-                                          <Label maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="54.0" prefWidth="259.0" styleClass="text-4xl" text="EVENT HUB" />
+                                          <Label maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="54.0" prefWidth="259.0" text="EVENT HUB">
+                                             <styleClass>
+                                                <String fx:value="text-4xl" />
+                                                <String fx:value="font-bold" />
+                                             </styleClass></Label>
                                        </children>
                                     </VBox>
                                  </children>
@@ -99,37 +103,26 @@
                                  <children>
                                     <VBox prefHeight="106.0" prefWidth="290.0" spacing="5.0">
                                        <children>
-                                          <TextField fx:id="usernameField" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="43.0" prefWidth="449.0" promptText="Username">
+                                          <Label styleClass="text-base" text="ชื่อผู้ใช้" />
+                                          <TextField fx:id="usernameField" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="43.0" prefWidth="449.0">
                                              <styleClass>
-                                                <String fx:value="text-xl" />
+                                                <String fx:value="text-base" />
                                                 <String fx:value="font-bold" />
+                                                <String fx:value="card-light-gray" />
                                              </styleClass>
                                              <VBox.margin>
                                                 <Insets />
                                              </VBox.margin>
                                           </TextField>
-                                          <Label fx:id="usernameError" prefHeight="18.0" prefWidth="291.0" text="usernameError" textFill="RED">
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </Label>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                       <padding>
-                                          <Insets left="80.0" right="80.0" />
-                                       </padding>
-                                    </VBox>
-                                    <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0">
-                                       <children>
-                                          <PasswordField fx:id="passwordField" focusTraversable="false" prefHeight="41.0" prefWidth="258.0" promptText="Password">
+                                          <Label styleClass="text-base" text="รหัสผ่าน" />
+                                          <PasswordField fx:id="passwordField" focusTraversable="false" prefHeight="41.0" prefWidth="258.0">
                                              <styleClass>
-                                                <String fx:value="text-xl" />
+                                                <String fx:value="text-base" />
                                                 <String fx:value="font-bold" />
+                                                <String fx:value="card-light-gray" />
                                              </styleClass>
                                           </PasswordField>
-                                          <Label fx:id="passwordError" prefHeight="18.0" prefWidth="289.0" text="passwordError" textFill="RED" />
+                                          <Label fx:id="loginError" prefHeight="18.0" prefWidth="289.0" text="loginError" textFill="RED" />
                                        </children>
                                        <VBox.margin>
                                           <Insets />
@@ -138,16 +131,18 @@
                                           <Insets left="80.0" right="80.0" />
                                        </padding>
                                     </VBox>
-                                    <Button fx:id="loginButton" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#handleLoginButtonClick" text="Login">
+                                    <Button fx:id="loginButton" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#handleLoginButtonClick" text="เข้าสู่ระบบ">
                                        <styleClass>
                                           <String fx:value="btn-danger" />
                                           <String fx:value="text-2xl" />
+                                          <String fx:value="font-bold" />
                                        </styleClass>
                                     </Button>
                                     <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="360.0">
                                        <children>
-                                          <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="221.0" styleClass="text-lg" text="Don't have an account ?" />
-                                          <Button fx:id="registerButton" mnemonicParsing="false" onAction="#handleRegisterButtonClick" prefHeight="40.0" prefWidth="97.0" text="Register" textFill="#c7371a">
+                                          <Label alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="27.0" prefWidth="180.0" styleClass="text-lg" text="ยังไม่มีบัญชี ?" />
+                                          <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="20.0" />
+                                          <Button fx:id="registerButton" mnemonicParsing="false" onAction="#handleRegisterButtonClick" prefHeight="40.0" prefWidth="97.0" text="สมัครสมาชิก" textFill="#c7371a">
                                              <styleClass>
                                                 <String fx:value="btn-transparent" />
                                                 <String fx:value="text-lg" />
@@ -157,7 +152,7 @@
                                                 <Insets left="-10.0" />
                                              </padding>
                                           </Button>
-                                          <Pane prefHeight="40.0" prefWidth="15.0" />
+                                          <Pane prefHeight="40.0" prefWidth="60.0" />
                                        </children>
                                        <VBox.margin>
                                           <Insets top="10.0" />
