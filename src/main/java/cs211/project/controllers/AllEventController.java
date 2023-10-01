@@ -8,6 +8,7 @@ import cs211.project.services.Datasource;
 import cs211.project.services.EventListFileDatasource;
 import cs211.project.services.FXRouter;
 import cs211.project.services.JoinEventListFileDatasource;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -38,9 +39,12 @@ public class AllEventController {
     @FXML
     private void initialize() {
         data = FXRouter.getData();
+        data.remove("eventId");
+        data.remove("teamId");
         eventDatasource = new EventListFileDatasource("data/event", "event.csv");
         joinEventDatasource = new JoinEventListFileDatasource("data/event", "joinEvent.csv");
         eventCollection = new EventCollection();
+        eventCollection = eventDatasource.readData();
 
         initAllEvent();
         //Navbar
@@ -61,84 +65,52 @@ public class AllEventController {
             throw new RuntimeException(e);
         }
     }
-//    private void initAllEvent(){
-//        int column = 0;
-//        int row = 1;
-//        executorService.submit(() -> {
-//            for (Event event : eventCollection.getEvents()) {
-//                try {
-//                    FXMLLoader eventCardLoader = new FXMLLoader();
-//                    eventCardLoader.setLocation(getClass().getResource("/cs211/project/views/components/event-card.fxml"));
-//                    AnchorPane eventComponent = eventCardLoader.load();
-//                    EventCard allEventCard = eventCardLoader.getController();
-//                    allEventCard.setEventImage(event.getImage());
-//                    allEventCard.setEventName(event.getName());
-//                    allEventCard.setEventDate(event.getStartDate());
-//                    allEventCard.setEventLocation(event.getLocation());
-//
-//                    JoinEventCollection joinEventCollection = joinEventDatasource.query("eventId = " + event.getId());
-//                    allEventCard.setEventParticipant(joinEventCollection.getJoinEvents().size() + "/" + event.getMaxParticipant());
-//                    allEventCard.setCurrentParticipant(joinEventCollection.getJoinEvents().size());
-//
-//                    if (column == 5) {
-//                        column = 0;
-//                        ++row;
-//                    }
-//
-//                    HashMap<String, Object> data = new HashMap<>();
-//                    data.put("userId", this.data.get("userId"));
-//                    data.put("eventId", event.getId());
-//                    allEventCard.setData(data);
-//                    javafx.application.Platform.runLater(() -> {
-//                        showAllEvent.add(eventComponent, column++, row);
-//                        GridPane.setMargin(eventComponent, new Insets(5));
-//                    });
-//                } catch (IOException e) {
-//                    throw new RuntimeException(e);
-//                }
-//            }
-//        });
-//    }
-//}
     private void initAllEvent(){
-        eventCardList = new ArrayList<>(EventCardList());
-        int column = 0;
-        int row = 1;
-        try {
-            for (EventCard eventCard : eventCardList) {
-                FXMLLoader eventCardLoader = new FXMLLoader();
-                eventCardLoader.setLocation(getClass().getResource("/cs211/project/views/components/event-card.fxml"));
-                AnchorPane eventComponent = eventCardLoader.load();
-                EventCard allEventCard = eventCardLoader.getController();
-                allEventCard.setEventImage(eventCard.getEventImage());
-                allEventCard.setEventName(eventCard.getEventName());
-                allEventCard.setEventDate(eventCard.getEventDate());
-                allEventCard.setEventLocation(eventCard.getEventLocation());
-                allEventCard.setEventParticipant(eventCard.getEventParticipant());
-                if (column == 5) {
-                    column = 0;
-                    ++row;
-                }
+        executorService.submit(() -> {
+            final int[] column = {0};
+            final int[] row = {1};
+            try {
+                for (Event event : eventCollection.getEvents()) {
+                    System.out.println("123");
+                    FXMLLoader eventCardLoader = new FXMLLoader();
+                    eventCardLoader.setLocation(getClass().getResource("/cs211/project/views/components/event-card.fxml"));
+                    AnchorPane eventComponent = eventCardLoader.load();
+                    EventCard allEventCard = eventCardLoader.getController();
 
-                showAllEvent.add(eventComponent, column++, row);
-                GridPane.setMargin(eventComponent, new Insets(5));
+                    allEventCard.setEventImage(event.getImage());
+                    allEventCard.setEventName(event.getName());
+                    allEventCard.setEventDate(event.getStartDate());
+                    allEventCard.setEventLocation(event.getLocation());
+
+                    JoinEventCollection joinEventCollection = joinEventDatasource.query("eventId = " + event.getId());
+                    allEventCard.setEventParticipant(joinEventCollection.getJoinEvents().size() + "/" + event.getMaxParticipant());
+                    allEventCard.setCurrentParticipant(joinEventCollection.getJoinEvents().size());
+
+                    javafx.application.Platform.runLater(() -> {
+                        if (column[0] == 5) {
+                            column[0] = 0;
+                            ++row[0];
+                        }
+                        HashMap<String, Object> data = new HashMap<>();
+                        data.put("userId", this.data.get("userId"));
+                        data.put("eventId", event.getId());
+                        allEventCard.setData(data);
+                        showAllEvent.add(eventComponent, column[0]++, row[0]);
+                        GridPane.setMargin(eventComponent, new Insets(5));
+                    });
+                }
+            } catch (IOException e) {
+                    throw new RuntimeException(e);
             }
+        });
+    }
+
+    @FXML
+    void onHandleBackToIndex(ActionEvent backToIndex) {
+        try {
+            FXRouter.goTo("index", data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-    private List<EventCard> EventCardList(){
-        List<EventCard> eventCardList = new ArrayList<>();
-        EventCard eventCard;
-        for (int i = 0; i < 15; i++){
-            eventCard = new EventCard();
-            eventCard.setEventImage("https://picsum.photos/200");
-            eventCard.setEventName("สัปดาห์หนังสือแห่งชาติ ครั้งที่ 51");
-            eventCard.setEventDate(i+1 + " ม.ค. 2566");
-            eventCard.setEventLocation("ศูนย์การประชุมแห่งชาติสิริกิติ์");
-            eventCard.setEventParticipant("250/500");
-            eventCardList.add(eventCard);
-        }
-        return eventCardList;
     }
 }

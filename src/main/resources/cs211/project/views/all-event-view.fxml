@@ -57,7 +57,7 @@
                                              <children>
                                                 <VBox alignment="TOP_CENTER" prefHeight="95.0" prefWidth="163.0">
                                                    <children>
-                                                      <Button mnemonicParsing="false" prefWidth="89.0" text="&lt; ย้อนกลับ">
+                                                      <Button mnemonicParsing="false" onAction="#onHandleBackToIndex" prefWidth="89.0" text="&lt; ย้อนกลับ">
                                                          <styleClass>
                                                             <String fx:value="btn-outline-danger" />
                                                             <String fx:value="text-sm" />
