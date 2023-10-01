@@ -34,7 +34,7 @@
                                        <children>
                                           <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="250.0">
                                              <center>
-                                                <Label text="รูปโปรไฟล์" BorderPane.alignment="CENTER">
+                                                <Label text="รูปโพรไฟล์" BorderPane.alignment="CENTER">
                                                    <styleClass>
                                                       <String fx:value="font-bold" />
                                                       <String fx:value="text-2xl" />
@@ -44,7 +44,7 @@
                                           </BorderPane>
                                           <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="225.0" prefWidth="250.0">
                                              <center>
-                                                <ImageView fitHeight="175.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                                <ImageView fx:id="avatarPicture" fitHeight="175.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                                                    <image>
                                                       <Image url="@assets/user/kittikun.jpg" />
                                                    </image>
@@ -53,7 +53,7 @@
                                           </BorderPane>
                                           <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="250.0">
                                              <center>
-                                                <Button fx:id="saveButton" mnemonicParsing="false" onAction="#handleSaveButtonClick" text="บันทึก" BorderPane.alignment="CENTER">
+                                                <Button fx:id="editButton" mnemonicParsing="false" onAction="#handleEditAvatarButtonClick" text="แก้ไขรูปโพรไฟล์" BorderPane.alignment="CENTER">
                                                    <styleClass>
                                                       <String fx:value="btn-danger" />
                                                       <String fx:value="text-lg" />
@@ -91,7 +91,7 @@
                                              <children>
                                                 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="100.0">
                                                    <center>
-                                                      <Label styleClass="text-base" text="สมัครสมาชิก:" BorderPane.alignment="CENTER" />
+                                                      <Label styleClass="text-sm" text="สมัครสมาชิก:" BorderPane.alignment="CENTER" />
                                                    </center>
                                                 </BorderPane>
                                                 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="150.0">
@@ -105,7 +105,7 @@
                                              <children>
                                                 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="100.0">
                                                    <center>
-                                                      <Label styleClass="text-base" text="เข้าใช้งานล่าสุด:" BorderPane.alignment="CENTER" />
+                                                      <Label styleClass="text-sm" text="เข้าใช้งานล่าสุด:" BorderPane.alignment="CENTER" />
                                                    </center>
                                                 </BorderPane>
                                                 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="150.0">
@@ -137,7 +137,7 @@
                                        <children>
                                           <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="65.0" prefWidth="550.0">
                                              <center>
-                                                <Label text="โปรไฟล์" BorderPane.alignment="CENTER">
+                                                <Label text="โพรไฟล์" BorderPane.alignment="CENTER">
                                                    <styleClass>
                                                       <String fx:value="font-bold" />
                                                       <String fx:value="text-2xl" />
@@ -190,7 +190,7 @@
                                        <children>
                                           <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="65.0" prefWidth="250.0">
                                              <children>
-                                                <Label styleClass="text-lg" text="ชื่อผู้ใช้งาน">
+                                                <Label styleClass="text-lg" text="ชื่อผู้ใช้">
                                                    <padding>
                                                       <Insets left="40.0" top="20.0" />
                                                    </padding>

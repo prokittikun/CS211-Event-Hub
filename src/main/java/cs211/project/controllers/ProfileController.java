@@ -7,6 +7,8 @@ import cs211.project.services.FXRouter;
 import cs211.project.services.UserListFileDatasource;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -14,11 +16,14 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.UUID;
 
 public class ProfileController {
+    @FXML
+    private ImageView avatarPicture;
     @FXML
     private AnchorPane navbar;
     @FXML
@@ -32,6 +37,8 @@ public class ProfileController {
     private Label lastLoginDateLabel;
     @FXML
     private Button backButton;
+    @FXML
+    private Button editButton;
     @FXML
     private TextField firstNameField;
     @FXML
@@ -94,6 +101,7 @@ public class ProfileController {
         currentPasswordError.setText("");
         newPasswordError.setText("");
         confirmNewPasswordError.setText("");
+        avatarPicture.setImage(new Image("file:data"+ File.separator+"image"+File.separator+"avatar"+File.separator+user.getAvatar()));
 
         registerDateLabel.setText(user.getCreatedAt());
         lastLoginDateLabel.setText(user.getLastLogin());
@@ -120,6 +128,11 @@ public class ProfileController {
         if(!usernameField.getText().isEmpty()){
             userListFileDatasource.updateColumnById(user.getId(), "userName", usernameField.getText());
         }
+    }
+
+    @FXML
+    void handleEditAvatarButtonClick(ActionEvent event) {
+
     }
 
     @FXML
