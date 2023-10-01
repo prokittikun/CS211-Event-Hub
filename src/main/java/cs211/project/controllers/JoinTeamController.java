@@ -17,12 +17,16 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import cs211.project.controllers.components.JoinTeamCard;
 import javafx.scene.shape.Rectangle;
@@ -34,6 +38,7 @@ public class JoinTeamController {
     private AnchorPane footer;
     @FXML
     private Label eventName;
+
     @FXML
     private VBox joinTeamVbox;
 
@@ -48,10 +53,14 @@ public class JoinTeamController {
     private HashMap<String, Object> data;
 
     private UUID eventId;
+
     @FXML
     private void initialize() {
         data = FXRouter.getData();
+        System.out.println("data = " + data);
+
         eventId = UUID.fromString((String) data.get("eventId"));
+//        System.out.println("eventId"+eventId);
         eventDatasource = new EventListFileDatasource("data/event", "event.csv");
         teamDatasource = new TeamListFileDatasource("data/team", "team.csv");
         joinEventDatasource = new JoinEventListFileDatasource("data/event", "joinEvent.csv");
@@ -62,25 +71,6 @@ public class JoinTeamController {
 
         initJoinTeam();
 
-//        joinTeamCardList = new ArrayList<>(JoinTeamCardList());
-//        for (JoinTeamCard teamCard : joinTeamCardList) {
-//            try {
-//                FXMLLoader joinTeamCardLoader = new FXMLLoader();
-//                joinTeamCardLoader.setLocation(getClass().getResource("/cs211/project/views/components/join-team-card.fxml"));
-//                AnchorPane joinTeamCardComponent = joinTeamCardLoader.load();
-//                JoinTeamCard joinTeamCard = joinTeamCardLoader.getController();
-//                joinTeamCard.setEventDate(teamCard.getEventDate());
-//                joinTeamCard.setEventImage(teamCard.getEventImage());
-//                joinTeamCard.setEventLocation(teamCard.getEventLocation());
-//                joinTeamCard.setEventName(teamCard.getEventName());
-//                joinTeamCard.setEventParticipant(teamCard.getEventParticipant());
-//                joinTeamCard.setTeamName(teamCard.getTeamName());
-//                joinTeamCard.setTeamOrder(teamCard.getTeamOrder());
-//                joinTeamVbox.getChildren().add(joinTeamCardComponent);
-//            } catch (IOException e) {
-//                throw new RuntimeException(e);
-//            }
-//        }
         //Navbar
         FXMLLoader navbarComponentLoader = new FXMLLoader(getClass().getResource("/cs211/project/views/navbar.fxml"));
         //Footer
@@ -100,11 +90,17 @@ public class JoinTeamController {
         }
     }
 
+    public void reload() {
+        this.joinTeamVbox.getChildren().clear();
+        initJoinTeam();
+    }
+
     void initJoinTeam() {
         teamCollection = teamDatasource.query("eventId = " + eventId.toString());
         System.out.println(teamCollection.getTeams().size());
+//        final int[] i = {1};
         executorService.submit(() -> {
-            int i = 0;
+            LocalDateTime currentDateTime = LocalDateTime.parse(DateTimeService.getCurrentDate()+"T"+DateTimeService.getCurrentTime());
             for (Team team : teamCollection.getTeams()) {
                 try {
                     FXMLLoader joinTeamCardLoader = new FXMLLoader();
@@ -117,19 +113,30 @@ public class JoinTeamController {
 //                    joinTeamCard.setEventImage(event.getImage());
 //                    joinTeamCard.setEventLocation(event.getLocation());
 //                    joinTeamCard.setEventName(event.getName());
+                    joinTeamCard.setTeamId(team.getId());
 
                     TeamMemberCollection teamMemberCollection = teamMemberDatasource.query("teamId = " + team.getId());
                     joinTeamCard.setTeamParticipant(teamMemberCollection.getTeamMembers().size() + "/" + team.getMaxMember());
+
+                    joinTeamCard.setTeamName(team.getName());
+//                    joinTeamCard.setTeamOrder(Integer.toString(++i[0]));
+                    joinTeamCard.setUserId((String) data.get("userId"));
+                    joinTeamCard.setJoinTeamController(this);
+                    LocalDateTime teamStartDateTime = LocalDateTime.parse(team.getStartDate() + "T" + team.getStartTime());
+                    LocalDateTime teamEndDateTime = LocalDateTime.parse(team.getEndDate() + "T" + team.getEndTime());
+                    if (currentDateTime.isAfter(teamStartDateTime) && currentDateTime.isBefore(teamEndDateTime)) {
+                        joinTeamCard.setJoinTeamButton(false,"เข้าร่วมทีม");
+                        System.out.println("In range");
+                    }else{
+                        joinTeamCard.setJoinTeamButton(true, "ไม่อยู่ระหว่างการรับสมัคร");
+                        System.out.println("not in range");
+                    }
                     TeamMember isMe = teamMemberCollection.findTeamMemberById((String) data.get("userId"));
-                    System.out.println(isMe.getUserId());
-                    if(isMe != null){
+                    System.out.println("userId = " + (String) data.get("userId"));
+                    if (isMe != null) {
                         joinTeamCard.isJoinedTeam();
                     }
-                    joinTeamCard.setTeamName(team.getName());
-                    joinTeamCard.setTeamOrder(++i + "");
-                    joinTeamCard.setTeamId(team.getId());
-                    joinTeamCard.setUserId((String) data.get("userId"));
-
+                    joinTeamCard.setDate(DateTimeService.toString(team.getStartDate()) + " " + team.getStartTime(), DateTimeService.toString(team.getEndDate()) + " " + team.getEndTime());
                     javafx.application.Platform.runLater(() -> {
                         joinTeamVbox.getChildren().add(joinTeamCardComponent);
                     });
@@ -139,20 +146,6 @@ public class JoinTeamController {
             }
         });
     }
-//    private List<JoinTeamCard> JoinTeamCardList(){
-//        List<JoinTeamCard> joinTeamCardList = new ArrayList<>();
-//        JoinTeamCard joinTeamCard;
-//        for (int i = 0; i < 10; i++){
-//            joinTeamCard = new JoinTeamCard();
-//            joinTeamCard.setEventDate(i + " ม.ค. 2566");
-//            joinTeamCard.setEventImage("https://picsum.photos/200");
-//            joinTeamCard.setEventLocation("ศูนย์การประชุมแห่งชาติสิริกิติ์");
-//            joinTeamCard.setEventName("สัปดาห์หนังสือแห่งชาติ ครั้งที่ 51");
-//            joinTeamCard.setEventParticipant("250/500");
-//            joinTeamCard.setTeamName("Team " + i);
-//            joinTeamCard.setTeamOrder(i+1 + "");
-//            joinTeamCardList.add(joinTeamCard);
-//        }
-//        return joinTeamCardList;
-//    }
+
+
 }
