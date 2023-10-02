@@ -40,6 +40,7 @@ public class ListTeamController {
     private ImageView previewImageView;
     private List<ListTeamCard> ListTeamCardList;
     private HashMap<String, Object> data;
+    private HashMap<String, Object> dataTeamComponent;
     private Datasource<EventCollection> datasourceEvent;
     private Datasource<JoinEventCollection> datasourceJoinEvent;
     private Datasource<TeamCollection> datasourceTeam;
@@ -53,7 +54,6 @@ public class ListTeamController {
     private void initialize() {
         //Get Data
         data = FXRouter.getData();
-        System.out.println(data.get("eventId"));
         //Get Event
         datasourceEvent = new EventListFileDatasource("data/event", "event.csv");
         eventList = datasourceEvent.query("id = " + data.get("eventId"));
@@ -90,7 +90,7 @@ public class ListTeamController {
         nameLabel.setText(event.getName());
         participantLabel.setText(joinEventList.getJoinEvents().size()+"/"+event.getMaxParticipant());
         dateLabel.setText(event.getStartDate());
-        previewImageView.setImage(new Image("file:data/image/event/"+event.getImage()));
+        previewImageView.setImage(new Image("file:data/image/event/" + event.getImage()));
 
         //Component
         int i = 0;
@@ -104,11 +104,19 @@ public class ListTeamController {
 
                 //Filter User by userId
                 userList = datasourceUser.query("id = " + listTeamCardData.getLeaderId());
+
                 //Set Value in List
                 listTeamCard.setHeadTeamLabel(userList.getAllUsers().get(0).getFullName());
-                listTeamCard.setHeadTeamImage(userList.getAllUsers().get(0).getAvatar());
+                listTeamCard.setHeadTeamImage("file:data/image/user/"+userList.getAllUsers().get(0).getAvatar());
                 listTeamCard.setTeamLabel(listTeamCardData.getName());
                 listTeamCard.setOrderNumber(" "+i);
+
+                //SetData
+                dataTeamComponent = new HashMap<>();
+                dataTeamComponent.put("teamId", listTeamCardData.getId());
+                dataTeamComponent.put("eventId", data.get("eventId"));
+                dataTeamComponent.put("userId", data.get("userId"));
+                listTeamCard.setData(dataTeamComponent);
 
                 //Insert to Component
                 teamComponent.getChildren().add(listTeamCardComponent);
@@ -121,7 +129,7 @@ public class ListTeamController {
     @FXML
     public void goToCreateTeam(){
         try {
-            FXRouter.goTo("createTeam");
+            FXRouter.goTo("createTeam", data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -130,7 +138,7 @@ public class ListTeamController {
     @FXML
     public void backToMyEvent(){
         try {
-            FXRouter.goTo("myEvent");
+            FXRouter.goTo("myEvent", data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

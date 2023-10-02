@@ -96,11 +96,11 @@
                         <String fx:value="shadow" />
                      </styleClass>
                      <children>
-                        <VBox layoutX="23.0" layoutY="55.0" prefHeight="331.0" prefWidth="992.0">
+                        <VBox layoutX="23.0" layoutY="55.0" prefHeight="394.0" prefWidth="992.0">
                            <children>
-                              <ScrollPane hbarPolicy="NEVER" prefHeight="349.0" prefWidth="992.0">
+                              <ScrollPane hbarPolicy="NEVER" prefHeight="379.0" prefWidth="992.0">
                                  <content>
-                                    <VBox fx:id="teamComponent" alignment="TOP_CENTER" prefHeight="313.0" prefWidth="992.0" spacing="10.0">
+                                    <VBox fx:id="teamComponent" alignment="TOP_CENTER" minHeight="375.0" prefWidth="991.0" spacing="10.0">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
@@ -122,8 +122,8 @@
                                     <String fx:value="text-2xl" />
                                     <String fx:value="font-bold" />
                                  </styleClass></Label>
-                              <Pane prefHeight="35.0" prefWidth="401.0" />
-                              <Button mnemonicParsing="false" onAction="#goToCreateTeam" styleClass="btn-danger" text="สร้างทีม" />
+                              <Pane prefHeight="38.0" prefWidth="382.0" />
+                              <Button mnemonicParsing="false" onAction="#goToCreateTeam" prefHeight="28.0" prefWidth="71.0" styleClass="btn-danger" text="สร้างทีม" />
                            </children>
                            <opaqueInsets>
                               <Insets />
