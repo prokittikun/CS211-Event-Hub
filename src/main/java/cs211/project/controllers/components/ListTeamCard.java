@@ -9,6 +9,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 public class ListTeamCard {
     @FXML
@@ -25,6 +26,8 @@ public class ListTeamCard {
 
     private String pathHeadTeamImage = "";
 
+    private HashMap<String, Object> data;
+
     public ListTeamCard() {
         this.headTeamImageCircle = new Circle();
         this.headTeamLabel = new Label();
@@ -36,7 +39,7 @@ public class ListTeamCard {
     @FXML
     public void getGoToSettingTeam() {
         try {
-            FXRouter.goTo("manageTeam");
+            FXRouter.goTo("teamManagement", data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -45,7 +48,7 @@ public class ListTeamCard {
     @FXML
     public void goToEditTeam(){
         try {
-            FXRouter.goTo("editTeam");
+            FXRouter.goTo("editTeam", data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -73,10 +76,13 @@ public class ListTeamCard {
         return teamLabel.getText();
     }
 
+    public HashMap<String, Object> getData() {
+        return data;
+    }
 
     //Setter
     public void setHeadTeamImage(String path) {
-        Image image = new Image("file:"+"data/image/user/"+path);
+        Image image = new Image(path);
         headTeamImageCircle.setFill(new ImagePattern(image));
         this.pathHeadTeamImage = path;
     }
@@ -91,5 +97,9 @@ public class ListTeamCard {
 
     public void setTeamLabel(String teamLabel) {
         this.teamLabel.setText(teamLabel);
+    }
+
+    public void setData(HashMap<String, Object> data) {
+        this.data = data;
     }
 }
