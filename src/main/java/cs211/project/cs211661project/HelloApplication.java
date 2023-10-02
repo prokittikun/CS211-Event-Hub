@@ -35,6 +35,7 @@ public class HelloApplication extends Application {
         FXRouter.when("createTeam", resourcesPath + "create-team-view.fxml");
         FXRouter.when("editTeam", resourcesPath + "create-team-view.fxml");
         FXRouter.when("createForm", resourcesPath + "create-form-view.fxml");
+        FXRouter.when("eventParticipant", resourcesPath + "event-participant-view.fxml");
 
         FXRouter.when("teamManagement", resourcesPath + "team-management-view.fxml");
         FXRouter.when("allEvent", resourcesPath + "all-event-view.fxml");
