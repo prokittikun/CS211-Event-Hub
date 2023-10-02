@@ -9,7 +9,7 @@
 <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="270.0" spacing="10.0" stylesheets="@../style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.components.ListTeamPreview">
    <children>
       <Circle fx:id="headTeamImageCircle" fill="WHITE" radius="24.0" stroke="#462b63" strokeType="INSIDE" style="-fx-cursor: hand;" styleClass="image-border" />
-      <Label text="ทีมพิธีกร">
+      <Label fx:id="titleTeamLabel" text="ทีมพิธีกร">
          <styleClass>
             <String fx:value="text-lg" />
             <String fx:value="font-bold" />
