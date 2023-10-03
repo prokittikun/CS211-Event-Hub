@@ -139,7 +139,7 @@
                                           <VBox prefHeight="50.0" prefWidth="138.0" />
                                           <VBox prefHeight="50.0" prefWidth="479.0">
                                              <children>
-                                                <TextField fx:id="textFieldName" prefHeight="31.0" prefWidth="556.0" promptText="กรุณาระบุชื่อทีม" />
+                                                <TextField fx:id="textFieldName" prefHeight="31.0" prefWidth="556.0" promptText="กรุณาระบุชื่อทีม" styleClass="card-light-gray" />
                                                 <Label fx:id="errorLabelName" styleClass="text-red" text="errorLabelName" />
                                              </children>
                                           </VBox>
@@ -154,7 +154,7 @@
                                           <VBox prefHeight="50.0" prefWidth="99.0" />
                                           <VBox prefHeight="50.0" prefWidth="476.0">
                                              <children>
-                                                <TextField fx:id="textFieldMaxParticipant" prefHeight="31.0" prefWidth="556.0" promptText="กรุณาระบุชื่อทีม" />
+                                                <TextField fx:id="textFieldMaxParticipant" prefHeight="31.0" prefWidth="556.0" promptText="กรุณาระบุชื่อทีม" styleClass="card-light-gray" />
                                                 <Label fx:id="errorLabelMaxParticipant" styleClass="text-red" text="errorLabelMaxParticipant" />
                                              </children>
                                           </VBox>
@@ -169,7 +169,7 @@
                                           <VBox prefHeight="50.0" prefWidth="68.0" />
                                           <VBox prefHeight="50.0" prefWidth="222.0">
                                              <children>
-                                                <DatePicker fx:id="datePickerStartDate" prefHeight="36.0" prefWidth="237.0" promptText="กรุณาระบุวันเดือนปี" />
+                                                <DatePicker fx:id="datePickerStartDate" prefHeight="36.0" prefWidth="237.0" promptText="กรุณาระบุวันเดือนปี" styleClass="card-light-gray" />
                                                 <Label fx:id="errorLabelStartDate" styleClass="text-red" text="errorLabelStartDate" />
                                              </children>
                                           </VBox>
@@ -180,7 +180,7 @@
                                           </Label>
                                           <VBox prefHeight="50.0" prefWidth="196.0">
                                              <children>
-                                                <TextField fx:id="textFieldStartTime" prefHeight="31.0" prefWidth="556.0" promptText="กรุณาระบุในรูปแบบ xx:xx" />
+                                                <TextField fx:id="textFieldStartTime" prefHeight="31.0" prefWidth="556.0" promptText="กรุณาระบุในรูปแบบ xx:xx" styleClass="card-light-gray" />
                                                 <Label fx:id="errorLabelStartTime" styleClass="text-red" text="errorLabelStartTime" />
                                              </children>
                                           </VBox>
@@ -195,7 +195,7 @@
                                           <VBox prefHeight="50.0" prefWidth="47.0" />
                                           <VBox prefHeight="50.0" prefWidth="222.0">
                                              <children>
-                                                <DatePicker fx:id="datePickerEndDate" prefHeight="36.0" prefWidth="237.0" promptText="กรุณาระบุวันเดือนปี" />
+                                                <DatePicker fx:id="datePickerEndDate" prefHeight="36.0" prefWidth="237.0" promptText="กรุณาระบุวันเดือนปี" styleClass="card-light-gray" />
                                                 <Label fx:id="errorLabelEndDate" styleClass="text-red" text="errorLabelEndDate" />
                                              </children>
                                           </VBox>
@@ -206,7 +206,7 @@
                                           </Label>
                                           <VBox prefHeight="50.0" prefWidth="196.0">
                                              <children>
-                                                <TextField fx:id="textFieldEndTime" prefHeight="31.0" prefWidth="556.0" promptText="กรุณาระบุในรูปแบบ xx:xx" />
+                                                <TextField fx:id="textFieldEndTime" prefHeight="31.0" prefWidth="556.0" promptText="กรุณาระบุในรูปแบบ xx:xx" styleClass="card-light-gray" />
                                                 <Label fx:id="errorLabelEndTime" styleClass="text-red" text="errorLabelEndTime" />
                                              </children>
                                           </VBox>
