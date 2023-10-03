@@ -74,7 +74,11 @@ public class MyEventCard {
 
     @FXML
     public void goToParticipant(){
-
+        try {
+            FXRouter.goTo("eventParticipant", data);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
