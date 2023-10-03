@@ -29,10 +29,10 @@
                      <children>
                         <HBox alignment="CENTER" layoutY="-1.0" prefHeight="164.0" prefWidth="1041.0">
                            <children>
-                              <ImageView fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="imageViewPreview" fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
                               <VBox alignment="CENTER_LEFT" prefHeight="155.0" prefWidth="856.0">
                                  <children>
-                                    <Label text="nameLabel">
+                                    <Label fx:id="nameLabel" text="nameLabel">
                                        <styleClass>
                                           <String fx:value="text-4xl" />
                                           <String fx:value="font-bold" />
@@ -45,7 +45,7 @@
                                                 <Image url="@assets/Icons/marker.png" />
                                              </image>
                                           </ImageView>
-                                          <Label styleClass="text-lg" text="locationLabel" />
+                                          <Label fx:id="locationLabel" styleClass="text-lg" text="locationLabel" />
                                        </children>
                                        <VBox.margin>
                                           <Insets />
@@ -58,13 +58,13 @@
                                                 <Image url="@assets/Icons/calendar.png" />
                                              </image>
                                           </ImageView>
-                                          <Label text="dateLabel" />
+                                          <Label fx:id="dateLabel" text="dateLabel" />
                                           <ImageView fitHeight="32.0" fitWidth="24.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@assets/Icons/user.png" />
                                              </image>
                                           </ImageView>
-                                          <Label text="participantLabel" />
+                                          <Label fx:id="participantLabel" text="participantLabel" />
                                        </children>
                                     </HBox>
                                  </children>
@@ -131,77 +131,102 @@
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                  </padding>
                               </HBox>
-                              <VBox layoutY="55.0" prefHeight="405.0" prefWidth="746.0">
+                              <VBox layoutY="55.0" prefHeight="405.0" prefWidth="746.0" spacing="10.0">
                                  <children>
-                                    <HBox prefHeight="17.0" prefWidth="744.0">
+                                    <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="841.0">
                                        <children>
-                                          <Label styleClass="text-2xl" text="ชื่อทีม">
-                                             <HBox.margin>
-                                                <Insets />
-                                             </HBox.margin>
-                                          </Label>
-                                          <Pane prefHeight="38.0" prefWidth="147.0" />
-                                          <TextField prefHeight="35.0" prefWidth="499.0" promptText="กรุณาระบุชื่อทีม" />
+                                          <Label styleClass="text-xl" text="ชื่อทีม" />
+                                          <VBox prefHeight="50.0" prefWidth="138.0" />
+                                          <VBox prefHeight="50.0" prefWidth="479.0">
+                                             <children>
+                                                <TextField fx:id="textFieldName" prefHeight="31.0" prefWidth="556.0" promptText="กรุณาระบุชื่อทีม" />
+                                                <Label fx:id="errorLabelName" styleClass="text-red" text="errorLabelName" />
+                                             </children>
+                                          </VBox>
                                        </children>
-                                       <padding>
-                                          <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
-                                       </padding>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
                                     </HBox>
-                                    <HBox prefHeight="17.0" prefWidth="744.0">
+                                    <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="841.0">
                                        <children>
-                                          <Label styleClass="text-2xl" text="จำนวนที่รับ">
-                                             <HBox.margin>
-                                                <Insets />
-                                             </HBox.margin>
-                                          </Label>
-                                          <Pane prefHeight="38.0" prefWidth="94.0" />
-                                          <TextField prefHeight="35.0" prefWidth="499.0" promptText="กรุณาระบุจำนวนที่รับ" />
+                                          <Label styleClass="text-xl" text="จำนวนที่รับ" />
+                                          <VBox prefHeight="50.0" prefWidth="99.0" />
+                                          <VBox prefHeight="50.0" prefWidth="476.0">
+                                             <children>
+                                                <TextField fx:id="textFieldMaxParticipant" prefHeight="31.0" prefWidth="556.0" promptText="กรุณาระบุชื่อทีม" />
+                                                <Label fx:id="errorLabelMaxParticipant" styleClass="text-red" text="errorLabelMaxParticipant" />
+                                             </children>
+                                          </VBox>
                                        </children>
-                                       <padding>
-                                          <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
-                                       </padding>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
                                     </HBox>
-                                    <HBox prefHeight="17.0" prefWidth="744.0" spacing="5.0">
+                                    <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="841.0">
                                        <children>
-                                          <Label styleClass="text-2xl" text="วันเดือนปี ที่เริ่ม">
-                                             <HBox.margin>
-                                                <Insets />
-                                             </HBox.margin>
+                                          <Label styleClass="text-xl" text="วันเดือนปี ที่เริ่ม" />
+                                          <VBox prefHeight="50.0" prefWidth="68.0" />
+                                          <VBox prefHeight="50.0" prefWidth="222.0">
+                                             <children>
+                                                <DatePicker fx:id="datePickerStartDate" prefHeight="36.0" prefWidth="237.0" promptText="กรุณาระบุวันเดือนปี" />
+                                                <Label fx:id="errorLabelStartDate" styleClass="text-red" text="errorLabelStartDate" />
+                                             </children>
+                                          </VBox>
+                                          <Label styleClass="text-xl" text="เวลา">
+                                             <padding>
+                                                <Insets left="10.0" right="10.0" />
+                                             </padding>
                                           </Label>
-                                          <Pane prefHeight="38.0" prefWidth="43.0" />
-                                          <DatePicker prefHeight="36.0" prefWidth="237.0" promptText="กรุณาระบุวันเดือนปี" />
-                                          <Label styleClass="text-2xl" text="เวลา" />
-                                          <TextField prefHeight="35.0" prefWidth="210.0" promptText="กรุณาระบุชื่อทีม" />
+                                          <VBox prefHeight="50.0" prefWidth="196.0">
+                                             <children>
+                                                <TextField fx:id="textFieldStartTime" prefHeight="31.0" prefWidth="556.0" promptText="กรุณาระบุในรูปแบบ xx:xx" />
+                                                <Label fx:id="errorLabelStartTime" styleClass="text-red" text="errorLabelStartTime" />
+                                             </children>
+                                          </VBox>
                                        </children>
-                                       <padding>
-                                          <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
-                                       </padding>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
                                     </HBox>
-                                    <HBox prefHeight="17.0" prefWidth="744.0" spacing="5.0">
+                                    <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="841.0">
                                        <children>
-                                          <Label styleClass="text-2xl" text="วันเดือนปี ที่สิ้นสุด">
-                                             <HBox.margin>
-                                                <Insets />
-                                             </HBox.margin>
+                                          <Label styleClass="text-xl" text="วันเดือนปี ที่สิ้นสุด" />
+                                          <VBox prefHeight="50.0" prefWidth="47.0" />
+                                          <VBox prefHeight="50.0" prefWidth="222.0">
+                                             <children>
+                                                <DatePicker fx:id="datePickerEndDate" prefHeight="36.0" prefWidth="237.0" promptText="กรุณาระบุวันเดือนปี" />
+                                                <Label fx:id="errorLabelEndDate" styleClass="text-red" text="errorLabelEndDate" />
+                                             </children>
+                                          </VBox>
+                                          <Label styleClass="text-xl" text="เวลา">
+                                             <padding>
+                                                <Insets left="10.0" right="10.0" />
+                                             </padding>
                                           </Label>
-                                          <Pane prefHeight="38.0" prefWidth="15.0" />
-                                          <DatePicker prefHeight="36.0" prefWidth="237.0" promptText="กรุณาระบุวันเดือนปี" />
-                                          <Label styleClass="text-2xl" text="เวลา" />
-                                          <TextField prefHeight="35.0" prefWidth="215.0" promptText="กรุณาระบุชื่อทีม" />
+                                          <VBox prefHeight="50.0" prefWidth="196.0">
+                                             <children>
+                                                <TextField fx:id="textFieldEndTime" prefHeight="31.0" prefWidth="556.0" promptText="กรุณาระบุในรูปแบบ xx:xx" />
+                                                <Label fx:id="errorLabelEndTime" styleClass="text-red" text="errorLabelEndTime" />
+                                             </children>
+                                          </VBox>
                                        </children>
-                                       <padding>
-                                          <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
-                                       </padding>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
                                     </HBox>
                                     <VBox alignment="CENTER" prefHeight="37.0" prefWidth="746.0">
                                        <children>
-                                          <Button mnemonicParsing="false" styleClass="btn-danger" text="บันทึก" />
+                                          <Button mnemonicParsing="false" onAction="#createTeam" prefHeight="28.0" prefWidth="64.0" styleClass="btn-danger" text="บันทึก" />
                                        </children>
                                        <VBox.margin>
-                                          <Insets top="30.0" />
+                                          <Insets top="10.0" />
                                        </VBox.margin>
                                     </VBox>
                                  </children>
+                                 <padding>
+                                    <Insets left="40.0" right="40.0" />
+                                 </padding>
                               </VBox>
                            </children>
                         </Pane>
