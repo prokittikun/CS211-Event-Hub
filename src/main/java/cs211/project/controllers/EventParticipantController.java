@@ -21,6 +21,7 @@ import javafx.util.Callback;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Objects;
+import java.util.Optional;
 
 public class EventParticipantController {
     @FXML
@@ -105,12 +106,14 @@ public class EventParticipantController {
                             public void updateItem(HBox  item, boolean empty) {
                                 super.updateItem(item, empty);
                                 if (empty) {
+                                    setGraphic(null);
                                     setText(null);
                                 } else {
                                     HBox hbox = new HBox(deleteButton);
                                     JoinEvent joinEvent = getTableView().getItems().get(getIndex());
+
                                     //Icon Delete
-                                    ImageView trashIcon = new ImageView(new Image(Objects.requireNonNull(getClass().getResource("/cs211/project/views/assets/Icons/trash-red.png")).toExternalForm()));
+                                    ImageView trashIcon = new ImageView(new Image (getClass().getResource("/cs211/project/views/assets/Icons/trash-red.png").toExternalForm()));
                                     trashIcon.setFitHeight(20);
                                     trashIcon.setFitWidth(20);
 
@@ -118,12 +121,24 @@ public class EventParticipantController {
                                     deleteButton.setStyle("-fx-background-color: transparent; -fx-cursor: hand;");
                                     //open delete modal
                                     deleteButton.setOnAction(event -> {
-                                        joinEventDatasource.deleteById(joinEvent.getId());
-                                        showTable();
+                                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                        alert.setTitle("คุณต้องการลบผู้เข้าร่วมอีเวนต์นี้ใช่หรือไม่ ?");
+                                        alert.setHeaderText("หากลบแล้วจะไม่สามารถนำกลับมาได้!");
+
+                                        Optional<ButtonType> result = alert.showAndWait();
+                                        ButtonType button = result.orElse(ButtonType.CANCEL);
+
+                                        if (button == ButtonType.OK) {
+                                            //Delete Event
+                                            joinEventDatasource.deleteById(joinEvent.getId());
+                                            showTable();
+                                        } else {
+                                            alert.close();
+                                        }
                                     });
 
                                     hbox.getChildren().clear();
-                                    hbox.getChildren().add(openmodalButton);
+                                    hbox.getChildren().add(deleteButton);
                                     hbox.alignmentProperty().set(javafx.geometry.Pos.CENTER);
                                     setGraphic(hbox);
                                     setText(null);
@@ -151,9 +166,9 @@ public class EventParticipantController {
     }
 
     @FXML
-    void goToCreateEvent(ActionEvent event) {
+    void goToMyEvent(ActionEvent event) {
         try {
-            FXRouter.goTo("createEvent", data);
+            FXRouter.goTo("myEvent", data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

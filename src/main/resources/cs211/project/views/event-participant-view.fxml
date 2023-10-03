@@ -14,9 +14,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.EventParticipantController">
    <children>
-      <BorderPane layoutX="10.0" layoutY="10.0" prefHeight="800.0" prefWidth="1200.0">
+      <BorderPane prefHeight="800.0" prefWidth="1200.0">
          <center>
-            <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1092.0" BorderPane.alignment="CENTER">
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="575.0" prefWidth="1092.0" BorderPane.alignment="CENTER">
                <styleClass>
                   <String fx:value="card" />
                   <String fx:value="shadow" />
@@ -25,11 +25,11 @@
                   <Insets top="50.0" />
                </BorderPane.margin>
                <children>
-                  <VBox layoutX="2.0" layoutY="20.0" prefHeight="562.0" prefWidth="1088.0" styleClass="bg-white">
+                  <VBox layoutX="2.0" layoutY="20.0" prefHeight="555.0" prefWidth="1088.0" styleClass="bg-white">
                      <children>
                         <HBox alignment="CENTER_LEFT" prefHeight="67.0" prefWidth="1091.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#goToCreateEvent" text="&lt; ย้อนกลับ">
+                              <Button mnemonicParsing="false" onAction="#goToMyEvent" text="&lt; ย้อนกลับ">
                                  <styleClass>
                                     <String fx:value="btn-outline-danger" />
                                     <String fx:value="text-sm" />
@@ -53,23 +53,23 @@
                               <Insets />
                            </opaqueInsets>
                         </HBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
+                        <VBox prefHeight="431.0" prefWidth="1048.0">
                            <children>
-                              <TableView fx:id="participantTable" prefHeight="200.0" prefWidth="200.0" styleClass="text-lg">
+                              <TableView fx:id="participantTable" prefHeight="425.0" prefWidth="1048.0" styleClass="text-lg">
                                 <columns>
                                   <TableColumn fx:id="orderTable" prefWidth="75.0" text="ลำดับที่" />
-                                  <TableColumn fx:id="nameTable" prefWidth="437.5" text="ชื่อ-นามสกุล" />
-                                    <TableColumn fx:id="dateRegTable" prefWidth="320.0" text="วันที่ลงทะเบียน" />
-                                    <TableColumn fx:id="actionTable" prefWidth="173.0" text="ดำเนินการ" />
+                                  <TableColumn fx:id="nameTable" prefWidth="572.0" text="ชื่อ-นามสกุล" />
+                                    <TableColumn fx:id="dateRegTable" prefWidth="297.0" text="วันที่ลงทะเบียน" />
+                                    <TableColumn fx:id="actionTable" prefWidth="94.0" text="ดำเนินการ" />
                                 </columns>
                               </TableView>
                            </children>
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
-                           <padding>
-                              <Insets bottom="10.0" left="40.0" right="40.0" top="10.0" />
-                           </padding>
+                           <VBox.margin>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </VBox.margin>
                         </VBox>
                      </children>
                      <padding>
