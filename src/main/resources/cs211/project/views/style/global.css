@@ -35,6 +35,14 @@
     -fx-text-fill: white;
     -fx-cursor: hand;
 }
+
+.btn-success{
+    -fx-background-radius: 12px;
+    -fx-background-color: #1E9E1E;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+
 .btn-outline-danger {
     -fx-background-radius: 12px;
     -fx-border-radius: 12px;
