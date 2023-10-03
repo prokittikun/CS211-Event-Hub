@@ -3,7 +3,6 @@ package cs211.project.controllers;
 import cs211.project.models.Event;
 import cs211.project.models.collections.EventCollection;
 import cs211.project.services.Datasource;
-import cs211.project.services.DateTimeService;
 import cs211.project.services.EventListFileDatasource;
 import cs211.project.services.FXRouter;
 import java.io.File;
@@ -23,6 +22,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -73,7 +73,7 @@ public class ManageEventController {
   private DatePicker pickerStartDate;
 
   @FXML
-  private TextField textFieldDetail;
+  private TextArea textAreaDetail;
 
   @FXML
   private TextField textFieldEndTime;
@@ -99,7 +99,20 @@ public class ManageEventController {
 
   @FXML
   private void initialize() {
+    //Get Data
     data = FXRouter.getData();
+    //Hide Error Label
+    errorLabelName.setText("");
+    errorLabelDetail.setText("");
+    errorLabelLocation.setText("");
+    errorLabelStartDate.setText("");
+    errorLabelStartTime.setText("");
+    errorLabelEndDate.setText("");
+    errorLabelEndTime.setText("");
+    errorLabelMaxParticipant.setText("");
+    errorDragImage.setText("");
+    //Datasource
+    eventDatasource = new EventListFileDatasource("data/event", "event.csv");
 
     //Navbar
     FXMLLoader navbarComponentLoader = new FXMLLoader(
@@ -123,27 +136,13 @@ public class ManageEventController {
       throw new RuntimeException(e);
     }
 
-    //Hide Error Label
-    errorLabelName.setText("");
-    errorLabelDetail.setText("");
-    errorLabelLocation.setText("");
-    errorLabelStartDate.setText("");
-    errorLabelStartTime.setText("");
-    errorLabelEndDate.setText("");
-    errorLabelEndTime.setText("");
-    errorLabelMaxParticipant.setText("");
-    errorDragImage.setText("");
-
-    //Datasource
-    eventDatasource = new EventListFileDatasource("data/event", "event.csv");
-
     //Get Data When Edit
     if(data.get("eventId") != null){
         String eventId = (String) data.get("eventId");
         EventCollection eventCollection = eventDatasource.query("id = " + eventId);
         Event event = eventCollection.getEvents().get(0);
         textFieldName.setText(event.getName());
-        textFieldDetail.setText(event.getDetail());
+        textAreaDetail.setText(event.getDetail());
         textFieldLocation.setText(event.getLocation());
         pickerStartDate.setValue(
             LocalDate.parse(event.getStartDate())
@@ -159,8 +158,7 @@ public class ManageEventController {
         try {
             Image image = new Image(new FileInputStream("data/image/event/"+event.getImage()));
             imageView.setImage(image);
-            //Set Image File
-            imageFile = new File(event.getImage());
+            imageFile = new File("data/image/event/"+event.getImage());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -236,7 +234,7 @@ public class ManageEventController {
       errorLabelName.setText("");
     }
 
-    if (textFieldDetail.getText().isEmpty()) {
+    if (textAreaDetail.getText().isEmpty()) {
       errorLabelDetail.setText("Detail is required");
       isValid = false;
     } else {
@@ -317,7 +315,7 @@ public class ManageEventController {
       //Get Data
       String name = textFieldName.getText();
       String userId = (String) data.get("userId");
-      String detail = textFieldDetail.getText();
+      String detail = textAreaDetail.getText();
       String location = textFieldLocation.getText();
       String startDate = pickerStartDate.getValue().toString();
       String startTime = textFieldStartTime.getText();
@@ -346,16 +344,17 @@ public class ManageEventController {
             filename
           );
         // COPY WITH FLAG REPLACE FILE IF FILE IS EXIST
+        System.out.println(imageFile.toPath());
         Files.copy(
-          imageFile.toPath(),
-          target,
-          StandardCopyOption.REPLACE_EXISTING
+                imageFile.toPath(),
+                target,
+                StandardCopyOption.REPLACE_EXISTING
         );
 
         //Create Event
         if(data.get("eventId") == null){
             Event event = new Event(
-                    data.get("userId").toString(),
+                    userId,
                     name,
                     detail,
                     location,
@@ -372,7 +371,7 @@ public class ManageEventController {
             eventDatasource.writeData(eventCollection);
         }else{ //Edit
             Event event = new Event(
-                    data.get("userId").toString(),
+                    userId,
                     name,
                     detail,
                     location,
@@ -388,6 +387,7 @@ public class ManageEventController {
 
         //Go to My Event
         try {
+          data.remove("eventId");
           FXRouter.goTo("myEvent", data);
         } catch (IOException e) {
           throw new RuntimeException(e);

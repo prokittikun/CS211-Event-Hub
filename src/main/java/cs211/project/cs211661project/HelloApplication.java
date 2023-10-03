@@ -28,12 +28,14 @@ public class HelloApplication extends Application {
         FXRouter.when("joinTeam", resourcesPath + "join-team-view.fxml");
         FXRouter.when("registerEvent", resourcesPath + "register-event-view.fxml");
         //Event
-        FXRouter.when("createEvent", resourcesPath + "manage-event-view.fxml");
-        FXRouter.when("editEvent", resourcesPath + "manage-event-view.fxml");
+        FXRouter.when("createEvent", resourcesPath + "create-event-view.fxml");
+        FXRouter.when("editEvent", resourcesPath + "create-event-view.fxml");
         FXRouter.when("myEvent", resourcesPath + "my-event-view.fxml");
         FXRouter.when("listTeam", resourcesPath + "list-team-view.fxml");
         FXRouter.when("createTeam", resourcesPath + "create-team-view.fxml");
+        FXRouter.when("editTeam", resourcesPath + "create-team-view.fxml");
         FXRouter.when("createForm", resourcesPath + "create-form-view.fxml");
+        FXRouter.when("eventParticipant", resourcesPath + "event-participant-view.fxml");
 
         FXRouter.when("teamManagement", resourcesPath + "team-management-view.fxml");
         FXRouter.when("allEvent", resourcesPath + "all-event-view.fxml");

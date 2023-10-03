@@ -64,13 +64,14 @@
                         <HBox alignment="CENTER_LEFT" prefHeight="15.0" prefWidth="418.0" spacing="10.0">
                            <children>
                               <Button fx:id="eventToggleStatus" mnemonicParsing="false" onAction="#onHandleEventStatus" styleClass="btn-success" text="เปิด" />
-                              <Button fx:id="goToParticipant" mnemonicParsing="false" styleClass="btn-outline-danger" text="รายชื่อผู้เข้าร่วม" />
+                              <Button mnemonicParsing="false" onAction="#goToListTeam" styleClass="btn-outline-danger" text="รายชื่อทีม" />
+                              <Button mnemonicParsing="false" onAction="#goToParticipant" styleClass="btn-outline-danger" text="รายชื่อผู้เข้าร่วม" />
                            </children>
                         </HBox>
                      </children>
                   </VBox>
                   <Pane prefHeight="126.0" prefWidth="177.0" />
-                  <VBox alignment="CENTER" prefHeight="126.0" prefWidth="245.0" spacing="4.0">
+                  <VBox alignment="CENTER" prefHeight="126.0" prefWidth="355.0" spacing="4.0">
                      <children>
                         <Label text="บริหารจัดการ">
                            <styleClass>
@@ -80,9 +81,9 @@
                         </Label>
                         <HBox alignment="CENTER" prefHeight="15.0" prefWidth="418.0" spacing="10.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#goToFormEvent" styleClass="btn-outline-danger" text="สร้างฟอร์ม" />
-                              <Button mnemonicParsing="false" onAction="#goToListTeam" styleClass="btn-outline-danger" text="รายชื่อทีม" />
-                              <Button mnemonicParsing="false" onAction="#goToEditEvent" styleClass="btn-danger" text="แก้ไข้เวนต์" />
+                              <Button mnemonicParsing="false" onAction="#goToEditEvent" styleClass="btn-outline-danger" text="กิจกรรม" />
+                              <Button mnemonicParsing="false" onAction="#onHandleDeleteEvent" styleClass="btn-danger" text="ลบอีเวนต์" />
+                              <Button mnemonicParsing="false" onAction="#goToEditEvent" styleClass="btn-danger" text="แก้ไขอีเว้นต์" />
                            </children>
                         </HBox>
                      </children>

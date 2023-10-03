@@ -19,4 +19,20 @@ public class TeamCollection {
         return teams;
     }
 
+    public void isNameExist(String name) throws Exception {
+        for (Team team : teams) {
+            if (team.getName().equals(name)) {
+                throw new Exception("Team name already exist");
+            }
+        }
+    }
+
+    //Overloading
+    public void isNameExits(String name, String id) throws Exception {
+        for (Team team : teams) {
+            if (team.getName().equals(name) && !team.getId().equals(id)) {
+                throw new Exception("Team name already exist");
+            }
+        }
+    }
 }

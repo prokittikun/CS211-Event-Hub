@@ -20,58 +20,64 @@
             <AnchorPane fx:id="footer" prefHeight="0.0" prefWidth="1200.0" BorderPane.alignment="CENTER" />
          </bottom>
          <center>
-            <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="200.0" prefWidth="1200.0" spacing="20.0" BorderPane.alignment="CENTER">
                <children>
-                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="176.0" prefWidth="1040.0">
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="155.0" prefWidth="1040.0">
                      <children>
-                        <HBox alignment="CENTER" layoutY="-1.0" prefHeight="180.0" prefWidth="1041.0">
+                        <HBox alignment="CENTER" layoutY="-1.0" prefHeight="156.0" prefWidth="1041.0">
                            <children>
-                              <ImageView fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@assets/cover/freshyFestival2023.png" />
-                                 </image>
-                              </ImageView>
-                              <VBox alignment="CENTER_LEFT" prefHeight="155.0" prefWidth="856.0">
+                              <ImageView fx:id="previewImageView" fitHeight="128.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true" />
+                              <VBox alignment="CENTER_LEFT" prefHeight="133.0" prefWidth="856.0">
                                  <children>
-                                    <Label text="KU Freshy Festival 2023">
+                                    <Label fx:id="nameLabel" text="nameLabel">
                                        <styleClass>
                                           <String fx:value="text-4xl" />
                                           <String fx:value="font-bold" />
                                        </styleClass>
                                     </Label>
-                                    <HBox prefHeight="32.0" prefWidth="887.0" spacing="10.0">
+                                    <HBox fx:id="" prefHeight="32.0" prefWidth="856.0" spacing="10.0">
                                        <children>
-                                          <ImageView fitHeight="32.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="29.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@assets/Icons/marker.png" />
                                              </image>
                                           </ImageView>
-                                          <Label styleClass="text-lg" text="Kasetsart University" />
+                                          <Label fx:id="locationLabel" opacity="0.6" text="locationLabel">
+                                             <styleClass>
+                                                <String fx:value="text-lg" />
+                                                <String fx:value="font-light" />
+                                             </styleClass></Label>
                                        </children>
                                        <VBox.margin>
                                           <Insets />
                                        </VBox.margin>
                                     </HBox>
-                                    <HBox alignment="CENTER_LEFT" prefHeight="32.0" prefWidth="887.0" spacing="10.0" styleClass="text-lg">
+                                    <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="856.0" spacing="10.0" styleClass="text-lg">
                                        <children>
-                                          <ImageView fitHeight="32.0" fitWidth="24.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="23.0" fitWidth="23.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@assets/Icons/calendar.png" />
                                              </image>
+                                             <HBox.margin>
+                                                <Insets left="5.0" />
+                                             </HBox.margin>
                                           </ImageView>
-                                          <Label text="29 July 2023" />
-                                          <ImageView fitHeight="32.0" fitWidth="24.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
+                                          <Label fx:id="dateLabel" opacity="0.6" styleClass="font-light" text="dateLabel" />
+                                          <ImageView fitHeight="23.0" fitWidth="18.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@assets/Icons/user.png" />
                                              </image>
                                           </ImageView>
-                                          <Label text="20/25" />
+                                          <Label fx:id="participantLabel" opacity="0.6" styleClass="font-light" text="participantLabel" />
                                        </children>
                                     </HBox>
                                  </children>
                                  <HBox.margin>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    <Insets />
                                  </HBox.margin>
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
                               </VBox>
                            </children>
                            <opaqueInsets>
@@ -84,23 +90,26 @@
                         <String fx:value="shadow" />
                      </styleClass>
                   </Pane>
-                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="437.0" prefWidth="1040.0">
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="471.0" prefWidth="1040.0">
                      <styleClass>
                         <String fx:value="card" />
                         <String fx:value="shadow" />
                      </styleClass>
                      <children>
-                        <VBox layoutX="23.0" layoutY="55.0" prefHeight="331.0" prefWidth="992.0">
+                        <VBox layoutX="23.0" layoutY="55.0" prefHeight="394.0" prefWidth="992.0">
                            <children>
-                              <ScrollPane hbarPolicy="NEVER" prefHeight="330.0" prefWidth="992.0">
+                              <ScrollPane hbarPolicy="NEVER" prefHeight="379.0" prefWidth="992.0">
                                  <content>
-                                    <VBox fx:id="teamComponent" alignment="TOP_CENTER" prefHeight="331.0" prefWidth="978.0">
+                                    <VBox fx:id="teamComponent" alignment="TOP_CENTER" minHeight="375.0" prefWidth="991.0" spacing="10.0">
                                        <opaqueInsets>
                                           <Insets />
-                                       </opaqueInsets></VBox>
+                                       </opaqueInsets>
+                                       <padding>
+                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                       </padding></VBox>
                                  </content>
                                  <VBox.margin>
-                                    <Insets />
+                                    <Insets top="15.0" />
                                  </VBox.margin>
                               </ScrollPane>
                            </children></VBox>
@@ -113,8 +122,8 @@
                                     <String fx:value="text-2xl" />
                                     <String fx:value="font-bold" />
                                  </styleClass></Label>
-                              <Pane prefHeight="35.0" prefWidth="401.0" />
-                              <Button mnemonicParsing="false" onAction="#goToCreateTeam" styleClass="btn-danger" text="สร้างทีม" />
+                              <Pane prefHeight="38.0" prefWidth="382.0" />
+                              <Button mnemonicParsing="false" onAction="#goToCreateTeam" prefHeight="28.0" prefWidth="71.0" styleClass="btn-danger" text="สร้างทีม" />
                            </children>
                            <opaqueInsets>
                               <Insets />
@@ -127,14 +136,14 @@
                   </Pane>
                </children>
                <BorderPane.margin>
-                  <Insets />
+                  <Insets top="65.0" />
                </BorderPane.margin>
                <padding>
-                  <Insets bottom="80.0" left="80.0" right="80.0" top="80.0" />
+                  <Insets bottom="10.0" left="80.0" right="50.0" top="10.0" />
                </padding>
             </VBox>
          </center>
       </BorderPane>
-      <AnchorPane fx:id="navbar" layoutX="-1.0" layoutY="-3.0" prefHeight="80.0" prefWidth="1200.0" />
+      <AnchorPane fx:id="navbar" layoutX="-1.0" layoutY="-3.0" prefHeight="0.0" prefWidth="0.0" />
    </children>
 </AnchorPane>

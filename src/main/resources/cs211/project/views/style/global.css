@@ -1,10 +1,32 @@
 @font-face {
-    font-family: "Kanit";
-    src: url("../assets/fonts/Kanit-Regular.ttf");
+    font-family: 'Kanit';
+    src: url('../assets/fonts/Kanit-Regular.ttf');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Kanit';
+    src: url('../assets/fonts/Kanit-Bold.ttf');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Kanit';
+    src: url('../assets/fonts/Kanit-Light.ttf');
+    font-weight: 300;
 }
 
 .root {
-    -fx-font-family: 'Kanit', 'sans-serif';
+    -fx-font-family: 'Kanit', sans-serif;
+    font-weight: 500;
+}
+
+.font-bold {
+    -fx-font-weight: 700 !important;
+}
+
+.font-light{
+    -fx-font-weight: 300 !important;
 }
 
 .btn-danger{
@@ -128,10 +150,6 @@
 
 .image-border{
     -fx-stroke: linear-gradient(#DA2864, #9AE1E2); /* Set both the image and the gradient */
-}
-
-.font-bold{
-    -fx-font-weight: 700;
 }
 
 .card{
