@@ -107,7 +107,7 @@ public class ListTeamController {
 
                 //Set Value in List
                 listTeamCard.setHeadTeamLabel(userList.getAllUsers().get(0).getFullName());
-                listTeamCard.setHeadTeamImage("file:data/image/user/"+userList.getAllUsers().get(0).getAvatar());
+                listTeamCard.setHeadTeamImage("file:data/image/avatar/"+userList.getAllUsers().get(0).getAvatar());
                 listTeamCard.setTeamLabel(listTeamCardData.getName());
                 listTeamCard.setOrderNumber(" "+i);
 
@@ -137,6 +137,8 @@ public class ListTeamController {
 
     @FXML
     public void backToMyEvent(){
+        //Remove EventId
+        data.remove("eventId");
         try {
             FXRouter.goTo("myEvent", data);
         } catch (IOException e) {

@@ -167,6 +167,8 @@ public class EventParticipantController {
 
     @FXML
     void goToMyEvent(ActionEvent event) {
+        //Remove EventId
+        data.remove("eventId");
         try {
             FXRouter.goTo("myEvent", data);
         } catch (IOException e) {

@@ -167,8 +167,10 @@ public class ManageEventController {
 
   @FXML
   public void backToEvent() {
+    //Remove EventId
+    data.remove("eventId");
     try {
-      FXRouter.goTo("myEvent");
+      FXRouter.goTo("myEvent", data);
     } catch (IOException e) {
       throw new RuntimeException(e);
     }

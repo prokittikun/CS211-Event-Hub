@@ -46,15 +46,6 @@ public class MyEventCard {
 
     //Route
     @FXML
-    public void goToFormEvent() {
-        try {
-            FXRouter.goTo("createForm");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @FXML
     public void goToListTeam() {
         try {
             FXRouter.goTo("listTeam", data);
@@ -76,6 +67,15 @@ public class MyEventCard {
     public void goToParticipant(){
         try {
             FXRouter.goTo("eventParticipant", data);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    public void goToActivityEvent(){
+        try {
+            FXRouter.goTo("activityEvent", data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

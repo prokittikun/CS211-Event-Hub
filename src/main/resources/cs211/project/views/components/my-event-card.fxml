@@ -81,7 +81,7 @@
                         </Label>
                         <HBox alignment="CENTER" prefHeight="15.0" prefWidth="418.0" spacing="10.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#goToEditEvent" styleClass="btn-outline-danger" text="กิจกรรม" />
+                              <Button mnemonicParsing="false" onAction="#goToActivityEvent" styleClass="btn-outline-danger" text="กิจกรรม" />
                               <Button mnemonicParsing="false" onAction="#onHandleDeleteEvent" styleClass="btn-danger" text="ลบอีเวนต์" />
                               <Button mnemonicParsing="false" onAction="#goToEditEvent" styleClass="btn-danger" text="แก้ไขอีเว้นต์" />
                            </children>

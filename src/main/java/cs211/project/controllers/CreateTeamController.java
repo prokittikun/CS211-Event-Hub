@@ -124,7 +124,7 @@ public class CreateTeamController {
                 //Filter User by userId
                 userList = userDatascource.query("id = " + teamData.getLeaderId());
                 System.out.println(userList.getAllUsers().toString());
-                listTeamCard.setHeadTeamImageCircle("file:data/image/user/" + userList.getAllUsers().get(0).getAvatar());
+                listTeamCard.setHeadTeamImageCircle("file:data/image/avatar/" + userList.getAllUsers().get(0).getAvatar());
 
                 //Insert to Component
                 teamPreviewComponent.getChildren().add(listTeamCardComponent);
