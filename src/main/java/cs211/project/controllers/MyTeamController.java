@@ -27,8 +27,6 @@ public class MyTeamController {
     @FXML
     private AnchorPane footer;
 
-    private TeamCollection teamList;
-
     private TeamMemberCollection teamMemberCollection;
 
     @FXML

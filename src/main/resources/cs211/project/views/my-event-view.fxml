@@ -74,6 +74,6 @@
             <AnchorPane fx:id="footer" prefHeight="0.0" prefWidth="1200.0" BorderPane.alignment="CENTER" />
          </bottom>
       </BorderPane>
-      <AnchorPane fx:id="navbar" />
+      <AnchorPane fx:id="navbar" prefHeight="0.0" prefWidth="1200.0" />
    </children>
 </AnchorPane>
