@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.DashboardController">
    <children>
@@ -14,15 +19,160 @@
             <AnchorPane fx:id="footer" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="65.0" prefWidth="1200.0" BorderPane.alignment="CENTER" />
          </bottom>
          <center>
-            <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" BorderPane.alignment="CENTER">
-               <styleClass>
-                  <String fx:value="card" />
-                  <String fx:value="shadow" />
-               </styleClass>
+            <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets top="50.0" />
+               </BorderPane.margin>
                <children>
-                  <Label styleClass="text-5xl" text="coming soon!!!" />
+                  <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="150.0" prefWidth="1000.0">
+                     <children>
+                        <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="150.0" prefWidth="333.0">
+                           <center>
+                              <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="120.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+                                 <styleClass>
+                                    <String fx:value="card" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                                 <children>
+                                    <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="120.0" prefWidth="300.0">
+                                       <children>
+                                          <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="300.0" styleClass="text-xl" text="ผู้ใช้ทั้งหมด" />
+                                          <Label fx:id="totalUserLabel" alignment="TOP_CENTER" prefHeight="60.0" prefWidth="300.0" styleClass="text-4xl" text="totalUserLabel" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </Pane>
+                           </center>
+                        </BorderPane>
+                        <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="150.0" prefWidth="333.0">
+                           <center>
+                              <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="120.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+                                 <styleClass>
+                                    <String fx:value="card" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                                 <children>
+                                    <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="120.0" prefWidth="300.0">
+                                       <children>
+                                          <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="300.0" styleClass="text-xl" text="อีเวนต์ทั้งหมด" />
+                                          <Label fx:id="totalEventLabel" alignment="TOP_CENTER" prefHeight="60.0" prefWidth="300.0" styleClass="text-4xl" text="totalEventLabel" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </Pane>
+                           </center>
+                        </BorderPane>
+                        <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="150.0" prefWidth="333.0">
+                           <center>
+                              <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="120.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+                                 <styleClass>
+                                    <String fx:value="card" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                                 <children>
+                                    <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="120.0" prefWidth="300.0">
+                                       <children>
+                                          <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="300.0" styleClass="text-xl" text="ผู้ดูแลทั้งหมด" />
+                                          <Label fx:id="totalAdminLabel" alignment="TOP_CENTER" prefHeight="60.0" prefWidth="300.0" styleClass="text-4xl" text="totalAdminLabel" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </Pane>
+                           </center>
+                        </BorderPane>
+                     </children>
+                  </HBox>
+                  <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="450.0" prefWidth="1000.0">
+                     <children>
+                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="450.0" prefWidth="333.0">
+                           <children>
+                              <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="300.0" prefWidth="333.0">
+                                 <center>
+                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="250.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+                                       <styleClass>
+                                          <String fx:value="card" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                       <children>
+                                          <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="250.0" prefWidth="300.0">
+                                             <children>
+                                                <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" styleClass="image-border">
+                                                   <VBox.margin>
+                                                      <Insets left="75.0" />
+                                                   </VBox.margin>
+                                                </ImageView>
+                                                <Label fx:id="nameLabel" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" text="nameLabel">
+                                                   <styleClass>
+                                                      <String fx:value="text-2xl" />
+                                                      <String fx:value="font-bold" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Label fx:id="roleLabel" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" styleClass="text-xl" text="roleLabel" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </Pane>
+                                 </center>
+                              </BorderPane>
+                              <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="150.0" prefWidth="333.0">
+                                 <center>
+                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+                                       <styleClass>
+                                          <String fx:value="card" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                       <children>
+                                          <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="150.0" prefWidth="300.0">
+                                             <children>
+                                                <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" text="การเข้าใช้งาน">
+                                                   <styleClass>
+                                                      <String fx:value="font-bold" />
+                                                      <String fx:value="text-2xl" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="300.0">
+                                                   <children>
+                                                      <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="110.0" styleClass="text-base" text="สมัครสมาชิก:" />
+                                                      <Label fx:id="registerDateLabel" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="190.0" styleClass="text-lg" text="registerDateLabel" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="300.0">
+                                                   <children>
+                                                      <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="110.0" styleClass="text-base" text="เข้าใช้งานล่าสุด:" />
+                                                      <Label fx:id="lastLoginDateLabel" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="190.0" styleClass="text-lg" text="lastLoginDateLabel" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </Pane>
+                                 </center>
+                              </BorderPane>
+                           </children>
+                        </VBox>
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="450.0" prefWidth="630.0">
+                           <styleClass>
+                              <String fx:value="card" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                           <children>
+                              <TableView layoutX="15.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+                                <columns>
+                                  <TableColumn fx:id="orderColumn" editable="false" maxWidth="-Infinity" minWidth="50.0" prefWidth="50.0" sortable="false" text="ลำดับที่" />
+                                  <TableColumn fx:id="usernameColumn" editable="false" maxWidth="225.0" minWidth="225.0" prefWidth="225.0" sortable="false" text="ชื่อผู้ใช้" />
+                                    <TableColumn fx:id="nameColumn" editable="false" maxWidth="225.0" minWidth="225.0" prefWidth="225.0" sortable="false" text="ชื่อ - นามสกุล" />
+                                    <TableColumn fx:id="roleColumn" editable="false" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" sortable="false" text="ประเภท" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </Pane>
+                     </children>
+                  </HBox>
                </children>
-            </Pane>
+            </VBox>
          </center>
       </BorderPane>
       <AnchorPane fx:id="navbar" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="56.0" prefWidth="1200.0" />
