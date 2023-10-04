@@ -1,15 +1,22 @@
 package cs211.project.controllers;
 
+import cs211.project.models.User;
 import cs211.project.models.collections.UserCollection;
 import cs211.project.services.Datasource;
 import cs211.project.services.FXRouter;
 import cs211.project.services.UserListFileDatasource;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TableColumn;
+import javafx.collections.FXCollections;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import java.util.List;
 
 import java.io.File;
 import java.io.IOException;
@@ -53,6 +60,10 @@ public class DashboardController {
 
     @FXML
     private Label totalUserLabel;
+    @FXML
+    private ImageView avatarPicture;
+    @FXML
+    private TableView<User> userTable;
 
     @FXML
     private TableColumn<?, ?> usernameColumn;
@@ -81,5 +92,29 @@ public class DashboardController {
             throw new RuntimeException(e);
         }
 
+        User user = userListFileDatasource.query("id = " + userId).getAllUsers().get(0);
+
+        nameLabel.setText(user.getFullName());
+        roleLabel.setText(user.getRole());
+        //avatarPicture.setImage(new Image("file:data" + File.separator + "image" + File.separator + "avatar" + File.separator + user.getAvatar()));
+        totalEventLabel.setText("");
+        totalAdminLabel.setText("");
+        totalUserLabel.setText("");
+        registerDateLabel.setText(user.getCreatedAt());
+        lastLoginDateLabel.setText(user.getLastLogin());
+
+        loadUsersIntoTable();
+
+    }
+
+    private void loadUsersIntoTable() {
+        UserListFileDatasource userListFileDatasource = new UserListFileDatasource("data", "user.csv");
+        List<User> users = userListFileDatasource.readData().getAllUsers();
+
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        roleColumn.setCellValueFactory(new PropertyValueFactory<>("role"));
+        usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
+
+        userTable.setItems(FXCollections.observableArrayList(users));
     }
 }

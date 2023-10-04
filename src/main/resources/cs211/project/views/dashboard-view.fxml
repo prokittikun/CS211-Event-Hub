@@ -5,12 +5,12 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.DashboardController">
    <children>
@@ -96,11 +96,11 @@
                                        <children>
                                           <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="250.0" prefWidth="300.0">
                                              <children>
-                                                <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" styleClass="image-border">
+                                                <Circle fx:id="avatarPicture" radius="75.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" styleClass="image-border">
                                                    <VBox.margin>
-                                                      <Insets left="75.0" />
+                                                      <Insets left="75.0" top="10.0" />
                                                    </VBox.margin>
-                                                </ImageView>
+                                                </Circle>
                                                 <Label fx:id="nameLabel" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" text="nameLabel">
                                                    <styleClass>
                                                       <String fx:value="text-2xl" />
@@ -159,7 +159,7 @@
                               <Insets left="20.0" />
                            </HBox.margin>
                            <children>
-                              <TableView layoutX="15.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+                              <TableView fx:id="userTable" layoutX="15.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
                                 <columns>
                                   <TableColumn fx:id="orderColumn" editable="false" maxWidth="-Infinity" minWidth="50.0" prefWidth="50.0" sortable="false" text="ลำดับที่" />
                                   <TableColumn fx:id="usernameColumn" editable="false" maxWidth="225.0" minWidth="225.0" prefWidth="225.0" sortable="false" text="ชื่อผู้ใช้" />
