@@ -78,8 +78,6 @@ public class EventDetailController {
         setEventStartDate(event.getStartDate());
         setEventImage(event.getImage());
 
-        JoinEventCollection joinEventCollection = joinEventDatasource.query("eventId = " + event.getId());
-        setEventParticipant(joinEventCollection.getJoinEvents().size() + "/" + event.getMaxParticipant());
 
         //Navbar
         FXMLLoader navbarComponentLoader = new FXMLLoader(getClass().getResource("/cs211/project/views/navbar.fxml"));
@@ -101,12 +99,7 @@ public class EventDetailController {
 
         eventRecommendCollection = eventDatasource.readData();
         executorService.submit(() -> {
-//            Integer i = 5;
             for (Event event : eventRecommendCollection.getRandomNEvent(eventId.toString(),5)) {
-//                if (event.getId().equals(this.eventId.toString())) {
-//                    i++;
-//                    continue;
-//                }
                 try {
                     FXMLLoader eventCardLoader = new FXMLLoader();
                     eventCardLoader.setLocation(getClass().getResource("/cs211/project/views/components/event-card.fxml"));
@@ -116,7 +109,12 @@ public class EventDetailController {
                     indexEventCard.setEventName(event.getName());
                     indexEventCard.setEventDate(event.getStartDate());
                     indexEventCard.setEventLocation(event.getLocation());
-                    indexEventCard.setEventParticipant(String.valueOf(event.getMaxParticipant()));
+
+                    JoinEventCollection joinEventCollection = joinEventDatasource.query("eventId = " + event.getId());
+                    indexEventCard.setEventParticipant(joinEventCollection.getJoinEvents().size() + "/" + event.getMaxParticipant());
+                    indexEventCard.setCurrentParticipant(joinEventCollection.getJoinEvents().size());
+
+
                     HashMap<String, Object> data = new HashMap<>();
                     data.put("userId", this.data.get("userId"));
                     data.put("eventId", event.getId());
@@ -137,11 +135,6 @@ public class EventDetailController {
         JoinEventCollection newJoinEventCollection = new JoinEventCollection();
         newJoinEventCollection.addJoinEvent(new JoinEvent(UUID.randomUUID().toString(),eventId.toString(),userId.toString(), DateTimeService.getCurrentDate(),"0"));
         joinEventDatasource.writeData(newJoinEventCollection);
-//        try {
-//            FXRouter.goTo("registerEvent", data);
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
     }
 
     @FXML

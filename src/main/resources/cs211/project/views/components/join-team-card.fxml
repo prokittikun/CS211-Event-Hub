@@ -17,7 +17,7 @@
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="149.0" prefWidth="1022.0">
                <children>
-                  <Button fx:id="teamOrderButton" mnemonicParsing="false" text="1">
+                  <Button fx:id="teamOrderButton" mnemonicParsing="false" text="1" visible="false">
                      <styleClass>
                         <String fx:value="btn-danger" />
                         <String fx:value="text-lg" />
@@ -26,10 +26,10 @@
                         <Insets left="-15.0" />
                      </HBox.margin>
                   </Button>
-                  <VBox prefHeight="150.0" prefWidth="399.0">
+                  <VBox prefHeight="150.0" prefWidth="277.0">
                      <children>
                         <Label fx:id="teamName" prefHeight="88.0" prefWidth="420.0" styleClass="text-3xl" text="ทีม PhuKhai Party" />
-                        <Button fx:id="joinTeamButton" mnemonicParsing="false" onAction="#onHandleJoinTeam" prefHeight="40.0" prefWidth="101.0" text="เข้าร่วมทีม">
+                        <Button fx:id="joinTeamButton" mnemonicParsing="false" onAction="#onHandleJoinTeam" prefHeight="40.0" text="เข้าร่วมทีม">
                            <styleClass>
                               <String fx:value="btn-danger" />
                               <String fx:value="text-lg" />
@@ -43,19 +43,36 @@
                         <Insets left="20.0" />
                      </HBox.margin>
                   </VBox>
-                  <VBox alignment="CENTER_RIGHT" prefHeight="150.0" prefWidth="563.0">
+                  <VBox alignment="CENTER_RIGHT" prefHeight="150.0" prefWidth="697.0">
                      <children>
-                        <Label prefHeight="46.0" prefWidth="223.0" styleClass="text-3xl" text="จำนวนสมาชิกในทีม" />
-                        <Pane prefHeight="4.0" prefWidth="584.0" />
-                        <HBox alignment="CENTER_RIGHT" prefHeight="11.0" prefWidth="174.0">
+                        <HBox alignment="CENTER_RIGHT" prefHeight="21.0" prefWidth="698.0">
                            <children>
+                              <Label prefHeight="46.0" prefWidth="223.0" styleClass="text-3xl" text="จำนวนสมาชิกในทีม" />
+                              <Pane prefHeight="46.0" prefWidth="10.0" />
                               <ImageView fitHeight="48.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../assets/Icons/user.png" />
                                  </image>
                               </ImageView>
-                              <Pane prefHeight="46.0" prefWidth="16.0" />
+                              <Pane layoutX="541.0" layoutY="10.0" prefHeight="46.0" prefWidth="14.0" />
                               <Label fx:id="teamParticipant" alignment="CENTER" prefHeight="46.0" styleClass="text-2xl" text="250/50000" />
+                           </children>
+                        </HBox>
+                        <Pane prefHeight="4.0" prefWidth="584.0" />
+                        <HBox alignment="CENTER_RIGHT" prefHeight="11.0" prefWidth="174.0">
+                           <children>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="554.0">
+                                 <children>
+                                    <Label fx:id="dateLabel" alignment="BOTTOM_RIGHT" prefHeight="35.0" styleClass="text-xl" text="รับสมัคร 24 ก.ย. 2566 10:00 น. - 27 ก.ย. 2566 10:00 น.">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </HBox>
                            </children>
                            <VBox.margin>
                               <Insets />
