@@ -3,7 +3,6 @@ package cs211.project.controllers;
 import cs211.project.models.*;
 import cs211.project.models.collections.*;
 import cs211.project.services.*;
-import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +16,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
@@ -75,8 +73,8 @@ public class TeamManagementController {
     private TableColumn<Activity, String> timestampColumn;
     @FXML
     private TableColumn<Activity, HBox> tool;
-    private Datasource<ActivityCollection> activityDatasource;
-    private ActivityCollection activityCollection;
+    private Datasource<TeamActivityCollection> teamActivityDatasource;
+    private TeamActivityCollection activityCollection;
 
     private boolean isLeader = false;
 
@@ -100,7 +98,7 @@ public class TeamManagementController {
         data = FXRouter.getData();
         teamId = UUID.fromString(data.get("teamId").toString());
         data.remove("activityId");
-        activityDatasource = new ActivityListFileDatasource("data/team", "activity.csv");
+        teamActivityDatasource = new TeamActivityListFileDatasource("data/team", "activity.csv");
         teamDatasource = new TeamListFileDatasource("data/team", "team.csv");
         eventDatasource = new EventListFileDatasource("data/event", "event.csv");
         backDrop.setVisible(false);
@@ -163,7 +161,7 @@ public class TeamManagementController {
     }
 
     private void showTable() {
-        ActivityCollection activityList = activityDatasource.query("teamId = " + teamId.toString());
+        TeamActivityCollection activityList = teamActivityDatasource.query("teamId = " + teamId.toString());
 
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 
@@ -213,7 +211,7 @@ public class TeamManagementController {
                                     deleteButton.setStyle("-fx-background-color: transparent; -fx-cursor: hand;");
                                     //open delete modal
                                     deleteButton.setOnAction(event -> {
-                                        activityDatasource.deleteById(activity.getId());
+                                        teamActivityDatasource.deleteById(activity.getId());
                                         showTable();
                                     });
 

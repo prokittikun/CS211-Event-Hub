@@ -1,7 +1,9 @@
 package cs211.project.services;
 
-import cs211.project.models.Activity;
-import cs211.project.models.collections.ActivityCollection;
+import cs211.project.models.EventActivity;
+import cs211.project.models.TeamActivity;
+import cs211.project.models.collections.EventActivityCollection;
+import cs211.project.models.collections.TeamActivityCollection;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,13 +11,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ActivityListFileDatasource implements Datasource<ActivityCollection>{
+public class EventActivityListFileDatasource implements Datasource<EventActivityCollection> {
     private String directoryName;
     private String fileName;
     private DataFileManager dataFileManager;
 
     //Constructor เพื่อกำหนดที่อยู่ file csv ที่จะอ่าน
-    public ActivityListFileDatasource(String directoryName, String fileName) {
+    public EventActivityListFileDatasource(String directoryName, String fileName) {
         this.directoryName = directoryName;
         this.fileName = fileName;
         checkFileIsExisted();
@@ -41,19 +43,19 @@ public class ActivityListFileDatasource implements Datasource<ActivityCollection
 
     //return type อย่าลืมแก้นะจ้ะ
     @Override
-    public ActivityCollection readData() {
-        ActivityCollection activityList = new ActivityCollection();
+    public EventActivityCollection readData() {
+        EventActivityCollection activityList = new EventActivityCollection();
         for (HashMap<String, String> data : dataFileManager.getData()) {
-            activityList.addNewActivity(new Activity(data));
+            activityList.addNewActivity(new EventActivity(data));
         }
         return activityList;
     }
 
     //parameter type อย่าลืมแก้นะจ้ะ
     @Override
-    public void writeData(ActivityCollection data) {
+    public void writeData(EventActivityCollection data) {
         ArrayList<HashMap<String, String>> dataToWrite = new ArrayList<>();
-        for (Activity activity : data.getActivities()) {
+        for (EventActivity activity : data.getActivities()) {
             dataToWrite.add(activity.toHashMap());
         }
         dataFileManager.writeData(dataToWrite);
@@ -82,37 +84,37 @@ public class ActivityListFileDatasource implements Datasource<ActivityCollection
     }
 
     @Override
-    public ActivityCollection findById(String id) {
-        ActivityCollection activityList = new ActivityCollection();
+    public EventActivityCollection findById(String id) {
+        EventActivityCollection activityList = new EventActivityCollection();
         for (HashMap<String, String> data : dataFileManager.findById(id)) {
-            activityList.addNewActivity(new Activity(data));
+            activityList.addNewActivity(new EventActivity(data));
         }
         return activityList;
     }
 
     @Override
-    public ActivityCollection findAllByColumnsAndValue(Map<String, String> conditions) {
-        ActivityCollection activityList = new ActivityCollection();
+    public EventActivityCollection findAllByColumnsAndValue(Map<String, String> conditions) {
+        EventActivityCollection activityList = new EventActivityCollection();
         for (HashMap<String, String> item : dataFileManager.findAllByColumnsAndValue(conditions)) {
-            activityList.addNewActivity(new Activity(item));
+            activityList.addNewActivity(new EventActivity(item));
         }
         return activityList;
     }
 
     @Override
-    public ActivityCollection query(String query) {
-        ActivityCollection activityList = new ActivityCollection();
+    public EventActivityCollection query(String query) {
+        EventActivityCollection activityList = new EventActivityCollection();
         for (HashMap<String, String> item : dataFileManager.query(query)) {
-            activityList.addNewActivity(new Activity(item));
+            activityList.addNewActivity(new EventActivity(item));
         }
         return activityList;
     }
 
     @Override
-    public ActivityCollection queryWithOffsetAndLimit(String query, int offset, int limit) {
-        ActivityCollection activityList = new ActivityCollection();
+    public EventActivityCollection queryWithOffsetAndLimit(String query, int offset, int limit) {
+        EventActivityCollection activityList = new EventActivityCollection();
         for (HashMap<String, String> item : dataFileManager.queryWithOffsetAndLimit(query, offset, limit)) {
-            activityList.addNewActivity(new Activity(item));
+            activityList.addNewActivity(new EventActivity(item));
         }
         return activityList;
     }

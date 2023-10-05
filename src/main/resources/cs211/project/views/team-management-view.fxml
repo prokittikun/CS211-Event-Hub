@@ -137,7 +137,7 @@
                                     <TableView fx:id="scheduleTable" prefHeight="495.0" prefWidth="686.0" stylesheets="@style/global.css">
                                       <columns>
                                         <TableColumn fx:id="orderColumn" prefWidth="86.1332106590271" text="ลำดับที่" />
-                                        <TableColumn fx:id="nameColumn" prefWidth="156.26660919189453" text="ชื่อ" />
+                                        <TableColumn fx:id="nameColumn" prefWidth="156.26660919189453" text="ชื่อกิจกรรม" />
                                           <TableColumn fx:id="dateColumn" prefWidth="162.9333953857422" text="วันที่" />
                                           <TableColumn fx:id="timestampColumn" minWidth="0.0" prefWidth="150.93325805664062" text="เวลาเริ่ม" />
                                           <TableColumn fx:id="tool" minWidth="0.0" prefWidth="108.800048828125" text="เครื่องมือ" />

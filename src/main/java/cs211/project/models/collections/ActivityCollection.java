@@ -4,17 +4,17 @@ import cs211.project.models.Activity;
 
 import java.util.ArrayList;
 
-public class ActivityCollection {
-    private ArrayList<Activity> activities;
+public class ActivityCollection<T> {
+    private ArrayList<T> activities;
 
     public ActivityCollection() {
         activities = new ArrayList<>();
     }
 
-    public void addNewActivity(Activity activity){
+    public void addNewActivity(T activity){
         activities.add(activity);
     }
-    public ArrayList<Activity> getActivities() {
+    public ArrayList<T> getActivities() {
         return activities;
     }
 }
