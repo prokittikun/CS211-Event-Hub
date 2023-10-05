@@ -76,6 +76,7 @@ public class EventDetailController {
         setEventLocation(event.getLocation());
         setEventDetail(event.getDetail());
         setEventStartDate(event.getStartDate());
+        setEventImage(event.getImage());
 
         JoinEventCollection joinEventCollection = joinEventDatasource.query("eventId = " + event.getId());
         setEventParticipant(joinEventCollection.getJoinEvents().size() + "/" + event.getMaxParticipant());
