@@ -23,7 +23,7 @@ public class HelloApplication extends Application {
         FXRouter.when("login", resourcesPath + "login-view.fxml");
         FXRouter.when("myEvent", resourcesPath + "my-event.fxml");
         FXRouter.when("eventDetail", resourcesPath + "event-detail-view.fxml");
-
+        FXRouter.when("eventActivity", resourcesPath + "event-activity-view.fxml");
         FXRouter.when("register", resourcesPath + "register-view.fxml");
         FXRouter.when("joinTeam", resourcesPath + "join-team-view.fxml");
         FXRouter.when("registerEvent", resourcesPath + "register-event-view.fxml");
