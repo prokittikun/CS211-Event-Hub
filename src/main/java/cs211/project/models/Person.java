@@ -3,10 +3,12 @@ package cs211.project.models;
 public class Person {
     private String firstName;
     private String lastName;
+    private String fullName;
 
     public Person(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.fullName = firstName+" "+lastName;
     }
 
     public String getFirstName() {
@@ -26,6 +28,6 @@ public class Person {
     }
 
     public String getFullName() {
-        return firstName + " " + lastName;
+        return fullName;
     }
 }
