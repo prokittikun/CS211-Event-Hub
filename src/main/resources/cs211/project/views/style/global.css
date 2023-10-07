@@ -1,24 +1,5 @@
-@font-face {
-    font-family: 'Kanit';
-    src: url('../assets/fonts/Kanit-Regular.ttf');
-    font-weight: 500;
-}
-
-@font-face {
-    font-family: 'Kanit';
-    src: url('../assets/fonts/Kanit-Bold.ttf');
-    font-weight: 700;
-}
-
-@font-face {
-    font-family: 'Kanit';
-    src: url('../assets/fonts/Kanit-Light.ttf');
-    font-weight: 300;
-}
-
-.root {
+* {
     -fx-font-family: 'Kanit', sans-serif;
-    font-weight: 500;
 }
 
 .font-bold {
