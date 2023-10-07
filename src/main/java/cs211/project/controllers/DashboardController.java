@@ -1,27 +1,30 @@
 package cs211.project.controllers;
 
+import cs211.project.models.Event;
 import cs211.project.models.User;
+import cs211.project.models.collections.EventCollection;
 import cs211.project.models.collections.UserCollection;
-import cs211.project.services.Datasource;
-import cs211.project.services.FXRouter;
-import cs211.project.services.UserListFileDatasource;
+import cs211.project.services.*;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Label;
-import javafx.event.ActionEvent;
 import javafx.scene.control.TableColumn;
 import javafx.collections.FXCollections;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
+
 import java.util.List;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class DashboardController {
 
@@ -41,7 +44,7 @@ public class DashboardController {
     private AnchorPane navbar;
 
     @FXML
-    private TableColumn<?, ?> orderColumn;
+    private TableColumn<User, Number> orderColumn;
 
     @FXML
     private Label registerDateLabel;
@@ -61,7 +64,7 @@ public class DashboardController {
     @FXML
     private Label totalUserLabel;
     @FXML
-    private ImageView avatarPicture;
+    private Circle avatarPicture;
     @FXML
     private TableView<User> userTable;
 
@@ -69,11 +72,13 @@ public class DashboardController {
     private TableColumn<?, ?> usernameColumn;
     private UUID userId;
     private HashMap<String, Object> data;
+    private Datasource<UserCollection> userListFileDatasource;
+    private Datasource<EventCollection> eventListFileDatasource;
 
     @FXML
     private void initialize() {
-
-        UserListFileDatasource userListFileDatasource = new UserListFileDatasource("data", "user.csv");
+        userListFileDatasource = new UserListFileDatasource("data", "user.csv");
+        eventListFileDatasource = new EventListFileDatasource("data/event", "event.csv");
 
         data = FXRouter.getData();
         userId = UUID.fromString((String) data.get("userId"));
@@ -93,10 +98,13 @@ public class DashboardController {
         }
 
         User user = userListFileDatasource.query("id = " + userId).getAllUsers().get(0);
+        EventCollection eventCollection = eventListFileDatasource.readData();
+
 
         nameLabel.setText(user.getFullName());
         roleLabel.setText(user.getRole());
-        //avatarPicture.setImage(new Image("file:data" + File.separator + "image" + File.separator + "avatar" + File.separator + user.getAvatar()));
+        AtomicReference<Image> avatar = new AtomicReference<>(new Image("file:data" + File.separator + "image" + File.separator + "avatar" + File.separator + user.getAvatar()));
+        avatarPicture.setFill(new ImagePattern(avatar.get()));
         totalEventLabel.setText("");
         totalAdminLabel.setText("");
         totalUserLabel.setText("");
@@ -104,17 +112,51 @@ public class DashboardController {
         lastLoginDateLabel.setText(user.getLastLogin());
 
         loadUsersIntoTable();
+        userTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                nameLabel.setText(newSelection.getFullName());
+                roleLabel.setText(newSelection.getRole());
+                registerDateLabel.setText(newSelection.getCreatedAt());
+                lastLoginDateLabel.setText(newSelection.getLastLogin());
+                avatar.set(new Image("file:data" + File.separator + "image" + File.separator + "avatar" + File.separator + newSelection.getAvatar()));
+                avatarPicture.setFill(new ImagePattern(avatar.get()));
+            }
+        });
 
+        updateTotalUsersCount();
+        updateTotalAdminsCount();
+        totalEventLabel.setText(String.valueOf(eventCollection.getEvents().size()));
     }
 
     private void loadUsersIntoTable() {
         UserListFileDatasource userListFileDatasource = new UserListFileDatasource("data", "user.csv");
         List<User> users = userListFileDatasource.readData().getAllUsers();
 
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        orderColumn.setCellValueFactory(column -> {
+            int rowIndex = userTable.getItems().indexOf(column.getValue()) + 1;
+            return new SimpleObjectProperty<>(rowIndex);
+        });
+
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         roleColumn.setCellValueFactory(new PropertyValueFactory<>("role"));
         usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
 
         userTable.setItems(FXCollections.observableArrayList(users));
     }
+
+    private void updateTotalUsersCount() {
+        List<User> users = userListFileDatasource.readData().getAllUsers();
+
+        long userCount = users.stream().filter(user -> "user".equalsIgnoreCase(user.getRole())).count();
+
+        totalUserLabel.setText(String.valueOf(userCount));
+    }
+    private void updateTotalAdminsCount() {
+        List<User> users = userListFileDatasource.readData().getAllUsers();
+
+        long userCount = users.stream().filter(user -> "admin".equalsIgnoreCase(user.getRole())).count();
+
+        totalAdminLabel.setText(String.valueOf(userCount));
+    }
+
 }

@@ -29,30 +29,53 @@
                         </ImageView>
                         <VBox prefHeight="499.0" prefWidth="456.0">
                            <children>
-                              <Label styleClass="text-3xl" text="Innovate,">
+                              <Label text="Innovate,">
                                  <padding>
-                                    <Insets top="-8.0" />
+                                    <Insets top="-10.0" />
                                  </padding>
+                                 <styleClass>
+                                    <String fx:value="font-bold" />
+                                    <String fx:value="text-4xl" />
+                                 </styleClass>
                               </Label>
-                              <Label styleClass="text-3xl" text="create, celebrate.">
+                              <Label text="create, celebrate.">
                                  <padding>
-                                    <Insets top="-8.0" />
+                                    <Insets top="-10.0" />
                                  </padding>
+                                 <styleClass>
+                                    <String fx:value="font-bold" />
+                                    <String fx:value="text-4xl" />
+                                 </styleClass>
                               </Label>
-                              <Label styleClass="text-3xl" text="Welcome to your">
+                              <Label text="Welcome to your">
                                  <padding>
-                                    <Insets top="-8.0" />
+                                    <Insets top="-10.0" />
                                  </padding>
+                                 <styleClass>
+                                    <String fx:value="font-bold" />
+                                    <String fx:value="text-4xl" />
+                                 </styleClass>
                               </Label>
                               <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                  <children>
                                     <Label text="event">
                                        <styleClass>
+                                          <String fx:value="font-bold" />
                                           <String fx:value="text-red" />
-                                          <String fx:value="text-3xl" />
+                                          <String fx:value="text-4xl" />
                                        </styleClass>
+                                       <padding>
+                                          <Insets top="-10.0" />
+                                       </padding>
                                     </Label>
-                                    <Label styleClass="text-3xl" text="destination." />
+                                    <Label text="destination.">
+                                       <styleClass>
+                                          <String fx:value="font-bold" />
+                                          <String fx:value="text-4xl" />
+                                       </styleClass>
+                                       <padding>
+                                          <Insets top="-10.0" />
+                                       </padding></Label>
                                  </children>
                                  <padding>
                                     <Insets top="-8.0" />
@@ -106,8 +129,7 @@
                                           <Label styleClass="text-xl" text="ชื่อผู้ใช้" />
                                           <TextField fx:id="usernameField" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="43.0" prefWidth="449.0">
                                              <styleClass>
-                                                <String fx:value="text-base" />
-                                                <String fx:value="font-bold" />
+                                                <String fx:value="text-xl" />
                                                 <String fx:value="card-light-gray" />
                                              </styleClass>
                                              <VBox.margin>
@@ -117,8 +139,7 @@
                                           <Label styleClass="text-xl" text="รหัสผ่าน" />
                                           <PasswordField fx:id="passwordField" focusTraversable="false" prefHeight="41.0" prefWidth="258.0">
                                              <styleClass>
-                                                <String fx:value="text-base" />
-                                                <String fx:value="font-bold" />
+                                                <String fx:value="text-xl" />
                                                 <String fx:value="card-light-gray" />
                                              </styleClass>
                                           </PasswordField>

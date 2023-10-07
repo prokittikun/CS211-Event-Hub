@@ -78,6 +78,9 @@ public class EventDetailController {
         setEventStartDate(event.getStartDate());
         setEventImage(event.getImage());
 
+        JoinEventCollection joinEventCollection = joinEventDatasource.query("eventId = " + event.getId());
+        setEventParticipant(joinEventCollection.getJoinEvents().size() + "/" + event.getMaxParticipant());
+
 
         //Navbar
         FXMLLoader navbarComponentLoader = new FXMLLoader(getClass().getResource("/cs211/project/views/navbar.fxml"));
@@ -110,9 +113,9 @@ public class EventDetailController {
                     indexEventCard.setEventDate(event.getStartDate());
                     indexEventCard.setEventLocation(event.getLocation());
 
-                    JoinEventCollection joinEventCollection = joinEventDatasource.query("eventId = " + event.getId());
-                    indexEventCard.setEventParticipant(joinEventCollection.getJoinEvents().size() + "/" + event.getMaxParticipant());
-                    indexEventCard.setCurrentParticipant(joinEventCollection.getJoinEvents().size());
+                    JoinEventCollection joinEventCollection2 = joinEventDatasource.query("eventId = " + event.getId());
+                    indexEventCard.setEventParticipant(joinEventCollection2.getJoinEvents().size() + "/" + event.getMaxParticipant());
+                    indexEventCard.setCurrentParticipant(joinEventCollection2.getJoinEvents().size());
 
 
                     HashMap<String, Object> data = new HashMap<>();

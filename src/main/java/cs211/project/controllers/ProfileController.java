@@ -102,18 +102,13 @@ public class ProfileController {
         registerDateLabel.setText(user.getCreatedAt());
         lastLoginDateLabel.setText(user.getLastLogin());
 
-        firstNameField.setPromptText(user.getFirstName());
-        lastNameField.setPromptText(user.getLastName());
-        usernameField.setPromptText(user.getUsername());
+        firstNameField.setText(user.getFirstName());
+        lastNameField.setText(user.getLastName());
+        usernameField.setText(user.getUsername());
     }
 
     @FXML
     private void handleSaveButtonClick(ActionEvent event) {
-        if (!currentPasswordField.getText().isEmpty() || !newPasswordField.getText().isEmpty() || !confirmNewPasswordField.getText().isEmpty()) {
-            validateCurrentPassword();
-            validateNewPassword();
-            validateConfirmNewPassword();
-        }
         User user = userListFileDatasource.query("id = " + userId).getAllUsers().get(0);
         if (!firstNameField.getText().isEmpty()) {
             userListFileDatasource.updateColumnById(user.getId(), "firstName", firstNameField.getText());
@@ -124,6 +119,18 @@ public class ProfileController {
         if (!usernameField.getText().isEmpty()) {
             userListFileDatasource.updateColumnById(user.getId(), "userName", usernameField.getText());
         }
+        if (!currentPasswordField.getText().isEmpty() || !newPasswordField.getText().isEmpty() || !confirmNewPasswordField.getText().isEmpty()) {
+            validateCurrentPassword();
+            validateNewPassword();
+            validateConfirmNewPassword();
+            if (currentPasswordField.getText().equals(user.getPassword())) {
+                userListFileDatasource.updateColumnById(user.getId(), "password", newPasswordField.getText());
+            } else {
+                currentPasswordError.setText("รหัสผ่านปัจจุบันไม่ถูกต้อง");
+            }
+        }
+
+
         if (avatarFile != null) {
             String[] fileSplit = avatarFile.getName().split("\\.");
             String filename = user.getUsername() + "." + fileSplit[fileSplit.length - 1];
@@ -154,7 +161,6 @@ public class ProfileController {
             }
         }
     }
-
 
     @FXML
     private void handleBackButtonClick(ActionEvent event) {
