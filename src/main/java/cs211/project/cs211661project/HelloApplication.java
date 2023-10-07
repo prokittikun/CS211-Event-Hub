@@ -10,7 +10,9 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+        Font.loadFont(getClass().getResourceAsStream("/cs211/project/views/assets/fonts/Kanit-Light.ttf"), 12);
         Font.loadFont(getClass().getResourceAsStream("/cs211/project/views/assets/fonts/Kanit-Regular.ttf"), 12);
+        Font.loadFont(getClass().getResourceAsStream("/cs211/project/views/assets/fonts/Kanit-Bold.ttf"), 12);
         FXRouter.bind(this, stage, "CS211 661 Project",1200,800);
         configRoute();
         FXRouter.goTo("login");
