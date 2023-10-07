@@ -96,9 +96,9 @@
                                        <children>
                                           <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="250.0" prefWidth="300.0">
                                              <children>
-                                                <Circle fx:id="avatarPicture" radius="75.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" styleClass="image-border">
+                                                <Circle fx:id="avatarPicture" radius="70.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" styleClass="image-border">
                                                    <VBox.margin>
-                                                      <Insets left="75.0" top="10.0" />
+                                                      <Insets left="85.0" top="10.0" />
                                                    </VBox.margin>
                                                 </Circle>
                                                 <Label fx:id="nameLabel" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" text="nameLabel">
@@ -159,13 +159,16 @@
                               <Insets left="20.0" />
                            </HBox.margin>
                            <children>
-                              <TableView fx:id="userTable" layoutX="15.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+                              <TableView fx:id="userTable" layoutX="20.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="text-base">
                                 <columns>
-                                  <TableColumn fx:id="orderColumn" editable="false" maxWidth="-Infinity" minWidth="50.0" prefWidth="50.0" sortable="false" text="ลำดับที่" />
-                                  <TableColumn fx:id="usernameColumn" editable="false" maxWidth="225.0" minWidth="225.0" prefWidth="225.0" sortable="false" text="ชื่อผู้ใช้" />
-                                    <TableColumn fx:id="nameColumn" editable="false" maxWidth="225.0" minWidth="225.0" prefWidth="225.0" sortable="false" text="ชื่อ - นามสกุล" />
-                                    <TableColumn fx:id="roleColumn" editable="false" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" sortable="false" text="ประเภท" />
+                                  <TableColumn fx:id="orderColumn" editable="false" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" resizable="false" sortable="false" text="ลำดับที่" />
+                                  <TableColumn fx:id="usernameColumn" editable="false" maxWidth="210.0" minWidth="210.0" prefWidth="210.0" resizable="false" sortable="false" text="ชื่อผู้ใช้" />
+                                    <TableColumn fx:id="nameColumn" editable="false" maxWidth="210.0" minWidth="210.0" prefWidth="210.0" resizable="false" sortable="false" text="ชื่อ - นามสกุล" />
+                                    <TableColumn fx:id="roleColumn" editable="false" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" resizable="false" sortable="false" text="ประเภท" />
                                 </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
                               </TableView>
                            </children>
                         </Pane>

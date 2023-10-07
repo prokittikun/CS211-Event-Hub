@@ -44,6 +44,12 @@ public class MyEventCard {
     private Datasource<EventCollection> datasourceEvent;
     private Datasource<TeamCollection> datasourceTeam;
 
+    //Init
+    @FXML
+    public void initialize(){
+        datasourceEvent = new EventListFileDatasource("data/event", "event.csv");
+    }
+
     //Route
     @FXML
     public void goToListTeam() {
@@ -75,7 +81,7 @@ public class MyEventCard {
     @FXML
     public void goToActivityEvent(){
         try {
-            FXRouter.goTo("activityEvent", data);
+            FXRouter.goTo("eventActivity", data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -109,10 +115,13 @@ public class MyEventCard {
             eventToggleStatus.setText("เปิด");
             eventToggleStatus.getStyleClass().remove("btn-danger");
             eventToggleStatus.getStyleClass().add("btn-success");
+            eventToggleStatus.getStyleClass().add("btn-success");
+            datasourceEvent.updateColumnById(data.get("eventId").toString(), "status", "true");
         }else{
             eventToggleStatus.setText("ปิด");
             eventToggleStatus.getStyleClass().remove("btn-success");
             eventToggleStatus.getStyleClass().add("btn-danger");
+            datasourceEvent.updateColumnById(data.get("eventId").toString(), "status", "false");
         }
     }
 

@@ -95,7 +95,12 @@ public class RegisterController {
         validatePassword();
         validateConfirmPassword();
 
-        if (firstNameError.getText().isEmpty() &&
+        String username = usernameField.getText();
+        UserCollection users = userListFileDatasource.query("username = " + username);
+
+        if (!users.getAllUsers().isEmpty()) {
+            usernameError.setText("ชื่อผู้ใช้นี้มีอยู่แล้ว");
+        } else if (firstNameError.getText().isEmpty() &&
                 lastNameError.getText().isEmpty() &&
                 usernameError.getText().isEmpty() &&
                 passwordError.getText().isEmpty() &&

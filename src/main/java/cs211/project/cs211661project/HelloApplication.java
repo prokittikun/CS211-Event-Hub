@@ -1,6 +1,7 @@
 package cs211.project.cs211661project;
 
 import javafx.application.Application;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import cs211.project.services.FXRouter;
 
@@ -9,6 +10,9 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+        Font.loadFont(getClass().getResourceAsStream("/cs211/project/views/assets/fonts/Kanit-Light.ttf"), 12);
+        Font.loadFont(getClass().getResourceAsStream("/cs211/project/views/assets/fonts/Kanit-Regular.ttf"), 12);
+        Font.loadFont(getClass().getResourceAsStream("/cs211/project/views/assets/fonts/Kanit-Bold.ttf"), 12);
         FXRouter.bind(this, stage, "CS211 661 Project",1200,800);
         configRoute();
         FXRouter.goTo("login");
@@ -43,6 +47,7 @@ public class HelloApplication extends Application {
         FXRouter.when("contactUs", resourcesPath + "contact-us-view.fxml");
 
         FXRouter.when("createActivity", resourcesPath + "create-activity-view.fxml");
+        FXRouter.when("createEventActivity", resourcesPath + "create-event-activity-view.fxml");
         FXRouter.when("profile", resourcesPath + "profile-view.fxml");
         FXRouter.when("chat", resourcesPath + "team-chat-view.fxml");
         FXRouter.when("dashboard", resourcesPath + "dashboard-view.fxml");

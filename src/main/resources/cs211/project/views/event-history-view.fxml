@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.EventHistoryController">
     <children>
@@ -14,14 +16,40 @@
                 <AnchorPane fx:id="footer" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="65.0" prefWidth="1200.0" BorderPane.alignment="CENTER" />
             </bottom>
             <center>
-                <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+                <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
                     <styleClass>
                         <String fx:value="card" />
                         <String fx:value="shadow" />
                     </styleClass>
-                    <children>
-                        <Label styleClass="text-5xl" text="coming soon!!!" />
-                    </children>
+               <BorderPane.margin>
+                  <Insets top="65.0" />
+               </BorderPane.margin>
+               <children>
+                  <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0">
+                     <top>
+                        <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="&lt; ย้อนกลับ">
+                                 <styleClass>
+                                    <String fx:value="text-sm" />
+                                    <String fx:value="btn-outline-danger" />
+                                 </styleClass>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Pane prefHeight="60.0" prefWidth="300.0" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="230.0" text="ประวัติการเข้าร่วม">
+                                 <styleClass>
+                                    <String fx:value="text-3xl" />
+                                    <String fx:value="font-bold" />
+                                 </styleClass>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </top>
+                  </BorderPane>
+               </children>
                 </Pane>
             </center>
         </BorderPane>
