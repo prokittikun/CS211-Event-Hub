@@ -95,6 +95,8 @@ public class CreateTeamController {
         try {
             //Navbar
             AnchorPane navbarComponent = navbarComponentLoader.load();
+            NavbarController navbarController = navbarComponentLoader.getController();
+            navbarController.setData(data);
             navbar.getChildren().add(navbarComponent);
 
             //Footer
