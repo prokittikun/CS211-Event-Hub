@@ -10,7 +10,6 @@ import cs211.project.services.FXRouter;
 import cs211.project.services.JoinEventListFileDatasource;
 import cs211.project.models.JoinEvent;
 import cs211.project.services.*;
-import cs211.project.services.alert.ToastAlert;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -139,7 +138,6 @@ public class EventDetailController {
         JoinEventCollection newJoinEventCollection = new JoinEventCollection();
         newJoinEventCollection.addJoinEvent(new JoinEvent(UUID.randomUUID().toString(),eventId.toString(),userId.toString(), DateTimeService.getCurrentDate(),"0"));
         joinEventDatasource.writeData(newJoinEventCollection);
-        ToastAlert.show("ลงทะเบียนสำเร็จ", ToastAlert.AlertType.SUCCESS);
     }
 
     @FXML
