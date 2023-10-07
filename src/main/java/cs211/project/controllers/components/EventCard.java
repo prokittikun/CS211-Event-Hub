@@ -18,7 +18,6 @@ public class EventCard {
     private String eventId;
     @FXML
     private Label eventDate;
-
     @FXML
     private Rectangle eventImage;
     @FXML
