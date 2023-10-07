@@ -67,10 +67,10 @@ public class CreateTeamController {
     @FXML
     private TextField textFieldStartTime;
     private HashMap<String, Object> data;
-    private Datasource<TeamCollection> teamDatascource;
-    private Datasource<EventCollection> eventDatascource;
-    private Datasource<JoinEventCollection> joinEventDatascource;
-    private Datasource<UserCollection> userDatascource;
+    private Datasource<TeamCollection> teamDatasource;
+    private Datasource<EventCollection> eventDatasource;
+    private Datasource<JoinEventCollection> joinEventDatasource;
+    private Datasource<UserCollection> userDatasource;
     private TeamCollection teamList;
     private EventCollection eventList;
     private JoinEventCollection joinEventList;
@@ -79,14 +79,14 @@ public class CreateTeamController {
     @FXML
     private void initialize() {
         data = FXRouter.getData();
-        eventDatascource = new EventListFileDatasource("data/event", "event.csv");
-        teamDatascource = new TeamListFileDatasource("data/team", "team.csv");
-        joinEventDatascource = new JoinEventListFileDatasource("data/joinEvent", "joinEvent.csv");
-        userDatascource = new UserListFileDatasource("data", "user.csv");
+        eventDatasource = new EventListFileDatasource("data/event", "event.csv");
+        teamDatasource = new TeamListFileDatasource("data/team", "team.csv");
+        joinEventDatasource = new JoinEventListFileDatasource("data/joinEvent", "joinEvent.csv");
+        userDatasource = new UserListFileDatasource("data", "user.csv");
 
-        joinEventList = joinEventDatascource.query("eventId = " + data.get("eventId"));
-        eventList = eventDatascource.query("id = " + data.get("eventId"));
-        teamList = teamDatascource.query("eventId = " + data.get("eventId"));
+        joinEventList = joinEventDatasource.query("eventId = " + data.get("eventId"));
+        eventList = eventDatasource.query("id = " + data.get("eventId"));
+        teamList = teamDatasource.query("eventId = " + data.get("eventId"));
 
         //Navbar
         FXMLLoader navbarComponentLoader = new FXMLLoader(getClass().getResource("/cs211/project/views/navbar.fxml"));
@@ -122,7 +122,7 @@ public class CreateTeamController {
                 listTeamCard.setTitleTeamLabel(teamData.getName());
 
                 //Filter User by userId
-                userList = userDatascource.query("id = " + teamData.getLeaderId());
+                userList = userDatasource.query("id = " + teamData.getLeaderId());
                 System.out.println(userList.getAllUsers().toString());
                 listTeamCard.setHeadTeamImageCircle("file:data/image/avatar/" + userList.getAllUsers().get(0).getAvatar());
 
@@ -143,7 +143,7 @@ public class CreateTeamController {
 
         //For Edit
         if (data.get("teamId") != null) {
-            Team team = teamDatascource.query("id = " + data.get("teamId")).getTeams().get(0);
+            Team team = teamDatasource.query("id = " + data.get("teamId")).getTeams().get(0);
             textFieldName.setText(team.getName());
             textFieldMaxParticipant.setText(team.getMaxMember());
             textFieldStartTime.setText(team.getStartTime());
@@ -231,7 +231,7 @@ public class CreateTeamController {
                         startTime,
                         endTime
                 );
-                teamDatascource.updateColumnsById(data.get("teamId").toString(), team.toHashMap());
+                teamDatasource.updateColumnsById(data.get("teamId").toString(), team.toHashMap());
             }else {
                 //Check name is unique skip my id
                 try {
@@ -255,7 +255,7 @@ public class CreateTeamController {
                 //Collection
                 TeamCollection teamCollection = new TeamCollection();
                 teamCollection.addTeam(team);
-                teamDatascource.writeData(teamCollection);
+                teamDatasource.writeData(teamCollection);
             }
             try {
                 FXRouter.goTo("listTeam", data);
