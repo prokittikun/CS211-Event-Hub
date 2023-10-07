@@ -112,7 +112,6 @@
                                              <children>
                                                 <TextField fx:id="usernameField" focusTraversable="false">
                                                    <styleClass>
-                                                      <String fx:value="font-bold" />
                                                       <String fx:value="text-xl" />
                                                       <String fx:value="card-light-gray" />
                                                    </styleClass>
