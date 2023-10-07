@@ -1,11 +1,13 @@
 package cs211.project.controllers;
 
 import cs211.project.models.Activity;
+import cs211.project.models.Event;
+import cs211.project.models.Team;
 import cs211.project.models.collections.EventActivityCollection;
+import cs211.project.models.collections.EventCollection;
+import cs211.project.models.collections.JoinEventCollection;
 import cs211.project.models.collections.TeamActivityCollection;
-import cs211.project.services.Datasource;
-import cs211.project.services.EventActivityListFileDatasource;
-import cs211.project.services.FXRouter;
+import cs211.project.services.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +21,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.UUID;
@@ -50,7 +53,8 @@ public class EventActivityController {
     private HashMap<String, Object> data;
 
     private Datasource<EventActivityCollection> eventActivityDatasource;
-
+    private Datasource<EventCollection> eventDatasource;
+    private Datasource<JoinEventCollection> joinEventCollectionDatasource;
 
     @FXML
     private TableColumn<Activity, String> orderColumn;
@@ -85,14 +89,28 @@ public class EventActivityController {
     @FXML
     private Pane modal;
 
+    private UUID creatorId;
+
+    private boolean isCreator;
+
+    private Event currentEvent;
+
+    @FXML
+    private Button addActivityButton;
+
 
     @FXML
     void initialize() {
         data = FXRouter.getData();
         eventId = UUID.fromString(data.get("eventId").toString());
+        data.remove("activityId");
         eventActivityDatasource = new EventActivityListFileDatasource("data/event", "activity.csv");
+        eventDatasource = new EventListFileDatasource("data/event", "event.csv");
+        joinEventCollectionDatasource = new JoinEventListFileDatasource("data/event", "joinEvent.csv");
         backDrop.setVisible(false);
         modal.setVisible(false);
+        initHeader();
+        checkIsEventCreator();
         //Navbar
         FXMLLoader navbarComponentLoader = new FXMLLoader(getClass().getResource("/cs211/project/views/navbar.fxml"));
         //Footer
@@ -129,6 +147,29 @@ public class EventActivityController {
         showTable();
     }
 
+
+    private void initHeader(){
+        Event event = eventDatasource.query("id = " + this.eventId).getEvents().get(0);
+        currentEvent = event;
+        eventName.setText(event.getName());
+        eventLocation.setText(event.getLocation());
+        Image image = new Image("file:data" + File.separator + "image" + File.separator + "event" + File.separator + event.getImage());
+        eventImage.setImage(image);
+        JoinEventCollection joinEventCollection = joinEventCollectionDatasource.query("eventId = " + event.getId());
+        eventParticipant.setText(joinEventCollection.getJoinEvents().size() + "/" + event.getMaxParticipant());
+        eventDate.setText(DateTimeService.toString(event.getStartDate()) + " - " + DateTimeService.toString(event.getEndDate()));
+    }
+
+    private void checkIsEventCreator() {
+        creatorId = UUID.fromString(currentEvent.getUserId());
+        if (creatorId.toString().equals(data.get("userId").toString())) {
+            isCreator = true;
+            addActivityButton.setVisible(true);
+        } else {
+            isCreator = false;
+            addActivityButton.setVisible(false);
+        }
+    }
 
     private void showTable() {
         EventActivityCollection activityList = eventActivityDatasource.query("eventId = " + eventId.toString());
@@ -175,44 +216,43 @@ public class EventActivityController {
                                     });
 
 
-//                                    ImageView trashIcon = new ImageView(new Image (getClass().getResource("/cs211/project/views/assets/Icons/trash-red.png").toExternalForm()));
-//                                    trashIcon.setFitHeight(20);
-//                                    trashIcon.setFitWidth(20);
-//                                    deleteButton.setGraphic(trashIcon);
-//                                    deleteButton.setStyle("-fx-background-color: transparent; -fx-cursor: hand;");
-//                                    //open delete modal
-//                                    deleteButton.setOnAction(event -> {
-//                                        eventActivityDatasource.deleteById(activity.getId());
-//                                        showTable();
-//                                    });
+                                    ImageView trashIcon = new ImageView(new Image (getClass().getResource("/cs211/project/views/assets/Icons/trash-red.png").toExternalForm()));
+                                    trashIcon.setFitHeight(20);
+                                    trashIcon.setFitWidth(20);
+                                    deleteButton.setGraphic(trashIcon);
+                                    deleteButton.setStyle("-fx-background-color: transparent; -fx-cursor: hand;");
+                                    //open delete modal
+                                    deleteButton.setOnAction(event -> {
+                                        eventActivityDatasource.deleteById(activity.getId());
+                                        showTable();
+                                    });
 
-//                                    ImageView editIcon = new ImageView(new Image (getClass().getResource("/cs211/project/views/assets/Icons/edit-red.png").toExternalForm()));
-//                                    editIcon.setFitHeight(20);
-//                                    editIcon.setFitWidth(20);
-//                                    editButton.setGraphic(editIcon);
-//                                    editButton.setStyle("-fx-background-color: transparent; -fx-cursor: hand;");
-//                                    //open edit modal
-//                                    editButton.setOnAction(event -> {
-//                                        try {
-//                                            HashMap<String, Object> newData = new HashMap<>();
-//                                            newData.put("teamId", teamId.toString());
-//                                            newData.put("eventId", currentTeam.getEventId());
-//                                            newData.put("activityId", activity.getId());
-//                                            newData.put("userId", data.get("userId"));
-//                                            FXRouter.goTo("createActivity", newData);
-//                                        } catch (IOException e) {
-//                                            throw new RuntimeException(e);
-//                                        }
-//                                    });
+                                    ImageView editIcon = new ImageView(new Image (getClass().getResource("/cs211/project/views/assets/Icons/edit-red.png").toExternalForm()));
+                                    editIcon.setFitHeight(20);
+                                    editIcon.setFitWidth(20);
+                                    editButton.setGraphic(editIcon);
+                                    editButton.setStyle("-fx-background-color: transparent; -fx-cursor: hand;");
+                                    //open edit modal
+                                    editButton.setOnAction(event -> {
+                                        try {
+                                            HashMap<String, Object> newData = new HashMap<>();
+                                            newData.put("eventId", eventId.toString());
+                                            newData.put("activityId", activity.getId());
+                                            newData.put("userId", data.get("userId"));
+                                            FXRouter.goTo("createEventActivity", newData);
+                                        } catch (IOException e) {
+                                            throw new RuntimeException(e);
+                                        }
+                                    });
 
                                     hbox.getChildren().clear();
-//                                    if (isLeader || currentEvent.getUserId().equals(data.get("userId").toString())) {
-//                                        hbox.getChildren().addAll(openmodalButton, editButton, deleteButton);
-//                                    } else {
-//                                        hbox.getChildren().add(openmodalButton);
-//                                    }
+                                    if (isCreator) {
+                                        hbox.getChildren().addAll(openmodalButton, editButton, deleteButton);
+                                    } else {
+                                        hbox.getChildren().add(openmodalButton);
+                                    }
 
-                                    hbox.getChildren().add(openmodalButton);
+//                                    hbox.getChildren().add(openmodalButton, editButton);
 
                                     hbox.alignmentProperty().set(javafx.geometry.Pos.CENTER);
                                     setGraphic(hbox);
@@ -229,6 +269,7 @@ public class EventActivityController {
         scheduleTable.getColumns().clear();
         scheduleTable.getColumns().add(orderColumn);
         scheduleTable.getColumns().add(nameColumn);
+        scheduleTable.getColumns().add(detailColumn);
         scheduleTable.getColumns().add(dateTimeStartColumn);
         scheduleTable.getColumns().add(dateTimeEndColumn);
         scheduleTable.getColumns().add(tool);
@@ -249,7 +290,17 @@ public class EventActivityController {
 
     @FXML
     void onHandleCloseModal(ActionEvent event) {
+        backDrop.setVisible(false);
+        modal.setVisible(false);
+    }
 
+    @FXML
+    void onHandleAddActivity(ActionEvent event) {
+        try {
+            FXRouter.goTo("createEventActivity", data);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
