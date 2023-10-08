@@ -10,9 +10,11 @@ import cs211.project.services.FXRouter;
 import cs211.project.services.JoinEventListFileDatasource;
 import cs211.project.models.JoinEvent;
 import cs211.project.services.*;
+import cs211.project.services.alert.ToastAlert;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -52,7 +54,17 @@ public class EventDetailController {
     private Label eventParticipant;
 
     @FXML
-    private Label eventStartDate;
+    private Label eventStartDateTime;
+
+    @FXML
+    private Label eventEndDateTime;
+
+    @FXML
+    private Button registerEventButton;
+
+    @FXML
+    private Button joinTeamButton;
+
     private List<EventCard> eventCardList;
     private HashMap<String, Object> data;
     private UUID eventId;
@@ -61,7 +73,9 @@ public class EventDetailController {
     private Datasource<JoinEventCollection> joinEventDatasource;
     private Event event;
     private EventCollection eventRecommendCollection;
+
     private ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+    private boolean isJoinEvent;
 
     @FXML
     private void initialize() {
@@ -70,16 +84,9 @@ public class EventDetailController {
         userId = UUID.fromString((String) data.get("userId"));
         eventDatasource = new EventListFileDatasource("data/event","event.csv");
         joinEventDatasource = new JoinEventListFileDatasource("data/event", "joinEvent.csv");
-
         event = eventDatasource.query("id = " + eventId.toString()).getEvents().get(0);
-        setEventName(event.getName());
-        setEventLocation(event.getLocation());
-        setEventDetail(event.getDetail());
-        setEventStartDate(event.getStartDate());
-        setEventImage(event.getImage());
-
-        JoinEventCollection joinEventCollection = joinEventDatasource.query("eventId = " + event.getId());
-        setEventParticipant(joinEventCollection.getJoinEvents().size() + "/" + event.getMaxParticipant());
+        checkIsJoinEvent();
+        initEventDetail();
 
 
         //Navbar
@@ -132,12 +139,55 @@ public class EventDetailController {
         });
     }
 
+    private void initEventDetail(){
+        setEventName(event.getName());
+        setEventLocation(event.getLocation());
+        setEventDetail(event.getDetail());
+        setEventStartDateTime(DateTimeService.toString(event.getStartDate())+" "+event.getStartTime());
+        setEventEndDateTime(DateTimeService.toString(event.getEndDate())+" "+event.getEndTime());
+        setEventImage(event.getImage());
+
+        JoinEventCollection joinEventCollection = joinEventDatasource.query("eventId = " + event.getId());
+        setEventParticipant(joinEventCollection.getJoinEvents().size() + "/" + event.getMaxParticipant());
+    }
+
+    private void checkIsJoinEvent() {
+        JoinEventCollection joinEventCollection = joinEventDatasource.query("eventId = " + event.getId() + " AND userId = " + userId.toString());
+        if (joinEventCollection.getJoinEvents().size() == 1 || event.getUserId().equals(userId.toString())) {
+            registerEventButton.setText("ดูตารางกิจกรรม");
+            joinTeamButton.setVisible(false);
+            isJoinEvent = true;
+        }else {
+            isJoinEvent = false;
+        }
+    }
 
     @FXML
     void onHandleRegisterEvent(ActionEvent registerEvent) {
-        JoinEventCollection newJoinEventCollection = new JoinEventCollection();
-        newJoinEventCollection.addJoinEvent(new JoinEvent(UUID.randomUUID().toString(),eventId.toString(),userId.toString(), DateTimeService.getCurrentDate(),"0"));
-        joinEventDatasource.writeData(newJoinEventCollection);
+        //check event is full
+
+        if (isJoinEvent) {
+
+            try {
+                HashMap<String, Object> data = new HashMap<>();
+                data.put("userId", this.data.get("userId"));
+                data.put("eventId", event.getId());
+                FXRouter.goTo("eventActivity", data);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            JoinEventCollection joinEventCollection = joinEventDatasource.query("eventId = " + event.getId());
+            if (event.getMaxParticipant() <= joinEventCollection.getJoinEvents().size()) {
+                ToastAlert.show("ไม่สามารถลงทะเบียนกิจกรรมได้ เนื่องจากจำนวนผู้เข้าร่วมกิจกรรมเต็มแล้ว", ToastAlert.AlertType.ERROR);
+                return;
+            }
+            JoinEventCollection newJoinEventCollection = new JoinEventCollection();
+            newJoinEventCollection.addJoinEvent(new JoinEvent(UUID.randomUUID().toString(),eventId.toString(),userId.toString(), DateTimeService.getCurrentDate(),"0"));
+            joinEventDatasource.writeData(newJoinEventCollection);
+            checkIsJoinEvent();
+            initEventDetail();
+        }
     }
 
     @FXML
@@ -199,11 +249,19 @@ public class EventDetailController {
         this.eventParticipant.setText(eventParticipant);
     }
 
-    public String getEventStartDate() {
-        return eventStartDate.getText();
+    public String getEventStartDateTime() {
+        return eventStartDateTime.getText();
     }
 
-    public void setEventStartDate(String eventStartDate) {
-        this.eventStartDate.setText(eventStartDate);
+    public void setEventStartDateTime(String eventStartDate) {
+        this.eventStartDateTime.setText(eventStartDate);
+    }
+
+    public String getEventEndDateTime() {
+        return eventEndDateTime.getText();
+    }
+
+    public void setEventEndDateTime(String eventEndDate) {
+        this.eventEndDateTime.setText(eventEndDate);
     }
 }
