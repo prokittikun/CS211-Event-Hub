@@ -175,6 +175,7 @@ public class IndexController {
 
     }
 
+
     @FXML
     void onHandleGoToAllEvent(ActionEvent allEvent) {
         try {
