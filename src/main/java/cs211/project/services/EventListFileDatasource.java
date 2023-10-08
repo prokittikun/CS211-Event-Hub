@@ -3,6 +3,7 @@ package cs211.project.services;
 import cs211.project.models.Event;
 import cs211.project.models.Team;
 import cs211.project.models.collections.EventCollection;
+import cs211.project.models.collections.JoinEventCollection;
 import cs211.project.models.collections.TeamCollection;
 
 import java.io.*;
@@ -15,12 +16,16 @@ public class EventListFileDatasource implements Datasource<EventCollection> {
     private final String fileName;
     private final DataFileManager dataFileManager;
 
+    private Datasource<JoinEventCollection> joinEventDatasource;
+
+
     //Constructor
     public EventListFileDatasource(String directoryName, String fileName) {
         this.directoryName = directoryName;
         this.fileName = fileName;
         checkFileIsExisted();
         dataFileManager = new DataFileManager(directoryName, fileName);
+        joinEventDatasource = new JoinEventListFileDatasource("data/event", "joinEvent.csv");
     }
 
     // ตรวจสอบว่ามีไฟล์ให้อ่านหรือไม่ ถ้าไม่มีให้สร้างไฟล์เปล่า
@@ -44,7 +49,10 @@ public class EventListFileDatasource implements Datasource<EventCollection> {
     public EventCollection readData() {
         EventCollection eventList = new EventCollection();
         for (HashMap<String, String> data : dataFileManager.getData()) {
-            eventList.addEvent(new Event(data));
+            Event event = new Event(data);
+            JoinEventCollection joinEventCollection = joinEventDatasource.query("eventId = " + event.getId());
+            event.setParticipantCount(joinEventCollection.getJoinEvents().size());
+            eventList.addEvent(event);
         }
         return eventList;
     }
@@ -85,7 +93,11 @@ public class EventListFileDatasource implements Datasource<EventCollection> {
     public EventCollection findById(String id) {
         EventCollection events = new EventCollection();
         for (HashMap<String, String> data : dataFileManager.findById(id)) {
-            events.addEvent(new Event(data));
+            Event event = new Event(data);
+            JoinEventCollection joinEventCollection = joinEventDatasource.query("eventId = " + event.getId());
+            event.setParticipantCount(joinEventCollection.getJoinEvents().size());
+            events.addEvent(event);
+
         }
         return events;
     }
@@ -94,7 +106,10 @@ public class EventListFileDatasource implements Datasource<EventCollection> {
     public EventCollection findAllByColumnsAndValue(Map<String, String> conditions) {
         EventCollection events = new EventCollection();
         for (HashMap<String, String> item : dataFileManager.findAllByColumnsAndValue(conditions)) {
-            events.addEvent(new Event(item));
+            Event event = new Event(item);
+            JoinEventCollection joinEventCollection = joinEventDatasource.query("eventId = " + event.getId());
+            event.setParticipantCount(joinEventCollection.getJoinEvents().size());
+            events.addEvent(event);
         }
         return events;
     }
@@ -103,7 +118,10 @@ public class EventListFileDatasource implements Datasource<EventCollection> {
     public EventCollection query(String query) {
         EventCollection events = new EventCollection();
         for (HashMap<String, String> item : dataFileManager.query(query)) {
-            events.addEvent(new Event(item));
+            Event event = new Event(item);
+            JoinEventCollection joinEventCollection = joinEventDatasource.query("eventId = " + event.getId());
+            event.setParticipantCount(joinEventCollection.getJoinEvents().size());
+            events.addEvent(event);
         }
         return events;
     }
