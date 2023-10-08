@@ -9,6 +9,7 @@ import cs211.project.services.Datasource;
 import cs211.project.services.DateTimeService;
 import cs211.project.services.TeamListFileDatasource;
 import cs211.project.services.TeamMemberListFileDatasource;
+import cs211.project.services.alert.ToastAlert;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -61,11 +62,14 @@ public class JoinTeamCard {
 //        teamOrder.setVisible(true);
     }
 
-    void checkTeamIsFull(){
-        TeamMemberCollection teamMemberCollection = teamMemberDatasource.query("teamId = "+teamId);
-        Team team = teamDatasource.query("id = "+this.teamId).getTeams().get(0);
+    private boolean teamIsFull(){
+        TeamMemberCollection teamMemberCollection = teamMemberDatasource.query("teamId = "+teamId.toString());
+        Team team = teamDatasource.query("id = "+this.teamId.toString()).getTeams().get(0);
         int maxMember = Integer.parseInt(team.getMaxMember());
-        if(teamMemberCollection.getTeamMembers().size() == maxMember){
+        return teamMemberCollection.getTeamMembers().size() == maxMember;
+    }
+    public void checkTeamIsFull(){
+        if(this.teamIsFull()){
             joinTeamButton.setDisable(true);
             joinTeamButton.setText("ทีมเต็มแล้ว");
         }
@@ -73,6 +77,13 @@ public class JoinTeamCard {
     }
     @FXML
     void onHandleJoinTeam(ActionEvent event) {
+        //check team is full
+
+        if(this.teamIsFull()){
+            ToastAlert.show("ไม่สามารถเข้าร่วมทีมได้ เนื่องจากทีมเต็มแล้ว", ToastAlert.AlertType.ERROR);
+            return;
+        }
+
         TeamMemberCollection newMember = new TeamMemberCollection();
         TeamMember teamMember = new TeamMember(UUID.randomUUID().toString(),userId.toString(),teamId.toString());
         newMember.addTeamMember(teamMember);
@@ -111,7 +122,6 @@ public class JoinTeamCard {
 
     public void setTeamId(String teamId) {
         this.teamId = UUID.fromString(teamId);
-        checkTeamIsFull();
     }
 
     public void setUserId(String userId) {

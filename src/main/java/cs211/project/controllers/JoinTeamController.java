@@ -136,6 +136,7 @@ public class JoinTeamController {
                     if (isMe != null) {
                         joinTeamCard.isJoinedTeam();
                     }
+                    joinTeamCard.checkTeamIsFull();
                     joinTeamCard.setDate(DateTimeService.toString(team.getStartDate()) + " " + team.getStartTime(), DateTimeService.toString(team.getEndDate()) + " " + team.getEndTime());
                     javafx.application.Platform.runLater(() -> {
                         joinTeamVbox.getChildren().add(joinTeamCardComponent);
