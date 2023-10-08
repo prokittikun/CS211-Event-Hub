@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.EventDetailController">
+<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.EventDetailController">
    <content>
       <AnchorPane prefHeight="1382.0" prefWidth="1200.0" styleClass="bg-white" stylesheets="@style/global.css">
          <children>
@@ -64,6 +64,26 @@
                                                             <Label fx:id="eventLocation" styleClass="text-xl" text="ศูนย์การประชุมแห่งชาติสิริกิติ์ " />
                                                          </children>
                                                       </HBox>
+                                                      <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="354.0" spacing="5.0">
+                                                         <children>
+                                                            <Pane prefHeight="30.0" prefWidth="38.0" />
+                                                            <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@assets/Icons/user.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                            <Label prefHeight="30.0" styleClass="text-xl" text="จำนวนผู้เข้าร่วม:" />
+                                                            <Label fx:id="eventParticipant" prefHeight="30.0" text="250/500">
+                                                               <styleClass>
+                                                                  <String fx:value="text-base" />
+                                                                  <String fx:value="font-bold" />
+                                                               </styleClass>
+                                                            </Label>
+                                                         </children>
+                                                         <VBox.margin>
+                                                            <Insets top="-20.0" />
+                                                         </VBox.margin>
+                                                      </HBox>
                                                       <HBox alignment="CENTER_LEFT" prefHeight="18.0" prefWidth="187.0" spacing="5.0">
                                                          <children>
                                                             <Pane prefHeight="30.0" prefWidth="38.0" />
@@ -72,30 +92,45 @@
                                                                   <Image url="@assets/Icons/calendar.png" />
                                                                </image>
                                                             </ImageView>
-                                                            <Label fx:id="eventStartDate" prefHeight="30.0" prefWidth="111.0" styleClass="text-xl" text="29 ก.ค. 2566" />
-                                                            <HBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="112.0">
-                                                               <children>
-                                                                  <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                                                                     <image>
-                                                                        <Image url="@assets/Icons/user.png" />
-                                                                     </image>
-                                                                  </ImageView>
-                                                                  <Pane prefHeight="30.0" prefWidth="7.0" />
-                                                                  <Label fx:id="eventParticipant" prefHeight="30.0" styleClass="text-xl" text="250/500" />
-                                                               </children>
-                                                            </HBox>
+                                                            <Label prefHeight="30.0" styleClass="text-xl" text="เริ่มต้น:" />
+                                                            <Label fx:id="eventStartDateTime" prefHeight="30.0" text="29 กรกฏาคม 2566 10:00">
+                                                               <styleClass>
+                                                                  <String fx:value="text-base" />
+                                                                  <String fx:value="font-bold" />
+                                                               </styleClass>
+                                                            </Label>
                                                          </children>
                                                          <VBox.margin>
                                                             <Insets top="-20.0" />
                                                          </VBox.margin>
                                                       </HBox>
-                                                      <Button mnemonicParsing="false" onAction="#onHandleRegisterEvent" prefHeight="51.0" prefWidth="250.0" text="ลงทะเบียน">
+                                                      <HBox alignment="CENTER_LEFT" prefHeight="18.0" prefWidth="187.0" spacing="5.0">
+                                                         <children>
+                                                            <Pane prefHeight="30.0" prefWidth="38.0" />
+                                                            <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@assets/Icons/calendar.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                            <Label prefHeight="30.0" styleClass="text-xl" text="สิ้นสุด:" />
+                                                            <Label fx:id="eventEndDateTime" prefHeight="30.0" text="29 กรกฏาคม 2566 10:00">
+                                                               <styleClass>
+                                                                  <String fx:value="text-base" />
+                                                                  <String fx:value="font-bold" />
+                                                               </styleClass>
+                                                            </Label>
+                                                         </children>
+                                                         <VBox.margin>
+                                                            <Insets top="-20.0" />
+                                                         </VBox.margin>
+                                                      </HBox>
+                                                      <Button fx:id="registerEventButton" mnemonicParsing="false" onAction="#onHandleRegisterEvent" prefHeight="51.0" prefWidth="250.0" text="ลงทะเบียน">
                                                          <styleClass>
                                                             <String fx:value="btn-danger" />
                                                             <String fx:value="text-2xl" />
                                                          </styleClass>
                                                       </Button>
-                                                      <Button layoutX="85.0" layoutY="501.0" mnemonicParsing="false" onAction="#onHandleJoinTeam" prefHeight="38.0" prefWidth="250.0" text="เข้าร่วมทีม">
+                                                      <Button fx:id="joinTeamButton" layoutX="85.0" layoutY="501.0" mnemonicParsing="false" onAction="#onHandleJoinTeam" prefHeight="38.0" prefWidth="250.0" text="เข้าร่วมทีม">
                                                          <styleClass>
                                                             <String fx:value="btn-outline-danger" />
                                                             <String fx:value="text-2xl" />
