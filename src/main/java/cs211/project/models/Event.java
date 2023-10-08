@@ -1,4 +1,6 @@
 package cs211.project.models;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -15,6 +17,10 @@ public class Event {
     private int maxParticipant;
     private String image;
     private boolean status;
+
+    private int participantCount;
+
+    private LocalDateTime createAt;
 
     //Constructor
     public Event(String userId, String name, String detail,
@@ -34,6 +40,8 @@ public class Event {
         this.maxParticipant = maxParticipant;
         this.image = image;
         this.status = true;
+        this.participantCount = 0;
+        this.createAt = LocalDateTime.now();
     }
 
     //Constructor (HashMap)
@@ -50,6 +58,9 @@ public class Event {
         this.maxParticipant = Integer.parseInt(data.get("maxParticipant").trim());
         this.image = data.get("image").trim();
         this.status = Boolean.parseBoolean(data.get("status").trim());
+        //set localDateTime from data.get(createAt)
+        this.createAt = LocalDateTime.parse(data.get("createAt").trim());
+
     }
 
     //Getter
@@ -93,12 +104,20 @@ public class Event {
         return maxParticipant;
     }
 
+    public int getParticipantCount() {
+        return participantCount;
+    }
+
     public String getImage() {
         return image;
     }
 
     public boolean isStatus() {
         return status;
+    }
+
+    public LocalDateTime getCreateAt() {
+        return createAt;
     }
 
 
@@ -134,6 +153,10 @@ public class Event {
         this.endTime = endTime;
     }
 
+    public void setParticipantCount(int participantCount) {
+        this.participantCount = participantCount;
+    }
+
     public void setMaxParticipant(int maxParticipant) {
         this.maxParticipant = maxParticipant;
     }
@@ -144,6 +167,10 @@ public class Event {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public void setCreateAt(LocalDateTime createAt) {
+        this.createAt = createAt;
     }
 
     //Methods (For WriteFile)
@@ -161,6 +188,7 @@ public class Event {
         data.put("endTime", endTime);
         data.put("maxParticipant", String.valueOf(maxParticipant));
         data.put("status", String.valueOf(status));
+        data.put("createAt", createAt.toString());
         return data;
     }
 
