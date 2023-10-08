@@ -7,6 +7,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -29,7 +30,8 @@ public class ToastAlert {
 
         StackPane stackPane = new StackPane(label);
         stackPane.setAlignment(Pos.TOP_RIGHT);
-        stackPane.setPrefWidth(300);
+        stackPane.setMinWidth(300);
+        stackPane.setPrefWidth(Region.USE_COMPUTED_SIZE);
         stackPane.setPadding(new Insets(10));
 
         String backgroundColor = alertType == AlertType.SUCCESS ? "rgba(0, 128, 0, 0.7)" : "rgba(255, 0, 0, 0.7)";
