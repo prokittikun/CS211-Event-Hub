@@ -222,18 +222,15 @@ public class CreateTeamController {
 
             if(data.get("teamId") != null){
                 //Update
-                Team team = new Team(
-                        data.get("teamId").toString(),
-                        name,
-                        data.get("eventId").toString(),
-                        data.get("userId").toString(),
-                        maxParticipant,
-                        startDate,
-                        endDate,
-                        startTime,
-                        endTime
-                );
-                teamDatasource.updateColumnsById(data.get("teamId").toString(), team.toHashMap());
+                HashMap<String, String> newData = new HashMap<>();
+                newData.put("name", name);
+                newData.put("maxMember", maxParticipant);
+                newData.put("startDate", startDate);
+                newData.put("endDate", endDate);
+                newData.put("startTime", startTime);
+                newData.put("endTime", endTime);
+
+                teamDatasource.updateColumnsById(data.get("teamId").toString(), newData);
             }else {
                 //Check name is unique skip my id
                 try {

@@ -28,6 +28,7 @@ public class MyEventController {
     @FXML
     private void initialize() {
         data = FXRouter.getData();
+        data.remove("eventId");
         //Datasource
         datasource = new EventListFileDatasource("data/event", "event.csv");
         myEventList = datasource.query("userId = " + data.get("userId"));

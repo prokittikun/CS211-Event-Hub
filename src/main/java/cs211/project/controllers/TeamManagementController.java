@@ -360,16 +360,6 @@ public class TeamManagementController {
 
     }
 
-    @FXML
-    void onHandleOpenChat(ActionEvent event) {
-        try {
-//            HashMap<String, Object> data = new HashMap<>();
-//            data.put("teamId", teamId.toString());
-            FXRouter.goTo("chat", data);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     public void reloadData() {
         this.memberVbox.getChildren().clear();
