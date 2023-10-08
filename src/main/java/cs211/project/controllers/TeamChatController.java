@@ -31,6 +31,7 @@ public class TeamChatController {
 
     private UUID teamId;
     private UUID userId;
+    private UUID activityId;
     @FXML
     private Label eventDate;
 
@@ -79,19 +80,24 @@ public class TeamChatController {
 
     private Datasource<EventCollection>  eventDatasource;
 
+    private Datasource<TeamActivityCollection> teamActivityDatasource;
+
     private Datasource<JoinEventCollection> joinEventCollectionDatasource;
     private ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
     private HashMap<String, Object> data;
+
 
     @FXML
     private void initialize() {
         data = FXRouter.getData(); // get data from router
         teamId = UUID.fromString((String) data.get("teamId"));
-
+        activityId = UUID.fromString((String) data.get("activityId"));
         userId = UUID.fromString((String) data.get("userId"));
+
         chatDatasource = new ChatListFileDatasource("data/team", "chat.csv");
         eventDatasource = new EventListFileDatasource("data/event", "event.csv");
         teamCollectionDatasource = new TeamListFileDatasource("data/team", "team.csv");
+        teamActivityDatasource = new TeamActivityListFileDatasource("data/team", "activity.csv");
         joinEventCollectionDatasource = new JoinEventListFileDatasource("data/event", "joinEvent.csv");
         teamMemberCollectionDatasource = new TeamMemberListFileDatasource("data/team", "teamMember.csv");
         chatList = new ChatCollection();
@@ -132,7 +138,7 @@ public class TeamChatController {
     void onHandleSendMessage(ActionEvent event) {
         if(!inputMessage.getText().isEmpty()){
             String timestamp = DateTimeService.toString(DateTimeService.getCurrentDate()) + " " + DateTimeService.getCurrentTime();
-            Chat newChat = new Chat(this.userId.toString(), inputMessage.getText(), this.teamId.toString(), timestamp);
+            Chat newChat = new Chat(this.userId.toString(), inputMessage.getText(), this.teamId.toString(), this.activityId.toString(), timestamp);
             ChatCollection newChatList = new ChatCollection();
             chatList.addNewChat(newChat);
             newChatList.addNewChat(newChat);
@@ -169,7 +175,7 @@ public class TeamChatController {
         teamName.setText(team.getName());
     }
     private void initChat(){
-        chatList = chatDatasource.query("teamId = " + this.teamId.toString());
+        chatList = chatDatasource.query("teamId = " + this.teamId.toString() + " AND activityId = " + this.activityId.toString());
         for (Chat chat : chatList.getChats()) {
             try {
                 FXMLLoader chatMessageLoader = new FXMLLoader();

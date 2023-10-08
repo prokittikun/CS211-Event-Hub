@@ -3,6 +3,8 @@ package cs211.project.controllers;
 import cs211.project.models.*;
 import cs211.project.models.collections.*;
 import cs211.project.services.*;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -125,6 +127,24 @@ public class TeamManagementController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        scheduleTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Activity>() {
+            @Override
+            public void changed(ObservableValue observable, Activity oldValue, Activity newValue) {
+                if (newValue != null) {
+                    try {
+                        HashMap<String, Object> newData = new HashMap<>();
+                        newData.put("teamId", teamId.toString());
+                        newData.put("activityId", newValue.getId());
+                        newData.put("userId", data.get("userId"));
+                        newData.put("eventId", currentTeam.getEventId());
+                        // FXRouter.goTo สามารถส่งข้อมูลไปยังหน้าที่ต้องการได้ โดยกำหนดเป็น parameter ที่สอง
+                        FXRouter.goTo("chat", newData);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+        });
         //todo order column
         orderColumn.setCellFactory(column -> {
             TableCell<Activity, String> cell = new TableCell<Activity, String>() {

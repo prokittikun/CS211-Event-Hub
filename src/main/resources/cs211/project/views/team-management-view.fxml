@@ -7,8 +7,6 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -43,15 +41,6 @@
                                                 <String fx:value="font-bold" />
                                              </styleClass>
                                           </Label>
-                                          <Button mnemonicParsing="false" onAction="#onHandleOpenChat" styleClass="btn-transparent">
-                                             <graphic>
-                                                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@assets/Icons/message.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                          </Button>
                                        </children>
                                     </HBox>
                                     <ScrollPane hbarPolicy="NEVER" prefHeight="426.0" prefWidth="370.0" styleClass="bg-transparent">
