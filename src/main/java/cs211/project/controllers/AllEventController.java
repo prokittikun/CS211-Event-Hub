@@ -8,15 +8,21 @@ import cs211.project.services.Datasource;
 import cs211.project.services.EventListFileDatasource;
 import cs211.project.services.FXRouter;
 import cs211.project.services.JoinEventListFileDatasource;
+import cs211.project.services.comparator.LatestEventComparator;
+import cs211.project.services.comparator.LeastEventParticipantComparator;
+import cs211.project.services.comparator.MostEventParticipantComparator;
+import cs211.project.services.comparator.OldestEventComparator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -37,6 +43,25 @@ public class AllEventController {
     private ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 
     @FXML
+    private TextField searchInput;
+
+    @FXML
+    private RadioButton  latestButton;
+
+    @FXML
+    private RadioButton  oldestButton;
+
+    @FXML
+    private RadioButton  leastJoinButton;
+
+    @FXML
+    private RadioButton mostJoinButton;
+
+
+    EventCollection optionEventCollection;
+
+
+    @FXML
     private void initialize() {
         data = FXRouter.getData();
         data.remove("eventId");
@@ -45,8 +70,17 @@ public class AllEventController {
         joinEventDatasource = new JoinEventListFileDatasource("data/event", "joinEvent.csv");
         eventCollection = new EventCollection();
         eventCollection = eventDatasource.readData();
+        //add participant to event
+        optionEventCollection = new EventCollection();
+        optionEventCollection = eventDatasource.readData();
+        latestButton.setSelected(true);
+        ToggleGroup toggleGroup1 = new ToggleGroup();
+        latestButton.setToggleGroup(toggleGroup1);
+        oldestButton.setToggleGroup(toggleGroup1);
+        leastJoinButton.setToggleGroup(toggleGroup1);
+        mostJoinButton.setToggleGroup(toggleGroup1);
+        initAllEvent(getLatestEvent());
 
-        initAllEvent();
         //Navbar
         FXMLLoader navbarComponentLoader = new FXMLLoader(getClass().getResource("/cs211/project/views/navbar.fxml"));
         //Footer
@@ -65,7 +99,7 @@ public class AllEventController {
             throw new RuntimeException(e);
         }
     }
-    private void initAllEvent(){
+    private void initAllEvent(EventCollection eventCollection){
         executorService.submit(() -> {
             final int[] column = {0};
             final int[] row = {1};
@@ -112,5 +146,84 @@ public class AllEventController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @FXML
+    void onHandleLatestButton(ActionEvent event) {
+        showAllEvent.getChildren().clear();
+        //sort by new event
+
+        initAllEvent(getLatestEvent());
+    }
+    private EventCollection getLatestEvent(){
+        String search = searchInput.getText();
+        EventCollection searchEventCollection = new EventCollection();
+        for (Event event1 : eventCollection.sortByComparator(new LatestEventComparator())) {
+            if (event1.getName().contains(search)) {
+                searchEventCollection.addEvent(event1);
+            }
+        }
+        return searchEventCollection;
+    }
+    @FXML
+    void onHandleOldestButton(ActionEvent event) {
+        showAllEvent.getChildren().clear();
+        //sort by old event
+        String search = searchInput.getText();
+        EventCollection searchEventCollection = new EventCollection();
+        for (Event event1 : eventCollection.sortByComparator(new OldestEventComparator())) {
+            if (event1.getName().contains(search)) {
+                searchEventCollection.addEvent(event1);
+            }
+        }
+        initAllEvent(searchEventCollection);
+
+    }
+    @FXML
+    void onHandleLeastJoinButton(ActionEvent event) {
+        showAllEvent.getChildren().clear();
+        //sort by least join
+        String search = searchInput.getText();
+        EventCollection searchEventCollection = new EventCollection();
+        for (Event event1 : eventCollection.sortByComparator(new LeastEventParticipantComparator())) {
+            if (event1.getName().contains(search)) {
+                searchEventCollection.addEvent(event1);
+            }
+        }
+        initAllEvent(searchEventCollection);
+
+
+
+    }
+
+    @FXML
+    void onHandleMostJoinButton(ActionEvent event) {
+        showAllEvent.getChildren().clear();
+        //sort by most join
+        String search = searchInput.getText();
+        EventCollection searchEventCollection = new EventCollection();
+        for (Event event1 : eventCollection.sortByComparator(new MostEventParticipantComparator())) {
+            if (event1.getName().contains(search)) {
+                searchEventCollection.addEvent(event1);
+            }
+        }
+        initAllEvent(searchEventCollection);
+    }
+
+
+
+    @FXML
+    void onHandleSearchEvent(ActionEvent event) {
+        String search = searchInput.getText();
+        ///use contain name from eventCollection without read file again
+        EventCollection searchEventCollection = new EventCollection();
+        for (Event event1 : eventCollection.getEvents()) {
+            System.out.println(event1.getName());
+            if (event1.getName().contains(search)) {
+                searchEventCollection.addEvent(event1);
+            }
+        }
+        showAllEvent.getChildren().clear();
+        initAllEvent(searchEventCollection);
     }
 }
