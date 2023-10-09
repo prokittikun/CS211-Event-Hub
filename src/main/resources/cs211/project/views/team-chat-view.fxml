@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.TeamChatController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient"  xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.TeamChatController">
    <children>
       <BorderPane layoutX="-2.0" prefHeight="801.0" prefWidth="1203.0">
          <center>
@@ -40,6 +40,7 @@
                                        <styleClass>
                                           <String fx:value="text-4xl" />
                                           <String fx:value="font-bold" />
+                                          <String fx:value="text-black" />
                                        </styleClass>
                                     </Label>
                                     <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="922.0" spacing="5.0">
@@ -49,7 +50,11 @@
                                                 <Image url="@assets/Icons/marker.png" />
                                              </image>
                                           </ImageView>
-                                          <Label fx:id="eventLocation" styleClass="text-lg" text="Kasetsart University" />
+                                          <Label fx:id="eventLocation" text="Kasetsart University">
+                                             <styleClass>
+                                                <String fx:value="text-lg" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="922.0" spacing="10.0">
@@ -59,13 +64,21 @@
                                                 <Image url="@assets/Icons/calendar.png" />
                                              </image>
                                           </ImageView>
-                                          <Label fx:id="eventDate" styleClass="text-lg" text="29 ก.ค. 2566" />
+                                          <Label fx:id="eventDate" text="29 ก.ค. 2566">
+                                             <styleClass>
+                                                <String fx:value="text-lg" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
                                           <ImageView fitHeight="24.0" fitWidth="24.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@assets/Icons/user.png" />
                                              </image>
                                           </ImageView>
-                                          <Label fx:id="eventParticipant" styleClass="text-lg" text="0/36" />
+                                          <Label fx:id="eventParticipant" text="0/36">
+                                             <styleClass>
+                                                <String fx:value="text-lg" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
                                        </children>
                                     </HBox>
                                  </children>
@@ -91,6 +104,7 @@
                                        <styleClass>
                                           <String fx:value="text-3xl" />
                                           <String fx:value="font-bold" />
+                                          <String fx:value="text-black" />
                                        </styleClass>
                                     </Label>
                                     <ScrollPane hbarPolicy="NEVER" prefHeight="404.0" prefWidth="200.0" styleClass="bg-white">
@@ -133,6 +147,7 @@
                                              <styleClass>
                                                 <String fx:value="text-3xl" />
                                                 <String fx:value="font-bold" />
+                                                <String fx:value="text-black" />
                                              </styleClass>
                                           </Label>
                                        </children>
@@ -158,11 +173,12 @@
                                              <styleClass>
                                                 <String fx:value="card-light-gray" />
                                                 <String fx:value="text-lg" />
+                                                <String fx:value="text-black" />
                                              </styleClass>
                                           </TextField>
                                           <Button mnemonicParsing="false" onAction="#onHandleSendMessage" prefHeight="30.0" prefWidth="4.0" style="-fx-background-radius: 100%;">
                                              <graphic>
-                                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="text-black">
                                                    <image>
                                                       <Image url="@assets/Icons/right-arrow.png" />
                                                    </image>

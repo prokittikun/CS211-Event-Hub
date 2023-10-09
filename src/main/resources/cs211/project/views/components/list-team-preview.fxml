@@ -6,13 +6,14 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Circle?>
 
-<HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="270.0" spacing="10.0" stylesheets="@../style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.components.ListTeamPreview">
+<HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="270.0" spacing="10.0" styleClass="bg-white"  xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.components.ListTeamPreview">
    <children>
       <Circle fx:id="headTeamImageCircle" fill="WHITE" radius="24.0" stroke="#462b63" strokeType="INSIDE" style="-fx-cursor: hand;" styleClass="image-border" />
       <Label fx:id="titleTeamLabel" text="ทีมพิธีกร">
          <styleClass>
             <String fx:value="text-lg" />
             <String fx:value="font-bold" />
+            <String fx:value="text-black" />
          </styleClass>
       </Label>
    </children>

@@ -19,19 +19,20 @@
 
 <ScrollPane hbarPolicy="NEVER" minHeight="800.0" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.AllEventController">
    <content>
-      <AnchorPane minHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" stylesheets="@style/global.css">
+      <AnchorPane minHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" >
          <children>
             <BorderPane minHeight="800.0" prefWidth="1200.0">
                <center>
                   <VBox minHeight="326.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
                      <children>
                         <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="1200.0" />
-                        <HBox alignment="CENTER" prefHeight="94.0" prefWidth="1200.0" spacing="25.0">
+                        <HBox alignment="CENTER" prefHeight="94.0" prefWidth="1200.0" spacing="25.0" styleClass="text-black">
                            <children>
-                              <TextField fx:id="searchInput" focusTraversable="false" prefHeight="39.0" prefWidth="1013.0">
+                              <TextField fx:id="searchInput" focusTraversable="false" prefHeight="39.0" prefWidth="1013.0" promptText="Search here!">
                                  <styleClass>
                                     <String fx:value="text-lg" />
                                     <String fx:value="card-light-gray" />
+                                    <String fx:value="text-black" />
                                  </styleClass></TextField>
                               <Button mnemonicParsing="false" onAction="#onHandleSearchEvent" text="ตกลง">
                                  <styleClass>
@@ -68,15 +69,23 @@
                                                 </VBox>
                                                 <VBox prefHeight="89.0" prefWidth="575.0">
                                                    <children>
-                                                      <Label alignment="TOP_CENTER" prefHeight="65.0" prefWidth="998.0" styleClass="text-4xl" text="                      อีเวนต์ทั้งหมด">
+                                                      <Label alignment="TOP_CENTER" prefHeight="65.0" prefWidth="998.0" text="                      อีเวนต์ทั้งหมด">
                                                          <VBox.margin>
                                                             <Insets top="-10.0" />
                                                          </VBox.margin>
+                                                         <styleClass>
+                                                            <String fx:value="text-4xl" />
+                                                            <String fx:value="text-black" />
+                                                         </styleClass>
                                                       </Label>
-                                                      <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="998.0" styleClass="text-xl" text="                                       All Event">
+                                                      <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="998.0" text="                                       All Event">
                                                          <VBox.margin>
                                                             <Insets top="-20.0" />
                                                          </VBox.margin>
+                                                         <styleClass>
+                                                            <String fx:value="text-xl" />
+                                                            <String fx:value="text-black" />
+                                                         </styleClass>
                                                       </Label>
                                                    </children>
                                                 </VBox>
@@ -89,10 +98,26 @@
                                                       <Image url="@assets/Icons/black-sort.png" />
                                                    </image>
                                                 </ImageView>
-                                                <RadioButton fx:id="latestButton" mnemonicParsing="false" onAction="#onHandleLatestButton" styleClass="text-sm" text="ใหม่สุด" />
-                                                <RadioButton fx:id="oldestButton" mnemonicParsing="false" onAction="#onHandleOldestButton" styleClass="text-sm" text="เก่าสุด" />
-                                                <RadioButton fx:id="mostJoinButton" mnemonicParsing="false" onAction="#onHandleMostJoinButton" styleClass="text-sm" text="เข้าร่วมเยอะสุด" />
-                                                <RadioButton fx:id="leastJoinButton" mnemonicParsing="false" onAction="#onHandleLeastJoinButton" styleClass="text-sm" text="เข้าร่วมน้อยสุด" />
+                                                <RadioButton fx:id="latestButton" mnemonicParsing="false" onAction="#onHandleLatestButton" text="ใหม่สุด">
+                                                   <styleClass>
+                                                      <String fx:value="text-sm" />
+                                                      <String fx:value="text-black" />
+                                                   </styleClass></RadioButton>
+                                                <RadioButton fx:id="oldestButton" mnemonicParsing="false" onAction="#onHandleOldestButton" text="เก่าสุด">
+                                                   <styleClass>
+                                                      <String fx:value="text-sm" />
+                                                      <String fx:value="text-black" />
+                                                   </styleClass></RadioButton>
+                                                <RadioButton fx:id="mostJoinButton" mnemonicParsing="false" onAction="#onHandleMostJoinButton" text="เข้าร่วมเยอะสุด">
+                                                   <styleClass>
+                                                      <String fx:value="text-sm" />
+                                                      <String fx:value="text-black" />
+                                                   </styleClass></RadioButton>
+                                                <RadioButton fx:id="leastJoinButton" mnemonicParsing="false" onAction="#onHandleLeastJoinButton" text="เข้าร่วมน้อยสุด">
+                                                   <styleClass>
+                                                      <String fx:value="text-sm" />
+                                                      <String fx:value="text-black" />
+                                                   </styleClass></RadioButton>
                                              </children>
                                              <VBox.margin>
                                                 <Insets left="35.0" />

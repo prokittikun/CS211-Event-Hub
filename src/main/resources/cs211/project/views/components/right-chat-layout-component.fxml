@@ -12,7 +12,7 @@
    <children>
       <VBox prefWidth="596.0">
          <children>
-            <HBox alignment="BOTTOM_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="596.0" styleClass="bg-transparent" stylesheets="@../style/global.css">
+            <HBox alignment="BOTTOM_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="596.0" styleClass="bg-transparent" >
                <children>
                   <Label fx:id="timestamp" prefHeight="26.0" prefWidth="150.0" styleClass="text-xs" text="12 ตุลาคม 2566 22:55:00" />
                   <HBox maxWidth="322.0" prefHeight="46.0" prefWidth="322.0">

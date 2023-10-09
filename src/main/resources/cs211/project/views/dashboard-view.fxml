@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.DashboardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient"  xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.DashboardController">
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0">
          <bottom>
@@ -36,8 +36,16 @@
                                  <children>
                                     <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="120.0" prefWidth="300.0">
                                        <children>
-                                          <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="300.0" styleClass="text-xl" text="ผู้ใช้ทั้งหมด" />
-                                          <Label fx:id="totalUserLabel" alignment="TOP_CENTER" prefHeight="60.0" prefWidth="300.0" styleClass="text-4xl" text="totalUserLabel" />
+                                          <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="300.0" text="ผู้ใช้ทั้งหมด">
+                                             <styleClass>
+                                                <String fx:value="text-xl" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
+                                          <Label fx:id="totalUserLabel" alignment="TOP_CENTER" prefHeight="60.0" prefWidth="300.0" text="totalUserLabel">
+                                             <styleClass>
+                                                <String fx:value="text-4xl" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
                                        </children>
                                     </VBox>
                                  </children>
@@ -54,8 +62,16 @@
                                  <children>
                                     <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="120.0" prefWidth="300.0">
                                        <children>
-                                          <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="300.0" styleClass="text-xl" text="อีเวนต์ทั้งหมด" />
-                                          <Label fx:id="totalEventLabel" alignment="TOP_CENTER" prefHeight="60.0" prefWidth="300.0" styleClass="text-4xl" text="totalEventLabel" />
+                                          <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="300.0" text="อีเวนต์ทั้งหมด">
+                                             <styleClass>
+                                                <String fx:value="text-xl" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
+                                          <Label fx:id="totalEventLabel" alignment="TOP_CENTER" prefHeight="60.0" prefWidth="300.0" text="totalEventLabel">
+                                             <styleClass>
+                                                <String fx:value="text-4xl" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
                                        </children>
                                     </VBox>
                                  </children>
@@ -72,8 +88,16 @@
                                  <children>
                                     <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="120.0" prefWidth="300.0">
                                        <children>
-                                          <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="300.0" styleClass="text-xl" text="ผู้ดูแลทั้งหมด" />
-                                          <Label fx:id="totalAdminLabel" alignment="TOP_CENTER" prefHeight="60.0" prefWidth="300.0" styleClass="text-4xl" text="totalAdminLabel" />
+                                          <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="300.0" text="ผู้ดูแลทั้งหมด">
+                                             <styleClass>
+                                                <String fx:value="text-xl" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
+                                          <Label fx:id="totalAdminLabel" alignment="TOP_CENTER" prefHeight="60.0" prefWidth="300.0" text="totalAdminLabel">
+                                             <styleClass>
+                                                <String fx:value="text-4xl" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
                                        </children>
                                     </VBox>
                                  </children>
@@ -105,9 +129,14 @@
                                                    <styleClass>
                                                       <String fx:value="text-2xl" />
                                                       <String fx:value="font-bold" />
+                                                      <String fx:value="text-black" />
                                                    </styleClass>
                                                 </Label>
-                                                <Label fx:id="roleLabel" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" styleClass="text-xl" text="roleLabel" />
+                                                <Label fx:id="roleLabel" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" text="roleLabel">
+                                                   <styleClass>
+                                                      <String fx:value="text-xl" />
+                                                      <String fx:value="text-black" />
+                                                   </styleClass></Label>
                                              </children>
                                           </VBox>
                                        </children>
@@ -128,18 +157,35 @@
                                                    <styleClass>
                                                       <String fx:value="font-bold" />
                                                       <String fx:value="text-2xl" />
+                                                      <String fx:value="text-black" />
                                                    </styleClass>
                                                 </Label>
                                                 <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="300.0">
                                                    <children>
-                                                      <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="110.0" styleClass="text-base" text="สมัครสมาชิก:" />
-                                                      <Label fx:id="registerDateLabel" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="190.0" styleClass="text-lg" text="registerDateLabel" />
+                                                      <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="110.0" text="สมัครสมาชิก:">
+                                                         <styleClass>
+                                                            <String fx:value="text-base" />
+                                                            <String fx:value="text-black" />
+                                                         </styleClass></Label>
+                                                      <Label fx:id="registerDateLabel" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="190.0" text="registerDateLabel">
+                                                         <styleClass>
+                                                            <String fx:value="text-lg" />
+                                                            <String fx:value="text-black" />
+                                                         </styleClass></Label>
                                                    </children>
                                                 </HBox>
                                                 <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="300.0">
                                                    <children>
-                                                      <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="110.0" styleClass="text-base" text="เข้าใช้งานล่าสุด:" />
-                                                      <Label fx:id="lastLoginDateLabel" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="190.0" styleClass="text-lg" text="lastLoginDateLabel" />
+                                                      <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="110.0" text="เข้าใช้งานล่าสุด:">
+                                                         <styleClass>
+                                                            <String fx:value="text-base" />
+                                                            <String fx:value="text-black" />
+                                                         </styleClass></Label>
+                                                      <Label fx:id="lastLoginDateLabel" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="190.0" text="lastLoginDateLabel">
+                                                         <styleClass>
+                                                            <String fx:value="text-lg" />
+                                                            <String fx:value="text-black" />
+                                                         </styleClass></Label>
                                                    </children>
                                                 </HBox>
                                              </children>

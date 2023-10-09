@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.ManageEventController">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient"  xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.ManageEventController">
    <children>
       <BorderPane prefHeight="800.0" prefWidth="1200.0">
          <center>
@@ -32,6 +32,7 @@
                                        <styleClass>
                                           <String fx:value="text-xl" />
                                           <String fx:value="font-bold" />
+                                          <String fx:value="text-black" />
                                        </styleClass>
                                     </Label>
                                  </children>
@@ -66,7 +67,11 @@
                                                             <Image url="@assets/Icons/upload-red.png" />
                                                          </image>
                                                       </ImageView>
-                                                      <Label styleClass="text-xl" text="ลากไฟล์มาที่นี้ หรือ" />
+                                                      <Label text="ลากไฟล์มาที่นี้ หรือ">
+                                                         <styleClass>
+                                                            <String fx:value="text-xl" />
+                                                            <String fx:value="text-black" />
+                                                         </styleClass></Label>
                                                    </children>
                                                    <VBox.margin>
                                                       <Insets top="10.0" />
@@ -83,12 +88,12 @@
                                                 </VBox>
                                                 <VBox alignment="CENTER" prefHeight="32.0" prefWidth="225.0">
                                                    <children>
-                                                      <Label text="ขนาดที่เหมาะสม">
+                                                      <Label styleClass="text-black" text="ขนาดที่เหมาะสม">
                                                          <font>
                                                             <Font size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label text="960 x 1200">
+                                                      <Label styleClass="text-black" text="960 x 1200">
                                                          <font>
                                                             <Font size="10.0" />
                                                          </font>
@@ -132,6 +137,7 @@
                                        <styleClass>
                                           <String fx:value="text-2xl" />
                                           <String fx:value="font-bold" />
+                                          <String fx:value="text-black" />
                                        </styleClass>
                                     </Label>
                                  </children>
@@ -143,11 +149,19 @@
                                  <children>
                                     <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="841.0">
                                        <children>
-                                          <Label styleClass="text-xl" text="ชื่ออีเวนต์" />
+                                          <Label text="ชื่ออีเวนต์">
+                                             <styleClass>
+                                                <String fx:value="text-xl" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
                                           <Pane prefHeight="50.0" prefWidth="126.0" />
                                           <VBox prefHeight="50.0" prefWidth="552.0">
                                              <children>
-                                                <TextField fx:id="textFieldName" prefHeight="31.0" prefWidth="531.0" promptText="กรุณาระบุอีเวนต์" styleClass="card-light-gray" />
+                                                <TextField fx:id="textFieldName" prefHeight="31.0" prefWidth="531.0" promptText="กรุณาระบุอีเวนต์">
+                                                   <styleClass>
+                                                      <String fx:value="card-light-gray" />
+                                                      <String fx:value="text-black" />
+                                                   </styleClass></TextField>
                                                 <Label fx:id="errorLabelName" styleClass="text-red" text="errorLabelName" />
                                              </children>
                                           </VBox>
@@ -161,11 +175,19 @@
                                     </HBox>
                                     <HBox alignment="CENTER_LEFT" prefHeight="184.0" prefWidth="761.0">
                                        <children>
-                                          <Label styleClass="text-xl" text="รายละเอียด" />
+                                          <Label text="รายละเอียด">
+                                             <styleClass>
+                                                <String fx:value="text-xl" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
                                           <Pane prefHeight="184.0" prefWidth="112.0" />
                                           <VBox prefHeight="184.0" prefWidth="553.0">
                                              <children>
-                                                <TextArea fx:id="textAreaDetail" prefHeight="200.0" prefWidth="553.0" promptText="กรุณาระบุรายละเอียดอีเวนต์" styleClass="card-light-gray" />
+                                                <TextArea fx:id="textAreaDetail" prefHeight="200.0" prefWidth="553.0" promptText="กรุณาระบุรายละเอียดอีเวนต์">
+                                                   <styleClass>
+                                                      <String fx:value="card-light-gray" />
+                                                      <String fx:value="text-black" />
+                                                   </styleClass></TextArea>
                                                 <Label fx:id="errorLabelDetail" styleClass="text-red" text="errorLabelDetail" />
                                              </children>
                                           </VBox>
@@ -179,11 +201,19 @@
                                     </HBox>
                                     <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="841.0">
                                        <children>
-                                          <Label styleClass="text-xl" text="จำนวนที่รับ" />
+                                          <Label text="จำนวนที่รับ">
+                                             <styleClass>
+                                                <String fx:value="text-xl" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
                                           <Pane prefHeight="50.0" prefWidth="116.0" />
                                           <VBox prefHeight="50.0" prefWidth="556.0">
                                              <children>
-                                                <TextField fx:id="textFieldMaxParticipant" prefHeight="31.0" prefWidth="556.0" promptText="กรุณาระบุจำนวนที่รับเข้าร่วมอีเวนต์" styleClass="card-light-gray" />
+                                                <TextField fx:id="textFieldMaxParticipant" prefHeight="31.0" prefWidth="556.0" promptText="กรุณาระบุจำนวนที่รับเข้าร่วมอีเวนต์">
+                                                   <styleClass>
+                                                      <String fx:value="card-light-gray" />
+                                                      <String fx:value="text-black" />
+                                                   </styleClass></TextField>
                                                 <Label fx:id="errorLabelMaxParticipant" styleClass="text-red" text="errorLabelMaxParticipant" />
                                              </children>
                                           </VBox>
@@ -194,11 +224,19 @@
                                     </HBox>
                                     <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="841.0">
                                        <children>
-                                          <Label styleClass="text-xl" text="สถานที่" />
+                                          <Label text="สถานที่">
+                                             <styleClass>
+                                                <String fx:value="text-xl" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
                                           <VBox prefHeight="50.0" prefWidth="146.0" />
                                           <VBox prefHeight="50.0" prefWidth="556.0">
                                              <children>
-                                                <TextField fx:id="textFieldLocation" prefHeight="31.0" prefWidth="556.0" promptText="กรุณาระบุสถานที่" styleClass="card-light-gray" />
+                                                <TextField fx:id="textFieldLocation" prefHeight="31.0" prefWidth="556.0" promptText="กรุณาระบุสถานที่">
+                                                   <styleClass>
+                                                      <String fx:value="card-light-gray" />
+                                                      <String fx:value="text-black" />
+                                                   </styleClass></TextField>
                                                 <Label fx:id="errorLabelLocation" styleClass="text-red" text="errorLabelLocation" />
                                              </children>
                                           </VBox>
@@ -209,7 +247,11 @@
                                     </HBox>
                                     <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="841.0" spacing="20.0">
                                        <children>
-                                          <Label styleClass="text-xl" text="วันเดือนปี ที่เริ่ม" />
+                                          <Label text="วันเดือนปี ที่เริ่ม">
+                                             <styleClass>
+                                                <String fx:value="text-xl" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
                                           <Pane prefHeight="50.0" prefWidth="41.0" />
                                           <VBox prefHeight="50.0" prefWidth="235.0">
                                              <children>
@@ -220,7 +262,11 @@
                                           <Label styleClass="text-xl" text="เวลา" />
                                           <VBox prefHeight="50.0" prefWidth="245.0">
                                              <children>
-                                                <TextField fx:id="textFieldStartTime" prefHeight="31.0" prefWidth="240.0" promptText="กรุณาระบุเวลารูปแบบ xx.xx" styleClass="card-light-gray" />
+                                                <TextField fx:id="textFieldStartTime" prefHeight="31.0" prefWidth="240.0" promptText="กรุณาระบุเวลารูปแบบ xx.xx">
+                                                   <styleClass>
+                                                      <String fx:value="card-light-gray" />
+                                                      <String fx:value="text-black" />
+                                                   </styleClass></TextField>
                                                 <Label fx:id="errorLabelStartTime" styleClass="text-red" text="errorLabelStartTime" />
                                              </children>
                                           </VBox>
@@ -231,7 +277,11 @@
                                     </HBox>
                                     <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="841.0" spacing="20.0">
                                        <children>
-                                          <Label styleClass="text-xl" text="วันเดือนปี ที่สิ้นสุด" />
+                                          <Label text="วันเดือนปี ที่สิ้นสุด">
+                                             <styleClass>
+                                                <String fx:value="text-xl" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
                                           <Pane prefHeight="50.0" prefWidth="18.0" />
                                           <VBox prefHeight="50.0" prefWidth="235.0">
                                              <children>
@@ -242,7 +292,11 @@
                                           <Label styleClass="text-xl" text="เวลา" />
                                           <VBox prefHeight="50.0" prefWidth="245.0">
                                              <children>
-                                                <TextField fx:id="textFieldEndTime" prefHeight="31.0" prefWidth="240.0" promptText="กรุณาระบุเวลาในรูปแบบ xx.xx" styleClass="card-light-gray" />
+                                                <TextField fx:id="textFieldEndTime" prefHeight="31.0" prefWidth="240.0" promptText="กรุณาระบุเวลาในรูปแบบ xx.xx">
+                                                   <styleClass>
+                                                      <String fx:value="card-light-gray" />
+                                                      <String fx:value="text-black" />
+                                                   </styleClass></TextField>
                                                 <Label fx:id="errorLabelEndTime" styleClass="text-red" text="errorLabelEndTime" />
                                              </children>
                                           </VBox>

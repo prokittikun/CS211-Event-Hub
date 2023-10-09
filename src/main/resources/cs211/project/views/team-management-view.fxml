@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.TeamManagementController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient"  xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.TeamManagementController">
    <children>
       <BorderPane prefHeight="802.0" prefWidth="1202.0">
          <bottom>
@@ -39,6 +39,7 @@
                                              <styleClass>
                                                 <String fx:value="text-3xl" />
                                                 <String fx:value="font-bold" />
+                                                <String fx:value="text-black" />
                                              </styleClass>
                                           </Label>
                                        </children>
@@ -95,6 +96,7 @@
                                              <styleClass>
                                                 <String fx:value="text-3xl" />
                                                 <String fx:value="font-bold" />
+                                                <String fx:value="text-black" />
                                              </styleClass>
                                           </Label>
                                        </children>
@@ -112,6 +114,7 @@
                                              <styleClass>
                                                 <String fx:value="text-3xl" />
                                                 <String fx:value="font-bold" />
+                                                <String fx:value="text-black" />
                                              </styleClass>
                                           </Label>
                                           <Pane prefHeight="97.0" prefWidth="128.0" />
@@ -123,7 +126,7 @@
                                           </Button>
                                        </children>
                                     </HBox>
-                                    <TableView fx:id="scheduleTable" prefHeight="495.0" prefWidth="686.0" stylesheets="@style/global.css">
+                                    <TableView fx:id="scheduleTable" prefHeight="495.0" prefWidth="686.0" >
                                       <columns>
                                         <TableColumn fx:id="orderColumn" prefWidth="86.1332106590271" text="ลำดับที่" />
                                         <TableColumn fx:id="nameColumn" prefWidth="156.26660919189453" text="ชื่อกิจกรรม" />
@@ -165,6 +168,7 @@
                         <Label text="รายละเอียดกิจกรรม">
                            <styleClass>
                               <String fx:value="text-3xl" />
+                              <String fx:value="text-black" />
                               <String fx:value="font-bold" />
                            </styleClass>
                         </Label>
@@ -172,7 +176,11 @@
                            <content>
                               <VBox alignment="TOP_CENTER" prefWidth="412.0">
                                  <children>
-                                    <Text fx:id="activityDetail" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-lg" text="asd" wrappingWidth="350.0" />
+                                    <Text fx:id="activityDetail" strokeType="OUTSIDE" strokeWidth="0.0" text="asd" wrappingWidth="350.0">
+                                       <styleClass>
+                                          <String fx:value="text-lg" />
+                                          <String fx:value="text-black" />
+                                       </styleClass></Text>
                                  </children>
                                  <padding>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

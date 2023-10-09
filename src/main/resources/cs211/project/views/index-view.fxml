@@ -17,7 +17,7 @@
 
 <ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.IndexController">
    <content>
-      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="1532.0" prefWidth="1200.0" stylesheets="@style/global.css">
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="1532.0" prefWidth="1200.0" styleClass="bg-dark" >
          <children>
             <BorderPane prefHeight="200.0" prefWidth="1200.0">
                <center>
@@ -70,11 +70,19 @@
                            <children>
                               <VBox prefHeight="71.0" prefWidth="1020.0">
                                  <children>
-                                    <Label alignment="BOTTOM_CENTER" prefHeight="65.0" prefWidth="998.0" styleClass="text-4xl" text="                      อีเวนต์ล่าสุด" />
-                                    <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="998.0" styleClass="text-xl" text="                                       Latest Event">
+                                    <Label alignment="BOTTOM_CENTER" prefHeight="65.0" prefWidth="998.0" text="                      อีเวนต์ล่าสุด">
+                                       <styleClass>
+                                          <String fx:value="text-4xl" />
+                                          <String fx:value="text-black" />
+                                       </styleClass></Label>
+                                    <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="998.0" text="                                       Latest Event">
                                        <VBox.margin>
                                           <Insets top="-10.0" />
                                        </VBox.margin>
+                                       <styleClass>
+                                          <String fx:value="text-xl" />
+                                          <String fx:value="text-black" />
+                                       </styleClass>
                                     </Label>
                                  </children>
                               </VBox>
@@ -98,11 +106,19 @@
                         <VBox prefHeight="71.0" prefWidth="1020.0">
                            <children>
                               <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="15.0" prefWidth="1200.0" />
-                              <Label alignment="BOTTOM_CENTER" prefHeight="65.0" prefWidth="998.0" styleClass="text-4xl" text="                      อีเวนต์แนะนำ" />
-                              <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="998.0" styleClass="text-xl" text="                                       Recommended Event">
+                              <Label alignment="BOTTOM_CENTER" prefHeight="65.0" prefWidth="998.0" text="                      อีเวนต์แนะนำ">
+                                 <styleClass>
+                                    <String fx:value="text-4xl" />
+                                    <String fx:value="text-black" />
+                                 </styleClass></Label>
+                              <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="998.0" text="                                       Recommended Event">
                                  <VBox.margin>
                                     <Insets top="-10.0" />
                                  </VBox.margin>
+                                 <styleClass>
+                                    <String fx:value="text-xl" />
+                                    <String fx:value="text-black" />
+                                 </styleClass>
                               </Label>
                               <Pane layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="15.0" prefWidth="1200.0" />
                            </children>

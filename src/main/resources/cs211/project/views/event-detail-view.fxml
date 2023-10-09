@@ -17,7 +17,7 @@
 
 <ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.EventDetailController">
    <content>
-      <AnchorPane prefWidth="1200.0" styleClass="bg-white" stylesheets="@style/global.css">
+      <AnchorPane prefWidth="1200.0" styleClass="bg-dark" >
          <children>
             <BorderPane prefWidth="1200.0">
                <center>
@@ -61,7 +61,11 @@
                                                                   <Image url="@assets/Icons/marker.png" />
                                                                </image>
                                                             </ImageView>
-                                                            <Label fx:id="eventLocation" styleClass="text-xl" text="ศูนย์การประชุมแห่งชาติสิริกิติ์ " />
+                                                            <Label fx:id="eventLocation" text="ศูนย์การประชุมแห่งชาติสิริกิติ์ ">
+                                                               <styleClass>
+                                                                  <String fx:value="text-xl" />
+                                                                  <String fx:value="text-black" />
+                                                               </styleClass></Label>
                                                          </children>
                                                       </HBox>
                                                       <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="354.0" spacing="5.0">
@@ -72,11 +76,16 @@
                                                                   <Image url="@assets/Icons/user.png" />
                                                                </image>
                                                             </ImageView>
-                                                            <Label prefHeight="30.0" styleClass="text-xl" text="จำนวนผู้เข้าร่วม:" />
+                                                            <Label prefHeight="30.0" text="จำนวนผู้เข้าร่วม:">
+                                                               <styleClass>
+                                                                  <String fx:value="text-xl" />
+                                                                  <String fx:value="text-black" />
+                                                               </styleClass></Label>
                                                             <Label fx:id="eventParticipant" prefHeight="30.0" text="250/500">
                                                                <styleClass>
                                                                   <String fx:value="text-base" />
                                                                   <String fx:value="font-bold" />
+                                                                  <String fx:value="text-black" />
                                                                </styleClass>
                                                             </Label>
                                                          </children>
@@ -92,11 +101,16 @@
                                                                   <Image url="@assets/Icons/calendar.png" />
                                                                </image>
                                                             </ImageView>
-                                                            <Label prefHeight="30.0" styleClass="text-xl" text="เริ่มต้น:" />
+                                                            <Label prefHeight="30.0" text="เริ่มต้น:">
+                                                               <styleClass>
+                                                                  <String fx:value="text-xl" />
+                                                                  <String fx:value="text-black" />
+                                                               </styleClass></Label>
                                                             <Label fx:id="eventStartDateTime" prefHeight="30.0" text="29 กรกฏาคม 2566 10:00">
                                                                <styleClass>
                                                                   <String fx:value="text-base" />
                                                                   <String fx:value="font-bold" />
+                                                                  <String fx:value="text-black" />
                                                                </styleClass>
                                                             </Label>
                                                          </children>
@@ -112,11 +126,16 @@
                                                                   <Image url="@assets/Icons/calendar.png" />
                                                                </image>
                                                             </ImageView>
-                                                            <Label prefHeight="30.0" styleClass="text-xl" text="สิ้นสุด:" />
+                                                            <Label prefHeight="30.0" text="สิ้นสุด:">
+                                                               <styleClass>
+                                                                  <String fx:value="text-xl" />
+                                                                  <String fx:value="text-black" />
+                                                               </styleClass></Label>
                                                             <Label fx:id="eventEndDateTime" prefHeight="30.0" text="29 กรกฏาคม 2566 10:00">
                                                                <styleClass>
                                                                   <String fx:value="text-base" />
                                                                   <String fx:value="font-bold" />
+                                                                  <String fx:value="text-black" />
                                                                </styleClass>
                                                             </Label>
                                                          </children>
@@ -150,9 +169,14 @@
                                                          <styleClass>
                                                             <String fx:value="text-5xl" />
                                                             <String fx:value="font-bold" />
+                                                            <String fx:value="text-black" />
                                                          </styleClass>
                                                       </Label>
-                                                      <Text fx:id="eventDetail" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-xl" text="งานสัปดาห์หนังสือแห่งชาติ ครั้งที่ 51 และสัปดาห์หนังสือนานาชาติ ครั้งที่ 21 Sponsored by BOOK☆WALKER  จัดระหว่างวันที่ 30 มีนาคม - 9 เมษายน 2566 รวม 11 วัน โดยเวลาเปิดและปิดงานสำหรับประชาชนทั่วไปดังนี้          วันที่ 30 มีนาคม 2566 เวลา 17.00 – 24.00 น.          วันที่ 31 มีนาคม – 1 เมษายน 2566 เวลา 10.00 – 24.00 น.          วันที่ 2 - 9 เมษายน 2566 เวลา 10.00 – 21.00 น.งานสัปดาห์หนังสือฯ ครั้งนี้ จัดภายใต้แนวคิด “Bookfluencer” อินฟลูสายนำอ่าน เป็นเทรนด์ใหม่ที่สร้างแรงดึงดูด เปลี่ยนมุมมองใหม่ให้คนทั่วไปมองว่า อ่านแล้วมัน Smart ขึ้นได้ขนาดไหน สิ่งใหม่ๆ ที่ได้อ่านจากหนังสือจะเปลี่ยนให้คุณเป็นคนใหม่ ในเวอร์ชันที่ดีกว่า ดังนั้นไม่ว่าใครๆ ก็สามารถเป็น “Bookfluencer” ได้นักอ่านจะได้พบกับหมวดหนังสือ 7 โซน ได้แก่ โซนหนังสือทั่วไป โซนหนังสือนิยายและวรรณกรรม โซนหนังสือนิยายวาย (Wonder Y) โซนหนังสือการ์ตูนและวัยรุ่น (Book Wonderland) โซนหนังสือเด็กและการศึกษา โซนหนังสือเก่า และโซนหนังสือต่างประเทศ  พร้อมมีกิจกรรมจากหน่วยงานต่างๆ มากมาย ที่สอดคล้องกับความเป็นอินฟลูสายนำอ่าน อาทิ TikTok / TK Park / BOOK☆WALKER  ฯลฯ นอกจากนี้ยังมี โปรโมชั่นพิเศษ พบกับส่วนลดจากสำนักพิมพ์ต่างๆ สูงสุด 80%  ติดตามรายละเอียดต่างๆ ของงานได้ทาง Facebook Fanpage: Thai Book Fair" wrappingWidth="705.3364868164062" />
+                                                      <Text fx:id="eventDetail" strokeType="OUTSIDE" strokeWidth="0.0" text="งานสัปดาห์หนังสือแห่งชาติ ครั้งที่ 51 และสัปดาห์หนังสือนานาชาติ ครั้งที่ 21 Sponsored by BOOK☆WALKER  จัดระหว่างวันที่ 30 มีนาคม - 9 เมษายน 2566 รวม 11 วัน โดยเวลาเปิดและปิดงานสำหรับประชาชนทั่วไปดังนี้          วันที่ 30 มีนาคม 2566 เวลา 17.00 – 24.00 น.          วันที่ 31 มีนาคม – 1 เมษายน 2566 เวลา 10.00 – 24.00 น.          วันที่ 2 - 9 เมษายน 2566 เวลา 10.00 – 21.00 น.งานสัปดาห์หนังสือฯ ครั้งนี้ จัดภายใต้แนวคิด “Bookfluencer” อินฟลูสายนำอ่าน เป็นเทรนด์ใหม่ที่สร้างแรงดึงดูด เปลี่ยนมุมมองใหม่ให้คนทั่วไปมองว่า อ่านแล้วมัน Smart ขึ้นได้ขนาดไหน สิ่งใหม่ๆ ที่ได้อ่านจากหนังสือจะเปลี่ยนให้คุณเป็นคนใหม่ ในเวอร์ชันที่ดีกว่า ดังนั้นไม่ว่าใครๆ ก็สามารถเป็น “Bookfluencer” ได้นักอ่านจะได้พบกับหมวดหนังสือ 7 โซน ได้แก่ โซนหนังสือทั่วไป โซนหนังสือนิยายและวรรณกรรม โซนหนังสือนิยายวาย (Wonder Y) โซนหนังสือการ์ตูนและวัยรุ่น (Book Wonderland) โซนหนังสือเด็กและการศึกษา โซนหนังสือเก่า และโซนหนังสือต่างประเทศ  พร้อมมีกิจกรรมจากหน่วยงานต่างๆ มากมาย ที่สอดคล้องกับความเป็นอินฟลูสายนำอ่าน อาทิ TikTok / TK Park / BOOK☆WALKER  ฯลฯ นอกจากนี้ยังมี โปรโมชั่นพิเศษ พบกับส่วนลดจากสำนักพิมพ์ต่างๆ สูงสุด 80%  ติดตามรายละเอียดต่างๆ ของงานได้ทาง Facebook Fanpage: Thai Book Fair" wrappingWidth="705.3364868164062">
+                                                         <styleClass>
+                                                            <String fx:value="text-xl" />
+                                                            <String fx:value="text-black" />
+                                                         </styleClass></Text>
                                                    </children>
                                                    <HBox.margin>
                                                       <Insets top="20.0" />
@@ -176,11 +200,20 @@
                            <children>
                               <VBox prefHeight="71.0" prefWidth="1020.0">
                                  <children>
-                                    <Label alignment="BOTTOM_CENTER" prefHeight="65.0" prefWidth="998.0" styleClass="text-4xl" text="                      อีเวนต์แนะนำ" />
-                                    <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="998.0" styleClass="text-xl" text="                                       Recommended Event">
+                                    <Label alignment="BOTTOM_CENTER" prefHeight="65.0" prefWidth="998.0" text="                      อีเวนต์แนะนำ">
+                                       <styleClass>
+                                          <String fx:value="text-4xl" />
+                                          <String fx:value="text-black" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="998.0" text="                                       Recommended Event">
                                        <VBox.margin>
                                           <Insets top="-10.0" />
                                        </VBox.margin>
+                                       <styleClass>
+                                          <String fx:value="text-xl" />
+                                          <String fx:value="text-black" />
+                                       </styleClass>
                                     </Label>
                                  </children>
                               </VBox>

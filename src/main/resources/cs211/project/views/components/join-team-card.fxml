@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="148.0" prefWidth="1081.0" styleClass="bg-white" stylesheets="@../style/global.css" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.components.JoinTeamCard">
+<AnchorPane prefHeight="148.0" prefWidth="1081.0" styleClass="bg-white"  xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.components.JoinTeamCard">
    <children>
       <Pane layoutX="28.0" layoutY="2.0" prefHeight="146.0" prefWidth="1040.0" styleClass="card-light-gray">
          <children>
@@ -28,7 +28,11 @@
                   </Button>
                   <VBox prefHeight="150.0" prefWidth="277.0">
                      <children>
-                        <Label fx:id="teamName" prefHeight="88.0" prefWidth="420.0" styleClass="text-3xl" text="ทีม PhuKhai Party" />
+                        <Label fx:id="teamName" prefHeight="88.0" prefWidth="420.0" text="ทีม PhuKhai Party">
+                           <styleClass>
+                              <String fx:value="text-3xl" />
+                              <String fx:value="text-black" />
+                           </styleClass></Label>
                         <Button fx:id="joinTeamButton" mnemonicParsing="false" onAction="#onHandleJoinTeam" prefHeight="40.0" text="เข้าร่วมทีม">
                            <styleClass>
                               <String fx:value="btn-danger" />
@@ -47,7 +51,11 @@
                      <children>
                         <HBox alignment="CENTER_RIGHT" prefHeight="21.0" prefWidth="698.0">
                            <children>
-                              <Label prefHeight="46.0" styleClass="text-3xl" text="จำนวนสมาชิกในทีม" />
+                              <Label prefHeight="46.0" text="จำนวนสมาชิกในทีม">
+                                 <styleClass>
+                                    <String fx:value="text-3xl" />
+                                    <String fx:value="text-black" />
+                                 </styleClass></Label>
                               <Pane prefHeight="46.0" prefWidth="10.0" />
                               <ImageView fitHeight="48.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -55,7 +63,11 @@
                                  </image>
                               </ImageView>
                               <Pane layoutX="541.0" layoutY="10.0" prefHeight="46.0" prefWidth="14.0" />
-                              <Label fx:id="teamParticipant" alignment="CENTER" prefHeight="46.0" styleClass="text-2xl" text="250/50000" />
+                              <Label fx:id="teamParticipant" alignment="CENTER" prefHeight="46.0" text="250/50000">
+                                 <styleClass>
+                                    <String fx:value="text-2xl" />
+                                    <String fx:value="text-black" />
+                                 </styleClass></Label>
                            </children>
                         </HBox>
                         <Pane prefHeight="4.0" prefWidth="584.0" />
@@ -63,10 +75,14 @@
                            <children>
                               <HBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="554.0">
                                  <children>
-                                    <Label fx:id="dateLabel" alignment="BOTTOM_RIGHT" prefHeight="35.0" styleClass="text-xl" text="รับสมัคร 24 ก.ย. 2566 10:00 น. - 27 ก.ย. 2566 10:00 น.">
+                                    <Label fx:id="dateLabel" alignment="BOTTOM_RIGHT" prefHeight="35.0" text="รับสมัคร 24 ก.ย. 2566 10:00 น. - 27 ก.ย. 2566 10:00 น.">
                                        <HBox.margin>
                                           <Insets />
                                        </HBox.margin>
+                                       <styleClass>
+                                          <String fx:value="text-xl" />
+                                          <String fx:value="text-black" />
+                                       </styleClass>
                                     </Label>
                                  </children>
                                  <HBox.margin>

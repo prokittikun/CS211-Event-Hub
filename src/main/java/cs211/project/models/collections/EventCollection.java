@@ -78,7 +78,7 @@ public class EventCollection {
         return filteredEvents;
     }
 
-    public ArrayList<Event> getPopularEvent(JoinEventCollection joinEventCollection) {
+    public ArrayList<Event> getPopularEvent() {
 
         this.sortByComparator(new MostEventParticipantComparator());
         ArrayList<Event> popular = new ArrayList<>();

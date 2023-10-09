@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.ListTeamController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient"  xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.ListTeamController">
    <children>
       <BorderPane prefHeight="800.0" prefWidth="1200.0">
          <bottom>
@@ -33,6 +33,7 @@
                                        <styleClass>
                                           <String fx:value="text-4xl" />
                                           <String fx:value="font-bold" />
+                                          <String fx:value="text-black" />
                                        </styleClass>
                                     </Label>
                                     <HBox fx:id="" prefHeight="32.0" prefWidth="856.0" spacing="10.0">
@@ -46,6 +47,7 @@
                                              <styleClass>
                                                 <String fx:value="text-lg" />
                                                 <String fx:value="font-light" />
+                                                <String fx:value="text-black" />
                                              </styleClass></Label>
                                        </children>
                                        <VBox.margin>
@@ -62,13 +64,21 @@
                                                 <Insets left="5.0" />
                                              </HBox.margin>
                                           </ImageView>
-                                          <Label fx:id="dateLabel" opacity="0.6" styleClass="font-light" text="dateLabel" />
+                                          <Label fx:id="dateLabel" opacity="0.6" text="dateLabel">
+                                             <styleClass>
+                                                <String fx:value="font-light" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
                                           <ImageView fitHeight="23.0" fitWidth="18.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@assets/Icons/user.png" />
                                              </image>
                                           </ImageView>
-                                          <Label fx:id="participantLabel" opacity="0.6" styleClass="font-light" text="participantLabel" />
+                                          <Label fx:id="participantLabel" opacity="0.6" text="participantLabel">
+                                             <styleClass>
+                                                <String fx:value="font-light" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
                                        </children>
                                     </HBox>
                                  </children>
@@ -121,6 +131,7 @@
                                  <styleClass>
                                     <String fx:value="text-2xl" />
                                     <String fx:value="font-bold" />
+                                    <String fx:value="text-black" />
                                  </styleClass></Label>
                               <Pane prefHeight="38.0" prefWidth="382.0" />
                               <Button mnemonicParsing="false" onAction="#goToCreateTeam" prefHeight="28.0" prefWidth="71.0" styleClass="btn-danger" text="สร้างทีม" />
