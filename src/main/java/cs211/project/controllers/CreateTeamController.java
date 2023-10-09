@@ -81,7 +81,7 @@ public class CreateTeamController {
         data = FXRouter.getData();
         eventDatasource = new EventListFileDatasource("data/event", "event.csv");
         teamDatasource = new TeamListFileDatasource("data/team", "team.csv");
-        joinEventDatasource = new JoinEventListFileDatasource("data/joinEvent", "joinEvent.csv");
+        joinEventDatasource = new JoinEventListFileDatasource("data/event", "joinEvent.csv");
         userDatasource = new UserListFileDatasource("data", "user.csv");
 
         joinEventList = joinEventDatasource.query("eventId = " + data.get("eventId"));

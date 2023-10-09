@@ -40,7 +40,6 @@ public class ListTeamController {
     private ImageView previewImageView;
     private List<ListTeamCard> ListTeamCardList;
     private HashMap<String, Object> data;
-    private HashMap<String, Object> dataTeamComponent;
     private Datasource<EventCollection> datasourceEvent;
     private Datasource<JoinEventCollection> datasourceJoinEvent;
     private Datasource<TeamCollection> datasourceTeam;
@@ -112,11 +111,11 @@ public class ListTeamController {
                 listTeamCard.setOrderNumber(" "+i);
 
                 //SetData
-                dataTeamComponent = new HashMap<>();
-                dataTeamComponent.put("teamId", listTeamCardData.getId());
-                dataTeamComponent.put("eventId", data.get("eventId"));
-                dataTeamComponent.put("userId", data.get("userId"));
-                listTeamCard.setData(dataTeamComponent);
+                HashMap<String, Object> teamDataComponent = new HashMap<>();
+                teamDataComponent.put("teamId", listTeamCardData.getId());
+                teamDataComponent.put("eventId", data.get("eventId"));
+                teamDataComponent.put("userId", data.get("userId"));
+                listTeamCard.setData(teamDataComponent);
 
                 //Insert to Component
                 teamComponent.getChildren().add(listTeamCardComponent);

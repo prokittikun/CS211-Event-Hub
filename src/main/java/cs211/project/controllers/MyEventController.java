@@ -23,7 +23,6 @@ public class MyEventController {
     private Datasource<JoinEventCollection> datasourceJoinEvent;
     private EventCollection myEventList;
     private HashMap<String, Object> data;
-    private HashMap<String, Object> dataEventComponent;
 
     @FXML
     private void initialize() {
@@ -58,7 +57,6 @@ public class MyEventController {
         int i = 0;
         for (Event myEventCardData : myEventList.getEvents()) {
             //Reset
-            dataEventComponent = new HashMap<>();
             try {
                 FXMLLoader myEventCardControllerLoader = new FXMLLoader();
                 myEventCardControllerLoader.setLocation(getClass().getResource("/cs211/project/views/components/my-event-card.fxml"));
@@ -72,6 +70,7 @@ public class MyEventController {
                 myEventCard.setMyEventController(this);
 
                 //Set Data
+                HashMap<String, Object> dataEventComponent = new HashMap<>();
                 dataEventComponent.put("eventId", myEventCardData.getId());
                 dataEventComponent.put("userId", myEventCardData.getUserId());
                 myEventCard.setData(dataEventComponent);
@@ -87,8 +86,6 @@ public class MyEventController {
                 throw new RuntimeException(e);
             }
 
-            //Reset data
-            dataEventComponent = new HashMap<>();
         }
     }
 

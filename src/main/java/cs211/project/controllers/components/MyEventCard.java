@@ -2,14 +2,9 @@ package cs211.project.controllers.components;
 
 import cs211.project.controllers.MyEventController;
 import cs211.project.models.Event;
-import cs211.project.models.collections.EventCollection;
-import cs211.project.models.collections.JoinEventCollection;
-import cs211.project.models.collections.QuestionCollection;
-import cs211.project.models.collections.TeamCollection;
-import cs211.project.services.Datasource;
-import cs211.project.services.EventListFileDatasource;
-import cs211.project.services.FXRouter;
-import cs211.project.services.TeamListFileDatasource;
+import cs211.project.models.Team;
+import cs211.project.models.collections.*;
+import cs211.project.services.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -44,10 +39,27 @@ public class MyEventCard {
     private Datasource<EventCollection> datasourceEvent;
     private Datasource<TeamCollection> datasourceTeam;
 
+    private Datasource<TeamMemberCollection> datasourceTeamMember;
+
+    private Datasource<JoinEventCollection> datasourceJoinEvent;
+
+    //Init
+    public MyEventCard(){
+        eventDate = new Label();
+        eventImage = new ImageView();
+        eventLocation = new Label();
+        eventTitle = new Label();
+        orderNumber = new Button();
+        participantEvent = new Label();
+    }
+
     //Init
     @FXML
     public void initialize(){
         datasourceEvent = new EventListFileDatasource("data/event", "event.csv");
+        datasourceTeam = new TeamListFileDatasource("data/team", "team.csv");
+        datasourceTeamMember = new TeamMemberListFileDatasource("data/team", "teamMember.csv");
+        datasourceJoinEvent = new JoinEventListFileDatasource("data/event", "joinEvent.csv");
     }
 
     //Route
@@ -81,6 +93,7 @@ public class MyEventCard {
     @FXML
     public void goToActivityEvent(){
         try {
+            data.put("previousPage", "myEvent");
             FXRouter.goTo("eventActivity", data);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -97,10 +110,22 @@ public class MyEventCard {
         ButtonType button = result.orElse(ButtonType.CANCEL);
 
         if (button == ButtonType.OK) {
+
+
+            //Delete TeamMember
+            TeamCollection teamCollection = datasourceTeam.query("eventId = " + data.get("eventId").toString());
+            for (Team team : teamCollection.getTeams()) {
+                datasourceTeamMember.deleteAllByColumnAndValue("teamId", team.getId());
+                //delete Team
+                datasourceTeam.deleteById(team.getId());
+                System.out.println(team.getId());
+            }
+            //Delete JoinEvent
+            datasourceJoinEvent.deleteAllByColumnAndValue("eventId", (String) data.get("eventId"));
+
             //Delete Event
             datasourceEvent.deleteById((String) data.get("eventId"));
-            //Delete Team
-            datasourceTeam.deleteById((String) data.get("eventId"));
+
             myEventController.reload();
         } else {
             alert.close();
@@ -125,17 +150,7 @@ public class MyEventCard {
         }
     }
 
-    //Init
-    public MyEventCard(){
-        eventDate = new Label();
-        eventImage = new ImageView();
-        eventLocation = new Label();
-        eventTitle = new Label();
-        orderNumber = new Button();
-        participantEvent = new Label();
-        datasourceEvent = new EventListFileDatasource("data/event", "event.csv");
-        datasourceTeam = new TeamListFileDatasource("data/team", "team.csv");
-    }
+
 
     //Getter
     public String getEventDate() {
