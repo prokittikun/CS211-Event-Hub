@@ -4,7 +4,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,9 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="14.0" prefWidth="1200.0" style="-fx-background-color: #ffff;" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.NavbarController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="0.0" prefWidth="1200.0" style="-fx-background-color: #ffff;"  xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.NavbarController">
    <children>
-      <HBox alignment="CENTER_LEFT" layoutY="5.0" prefHeight="45.0" prefWidth="1200.0" styleClass="bg-white" stylesheets="@style/global.css">
+      <HBox alignment="CENTER_LEFT" layoutY="5.0" prefHeight="45.0" prefWidth="1200.0" styleClass="bg-white" >
          <children>
             <HBox prefHeight="56.0" prefWidth="217.0">
                <children>
@@ -28,6 +27,7 @@
                      <styleClass>
                         <String fx:value="text-2xl" />
                         <String fx:value="font-bold" />
+                        <String fx:value="text-black" />
                      </styleClass>
                   </Label>
                </children>
@@ -39,6 +39,7 @@
                      <styleClass>
                         <String fx:value="text-lg" />
                         <String fx:value="btn-transparent" />
+                        <String fx:value="text-black" />
                      </styleClass>
                   </Button>
                   <HBox alignment="CENTER_LEFT" fillHeight="false" maxHeight="-Infinity" prefHeight="56.0" prefWidth="149.0">
@@ -47,6 +48,7 @@
                            <styleClass>
                               <String fx:value="btn-transparent" />
                               <String fx:value="text-lg" />
+                              <String fx:value="text-black" />
                            </styleClass>
                         </Button>
                         <ImageView fitHeight="14.0" fitWidth="108.0" onMouseClicked="#onHandleManageDropdown" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
@@ -63,6 +65,7 @@
                      <styleClass>
                         <String fx:value="btn-transparent" />
                         <String fx:value="text-lg" />
+                        <String fx:value="text-black" />
                      </styleClass>
                   </Button>
                </children>
@@ -73,12 +76,37 @@
             <Pane prefHeight="56.0" prefWidth="311.0" />
             <HBox alignment="CENTER_LEFT" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="56.0" prefWidth="307.0" spacing="15.0">
                <children>
-                  <ToggleButton mnemonicParsing="false" prefHeight="40.0" prefWidth="119.0" text="Dark">
-                     <styleClass>
-                        <String fx:value="btn-danger" />
-                        <String fx:value="text-lg" />
-                     </styleClass>
-                  </ToggleButton>
+                  <Pane onMouseClicked="#onChangeTheme" styleClass="bg-whtite" >
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="40.0" prefWidth="119.0" styleClass="bg-white">
+                           <children>
+                              <HBox alignment="CENTER">
+                                 <children>
+                                    <Pane maxWidth="-Infinity" prefHeight="39.0" prefWidth="102.0">
+                                       <children>
+                                          <Pane fx:id="currentTheme" layoutX="2.0" layoutY="2.0" prefHeight="35.0" prefWidth="51.0" styleClass="card-white" />
+                                          <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="13.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@assets/Icons/sun.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="64.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@assets/Icons/moon.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                       <styleClass>
+                                          <String fx:value="card-theme-toggle" />
+                                          <String fx:value="cursor-hand" />
+                                       </styleClass>
+                                    </Pane>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </Pane>
                   <Circle fx:id="navImageProfile" fill="WHITE" onMouseClicked="#onHandleProfileDropdown" radius="23.0" stroke="#462b63" strokeType="INSIDE" style="-fx-cursor: hand;" styleClass="image-border" />
                   <VBox onMouseClicked="#onHandleProfileDropdown" prefHeight="56.0" prefWidth="143.0" style="-fx-cursor: hand;">
                      <children>
@@ -86,9 +114,10 @@
                            <styleClass>
                               <String fx:value="text-xl" />
                               <String fx:value="font-bold" />
+                              <String fx:value="text-black" />
                            </styleClass>
                         </Label>
-                        <Label fx:id="role" alignment="TOP_LEFT" text="ผู้ดูแลระบบ">
+                        <Label fx:id="role" alignment="TOP_LEFT" styleClass="text-black" text="ผู้ดูแลระบบ">
                            <padding>
                               <Insets top="-13.0" />
                            </padding>
@@ -117,6 +146,7 @@
                            <styleClass>
                               <String fx:value="btn-transparent" />
                               <String fx:value="text-base" />
+                              <String fx:value="text-black" />
                            </styleClass>
                         </Button>
                      </children>
@@ -138,6 +168,7 @@
                            <styleClass>
                               <String fx:value="btn-transparent" />
                               <String fx:value="text-base" />
+                              <String fx:value="text-black" />
                            </styleClass>
                         </Button>
                      </children>
@@ -166,6 +197,7 @@
                            <styleClass>
                               <String fx:value="btn-transparent" />
                               <String fx:value="text-base" />
+                              <String fx:value="text-black" />
                            </styleClass>
                         </Button>
                      </children>
@@ -184,6 +216,7 @@
                            <styleClass>
                               <String fx:value="btn-transparent" />
                               <String fx:value="text-base" />
+                              <String fx:value="text-black" />
                            </styleClass>
                         </Button>
                      </children>
@@ -202,6 +235,7 @@
                            <styleClass>
                               <String fx:value="btn-transparent" />
                               <String fx:value="text-base" />
+                              <String fx:value="text-black" />
                            </styleClass>
                         </Button>
                      </children>

@@ -10,6 +10,7 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.util.AbstractMap;
 import java.util.HashMap;
+import java.util.Objects;
 
 public final class FXRouter {
     private static final String WINDOW_TITLE = "";
@@ -26,6 +27,10 @@ public final class FXRouter {
     private static Double animationDuration;
     private static AbstractMap<String, RouteScene> routes = new HashMap();
     private static RouteScene currentRoute;
+
+    private static String globalStylesheet;
+
+    public static boolean isDarkTheme = false;
 
     private FXRouter() {
     }
@@ -103,6 +108,11 @@ public final class FXRouter {
         String scenePath = "/" + route.scenePath;
         Parent resource = (Parent)FXMLLoader.load((new Object() {
         }).getClass().getResource(scenePath));
+
+        if (globalStylesheet != null && !globalStylesheet.isEmpty()) {
+            resource.getStylesheets().add(Objects.requireNonNull(FXRouter.class.getResource(globalStylesheet)).toExternalForm());
+        }
+
         window.setTitle(route.windowTitle);
         window.setScene(new Scene(resource, route.sceneWidth, route.sceneHeight));
         window.show();
@@ -115,6 +125,12 @@ public final class FXRouter {
             Object userId = data.get("userId");
             Object teamId = data.get("teamId");
             Object eventId = data.get("eventId");
+        }
+    }
+
+    public static void reloadCurrentRoute() throws IOException {
+        if (currentRoute != null) {
+            loadNewRoute(currentRoute);
         }
     }
 
@@ -134,6 +150,11 @@ public final class FXRouter {
         animationType = anType;
         animationDuration = anDuration;
     }
+
+    public static void setGlobalStylesheet(String stylesheetLocation) {
+        globalStylesheet = stylesheetLocation;
+    }
+
 
     private static void routeAnimation(Parent node) {
         String anType = animationType != null ? animationType.toLowerCase() : "";
@@ -197,6 +218,7 @@ public final class FXRouter {
         private static double getWindowHeight() {
             return FXRouter.windowHeight != null ? FXRouter.windowHeight : FXRouter.WINDOW_HEIGHT;
         }
+
     }
 }
 
