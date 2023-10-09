@@ -36,7 +36,7 @@
                                  <children>
                                     <VBox alignment="TOP_CENTER" prefHeight="693.0" prefWidth="1102.0">
                                        <children>
-                                          <Button mnemonicParsing="false" prefWidth="89.0" text="&lt; ย้อนกลับ">
+                                          <Button mnemonicParsing="false" onAction="#onHandleBackToEventDetail" prefWidth="89.0" text="&lt; ย้อนกลับ">
                                              <styleClass>
                                                 <String fx:value="btn-outline-danger" />
                                                 <String fx:value="text-sm" />
@@ -48,7 +48,7 @@
                                                 <String fx:value="font-bold" />
                                              </styleClass>
                                              <VBox.margin>
-                                                <Insets top="-10.0" />
+                                                <Insets />
                                              </VBox.margin>
                                           </Label>
                                           <ScrollPane hbarPolicy="NEVER" prefHeight="485.0" prefWidth="1102.0" styleClass="bg-white">

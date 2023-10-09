@@ -39,7 +39,7 @@
                                        <children>
                                           <VBox alignment="CENTER" prefHeight="100.0" prefWidth="333.0">
                                              <children>
-                                                <Button alignment="CENTER" mnemonicParsing="false" prefHeight="31.2" prefWidth="89.6" text="&lt; ย้อนกลับ">
+                                                <Button alignment="CENTER" mnemonicParsing="false" prefHeight="31.2" prefWidth="89.6" text="&lt; ย้อนกลับ" visible="false">
                                                    <styleClass>
                                                       <String fx:value="btn-outline-danger" />
                                                       <String fx:value="text-sm" />

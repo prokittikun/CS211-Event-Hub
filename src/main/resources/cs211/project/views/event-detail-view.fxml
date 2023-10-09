@@ -17,17 +17,17 @@
 
 <ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.EventDetailController">
    <content>
-      <AnchorPane prefHeight="1382.0" prefWidth="1200.0" styleClass="bg-white" stylesheets="@style/global.css">
+      <AnchorPane prefWidth="1200.0" styleClass="bg-white" stylesheets="@style/global.css">
          <children>
-            <BorderPane prefHeight="1377.0" prefWidth="1200.0">
+            <BorderPane prefWidth="1200.0">
                <center>
-                  <VBox prefHeight="1147.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
+                  <VBox prefWidth="1200.0" BorderPane.alignment="CENTER">
                      <children>
                         <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="1200.0" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="273.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="bg-gradient-yellow" width="1200.0" />
-                        <HBox alignment="CENTER" prefHeight="567.0" prefWidth="1200.0">
+                        <HBox alignment="CENTER" prefWidth="1200.0">
                            <children>
-                              <Pane prefHeight="655.0" prefWidth="1102.0">
+                              <Pane prefWidth="1102.0">
                                  <styleClass>
                                     <String fx:value="bg-white" />
                                     <String fx:value="rounded-20px" />
@@ -36,7 +36,7 @@
                                     <Insets top="-220.0" />
                                  </HBox.margin>
                                  <children>
-                                    <VBox alignment="TOP_CENTER" prefHeight="693.0" prefWidth="1104.0">
+                                    <VBox alignment="TOP_CENTER" prefWidth="1104.0">
                                        <children>
                                           <Button mnemonicParsing="false" onAction="#onHandleGoToPreviousPage" prefWidth="89.0" text="&lt; ย้อนกลับ">
                                              <styleClass>
@@ -44,9 +44,9 @@
                                                 <String fx:value="text-sm" />
                                              </styleClass>
                                           </Button>
-                                          <HBox prefHeight="731.0" prefWidth="1104.0">
+                                          <HBox prefWidth="1104.0">
                                              <children>
-                                                <VBox alignment="TOP_CENTER" prefHeight="642.0" prefWidth="361.0" spacing="20.0">
+                                                <VBox alignment="TOP_CENTER" prefWidth="361.0" spacing="20.0">
                                                    <children>
                                                       <ImageView fx:id="eventImage" fitHeight="360.0" fitWidth="292.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
@@ -139,13 +139,12 @@
                                                             <Insets top="-10.0" />
                                                          </VBox.margin>
                                                       </Button>
-                                                      <HBox prefHeight="100.0" prefWidth="200.0" />
                                                    </children>
                                                    <padding>
                                                       <Insets bottom="10.0" left="10.0" right="20.0" top="30.0" />
                                                    </padding>
                                                 </VBox>
-                                                <VBox prefHeight="643.0" prefWidth="731.0" spacing="10.0">
+                                                <VBox prefWidth="731.0" spacing="10.0">
                                                    <children>
                                                       <Label fx:id="eventName" text="สัปดาห์หนังสือแห่งชาติ ครั้งที่ 51">
                                                          <styleClass>

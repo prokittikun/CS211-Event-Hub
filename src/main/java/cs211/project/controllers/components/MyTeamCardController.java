@@ -169,6 +169,7 @@ public class MyTeamCardController {
             data.put("teamId", teamId.toString());
             data.put("userId", userId.toString());
             data.put("eventId", eventId.toString());
+            data.put("previousPage", "myTeam");
             FXRouter.goTo("teamManagement", data);
         } catch (IOException e) {
             throw new RuntimeException(e);

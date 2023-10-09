@@ -95,11 +95,14 @@ public class TeamManagementController {
     @FXML
     private Pane modal;
 
+    private String previousPage;
+
     @FXML
     private void initialize() {
         data = FXRouter.getData();
         teamId = UUID.fromString(data.get("teamId").toString());
         data.remove("activityId");
+        previousPage = (String) data.get("previousPage");
         teamActivityDatasource = new TeamActivityListFileDatasource("data/team", "activity.csv");
         teamDatasource = new TeamListFileDatasource("data/team", "team.csv");
         eventDatasource = new EventListFileDatasource("data/event", "event.csv");
@@ -137,7 +140,7 @@ public class TeamManagementController {
                         newData.put("activityId", newValue.getId());
                         newData.put("userId", data.get("userId"));
                         newData.put("eventId", currentTeam.getEventId());
-                        // FXRouter.goTo สามารถส่งข้อมูลไปยังหน้าที่ต้องการได้ โดยกำหนดเป็น parameter ที่สอง
+                        newData.put("previousPage", previousPage);
                         FXRouter.goTo("chat", newData);
                     } catch (IOException e) {
                         throw new RuntimeException(e);
@@ -248,6 +251,7 @@ public class TeamManagementController {
                                             newData.put("eventId", currentTeam.getEventId());
                                             newData.put("activityId", activity.getId());
                                             newData.put("userId", data.get("userId"));
+                                            newData.put("previousPage", previousPage);
                                             FXRouter.goTo("createActivity", newData);
                                         } catch (IOException e) {
                                             throw new RuntimeException(e);
@@ -353,7 +357,8 @@ public class TeamManagementController {
     @FXML
     void onHandleBackToMyTeam(ActionEvent event) {
         try {
-            FXRouter.goTo("myTeam", data);
+
+            FXRouter.goTo(this.previousPage, data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

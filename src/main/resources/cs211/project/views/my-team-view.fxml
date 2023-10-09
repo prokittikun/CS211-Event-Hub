@@ -25,7 +25,7 @@
                      <top>
                         <HBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="1036.0" BorderPane.alignment="CENTER_LEFT">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="88.0" text="&lt; ย้อนกลับ">
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="88.0" text="&lt; ย้อนกลับ" visible="false">
                                  <styleClass>
                                     <String fx:value="text-sm" />
                                     <String fx:value="btn-outline-danger" />

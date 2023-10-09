@@ -128,6 +128,7 @@ public class AllEventController {
                         HashMap<String, Object> data = new HashMap<>();
                         data.put("userId", this.data.get("userId"));
                         data.put("eventId", event.getId());
+                        data.put("previousPage", "allEvent");
                         allEventCard.setData(data);
                         showAllEvent.add(eventComponent, column[0]++, row[0]);
                         GridPane.setMargin(eventComponent, new Insets(5));

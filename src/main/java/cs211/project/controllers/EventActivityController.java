@@ -98,12 +98,14 @@ public class EventActivityController {
     @FXML
     private Button addActivityButton;
 
+    private String previousPage;
 
     @FXML
     void initialize() {
         data = FXRouter.getData();
         eventId = UUID.fromString(data.get("eventId").toString());
         data.remove("activityId");
+        previousPage = data.get("previousPage").toString();
         eventActivityDatasource = new EventActivityListFileDatasource("data/event", "activity.csv");
         eventDatasource = new EventListFileDatasource("data/event", "event.csv");
         joinEventCollectionDatasource = new JoinEventListFileDatasource("data/event", "joinEvent.csv");
@@ -305,6 +307,11 @@ public class EventActivityController {
 
     @FXML
     void backToListTeam(ActionEvent event) {
+        try {
+            FXRouter.goTo(this.previousPage, data);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 }

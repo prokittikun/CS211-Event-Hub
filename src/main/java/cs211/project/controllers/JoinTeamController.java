@@ -10,6 +10,7 @@ import cs211.project.models.collections.JoinEventCollection;
 import cs211.project.models.collections.TeamCollection;
 import cs211.project.models.collections.TeamMemberCollection;
 import cs211.project.services.*;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -149,4 +150,13 @@ public class JoinTeamController {
     }
 
 
+    @FXML
+    void onHandleBackToEventDetail(ActionEvent event) {
+        try {
+            FXRouter.goTo("eventDetail", data);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 }

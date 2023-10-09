@@ -92,6 +92,7 @@ public class IndexController {
                     HashMap<String, Object> data = new HashMap<>();
                     data.put("userId", this.data.get("userId"));
                     data.put("eventId", event.getId());
+                    data.put("previousPage", "index");
                     indexEventCard.setData(data);
                     javafx.application.Platform.runLater(() -> {
                         eventCardHbox.getChildren().add(eventComponent);
@@ -128,6 +129,7 @@ public class IndexController {
                     HashMap<String, Object> data = new HashMap<>();
                     data.put("userId", this.data.get("userId"));
                     data.put("eventId", cloesestEvent.getId());
+                    data.put("previousPage", "index");
                     indexEventCard.setData(data);
                     javafx.application.Platform.runLater(() -> {
                         popularEventCardHbox.getChildren().add(eventComponent);
@@ -163,6 +165,7 @@ public class IndexController {
                     HashMap<String, Object> data = new HashMap<>();
                     data.put("userId", this.data.get("userId"));
                     data.put("eventId", popularEvent.getId());
+                    data.put("previousPage", "index");
                     indexEventCard.setData(data);
                     javafx.application.Platform.runLater(() -> {
                         comingEventCardHbox.getChildren().add(eventComponent);

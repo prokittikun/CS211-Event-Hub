@@ -39,6 +39,7 @@ public class ListTeamCard {
     @FXML
     public void getGoToSettingTeam() {
         try {
+            data.put("previousPage", "listTeam");
             FXRouter.goTo("teamManagement", data);
         } catch (IOException e) {
             throw new RuntimeException(e);

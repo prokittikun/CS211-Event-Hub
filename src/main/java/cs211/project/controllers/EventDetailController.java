@@ -77,11 +77,14 @@ public class EventDetailController {
     private ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
     private boolean isJoinEvent;
 
+    private String previousPage;
+
     @FXML
     private void initialize() {
         data = FXRouter.getData();
         eventId = UUID.fromString((String) data.get("eventId"));
         userId = UUID.fromString((String) data.get("userId"));
+        previousPage = (String) data.get("previousPage");
         eventDatasource = new EventListFileDatasource("data/event","event.csv");
         joinEventDatasource = new JoinEventListFileDatasource("data/event", "joinEvent.csv");
         event = eventDatasource.query("id = " + eventId.toString()).getEvents().get(0);
@@ -172,6 +175,7 @@ public class EventDetailController {
                 HashMap<String, Object> data = new HashMap<>();
                 data.put("userId", this.data.get("userId"));
                 data.put("eventId", event.getId());
+                data.put("previousPage", "eventDetail");
                 FXRouter.goTo("eventActivity", data);
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -202,7 +206,7 @@ public class EventDetailController {
     @FXML
     void onHandleGoToPreviousPage(ActionEvent event) {
         try {
-            FXRouter.goTo("allEvent");
+            FXRouter.goTo(this.previousPage, data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -241,7 +245,9 @@ public class EventDetailController {
         this.eventName.setText(eventName);
     }
 
-    public String getEventParticipant() {
+    public String getEventParticipant(
+
+    ) {
         return eventParticipant.getText();
     }
 
