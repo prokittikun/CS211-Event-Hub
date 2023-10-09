@@ -62,7 +62,7 @@ public class UserListFileDatasource implements Datasource<UserCollection> {
 
     @Override
     public void deleteAllByColumnAndValue(String column, String value) {
-        dataFileManager.deleteByColumnAndValue(value, column);
+        dataFileManager.deleteByColumnAndValue(column, value);
     }
 
     @Override

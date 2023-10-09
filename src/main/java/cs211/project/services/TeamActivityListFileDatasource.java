@@ -65,7 +65,7 @@ public class TeamActivityListFileDatasource implements Datasource<TeamActivityCo
     }
     @Override
     public void deleteAllByColumnAndValue(String column, String value){
-        dataFileManager.deleteByColumnAndValue(value, column);
+        dataFileManager.deleteByColumnAndValue(column, value);
     }
     @Override
     public void updateColumnById(String id, String targetColumn, String newValue){

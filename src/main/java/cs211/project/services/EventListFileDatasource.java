@@ -71,8 +71,8 @@ public class EventListFileDatasource implements Datasource<EventCollection> {
         dataFileManager.deleteById(id);
     }
     @Override
-    public void deleteAllByColumnAndValue(String value, String column){
-        dataFileManager.deleteByColumnAndValue(value, column);
+    public void deleteAllByColumnAndValue(String column, String value){
+        dataFileManager.deleteByColumnAndValue(column, value);
     }
     @Override
     public void updateColumnById(String id, String targetColumn, String newValue){
