@@ -128,10 +128,8 @@ public class IndexController {
         executorService.submit(() -> {
             EventCollection allEvent;
             allEvent = eventDatasource.readData();
-            System.out.println("test" + allEvent.getClosestEvents().size());
-            JoinEventCollection joinEventCollection = joinEventDatasource.readData();
-            System.out.println(joinEventCollection);
-            for (Event cloesestEvent : allEvent.getPopularEvent(joinEventCollection)) {
+
+            for (Event cloesestEvent : allEvent.getPopularEvent()) {
                 try {
                     FXMLLoader popularEventCardLoader = new FXMLLoader();
                     popularEventCardLoader.setLocation(getClass().getResource("/cs211/project/views/components/white-event-card.fxml"));
