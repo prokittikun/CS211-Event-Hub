@@ -12,9 +12,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="14.0" prefWidth="1200.0" style="-fx-background-color: #ffff;" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.NavbarController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="14.0" prefWidth="1200.0" style="-fx-background-color: #ffff;" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.NavbarController">
    <children>
       <HBox alignment="CENTER_LEFT" layoutY="5.0" prefHeight="45.0" prefWidth="1200.0" styleClass="bg-white" stylesheets="@style/global.css">
          <children>
@@ -26,9 +25,10 @@
                      </image>
                   </ImageView>
                   <Label prefHeight="56.0" prefWidth="186.0" text="EVENT HUB">
-                     <font>
-                        <Font name="System Bold" size="26.0" />
-                     </font>
+                     <styleClass>
+                        <String fx:value="text-2xl" />
+                        <String fx:value="font-bold" />
+                     </styleClass>
                   </Label>
                </children>
             </HBox>
@@ -89,9 +89,6 @@
                            </styleClass>
                         </Label>
                         <Label fx:id="role" alignment="TOP_LEFT" text="ผู้ดูแลระบบ">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
                            <padding>
                               <Insets top="-13.0" />
                            </padding>

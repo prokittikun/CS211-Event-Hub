@@ -109,6 +109,7 @@ public class ListTeamController {
                 listTeamCard.setHeadTeamImage("file:data/image/avatar/"+userList.getAllUsers().get(0).getAvatar());
                 listTeamCard.setTeamLabel(listTeamCardData.getName());
                 listTeamCard.setOrderNumber(" "+i);
+                listTeamCard.setTeamController(this);
 
                 //SetData
                 HashMap<String, Object> teamDataComponent = new HashMap<>();
@@ -143,5 +144,10 @@ public class ListTeamController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void reload() {
+        teamComponent.getChildren().clear();
+        initialize();
     }
 }
