@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.EventActivityController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient"  xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.EventActivityController">
    <children>
       <BorderPane prefHeight="799.0" prefWidth="1201.0">
          <bottom>
@@ -36,6 +36,7 @@
                                        <styleClass>
                                           <String fx:value="text-4xl" />
                                           <String fx:value="font-bold" />
+                                          <String fx:value="text-black" />
                                        </styleClass>
                                     </Label>
                                     <HBox prefHeight="32.0" prefWidth="887.0" spacing="10.0">
@@ -45,7 +46,11 @@
                                                 <Image url="@assets/Icons/marker.png" />
                                              </image>
                                           </ImageView>
-                                          <Label fx:id="eventLocation" styleClass="text-lg" text="locationLabel" />
+                                          <Label fx:id="eventLocation" text="locationLabel">
+                                             <styleClass>
+                                                <String fx:value="text-lg" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
                                        </children>
                                        <VBox.margin>
                                           <Insets />
@@ -58,13 +63,13 @@
                                                 <Image url="@assets/Icons/calendar.png" />
                                              </image>
                                           </ImageView>
-                                          <Label fx:id="eventDate" text="dateLabel" />
+                                          <Label fx:id="eventDate" styleClass="text-black" text="dateLabel" />
                                           <ImageView fitHeight="32.0" fitWidth="24.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@assets/Icons/user.png" />
                                              </image>
                                           </ImageView>
-                                          <Label fx:id="eventParticipant" text="participantLabel" />
+                                          <Label fx:id="eventParticipant" styleClass="text-black" text="participantLabel" />
                                        </children>
                                     </HBox>
                                  </children>
@@ -107,6 +112,7 @@
                                        <styleClass>
                                           <String fx:value="text-4xl" />
                                           <String fx:value="font-bold" />
+                                          <String fx:value="text-black" />
                                        </styleClass>
                                     </Label>
                                     <Pane prefHeight="54.0" prefWidth="316.0" />

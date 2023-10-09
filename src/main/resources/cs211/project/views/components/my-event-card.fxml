@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane stylesheets="@../style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.components.MyEventCard">
+<AnchorPane styleClass="bg-white"  xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.components.MyEventCard">
    <children>
-      <Pane layoutX="15.0" prefHeight="125.0" prefWidth="1023.0" styleClass="card-light-gray" stylesheets="@../style/global.css">
+      <Pane layoutX="15.0" prefHeight="125.0" prefWidth="1023.0" styleClass="card-light-gray" >
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="126.0" prefWidth="998.0" spacing="10.0">
                <children>
@@ -37,6 +37,7 @@
                            <styleClass>
                               <String fx:value="text-3xl" />
                               <String fx:value="font-bold" />
+                              <String fx:value="text-black" />
                            </styleClass>
                         </Label>
                         <HBox alignment="CENTER_LEFT" prefHeight="19.0" prefWidth="418.0" spacing="10.0">
@@ -46,19 +47,19 @@
                                     <Image url="@../assets/Icons/marker.png" />
                                  </image>
                               </ImageView>
-                              <Label fx:id="eventLocation" text="Kasartsart University" />
+                              <Label fx:id="eventLocation" styleClass="text-black" text="Kasartsart University" />
                               <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../assets/Icons/calendar.png" />
                                  </image>
                               </ImageView>
-                              <Label fx:id="eventDate" text="29 ก.ค 2566" />
+                              <Label fx:id="eventDate" styleClass="text-black" text="29 ก.ค 2566" />
                               <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../assets/Icons/user.png" />
                                  </image>
                               </ImageView>
-                              <Label fx:id="participantEvent" text="31/50" />
+                              <Label fx:id="participantEvent" styleClass="text-black" text="31/50" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="15.0" prefWidth="418.0" spacing="10.0">
@@ -77,6 +78,7 @@
                            <styleClass>
                               <String fx:value="text-2xl" />
                               <String fx:value="font-bold" />
+                              <String fx:value="text-black" />
                            </styleClass>
                         </Label>
                         <HBox alignment="CENTER" prefHeight="15.0" prefWidth="418.0" spacing="10.0">

@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.CreateEventActivityController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient"  xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.CreateEventActivityController">
    <children>
       <BorderPane prefHeight="798.0" prefWidth="1200.0">
          <center>
@@ -42,6 +42,7 @@
                                        <styleClass>
                                           <String fx:value="text-4xl" />
                                           <String fx:value="font-bold" />
+                                          <String fx:value="text-black" />
                                        </styleClass>
                                     </Label>
                                     <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="922.0" spacing="5.0">
@@ -51,19 +52,31 @@
                                                 <Image url="@assets/Icons/marker.png" />
                                              </image>
                                           </ImageView>
-                                          <Label fx:id="eventLocation" styleClass="text-lg" text="Kasetsart University" />
+                                          <Label fx:id="eventLocation" text="Kasetsart University">
+                                             <styleClass>
+                                                <String fx:value="text-lg" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
                                           <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@assets/Icons/calendar.png" />
                                              </image>
                                           </ImageView>
-                                          <Label fx:id="eventDate" styleClass="text-lg" text="29 ก.ค. 2566" />
+                                          <Label fx:id="eventDate" text="29 ก.ค. 2566">
+                                             <styleClass>
+                                                <String fx:value="text-lg" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
                                           <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@assets/Icons/user.png" />
                                              </image>
                                           </ImageView>
-                                          <Label fx:id="eventParticipant" styleClass="text-lg" text="0/36" />
+                                          <Label fx:id="eventParticipant" text="0/36">
+                                             <styleClass>
+                                                <String fx:value="text-lg" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
                                        </children>
                                     </HBox>
                                  </children>
@@ -89,6 +102,7 @@
                                        <styleClass>
                                           <String fx:value="text-3xl" />
                                           <String fx:value="font-bold" />
+                                          <String fx:value="text-black" />
                                        </styleClass>
                                     </Label>
                                     <TableView fx:id="scheduleTable" prefHeight="420.0" prefWidth="413.0" style="-fx-text-fill: black;" styleClass="text-lg">
@@ -130,6 +144,7 @@
                                              <styleClass>
                                                 <String fx:value="text-3xl" />
                                                 <String fx:value="font-bold" />
+                                                <String fx:value="text-black" />
                                              </styleClass>
                                           </Label>
                                        </children>
@@ -148,12 +163,14 @@
                                                    <styleClass>
                                                       <String fx:value="text-xl" />
                                                       <String fx:value="font-bold" />
+                                                      <String fx:value="text-black" />
                                                    </styleClass>
                                                 </Label>
                                                 <Pane prefHeight="70.0" prefWidth="39.0" />
                                                 <TextField fx:id="inputActivityName" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="407.0" promptText="กรุณาระบุ ชื่อกิจกรรม">
                                                    <styleClass>
                                                       <String fx:value="card-light-gray" />
+                                                      <String fx:value="text-black" />
                                                       <String fx:value="text-lg" />
                                                    </styleClass>
                                                 </TextField>
@@ -178,10 +195,15 @@
                                                    <styleClass>
                                                       <String fx:value="text-xl" />
                                                       <String fx:value="font-bold" />
+                                                      <String fx:value="text-black" />
                                                    </styleClass>
                                                 </Label>
                                                 <Pane prefHeight="151.0" prefWidth="10.0" />
-                                                <TextArea fx:id="inputActivityDetail" prefHeight="151.0" prefWidth="403.0" promptText="กรุณาระบุ รายละเอียดของกิจกรรม" styleClass="text-lg" />
+                                                <TextArea fx:id="inputActivityDetail" prefHeight="151.0" prefWidth="403.0" promptText="กรุณาระบุ รายละเอียดของกิจกรรม">
+                                                   <styleClass>
+                                                      <String fx:value="text-lg" />
+                                                      <String fx:value="text-black" />
+                                                   </styleClass></TextArea>
                                              </children>
                                           </HBox>
                                           <Label fx:id="errorActivityDetail" text="กรุณากรอกรายละเอียดกิจกรรม">
@@ -200,6 +222,7 @@
                                                    <styleClass>
                                                       <String fx:value="text-xl" />
                                                       <String fx:value="font-bold" />
+                                                      <String fx:value="text-black" />
                                                    </styleClass>
                                                 </Label>
                                                 <Pane prefHeight="70.0" prefWidth="13.0" />
@@ -221,6 +244,7 @@
                                                    <styleClass>
                                                       <String fx:value="card-light-gray" />
                                                       <String fx:value="text-lg" />
+                                                      <String fx:value="text-black" />
                                                    </styleClass>
                                                 </TextField>
                                              </children>
@@ -253,6 +277,7 @@
                                                    <styleClass>
                                                       <String fx:value="text-xl" />
                                                       <String fx:value="font-bold" />
+                                                      <String fx:value="text-black" />
                                                    </styleClass>
                                                 </Label>
                                                 <Pane prefHeight="70.0" prefWidth="13.0" />
@@ -274,6 +299,7 @@
                                                    <styleClass>
                                                       <String fx:value="card-light-gray" />
                                                       <String fx:value="text-lg" />
+                                                      <String fx:value="text-black" />
                                                    </styleClass>
                                                 </TextField>
                                              </children>

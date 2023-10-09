@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.ProfileController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient"  xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.ProfileController">
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0">
          <center>
@@ -37,6 +37,7 @@
                                                    <styleClass>
                                                       <String fx:value="font-bold" />
                                                       <String fx:value="text-2xl" />
+                                                      <String fx:value="text-black" />
                                                    </styleClass>
                                                 </Label>
                                              </center>
@@ -79,6 +80,7 @@
                                                    <styleClass>
                                                       <String fx:value="font-bold" />
                                                       <String fx:value="text-2xl" />
+                                                      <String fx:value="text-black" />
                                                    </styleClass>
                                                 </Label>
                                              </center>
@@ -87,12 +89,20 @@
                                              <children>
                                                 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="100.0">
                                                    <center>
-                                                      <Label styleClass="text-sm" text="สมัครสมาชิก:" BorderPane.alignment="CENTER" />
+                                                      <Label text="สมัครสมาชิก:" BorderPane.alignment="CENTER">
+                                                         <styleClass>
+                                                            <String fx:value="text-sm" />
+                                                            <String fx:value="text-black" />
+                                                         </styleClass></Label>
                                                    </center>
                                                 </BorderPane>
                                                 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="150.0">
                                                    <center>
-                                                      <Label fx:id="registerDateLabel" styleClass="text-base" text="registerDateLabel" BorderPane.alignment="CENTER" />
+                                                      <Label fx:id="registerDateLabel" text="registerDateLabel" BorderPane.alignment="CENTER">
+                                                         <styleClass>
+                                                            <String fx:value="text-base" />
+                                                            <String fx:value="text-black" />
+                                                         </styleClass></Label>
                                                    </center>
                                                 </BorderPane>
                                              </children>
@@ -101,12 +111,20 @@
                                              <children>
                                                 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="100.0">
                                                    <center>
-                                                      <Label styleClass="text-sm" text="เข้าใช้งานล่าสุด:" BorderPane.alignment="CENTER" />
+                                                      <Label text="เข้าใช้งานล่าสุด:" BorderPane.alignment="CENTER">
+                                                         <styleClass>
+                                                            <String fx:value="text-sm" />
+                                                            <String fx:value="text-black" />
+                                                         </styleClass></Label>
                                                    </center>
                                                 </BorderPane>
                                                 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="150.0">
                                                    <center>
-                                                      <Label fx:id="lastLoginDateLabel" styleClass="text-base" text="lastLoginDateLabel" BorderPane.alignment="CENTER" />
+                                                      <Label fx:id="lastLoginDateLabel" text="lastLoginDateLabel" BorderPane.alignment="CENTER">
+                                                         <styleClass>
+                                                            <String fx:value="text-base" />
+                                                            <String fx:value="text-black" />
+                                                         </styleClass></Label>
                                                    </center>
                                                 </BorderPane>
                                              </children>
@@ -137,6 +155,7 @@
                                                    <styleClass>
                                                       <String fx:value="font-bold" />
                                                       <String fx:value="text-2xl" />
+                                                      <String fx:value="text-black" />
                                                    </styleClass>
                                                 </Label>
                                              </center>
@@ -158,10 +177,14 @@
                                        <children>
                                           <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="65.0" prefWidth="250.0">
                                              <children>
-                                                <Label styleClass="text-lg" text="ชื่อ - นามสกุล">
+                                                <Label text="ชื่อ - นามสกุล">
                                                    <padding>
                                                       <Insets left="40.0" top="20.0" />
                                                    </padding>
+                                                   <styleClass>
+                                                      <String fx:value="text-lg" />
+                                                      <String fx:value="text-black" />
+                                                   </styleClass>
                                                 </Label>
                                              </children>
                                           </Pane>
@@ -173,12 +196,15 @@
                                                          <styleClass>
                                                             <String fx:value="card-light-gray" />
                                                             <String fx:value="text-sm" />
+                                                            <String fx:value="text-black" />
+                                                            <String fx:value="text-black" />
                                                          </styleClass></TextField>
                                                       <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="50.0" />
                                                       <TextField fx:id="lastNameField" focusTraversable="false">
                                                          <styleClass>
                                                             <String fx:value="card-light-gray" />
                                                             <String fx:value="text-sm" />
+                                                            <String fx:value="text-black" />
                                                          </styleClass></TextField>
                                                    </children>
                                                 </HBox>
@@ -194,10 +220,14 @@
                                        <children>
                                           <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="65.0" prefWidth="250.0">
                                              <children>
-                                                <Label styleClass="text-lg" text="ชื่อผู้ใช้">
+                                                <Label text="ชื่อผู้ใช้">
                                                    <padding>
                                                       <Insets left="40.0" top="20.0" />
                                                    </padding>
+                                                   <styleClass>
+                                                      <String fx:value="text-lg" />
+                                                      <String fx:value="text-black" />
+                                                   </styleClass>
                                                 </Label>
                                              </children>
                                           </Pane>
@@ -210,6 +240,7 @@
                                                    <styleClass>
                                                       <String fx:value="card-light-gray" />
                                                       <String fx:value="text-sm" />
+                                                      <String fx:value="text-black" />
                                                    </styleClass>
                                                 </TextField>
                                                 <Label fx:id="usernameError" text="usernameError" textFill="RED" />
@@ -225,6 +256,7 @@
                                                    <styleClass>
                                                       <String fx:value="font-bold" />
                                                       <String fx:value="text-2xl" />
+                                                      <String fx:value="text-black" />
                                                    </styleClass>
                                                 </Label>
                                              </center>
@@ -235,10 +267,14 @@
                                        <children>
                                           <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="65.0" prefWidth="250.0">
                                              <children>
-                                                <Label styleClass="text-lg" text="รหัสผ่านปัจจุบัน">
+                                                <Label text="รหัสผ่านปัจจุบัน">
                                                    <padding>
                                                       <Insets left="40.0" top="20.0" />
                                                    </padding>
+                                                   <styleClass>
+                                                      <String fx:value="text-lg" />
+                                                      <String fx:value="text-black" />
+                                                   </styleClass>
                                                 </Label>
                                              </children>
                                           </Pane>
@@ -248,6 +284,7 @@
                                                    <styleClass>
                                                       <String fx:value="card-light-gray" />
                                                       <String fx:value="text-sm" />
+                                                      <String fx:value="text-black" />
                                                    </styleClass></PasswordField>
                                                 <Label fx:id="currentPasswordError" text="currentPasswordError" textFill="RED" />
                                              </children>
@@ -261,10 +298,14 @@
                                        <children>
                                           <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="65.0" prefWidth="250.0">
                                              <children>
-                                                <Label styleClass="text-lg" text="รหัสผ่านใหม่">
+                                                <Label text="รหัสผ่านใหม่">
                                                    <padding>
                                                       <Insets left="40.0" top="20.0" />
                                                    </padding>
+                                                   <styleClass>
+                                                      <String fx:value="text-lg" />
+                                                      <String fx:value="text-black" />
+                                                   </styleClass>
                                                 </Label>
                                              </children>
                                           </Pane>
@@ -277,6 +318,7 @@
                                                    <styleClass>
                                                       <String fx:value="card-light-gray" />
                                                       <String fx:value="text-sm" />
+                                                      <String fx:value="text-black" />
                                                    </styleClass>
                                                 </PasswordField>
                                                 <Label fx:id="newPasswordError" text="newPasswordError" textFill="RED" />
@@ -288,10 +330,14 @@
                                        <children>
                                           <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="65.0" prefWidth="250.0">
                                              <children>
-                                                <Label styleClass="text-lg" text="ยืนยันรหัสผ่าน">
+                                                <Label text="ยืนยันรหัสผ่าน">
                                                    <padding>
                                                       <Insets left="40.0" top="20.0" />
                                                    </padding>
+                                                   <styleClass>
+                                                      <String fx:value="text-lg" />
+                                                      <String fx:value="text-black" />
+                                                   </styleClass>
                                                 </Label>
                                              </children>
                                           </Pane>
@@ -304,6 +350,7 @@
                                                    <styleClass>
                                                       <String fx:value="card-light-gray" />
                                                       <String fx:value="text-sm" />
+                                                      <String fx:value="text-black" />
                                                    </styleClass>
                                                 </PasswordField>
                                                 <Label fx:id="confirmNewPasswordError" text="confirmNewPasswordError" textFill="RED" />

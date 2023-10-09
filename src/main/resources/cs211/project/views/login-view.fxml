@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.LoginController">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient"  xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.LoginController">
    <children>
       <BorderPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-image: url('assets/background/bg.png'); -fx-background-size: cover;">
          <center>
@@ -116,6 +116,7 @@
                                              <styleClass>
                                                 <String fx:value="text-4xl" />
                                                 <String fx:value="font-bold" />
+                                                <String fx:value="text-black" />
                                              </styleClass></Label>
                                        </children>
                                     </VBox>
@@ -126,21 +127,31 @@
                                  <children>
                                     <VBox prefHeight="106.0" prefWidth="290.0" spacing="5.0">
                                        <children>
-                                          <Label styleClass="text-xl" text="ชื่อผู้ใช้" />
+                                          <Label text="ชื่อผู้ใช้">
+                                             <styleClass>
+                                                <String fx:value="text-xl" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
                                           <TextField fx:id="usernameField" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="43.0" prefWidth="449.0">
                                              <styleClass>
                                                 <String fx:value="text-xl" />
                                                 <String fx:value="card-light-gray" />
+                                                <String fx:value="text-black" />
                                              </styleClass>
                                              <VBox.margin>
                                                 <Insets />
                                              </VBox.margin>
                                           </TextField>
-                                          <Label styleClass="text-xl" text="รหัสผ่าน" />
+                                          <Label text="รหัสผ่าน">
+                                             <styleClass>
+                                                <String fx:value="text-xl" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
                                           <PasswordField fx:id="passwordField" focusTraversable="false" prefHeight="41.0" prefWidth="258.0">
                                              <styleClass>
                                                 <String fx:value="text-xl" />
                                                 <String fx:value="card-light-gray" />
+                                                <String fx:value="text-black" />
                                              </styleClass>
                                           </PasswordField>
                                           <Label fx:id="loginError" prefHeight="18.0" prefWidth="289.0" text="loginError" textFill="RED" />
@@ -161,7 +172,11 @@
                                     </Button>
                                     <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="360.0">
                                        <children>
-                                          <Label alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="27.0" prefWidth="180.0" styleClass="text-lg" text="ยังไม่มีบัญชี ?" />
+                                          <Label alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="27.0" prefWidth="180.0" text="ยังไม่มีบัญชี ?">
+                                             <styleClass>
+                                                <String fx:value="text-lg" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
                                           <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="20.0" />
                                           <Button fx:id="registerButton" mnemonicParsing="false" onAction="#handleRegisterButtonClick" prefHeight="40.0" prefWidth="97.0" text="สมัครสมาชิก" textFill="#c7371a">
                                              <styleClass>

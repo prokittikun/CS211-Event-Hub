@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.CreateTeamController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient"  xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.CreateTeamController">
    <children>
       <BorderPane prefHeight="800.0" prefWidth="1200.0">
          <bottom>
@@ -36,6 +36,7 @@
                                        <styleClass>
                                           <String fx:value="text-4xl" />
                                           <String fx:value="font-bold" />
+                                          <String fx:value="text-black" />
                                        </styleClass>
                                     </Label>
                                     <HBox prefHeight="32.0" prefWidth="887.0" spacing="10.0">
@@ -45,7 +46,11 @@
                                                 <Image url="@assets/Icons/marker.png" />
                                              </image>
                                           </ImageView>
-                                          <Label fx:id="locationLabel" styleClass="text-lg" text="locationLabel" />
+                                          <Label fx:id="locationLabel" text="locationLabel">
+                                             <styleClass>
+                                                <String fx:value="text-lg" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
                                        </children>
                                        <VBox.margin>
                                           <Insets />
@@ -58,13 +63,13 @@
                                                 <Image url="@assets/Icons/calendar.png" />
                                              </image>
                                           </ImageView>
-                                          <Label fx:id="dateLabel" text="dateLabel" />
+                                          <Label fx:id="dateLabel" styleClass="text-black" text="dateLabel" />
                                           <ImageView fitHeight="32.0" fitWidth="24.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@assets/Icons/user.png" />
                                              </image>
                                           </ImageView>
-                                          <Label fx:id="participantLabel" text="participantLabel" />
+                                          <Label fx:id="participantLabel" styleClass="text-black" text="participantLabel" />
                                        </children>
                                     </HBox>
                                  </children>
@@ -96,6 +101,7 @@
                                        <styleClass>
                                           <String fx:value="text-2xl" />
                                           <String fx:value="font-bold" />
+                                          <String fx:value="text-black" />
                                        </styleClass>
                                     </Label>
                                     <Line endX="100.0" startX="-100.0" />
@@ -121,6 +127,7 @@
                                        <styleClass>
                                           <String fx:value="text-2xl" />
                                           <String fx:value="font-bold" />
+                                          <String fx:value="text-black" />
                                        </styleClass>
                                     </Label>
                                  </children>
@@ -135,11 +142,19 @@
                                  <children>
                                     <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="841.0">
                                        <children>
-                                          <Label styleClass="text-xl" text="ชื่อทีม" />
+                                          <Label text="ชื่อทีม">
+                                             <styleClass>
+                                                <String fx:value="text-xl" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
                                           <VBox prefHeight="50.0" prefWidth="138.0" />
                                           <VBox prefHeight="50.0" prefWidth="479.0">
                                              <children>
-                                                <TextField fx:id="textFieldName" prefHeight="31.0" prefWidth="556.0" promptText="กรุณาระบุชื่อทีม" styleClass="card-light-gray" />
+                                                <TextField fx:id="textFieldName" prefHeight="31.0" prefWidth="556.0" promptText="กรุณาระบุชื่อทีม">
+                                                   <styleClass>
+                                                      <String fx:value="card-light-gray" />
+                                                      <String fx:value="text-black" />
+                                                   </styleClass></TextField>
                                                 <Label fx:id="errorLabelName" styleClass="text-red" text="errorLabelName" />
                                              </children>
                                           </VBox>
@@ -150,11 +165,19 @@
                                     </HBox>
                                     <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="841.0">
                                        <children>
-                                          <Label styleClass="text-xl" text="จำนวนที่รับ" />
+                                          <Label text="จำนวนที่รับ">
+                                             <styleClass>
+                                                <String fx:value="text-xl" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
                                           <VBox prefHeight="50.0" prefWidth="99.0" />
                                           <VBox prefHeight="50.0" prefWidth="476.0">
                                              <children>
-                                                <TextField fx:id="textFieldMaxParticipant" prefHeight="31.0" prefWidth="556.0" promptText="กรุณาระบุชื่อทีม" styleClass="card-light-gray" />
+                                                <TextField fx:id="textFieldMaxParticipant" prefHeight="31.0" prefWidth="556.0" promptText="กรุณาระบุชื่อทีม">
+                                                   <styleClass>
+                                                      <String fx:value="card-light-gray" />
+                                                      <String fx:value="text-black" />
+                                                   </styleClass></TextField>
                                                 <Label fx:id="errorLabelMaxParticipant" styleClass="text-red" text="errorLabelMaxParticipant" />
                                              </children>
                                           </VBox>
@@ -165,7 +188,11 @@
                                     </HBox>
                                     <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="841.0">
                                        <children>
-                                          <Label styleClass="text-xl" text="วันเดือนปี ที่เริ่ม" />
+                                          <Label text="วันเดือนปี ที่เริ่ม">
+                                             <styleClass>
+                                                <String fx:value="text-xl" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
                                           <VBox prefHeight="50.0" prefWidth="68.0" />
                                           <VBox prefHeight="50.0" prefWidth="222.0">
                                              <children>
@@ -180,7 +207,11 @@
                                           </Label>
                                           <VBox prefHeight="50.0" prefWidth="196.0">
                                              <children>
-                                                <TextField fx:id="textFieldStartTime" prefHeight="31.0" prefWidth="556.0" promptText="กรุณาระบุในรูปแบบ xx:xx" styleClass="card-light-gray" />
+                                                <TextField fx:id="textFieldStartTime" prefHeight="31.0" prefWidth="556.0" promptText="กรุณาระบุในรูปแบบ xx:xx">
+                                                   <styleClass>
+                                                      <String fx:value="card-light-gray" />
+                                                      <String fx:value="text-black" />
+                                                   </styleClass></TextField>
                                                 <Label fx:id="errorLabelStartTime" styleClass="text-red" text="errorLabelStartTime" />
                                              </children>
                                           </VBox>
@@ -191,7 +222,11 @@
                                     </HBox>
                                     <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="841.0">
                                        <children>
-                                          <Label styleClass="text-xl" text="วันเดือนปี ที่สิ้นสุด" />
+                                          <Label text="วันเดือนปี ที่สิ้นสุด">
+                                             <styleClass>
+                                                <String fx:value="text-xl" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
                                           <VBox prefHeight="50.0" prefWidth="47.0" />
                                           <VBox prefHeight="50.0" prefWidth="222.0">
                                              <children>
@@ -206,7 +241,11 @@
                                           </Label>
                                           <VBox prefHeight="50.0" prefWidth="196.0">
                                              <children>
-                                                <TextField fx:id="textFieldEndTime" prefHeight="31.0" prefWidth="556.0" promptText="กรุณาระบุในรูปแบบ xx:xx" styleClass="card-light-gray" />
+                                                <TextField fx:id="textFieldEndTime" prefHeight="31.0" prefWidth="556.0" promptText="กรุณาระบุในรูปแบบ xx:xx">
+                                                   <styleClass>
+                                                      <String fx:value="card-light-gray" />
+                                                      <String fx:value="text-black" />
+                                                   </styleClass></TextField>
                                                 <Label fx:id="errorLabelEndTime" styleClass="text-red" text="errorLabelEndTime" />
                                              </children>
                                           </VBox>

@@ -6,64 +6,72 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 
-<Pane prefHeight="108.0" prefWidth="1008.0" styleClass="card-light-gray" stylesheets="@../style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.components.ListTeamCard">
+
+<AnchorPane styleClass="bg-white"  xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.components.ListTeamCard">
    <children>
-      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="994.0" spacing="10.0">
+      <Pane layoutX="15.199999809265137" prefHeight="108.0" prefWidth="1008.0" styleClass="card-light-gray">
          <children>
-            <Button fx:id="orderNumber" mnemonicParsing="false" text="1">
-               <styleClass>
-                  <String fx:value="btn-danger" />
-                  <String fx:value="text-lg" />
-               </styleClass>
-               <HBox.margin>
-                  <Insets left="-15.0" />
-               </HBox.margin>
-            </Button>
-            <Circle fx:id="headTeamImageCircle" fill="WHITE" radius="38.0" stroke="#462b63" strokeType="INSIDE" style="-fx-cursor: hand;" styleClass="image-border" />
-            <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="448.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="994.0" spacing="10.0">
                <children>
-                  <Label fx:id="teamLabel" text="ทีมพิธีกร">
+                  <Button fx:id="orderNumber" mnemonicParsing="false" text="1">
                      <styleClass>
-                        <String fx:value="text-3xl" />
-                        <String fx:value="font-bold" />
+                        <String fx:value="btn-danger" />
+                        <String fx:value="text-lg" />
                      </styleClass>
-                  </Label>
-                  <HBox alignment="CENTER_LEFT" prefHeight="13.0" prefWidth="342.0">
+                     <HBox.margin>
+                        <Insets left="-15.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Circle fx:id="headTeamImageCircle" fill="WHITE" radius="38.0" stroke="#462b63" strokeType="INSIDE" style="-fx-cursor: hand;" styleClass="image-border" />
+                  <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="448.0">
                      <children>
-                        <ImageView fitHeight="21.0" fitWidth="13.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../assets/Icons/user.png" />
-                           </image>
-                        </ImageView>
-                        <Label fx:id="headTeamLabel" text="นายกิตติคุณ บุญต่อยุทธ" />
+                        <Label fx:id="teamLabel" text="ทีมพิธีกร">
+                           <styleClass>
+                              <String fx:value="text-3xl" />
+                              <String fx:value="font-bold" />
+                              <String fx:value="text-black" />
+                           </styleClass>
+                        </Label>
+                        <HBox alignment="CENTER_LEFT" prefHeight="13.0" prefWidth="342.0">
+                           <children>
+                              <ImageView fitHeight="21.0" fitWidth="13.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/Icons/user.png" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="headTeamLabel" styleClass="text-black" text="นายกิตติคุณ บุญต่อยุทธ" />
+                           </children>
+                        </HBox>
                      </children>
-                  </HBox>
-               </children>
-            </VBox>
-            <Pane prefHeight="100.0" prefWidth="221.0" />
-            <VBox alignment="CENTER" prefHeight="69.0" prefWidth="342.0">
-               <children>
-                  <Label text="บริหารจัดการ">
-                     <styleClass>
-                        <String fx:value="text-2xl" />
-                        <String fx:value="font-bold" />
-                     </styleClass>
-                  </Label>
-                  <HBox alignment="CENTER" prefHeight="13.0" prefWidth="342.0" spacing="10.0">
+                  </VBox>
+                  <Pane prefHeight="100.0" prefWidth="221.0" />
+                  <VBox alignment="CENTER" prefHeight="69.0" prefWidth="342.0">
                      <children>
-                        <Button fx:id="goToSettingTeam" mnemonicParsing="false" onAction="#getGoToSettingTeam" styleClass="btn-outline-danger" text="ตั้งค่าทีม" />
-                        <Button mnemonicParsing="false" onAction="#goToEditTeam" styleClass="btn-danger" text="แก้ไขทีม" />
-                        <Button mnemonicParsing="false" onAction="#onHandleDeleteTeam" styleClass="btn-danger" text="ลบทีม" />
+                        <Label text="บริหารจัดการ">
+                           <styleClass>
+                              <String fx:value="text-2xl" />
+                              <String fx:value="font-bold" />
+                              <String fx:value="text-black" />
+                           </styleClass>
+                        </Label>
+                        <HBox alignment="CENTER" prefHeight="13.0" prefWidth="342.0" spacing="10.0">
+                           <children>
+                              <Button fx:id="goToSettingTeam" mnemonicParsing="false" onAction="#getGoToSettingTeam" styleClass="btn-outline-danger" text="ตั้งค่าทีม" />
+                              <Button mnemonicParsing="false" onAction="#goToEditTeam" styleClass="btn-danger" text="แก้ไขทีม" />
+                              <Button mnemonicParsing="false" onAction="#onHandleDeleteTeam" styleClass="btn-danger" text="ลบทีม" />
+                           </children>
+                        </HBox>
                      </children>
-                  </HBox>
+                  </VBox>
                </children>
-            </VBox>
+            </HBox>
          </children>
-      </HBox>
+      </Pane>
    </children>
-</Pane>
+</AnchorPane>

@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.MyEventController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient"  xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.MyEventController">
    <children>
       <BorderPane prefHeight="800.0" prefWidth="1200.0">
          <center>
@@ -33,6 +33,7 @@
                                  <styleClass>
                                     <String fx:value="text-3xl" />
                                     <String fx:value="font-bold" />
+                                    <String fx:value="text-black" />
                                  </styleClass>
                               </Text>
                               <Pane prefHeight="67.0" prefWidth="325.0" />
