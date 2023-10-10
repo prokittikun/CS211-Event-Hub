@@ -2,6 +2,14 @@
     -fx-font-family: 'Kanit', sans-serif;
 }
 
+.prompt{
+    -fx-font-family: 'Prompt', sans-serif;
+}
+
+.sarabun{
+    -fx-font-family: 'Sarabun', sans-serif;
+}
+
 .font-bold {
     -fx-font-weight: 700 !important;
 }

@@ -2,20 +2,20 @@
     -fx-font-family: 'Kanit', sans-serif;
 }
 
-.font-bold {
-    -fx-font-weight: 700 !important;
-}
-
-.font-light{
-    -fx-font-weight: 300 !important;
-}
-
 .prompt{
     -fx-font-family: 'Prompt', sans-serif;
 }
 
 .sarabun{
     -fx-font-family: 'Sarabun', sans-serif;
+}
+
+.font-bold {
+    -fx-font-weight: 700 !important;
+}
+
+.font-light{
+    -fx-font-weight: 300 !important;
 }
 
 .font-bold {
