@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 
-<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.JoinTeamController">
+<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.JoinTeamController">
    <content>
       <AnchorPane prefHeight="800.0" prefWidth="1200.0" styleClass="bg-dark">
          <children>
@@ -80,7 +80,7 @@
                   <AnchorPane fx:id="footer" prefHeight="57.0" prefWidth="1200.0" BorderPane.alignment="CENTER" />
                </bottom>
             </BorderPane>
-            <AnchorPane fx:id="navbar" prefHeight="200.0" prefWidth="200.0" />
+            <AnchorPane fx:id="navbar" prefHeight="0.0" prefWidth="1200.0" />
          </children>
       </AnchorPane>
    </content>
