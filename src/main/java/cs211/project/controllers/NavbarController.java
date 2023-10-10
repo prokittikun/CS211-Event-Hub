@@ -134,7 +134,7 @@ public class NavbarController {
     @FXML
     void onHandleGoToHistory(MouseEvent event) {
         try {
-            FXRouter.goTo("history", data);
+            FXRouter.goTo("eventHistory", data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
