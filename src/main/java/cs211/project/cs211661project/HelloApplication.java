@@ -1,4 +1,4 @@
-package cs211.project.cs211661project;
+package cs211.project;
 
 import javafx.application.Application;
 import javafx.scene.text.Font;
@@ -6,6 +6,7 @@ import javafx.stage.Stage;
 import cs211.project.services.FXRouter;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class HelloApplication extends Application {
     @Override
@@ -22,10 +23,10 @@ public class HelloApplication extends Application {
         FXRouter.setGlobalStylesheet("/cs211/project/views/style/global.css");
         FXRouter.setCurrentFontSizeStylesheet("/cs211/project/views/style/font-large.css", "Large");
         FXRouter.setCurrentFontStyleClass("kanit");
-        //add more css file
         stage.setResizable(false);
-
-        FXRouter.bind(this, stage, "CS211 661 Project",1200,800);
+        //set logo program
+        stage.getIcons().add(new javafx.scene.image.Image(Objects.requireNonNull(getClass().getResource("/cs211/project/views/assets/logo/EventLogo.png")).openStream()));
+        FXRouter.bind(this, stage, "Event Hub - Phuea Khrai Party",1200,800);
         configRoute();
         FXRouter.goTo("login");
     }
