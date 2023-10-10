@@ -3,6 +3,7 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="1200.0" styleClass="bg-white" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.NavbarController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="1200.0" styleClass="bg-white" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.NavbarController">
    <children>
       <HBox alignment="CENTER_LEFT" layoutY="5.0" prefHeight="45.0" prefWidth="1200.0" styleClass="bg-white">
          <children>
@@ -73,7 +74,20 @@
                   <Insets />
                </HBox.margin>
             </HBox>
-            <Pane prefHeight="56.0" prefWidth="311.0" />
+            <Pane prefHeight="56.0" prefWidth="179.0" />
+            <ComboBox fx:id="fontStyleComboBox" prefHeight="26.0" prefWidth="140.0" promptText="Font size">
+               <styleClass>
+                  <String fx:value="text-xs" />
+                  <String fx:value="card-light-gray" />
+               </styleClass>
+            </ComboBox>
+            <Pane prefHeight="56.0" prefWidth="34.0" />
+            <ComboBox fx:id="fontSizeComboBox" prefHeight="26.0" prefWidth="140.0" promptText="Font size">
+               <styleClass>
+                  <String fx:value="text-xs" />
+                  <String fx:value="card-light-gray" />
+               </styleClass>
+            </ComboBox>
             <HBox alignment="CENTER_LEFT" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="56.0" prefWidth="307.0" spacing="15.0">
                <children>
                   <AnchorPane>
@@ -135,11 +149,11 @@
             <Insets bottom="5.0" left="5.0" right="5.0" />
          </padding>
       </HBox>
-      <Pane fx:id="manageDropdown" layoutX="297.0" layoutY="50.0" prefHeight="114.0" prefWidth="191.0" styleClass="card-light-gray">
+      <Pane fx:id="manageDropdown" layoutX="297.0" layoutY="50.0" prefWidth="191.0" styleClass="card-light-gray">
          <children>
-            <VBox alignment="CENTER_LEFT" prefHeight="113.0" prefWidth="191.0">
+            <VBox alignment="CENTER_LEFT" prefWidth="191.0">
                <children>
-                  <HBox alignment="CENTER_LEFT" onMouseClicked="#onHandleGoToDashboard" prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="CENTER_LEFT" onMouseClicked="#onHandleGoToDashboard" prefWidth="200.0">
                      <children>
                         <ImageView fitHeight="23.0" fitWidth="23.0" onMouseClicked="#onHandleGoToDashboard" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -161,7 +175,7 @@
                         <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" onMouseClicked="#onHandleGoToMyEvent" prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="CENTER_LEFT" onMouseClicked="#onHandleGoToMyEvent" prefWidth="200.0">
                      <children>
                         <ImageView fitHeight="23.0" fitWidth="23.0" onMouseClicked="#onHandleGoToMyEvent" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -186,11 +200,11 @@
                </padding>
             </VBox>
          </children></Pane>
-      <Pane fx:id="profileDropdown" layoutX="938.0" layoutY="58.0" prefHeight="199.0" prefWidth="206.0" styleClass="card-light-gray">
+      <Pane fx:id="profileDropdown" layoutX="938.0" layoutY="58.0" prefWidth="206.0" styleClass="card-light-gray">
          <children>
-            <VBox alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="206.0">
+            <VBox alignment="CENTER_LEFT" prefWidth="206.0">
                <children>
-                  <HBox alignment="CENTER_LEFT" onMouseClicked="#onHandleGoToMyProfile" prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="CENTER_LEFT" onMouseClicked="#onHandleGoToMyProfile" prefWidth="200.0">
                      <children>
                         <ImageView fitHeight="23.0" fitWidth="23.0" onMouseClicked="#onHandleGoToMyProfile" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -209,7 +223,7 @@
                         <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" onMouseClicked="#onHandleGoToMyTeam" prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="CENTER_LEFT" onMouseClicked="#onHandleGoToMyTeam" prefWidth="200.0">
                      <children>
                         <ImageView fitHeight="23.0" fitWidth="23.0" onMouseClicked="#onHandleGoToMyTeam" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -228,7 +242,7 @@
                         <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" onMouseClicked="#onHandleGoToHistory" prefHeight="46.0" prefWidth="209.0">
+                  <HBox alignment="CENTER_LEFT" onMouseClicked="#onHandleGoToHistory" prefWidth="209.0">
                      <children>
                         <ImageView fitHeight="23.0" fitWidth="23.0" onMouseClicked="#onHandleGoToHistory" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -247,7 +261,7 @@
                         <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" onMouseClicked="#onHandleGoToHistory" prefHeight="46.0" prefWidth="209.0">
+                  <HBox alignment="CENTER_LEFT" onMouseClicked="#onHandleGoToHistory" prefWidth="209.0">
                      <children>
                         <Button alignment="CENTER" mnemonicParsing="false" onAction="#onHandleLogout" onMouseClicked="#onHandleGoToHistory" prefHeight="40.0" prefWidth="213.0" text="ออกจากระบบ" textFill="RED">
                            <styleClass>
