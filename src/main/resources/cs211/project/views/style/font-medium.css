@@ -1,0 +1,53 @@
+/* text-xs */
+.text-xs {
+    -fx-font-size: 10px; /* Font size */
+    -fx-line-spacing: 4px; /* Line height (4px to match 16px line height) */
+}
+
+/* text-sm */
+.text-sm {
+    -fx-font-size: 12px; /* Font size */
+    -fx-line-spacing: 6px; /* Line height (6px to match 20px line height) */
+}
+
+/* text-base */
+.text-base {
+    -fx-font-size: 14px; /* Font size */
+    -fx-line-spacing: 8px; /* Line height (8px to match 24px line height) */
+}
+
+/* text-lg */
+.text-lg {
+    -fx-font-size: 16px; /* Font size */
+    -fx-line-spacing: 10px; /* Line height (10px to match 28px line height) */
+}
+
+/* text-xl */
+.text-xl {
+    -fx-font-size: 18px; /* Font size */
+    -fx-line-spacing: 10px; /* Line height (10px to match 28px line height) */
+}
+
+/* text-2xl */
+.text-2xl {
+    -fx-font-size: 22px; /* Font size */
+    -fx-line-spacing: 16px; /* Line height (16px to match 32px line height) */
+}
+
+/* text-3xl */
+.text-3xl {
+    -fx-font-size: 28px; /* Font size */
+    -fx-line-spacing: 18px; /* Line height (18px to match 36px line height) */
+}
+
+/* text-4xl */
+.text-4xl {
+    -fx-font-size: 34px; /* Font size */
+    -fx-line-spacing: 20px; /* Line height (20px to match 40px line height) */
+}
+
+/* text-5xl */
+.text-5xl {
+    -fx-font-size: 46px; /* Font size */
+    -fx-line-spacing: 0; /* Line height (0 to reset line spacing to default) */
+}

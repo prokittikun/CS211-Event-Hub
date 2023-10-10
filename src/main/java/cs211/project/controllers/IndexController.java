@@ -71,8 +71,7 @@ public class IndexController {
         eventDatasource = new EventListFileDatasource("data/event", "event.csv");
         joinEventDatasource = new JoinEventListFileDatasource("data/event", "joinEvent.csv");
         eventCollection = new EventCollection();
-        initPopularEvent();
-        initClosestEvent();
+
         //Navbar
         FXMLLoader navbarComponentLoader = new FXMLLoader(getClass().getResource("/cs211/project/views/navbar.fxml"));
         //Footer
@@ -92,6 +91,8 @@ public class IndexController {
         }
 
         eventCollection = eventDatasource.readData();
+        initPopularEvent();
+        initClosestEvent();
         executorService.submit(() -> {
             System.out.println(eventCollection.getEvents().size());
             for (Event event : eventCollection.getLatestEvents()) {
@@ -125,9 +126,9 @@ public class IndexController {
     }
 
     void initPopularEvent() {
+        EventCollection allEvent;
+        allEvent = eventDatasource.readData();
         executorService.submit(() -> {
-            EventCollection allEvent;
-            allEvent = eventDatasource.readData();
 
             for (Event cloesestEvent : allEvent.getPopularEvent()) {
                 try {
@@ -160,10 +161,10 @@ public class IndexController {
     }
 
     void initClosestEvent() {
+        EventCollection allEvent;
+        allEvent = eventDatasource.readData();
+        System.out.println("work");
         executorService.submit(() -> {
-            EventCollection allEvent;
-            allEvent = eventDatasource.readData();
-            System.out.println("work");
 
             for (Event popularEvent : allEvent.getClosestEvents()) {
                 try {
@@ -392,35 +393,6 @@ public class IndexController {
 
                                 count = 0;
                                 break;
-//                            case 6:
-//                                Thread.sleep(5000);
-//                                TranslateTransition slider25 = new TranslateTransition();
-//                                slider25.setNode(image1);
-//                                slider25.setDuration(Duration.seconds(3));
-//                                slider25.setToX(0);
-//                                slider25.play();
-//
-//                                TranslateTransition slider26 = new TranslateTransition();
-//                                slider26.setNode(image2);
-//                                slider26.setDuration(Duration.seconds(3));
-//                                slider26.setToX(0);
-//                                slider26.play();
-//
-//                                TranslateTransition slider27 = new TranslateTransition();
-//                                slider27.setNode(image3);
-//                                slider27.setDuration(Duration.seconds(3));
-//                                slider27.setToX(0);
-//                                slider27.play();
-//
-//                                TranslateTransition slider28 = new TranslateTransition();
-//                                slider28.setNode(image4);
-//                                slider28.setDuration(Duration.seconds(3));
-//                                slider28.setToX(0);
-//                                slider28.play();
-//
-//                                count = 0;
-//                                break;
-
                         }
                     }
                 } catch (Exception e) {

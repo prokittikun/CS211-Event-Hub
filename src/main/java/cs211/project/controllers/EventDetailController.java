@@ -131,6 +131,7 @@ public class EventDetailController {
                     HashMap<String, Object> data = new HashMap<>();
                     data.put("userId", this.data.get("userId"));
                     data.put("eventId", event.getId());
+                    data.put("previousPage", previousPage);
                     indexEventCard.setData(data);
                     javafx.application.Platform.runLater(() -> {
                         eventCardHbox.getChildren().add(eventComponent);

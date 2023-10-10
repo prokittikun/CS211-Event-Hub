@@ -30,7 +30,15 @@ public final class FXRouter {
 
     private static String globalStylesheet;
 
+    private static String currentFontSizeStylesheet;
+
+
     public static boolean isDarkTheme = false;
+
+    public static String currentFontSize = "Large";
+
+    public static String currentFontStyleClass = "Kanit";
+
 
     private FXRouter() {
     }
@@ -112,7 +120,10 @@ public final class FXRouter {
         if (globalStylesheet != null && !globalStylesheet.isEmpty()) {
             resource.getStylesheets().add(Objects.requireNonNull(FXRouter.class.getResource(globalStylesheet)).toExternalForm());
         }
-
+        if (currentFontSizeStylesheet != null && !currentFontSizeStylesheet.isEmpty()) {
+            resource.getStylesheets().add(Objects.requireNonNull(FXRouter.class.getResource(currentFontSizeStylesheet)).toExternalForm());
+        }
+        resource.getStyleClass().add(currentFontStyleClass);
         window.setTitle(route.windowTitle);
         window.setScene(new Scene(resource, route.sceneWidth, route.sceneHeight));
         window.show();
@@ -130,7 +141,7 @@ public final class FXRouter {
 
     public static void reloadCurrentRoute() throws IOException {
         if (currentRoute != null) {
-            loadNewRoute(currentRoute);
+            loadNewRoute(FXRouter.currentRoute);
         }
     }
 
@@ -153,6 +164,15 @@ public final class FXRouter {
 
     public static void setGlobalStylesheet(String stylesheetLocation) {
         globalStylesheet = stylesheetLocation;
+    }
+
+    public static void setCurrentFontSizeStylesheet(String fontSizeStylesheetLocation, String fontSize) {
+        currentFontSizeStylesheet = fontSizeStylesheetLocation;
+        currentFontSize = fontSize;
+    }
+
+    public static void setCurrentFontStyleClass(String fontStyleClass) {
+        currentFontStyleClass = fontStyleClass;
     }
 
 

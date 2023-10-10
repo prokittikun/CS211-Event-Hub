@@ -30,7 +30,6 @@ public class ToastAlert {
 
         StackPane stackPane = new StackPane(label);
         stackPane.setAlignment(Pos.TOP_RIGHT);
-        stackPane.setMinWidth(300);
         stackPane.setPrefWidth(Region.USE_COMPUTED_SIZE);
         stackPane.setPadding(new Insets(10));
 

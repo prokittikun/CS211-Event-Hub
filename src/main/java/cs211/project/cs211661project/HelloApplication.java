@@ -13,7 +13,18 @@ public class HelloApplication extends Application {
         Font.loadFont(getClass().getResourceAsStream("/cs211/project/views/assets/fonts/Kanit-Light.ttf"), 12);
         Font.loadFont(getClass().getResourceAsStream("/cs211/project/views/assets/fonts/Kanit-Regular.ttf"), 12);
         Font.loadFont(getClass().getResourceAsStream("/cs211/project/views/assets/fonts/Kanit-Bold.ttf"), 12);
+        Font.loadFont(getClass().getResourceAsStream("/cs211/project/views/assets/fonts/Prompt-Light.ttf"), 12);
+        Font.loadFont(getClass().getResourceAsStream("/cs211/project/views/assets/fonts/Prompt-Regular.ttf"), 12);
+        Font.loadFont(getClass().getResourceAsStream("/cs211/project/views/assets/fonts/Prompt-Bold.ttf"), 12);
+        Font.loadFont(getClass().getResourceAsStream("/cs211/project/views/assets/fonts/Sarabun-Light.ttf"), 12);
+        Font.loadFont(getClass().getResourceAsStream("/cs211/project/views/assets/fonts/Sarabun-Regular.ttf"), 12);
+        Font.loadFont(getClass().getResourceAsStream("/cs211/project/views/assets/fonts/Sarabun-Bold.ttf"), 12);
         FXRouter.setGlobalStylesheet("/cs211/project/views/style/global.css");
+        FXRouter.setCurrentFontSizeStylesheet("/cs211/project/views/style/font-large.css", "Large");
+        FXRouter.setCurrentFontStyleClass("kanit");
+        //add more css file
+        stage.setResizable(false);
+
         FXRouter.bind(this, stage, "CS211 661 Project",1200,800);
         configRoute();
         FXRouter.goTo("login");

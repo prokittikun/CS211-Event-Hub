@@ -9,6 +9,7 @@ import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -47,7 +48,16 @@ public class NavbarController {
     @FXML
     private Pane currentTheme;
 
+    @FXML
+    private ComboBox<String> fontSizeComboBox;
+
+    @FXML
+    private ComboBox<String> fontStyleComboBox;
+
+
     private static Boolean isDarkTheme = false;
+
+
     @FXML
     private void initialize() {
         userDatasource = new UserListFileDatasource("data", "user.csv");
@@ -61,6 +71,8 @@ public class NavbarController {
         else{
             currentTheme.setTranslateX(2);
         }
+        setFontSizeComboBox();
+        setFontStyleClass();
     }
 
     //Setter
@@ -84,6 +96,59 @@ public class NavbarController {
     public void setRole(Label role) {
         this.role = role;
     }
+
+    void setFontSizeComboBox() {
+        fontSizeComboBox.getItems().addAll("Normal", "Medium", "Large");
+        fontSizeComboBox.setValue(FXRouter.currentFontSize);
+        fontSizeComboBox.setOnAction(event -> {
+            String selectedFontSize = fontSizeComboBox.getValue();
+            switch (selectedFontSize) {
+                case "Normal":
+                    FXRouter.setCurrentFontSizeStylesheet("/cs211/project/views/style/font-small.css", "Normal");
+                    break;
+                case "Medium":
+                    FXRouter.setCurrentFontSizeStylesheet("/cs211/project/views/style/font-medium.css", "Medium");
+                    break;
+                case "Large":
+                    FXRouter.setCurrentFontSizeStylesheet("/cs211/project/views/style/font-large.css", "Large");
+                    break;
+                default:
+                    break;
+            }
+            try {
+                FXRouter.reloadCurrentRoute();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    void setFontStyleClass() {
+        fontStyleComboBox.getItems().addAll("Kanit", "Prompt", "Sarabun");
+        fontStyleComboBox.setValue(FXRouter.currentFontStyleClass);
+        fontStyleComboBox.setOnAction(event -> {
+            String selectedFontClass = fontStyleComboBox.getValue();
+            switch (selectedFontClass) {
+                case "Kanit":
+                    FXRouter.setCurrentFontStyleClass("kanit");
+                    break;
+                case "Prompt":
+                    FXRouter.setCurrentFontStyleClass("prompt");
+                    break;
+                case "Sarabun":
+                    FXRouter.setCurrentFontStyleClass("sarabun");
+                    break;
+                default:
+                    break;
+            }
+            try {
+                FXRouter.reloadCurrentRoute();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
 
     //Method
     @FXML
