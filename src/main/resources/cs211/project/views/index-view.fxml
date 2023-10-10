@@ -17,7 +17,7 @@
 
 <ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.IndexController">
    <content>
-      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="1532.0" prefWidth="1200.0" styleClass="bg-dark" >
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="1532.0" prefWidth="1200.0" styleClass="bg-dark">
          <children>
             <BorderPane prefHeight="200.0" prefWidth="1200.0">
                <center>
@@ -69,25 +69,20 @@
                         <HBox alignment="CENTER_LEFT" prefHeight="160.0" prefWidth="1200.0">
                            <children>
                               <Pane prefHeight="74.0" prefWidth="74.0" />
-                              <VBox alignment="CENTER_LEFT" prefHeight="74.0" prefWidth="191.0">
-                                 <children>
-                                    <Button mnemonicParsing="false" onAction="#onHandleGoToCreateEvent" prefHeight="42.0" prefWidth="152.0" text="      สร้างอีเวนต์">
-                                       <styleClass>
-                                          <String fx:value="btn-danger" />
-                                          <String fx:value="text-lg" />
-                                       </styleClass>
-                                    </Button>
+                              <Button mnemonicParsing="false" onAction="#onHandleGoToCreateEvent" prefHeight="42.0" text=" สร้างอีเวนต์">
+                                 <styleClass>
+                                    <String fx:value="btn-danger" />
+                                    <String fx:value="text-lg" />
+                                 </styleClass>
+                                 <graphic>
                                     <ImageView fitHeight="25.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@assets/Icons/plus.png" />
                                        </image>
-                                       <VBox.margin>
-                                          <Insets left="12.0" top="-33.0" />
-                                       </VBox.margin>
                                     </ImageView>
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="74.0" prefWidth="474.0">
+                                 </graphic>
+                              </Button>
+                              <VBox prefHeight="74.0" prefWidth="562.0">
                                  <children>
                                     <Label alignment="BOTTOM_CENTER" prefHeight="65.0" prefWidth="998.0" text="                      อีเวนต์ล่าสุด">
                                        <styleClass>
@@ -105,7 +100,7 @@
                                     </Label>
                                  </children>
                               </VBox>
-                              <Button alignment="TOP_RIGHT" mnemonicParsing="false" onAction="#onHandleGoToAllEvent" prefHeight="35.0" prefWidth="358.0" styleClass="btn-transparent">
+                              <Button alignment="TOP_RIGHT" mnemonicParsing="false" onAction="#onHandleGoToAllEvent" prefHeight="35.0" prefWidth="331.0" styleClass="btn-transparent">
                                  <graphic>
                                     <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="129.0" text="แสดงทั้งหมด">
                                        <styleClass>
