@@ -17,9 +17,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<ScrollPane hbarPolicy="NEVER" minHeight="800.0" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.AllEventController">
+<ScrollPane hbarPolicy="NEVER" minHeight="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.AllEventController">
    <content>
-      <AnchorPane minHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" >
+      <AnchorPane minHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient">
          <children>
             <BorderPane minHeight="800.0" prefWidth="1200.0">
                <center>
@@ -28,12 +28,40 @@
                         <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="1200.0" />
                         <HBox alignment="CENTER" prefHeight="94.0" prefWidth="1200.0" spacing="25.0" styleClass="text-black">
                            <children>
-                              <TextField fx:id="searchInput" focusTraversable="false" prefHeight="39.0" prefWidth="1013.0" promptText="Search here!">
+                              <TextField fx:id="searchInput" focusTraversable="false" prefHeight="40.0" prefWidth="1021.0">
                                  <styleClass>
                                     <String fx:value="text-lg" />
-                                    <String fx:value="card-light-gray" />
                                     <String fx:value="text-black" />
-                                 </styleClass></TextField>
+                                    <String fx:value="card-light-gray" />
+                                 </styleClass>
+                              </TextField>
+                              <VBox alignment="CENTER" prefHeight="94.0" prefWidth="17.0">
+                                 <children>
+                                    <HBox alignment="TOP_RIGHT" prefHeight="30.0" prefWidth="1012.0">
+                                       <children>
+                                          <ImageView fitHeight="26.0" fitWidth="28.0" focusTraversable="true" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@assets/Icons/search.png" />
+                                             </image>
+                                             <HBox.margin>
+                                                <Insets bottom="-20.0" />
+                                             </HBox.margin>
+                                          </ImageView>
+                                          <Pane prefHeight="30.0" prefWidth="12.0">
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </Pane>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="-34.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="-35.0" left="-65.0" />
+                                 </HBox.margin>
+                              </VBox>
                               <Button mnemonicParsing="false" onAction="#onHandleSearchEvent" text="ตกลง">
                                  <styleClass>
                                     <String fx:value="text-lg" />

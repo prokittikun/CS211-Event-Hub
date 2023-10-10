@@ -12,10 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 
-
-<AnchorPane styleClass="bg-white"  xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.components.ListTeamCard">
+<AnchorPane prefHeight="108.0" prefWidth="928.0" styleClass="bg-white" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.components.ListTeamCard">
    <children>
-      <Pane layoutX="15.199999809265137" prefHeight="108.0" prefWidth="1008.0" styleClass="card-light-gray">
+      <Pane layoutX="15.0" prefHeight="108.0" prefWidth="925.0" styleClass="card-light-gray">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="994.0" spacing="10.0">
                <children>
@@ -29,7 +28,7 @@
                      </HBox.margin>
                   </Button>
                   <Circle fx:id="headTeamImageCircle" fill="WHITE" radius="38.0" stroke="#462b63" strokeType="INSIDE" style="-fx-cursor: hand;" styleClass="image-border" />
-                  <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="448.0">
+                  <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="398.0">
                      <children>
                         <Label fx:id="teamLabel" text="ทีมพิธีกร">
                            <styleClass>
@@ -45,12 +44,13 @@
                                     <Image url="@../assets/Icons/user.png" />
                                  </image>
                               </ImageView>
+                              <Pane prefHeight="18.0" prefWidth="4.0" />
                               <Label fx:id="headTeamLabel" styleClass="text-black" text="นายกิตติคุณ บุญต่อยุทธ" />
                            </children>
                         </HBox>
                      </children>
                   </VBox>
-                  <Pane prefHeight="100.0" prefWidth="221.0" />
+                  <Pane prefHeight="100.0" prefWidth="56.0" />
                   <VBox alignment="CENTER" prefHeight="69.0" prefWidth="342.0">
                      <children>
                         <Label text="บริหารจัดการ">
@@ -62,8 +62,11 @@
                         </Label>
                         <HBox alignment="CENTER" prefHeight="13.0" prefWidth="342.0" spacing="10.0">
                            <children>
-                              <Button fx:id="goToSettingTeam" mnemonicParsing="false" onAction="#getGoToSettingTeam" styleClass="btn-outline-danger" text="ตั้งค่าทีม" />
-                              <Button mnemonicParsing="false" onAction="#goToEditTeam" styleClass="btn-danger" text="แก้ไขทีม" />
+                              <Button fx:id="goToSettingTeam" mnemonicParsing="false" onAction="#getGoToSettingTeam" styleClass="btn-outline-danger" text="ตั้งค่าทีม">
+                                 <HBox.margin>
+                                    <Insets bottom="-1.0" />
+                                 </HBox.margin></Button>
+                              <Button mnemonicParsing="false" onAction="#goToEditTeam" styleClass="btn-outline-danger" text="แก้ไขทีม" />
                               <Button mnemonicParsing="false" onAction="#onHandleDeleteTeam" styleClass="btn-danger" text="ลบทีม" />
                            </children>
                         </HBox>

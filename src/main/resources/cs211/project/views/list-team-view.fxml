@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient"  xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.ListTeamController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.ListTeamController">
    <children>
       <BorderPane prefHeight="800.0" prefWidth="1200.0">
          <bottom>
@@ -110,7 +110,7 @@
                            <children>
                               <ScrollPane hbarPolicy="NEVER" prefHeight="379.0" prefWidth="992.0">
                                  <content>
-                                    <VBox fx:id="teamComponent" alignment="TOP_CENTER" minHeight="375.0" prefWidth="991.0" spacing="10.0">
+                                    <VBox fx:id="teamComponent" alignment="TOP_CENTER" minHeight="375.0" prefHeight="375.0" prefWidth="986.0" spacing="10.0">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
@@ -130,11 +130,22 @@
                               <Label text="รายชื่อทีม">
                                  <styleClass>
                                     <String fx:value="text-2xl" />
-                                    <String fx:value="font-bold" />
                                     <String fx:value="text-black" />
-                                 </styleClass></Label>
-                              <Pane prefHeight="38.0" prefWidth="382.0" />
-                              <Button mnemonicParsing="false" onAction="#goToCreateTeam" prefHeight="28.0" prefWidth="71.0" styleClass="btn-danger" text="สร้างทีม" />
+                                    <String fx:value="font-bold" />
+                                 </styleClass>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin></Label>
+                              <Pane prefHeight="46.0" prefWidth="334.0" />
+                              <Button mnemonicParsing="false" onAction="#goToCreateTeam" prefHeight="30.0" styleClass="btn-danger" text=" สร้างทีม">
+                                 <graphic>
+                                    <ImageView fitHeight="28.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@assets/Icons/plus.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
                            </children>
                            <opaqueInsets>
                               <Insets />

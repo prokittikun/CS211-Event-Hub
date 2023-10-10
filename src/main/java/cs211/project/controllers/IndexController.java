@@ -208,6 +208,17 @@ public class IndexController {
         }
     }
 
+    @FXML
+    void onHandleGoToCreateEvent(ActionEvent createEvent) {
+        try {
+            HashMap<String, Object> data = new HashMap<>();
+            data.put("userId", (String) this.data.get("userId"));
+            FXRouter.goTo("createEvent", data);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void slider() {
         new Thread() {
             public void run() {

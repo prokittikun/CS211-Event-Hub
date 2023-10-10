@@ -29,32 +29,20 @@
                         </ImageView>
                         <VBox prefHeight="499.0" prefWidth="456.0">
                            <children>
-                              <Label text="Innovate,">
+                              <Label styleClass="text-4xl" text="Innovate,">
                                  <padding>
                                     <Insets top="-10.0" />
                                  </padding>
-                                 <styleClass>
-                                    <String fx:value="font-bold" />
-                                    <String fx:value="text-4xl" />
-                                 </styleClass>
                               </Label>
-                              <Label text="create, celebrate.">
+                              <Label styleClass="text-4xl" text="create, celebrate.">
                                  <padding>
-                                    <Insets top="-10.0" />
+                                    <Insets top="-18.0" />
                                  </padding>
-                                 <styleClass>
-                                    <String fx:value="font-bold" />
-                                    <String fx:value="text-4xl" />
-                                 </styleClass>
                               </Label>
-                              <Label text="Welcome to your">
+                              <Label styleClass="text-4xl" text="Welcome to your">
                                  <padding>
-                                    <Insets top="-10.0" />
+                                    <Insets top="-15.0" />
                                  </padding>
-                                 <styleClass>
-                                    <String fx:value="font-bold" />
-                                    <String fx:value="text-4xl" />
-                                 </styleClass>
                               </Label>
                               <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                  <children>
@@ -68,11 +56,7 @@
                                           <Insets top="-10.0" />
                                        </padding>
                                     </Label>
-                                    <Label text="destination.">
-                                       <styleClass>
-                                          <String fx:value="font-bold" />
-                                          <String fx:value="text-4xl" />
-                                       </styleClass>
+                                    <Label styleClass="text-4xl" text="destination.">
                                        <padding>
                                           <Insets top="-10.0" />
                                        </padding></Label>

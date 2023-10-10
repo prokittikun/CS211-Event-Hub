@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 
-<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.IndexController">
+<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.IndexController">
    <content>
       <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="1532.0" prefWidth="1200.0" styleClass="bg-dark" >
          <children>
@@ -31,9 +31,9 @@
                         </Rectangle>
                         <AnchorPane fx:id="mainSlide">
                            <children>
-                              <ImageView fx:id="image1" fitHeight="300.0" fitWidth="600.0" layoutX="330.0" layoutY="-4.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="image1" fitHeight="300.0" fitWidth="587.0" layoutX="300.0" layoutY="-2.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@assets/banner/rockmountain2023.jpg" />
+                                    <Image url="@assets/banner/Transmission-Festival-Thailand-2023.jpg" />
                                  </image>
                                  <viewport>
                                     <Rectangle2D />
@@ -41,7 +41,7 @@
                               </ImageView>
                               <ImageView fx:id="image2" fitHeight="300.0" fitWidth="600.0" layoutX="-600.0" layoutY="-4.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@assets/banner/bookfair2023.jpg" />
+                                    <Image url="@assets/banner/CoLiFes-2023.jpg" />
                                  </image>
                                  <viewport>
                                     <Rectangle2D />
@@ -49,7 +49,7 @@
                               </ImageView>
                               <ImageView fx:id="image3" fitHeight="300.0" fitWidth="600.0" layoutX="-600.0" layoutY="-4.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@assets/banner/bookfair2023.jpg" />
+                                    <Image url="@assets/banner/Road-to-Sonic-Bang-2023.jpg" />
                                  </image>
                                  <viewport>
                                     <Rectangle2D />
@@ -57,7 +57,7 @@
                               </ImageView>
                               <ImageView fx:id="image4" fitHeight="300.0" fitWidth="600.0" layoutX="-600.0" layoutY="-4.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@assets/banner/rockmountain2023.jpg" />
+                                    <Image url="@assets/banner/ค่ายวิศว.jpg" />
                                  </image>
                                  <viewport>
                                     <Rectangle2D />
@@ -68,7 +68,26 @@
                         <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="47.0" prefWidth="1200.0" />
                         <HBox alignment="CENTER_LEFT" prefHeight="160.0" prefWidth="1200.0">
                            <children>
-                              <VBox prefHeight="71.0" prefWidth="1020.0">
+                              <Pane prefHeight="74.0" prefWidth="74.0" />
+                              <VBox alignment="CENTER_LEFT" prefHeight="74.0" prefWidth="191.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#onHandleGoToCreateEvent" prefHeight="42.0" prefWidth="152.0" text="      สร้างอีเวนต์">
+                                       <styleClass>
+                                          <String fx:value="btn-danger" />
+                                          <String fx:value="text-lg" />
+                                       </styleClass>
+                                    </Button>
+                                    <ImageView fitHeight="25.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@assets/Icons/plus.png" />
+                                       </image>
+                                       <VBox.margin>
+                                          <Insets left="12.0" top="-33.0" />
+                                       </VBox.margin>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="74.0" prefWidth="474.0">
                                  <children>
                                     <Label alignment="BOTTOM_CENTER" prefHeight="65.0" prefWidth="998.0" text="                      อีเวนต์ล่าสุด">
                                        <styleClass>
@@ -86,9 +105,9 @@
                                     </Label>
                                  </children>
                               </VBox>
-                              <Button mnemonicParsing="false" onAction="#onHandleGoToAllEvent" prefHeight="35.0" prefWidth="140.0" styleClass="btn-transparent">
+                              <Button alignment="TOP_RIGHT" mnemonicParsing="false" onAction="#onHandleGoToAllEvent" prefHeight="35.0" prefWidth="358.0" styleClass="btn-transparent">
                                  <graphic>
-                                    <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="87.0" text="แสดงทั้งหมด">
+                                    <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="129.0" text="แสดงทั้งหมด">
                                        <styleClass>
                                           <String fx:value="text-lg" />
                                           <String fx:value="text-red" />
