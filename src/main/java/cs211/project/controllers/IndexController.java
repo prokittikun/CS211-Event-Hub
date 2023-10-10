@@ -90,7 +90,7 @@ public class IndexController {
             throw new RuntimeException(e);
         }
 
-        eventCollection = eventDatasource.readData();
+        eventCollection = eventDatasource.query("status = true");
         initPopularEvent();
         initClosestEvent();
         executorService.submit(() -> {
@@ -127,7 +127,7 @@ public class IndexController {
 
     void initPopularEvent() {
         EventCollection allEvent;
-        allEvent = eventDatasource.readData();
+        allEvent = eventDatasource.query("status = true");
         executorService.submit(() -> {
 
             for (Event cloesestEvent : allEvent.getPopularEvent()) {
@@ -162,7 +162,7 @@ public class IndexController {
 
     void initClosestEvent() {
         EventCollection allEvent;
-        allEvent = eventDatasource.readData();
+        allEvent = eventDatasource.query("status = true");
         System.out.println("work");
         executorService.submit(() -> {
 

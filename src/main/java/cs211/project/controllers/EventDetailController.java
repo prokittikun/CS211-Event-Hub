@@ -110,9 +110,9 @@ public class EventDetailController {
             throw new RuntimeException(e);
         }
 
-        eventRecommendCollection = eventDatasource.readData();
+        eventRecommendCollection = eventDatasource.query("status = true AND NOT id = " + eventId.toString());
         executorService.submit(() -> {
-            for (Event event : eventRecommendCollection.getRandomNEvent(eventId.toString(),5)) {
+            for (Event event : eventRecommendCollection.getRandomEvent(5)) {
                 try {
                     FXMLLoader eventCardLoader = new FXMLLoader();
                     eventCardLoader.setLocation(getClass().getResource("/cs211/project/views/components/event-card.fxml"));

@@ -69,7 +69,7 @@ public class AllEventController {
         eventDatasource = new EventListFileDatasource("data/event", "event.csv");
         joinEventDatasource = new JoinEventListFileDatasource("data/event", "joinEvent.csv");
         eventCollection = new EventCollection();
-        eventCollection = eventDatasource.readData();
+        eventCollection = eventDatasource.query("status = true");
         //add participant to event
         optionEventCollection = new EventCollection();
         optionEventCollection = eventDatasource.readData();
@@ -160,7 +160,7 @@ public class AllEventController {
         String search = searchInput.getText();
         EventCollection searchEventCollection = new EventCollection();
         for (Event event1 : eventCollection.sortByComparator(new LatestEventComparator())) {
-            if (event1.getName().contains(search)) {
+            if (event1.getName().toLowerCase().contains(search.toLowerCase())) {
                 searchEventCollection.addEvent(event1);
             }
         }
@@ -173,7 +173,7 @@ public class AllEventController {
         String search = searchInput.getText();
         EventCollection searchEventCollection = new EventCollection();
         for (Event event1 : eventCollection.sortByComparator(new OldestEventComparator())) {
-            if (event1.getName().contains(search)) {
+            if (event1.getName().toLowerCase().contains(search.toLowerCase())) {
                 searchEventCollection.addEvent(event1);
             }
         }
@@ -187,7 +187,7 @@ public class AllEventController {
         String search = searchInput.getText();
         EventCollection searchEventCollection = new EventCollection();
         for (Event event1 : eventCollection.sortByComparator(new LeastEventParticipantComparator())) {
-            if (event1.getName().contains(search)) {
+            if (event1.getName().toLowerCase().contains(search.toLowerCase())) {
                 searchEventCollection.addEvent(event1);
             }
         }
@@ -204,7 +204,7 @@ public class AllEventController {
         String search = searchInput.getText();
         EventCollection searchEventCollection = new EventCollection();
         for (Event event1 : eventCollection.sortByComparator(new MostEventParticipantComparator())) {
-            if (event1.getName().contains(search)) {
+            if (event1.getName().toLowerCase().contains(search.toLowerCase())) {
                 searchEventCollection.addEvent(event1);
             }
         }
@@ -219,8 +219,7 @@ public class AllEventController {
         ///use contain name from eventCollection without read file again
         EventCollection searchEventCollection = new EventCollection();
         for (Event event1 : eventCollection.getEvents()) {
-            System.out.println(event1.getName());
-            if (event1.getName().contains(search)) {
+            if (event1.getName().toLowerCase().contains(search.toLowerCase())) {
                 searchEventCollection.addEvent(event1);
             }
         }

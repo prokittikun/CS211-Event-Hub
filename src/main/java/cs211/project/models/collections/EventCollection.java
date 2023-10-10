@@ -53,29 +53,18 @@ public class EventCollection {
         return null;
     }
 
-    public ArrayList<Event> getRandomNEvent(String currentEventId, int n) {
-        ArrayList<Event> filteredEvents = new ArrayList<>();
+    public ArrayList<Event> getRandomEvent(int n) {
         Set<Event> selectedEvents = new HashSet<>();
-        ArrayList<Event> eventsToExclude = new ArrayList<>();
-        String eventIdToExclude = currentEventId;
 
-        Event eventToExclude = findEventById(eventIdToExclude);
-        if (eventToExclude != null) {
-            eventsToExclude.add(eventToExclude);
-        }
 
         Random random = new Random();
 
         while (selectedEvents.size() < n && selectedEvents.size() < events.size()) {
             Event randomEvent = events.get(random.nextInt(events.size()));
-            if (!eventsToExclude.contains(randomEvent)) {
                 selectedEvents.add(randomEvent);
-            }
         }
 
-        filteredEvents.addAll(selectedEvents);
-
-        return filteredEvents;
+        return new ArrayList<>(selectedEvents);
     }
 
     public ArrayList<Event> getPopularEvent() {
