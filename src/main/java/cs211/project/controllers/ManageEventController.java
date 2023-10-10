@@ -16,6 +16,9 @@ import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import cs211.project.services.alert.ToastAlert;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -371,6 +374,9 @@ public class ManageEventController {
                     EventCollection eventCollection = new EventCollection();
                     eventCollection.addEvent(event);
                     eventDatasource.writeData(eventCollection);
+                    ToastAlert.show("สร้างอีเว้นต์สำเร็จ", ToastAlert.AlertType.SUCCESS);
+//                    TimeUnit.SECONDS.sleep(1);
+
                 } else { //Edit
 
                     HashMap<String, String> newData = new HashMap<>();
@@ -384,10 +390,13 @@ public class ManageEventController {
                     newData.put("endTime", endTime);
                     newData.put("maxParticipant", String.valueOf(maxParticipant));
                     eventDatasource.updateColumnsById(data.get("eventId").toString(), newData);
+                    ToastAlert.show("แก้ไขอีเว้นต์สำเร็จ", ToastAlert.AlertType.SUCCESS);
+//                    TimeUnit.SECONDS.sleep(1);
                 }
 
                 //Go to My Event
                 try {
+                    TimeUnit.SECONDS.sleep(1);
                     data.remove("eventId");
                     FXRouter.goTo("myEvent", data);
                 } catch (IOException e) {
@@ -395,6 +404,8 @@ public class ManageEventController {
                 }
             } catch (IOException e) {
                 e.printStackTrace();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
         }
     }

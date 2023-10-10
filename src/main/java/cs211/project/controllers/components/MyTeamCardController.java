@@ -7,7 +7,9 @@ import cs211.project.services.FXRouter;
 import cs211.project.services.TeamMemberListFileDatasource;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -16,6 +18,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 public class MyTeamCardController {
@@ -178,13 +181,23 @@ public class MyTeamCardController {
 
     @FXML
     void onHandleLeaveTeam(ActionEvent event) {
-        Map<String, String> conditions = new HashMap<>();
-        conditions.put("teamId", this.teamId.toString());
-        conditions.put("userId", this.userId.toString());
-        datasourceTeamMember.deleteByConditions(conditions);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("คุณต้องการออกจากทีมใช่หรือไม่ ?");
+        alert.setHeaderText("หากออกจากทีมแล้วจะไม่สามารถเห็นข้อมูลภายในทีมได้อีก");
 
-        this.myTeamController.reloadData();
+        Optional<ButtonType> result = alert.showAndWait();
+        ButtonType button = result.orElse(ButtonType.CANCEL);
 
+        if (button == ButtonType.OK) {
+            Map<String, String> conditions = new HashMap<>();
+            conditions.put("teamId", this.teamId.toString());
+            conditions.put("userId", this.userId.toString());
+            datasourceTeamMember.deleteByConditions(conditions);
+
+            this.myTeamController.reloadData();
+        } else {
+            alert.close();
+        }
     }
 }
 

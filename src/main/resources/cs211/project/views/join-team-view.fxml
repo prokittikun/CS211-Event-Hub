@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 
-<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.JoinTeamController">
+<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.JoinTeamController">
    <content>
-      <AnchorPane prefHeight="800.0" prefWidth="1200.0" styleClass="bg-dark" >
+      <AnchorPane prefHeight="800.0" prefWidth="1200.0" styleClass="bg-dark">
          <children>
             <BorderPane prefHeight="800.0" prefWidth="1200.0">
                <center>
@@ -42,7 +42,7 @@
                                                 <String fx:value="text-sm" />
                                              </styleClass>
                                           </Button>
-                                          <Label fx:id="eventName" alignment="CENTER" prefHeight="87.0" prefWidth="661.0" text="สัปดาห์หนังสือแห่งชาติ ครั้งที่ 51">
+                                          <Label fx:id="eventName" alignment="CENTER" prefHeight="87.0" prefWidth="1106.0" text="สัปดาห์หนังสือแห่งชาติ ครั้งที่ 51">
                                              <styleClass>
                                                 <String fx:value="text-5xl" />
                                                 <String fx:value="font-bold" />

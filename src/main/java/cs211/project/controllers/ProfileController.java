@@ -5,6 +5,7 @@ import cs211.project.models.collections.UserCollection;
 import cs211.project.services.Datasource;
 import cs211.project.services.FXRouter;
 import cs211.project.services.UserListFileDatasource;
+import cs211.project.services.alert.ToastAlert;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -142,6 +143,7 @@ public class ProfileController {
                 e.printStackTrace();
             }
         }
+        ToastAlert.show("แก้ไขโพรไฟล์สำเร็จ", ToastAlert.AlertType.SUCCESS);
     }
 
     @FXML

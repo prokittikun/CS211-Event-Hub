@@ -88,6 +88,7 @@ public class JoinTeamCard {
         TeamMember teamMember = new TeamMember(UUID.randomUUID().toString(),userId.toString(),teamId.toString());
         newMember.addTeamMember(teamMember);
         teamMemberDatasource.writeData(newMember);
+        ToastAlert.show("เข้าร่วมทีมสำเร็จ", ToastAlert.AlertType.SUCCESS);
         isJoinedTeam();
         this.joinTeamController.reload();
     }
