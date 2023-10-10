@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="1200.0" styleClass="bg-white" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.NavbarController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="63.0" prefWidth="1200.0" styleClass="bg-white" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.NavbarController">
    <children>
       <HBox alignment="CENTER_LEFT" layoutY="5.0" prefHeight="45.0" prefWidth="1200.0" styleClass="bg-white">
          <children>
@@ -151,9 +151,9 @@
       </HBox>
       <Pane fx:id="manageDropdown" layoutX="297.0" layoutY="50.0" prefWidth="191.0" styleClass="card-light-gray">
          <children>
-            <VBox alignment="CENTER_LEFT" prefWidth="191.0">
+            <VBox fx:id="managementOption" alignment="CENTER_LEFT" prefWidth="191.0">
                <children>
-                  <HBox alignment="CENTER_LEFT" onMouseClicked="#onHandleGoToDashboard" prefWidth="200.0">
+                  <HBox fx:id="dashboardOption" alignment="CENTER_LEFT" onMouseClicked="#onHandleGoToDashboard" prefHeight="46.0" prefWidth="233.0">
                      <children>
                         <ImageView fitHeight="23.0" fitWidth="23.0" onMouseClicked="#onHandleGoToDashboard" pickOnBounds="true" preserveRatio="true">
                            <image>

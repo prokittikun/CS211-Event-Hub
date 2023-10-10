@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
@@ -57,6 +58,9 @@ public class NavbarController {
 
     private static Boolean isDarkTheme = false;
 
+    @FXML
+    private VBox managementOption;
+
 
     @FXML
     private void initialize() {
@@ -64,6 +68,7 @@ public class NavbarController {
         data = new HashMap<String, Object>();
         manageDropdown.setVisible(showManageDropdown);
         profileDropdown.setVisible(showProfileDropdown);
+
         isDarkTheme = FXRouter.isDarkTheme;
         if(isDarkTheme){
             currentTheme.setTranslateX(48);
@@ -87,6 +92,9 @@ public class NavbarController {
         setNavbarImage(user.getAvatar());
         name.setText(user.getFirstName());
         role.setText(user.getRole().equals("user") ? "ผู้ใช้งาน" : "ผู้ดูแลระบบ");
+        if (!user.getRole().equals("admin")) {
+            managementOption.getChildren().remove(0);
+        }
     }
 
     public void setName(Label name) {
