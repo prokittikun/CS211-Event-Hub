@@ -1,4 +1,4 @@
-package cs211.project;
+package cs211.project.cs211661project;
 
 import javafx.application.Application;
 import javafx.scene.text.Font;
