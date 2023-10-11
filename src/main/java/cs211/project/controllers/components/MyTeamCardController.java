@@ -55,6 +55,12 @@ public class MyTeamCardController {
     @FXML
     private Label eventLocation;
 
+    @FXML
+    private Button teamDetailButton;
+
+    @FXML
+    private Button leaveTeamButton;
+
     private Datasource<TeamMemberCollection> datasourceTeamMember;
 
     public MyTeamCardController() {
@@ -73,7 +79,11 @@ public class MyTeamCardController {
 
 
     //setter
-
+    public void setActivityIsEnd() {
+        this.teamDetailButton.setText("อีเวนต์สิ้นสุดแล้ว");
+        this.teamDetailButton.setDisable(true);
+        this.leaveTeamButton.setVisible(false);
+    }
     public void setParentController(MyTeamController parentController) {
         this.myTeamController = parentController;
     }

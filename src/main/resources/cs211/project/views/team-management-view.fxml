@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient"  xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.TeamManagementController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.TeamManagementController">
    <children>
       <BorderPane prefHeight="802.0" prefWidth="1202.0">
          <bottom>
@@ -126,13 +126,12 @@
                                           </Button>
                                        </children>
                                     </HBox>
-                                    <TableView fx:id="scheduleTable" prefHeight="495.0" prefWidth="686.0" >
+                                    <TableView fx:id="scheduleTable" prefHeight="495.0" prefWidth="686.0">
                                       <columns>
                                         <TableColumn fx:id="orderColumn" prefWidth="86.1332106590271" text="ลำดับที่" />
-                                        <TableColumn fx:id="nameColumn" prefWidth="156.26660919189453" text="ชื่อกิจกรรม" />
-                                          <TableColumn fx:id="dateColumn" prefWidth="162.9333953857422" text="วันที่" />
-                                          <TableColumn fx:id="timestampColumn" minWidth="0.0" prefWidth="150.93325805664062" text="เวลาเริ่ม" />
-                                          <TableColumn fx:id="tool" minWidth="0.0" prefWidth="108.800048828125" text="เครื่องมือ" />
+                                        <TableColumn fx:id="nameColumn" prefWidth="191.99999237060547" text="ชื่อกิจกรรม" />
+                                          <TableColumn fx:id="statusColumn" minWidth="0.0" prefWidth="160.0" text="สถานะ" />
+                                          <TableColumn fx:id="tool" minWidth="0.0" prefWidth="226.39993286132812" text="เครื่องมือ" />
                                       </columns>
                                        <styleClass>
                                           <String fx:value="text-lg" />
@@ -157,13 +156,13 @@
       </BorderPane>
       <AnchorPane fx:id="backDrop" prefHeight="801.0" prefWidth="1201.0" style="-fx-background-color: rgba(0, 0, 0, 0.15);">
          <children>
-            <Pane fx:id="modal" layoutX="386.0" layoutY="112.0" prefHeight="558.0" prefWidth="417.0">
+            <Pane fx:id="modal" layoutX="370.0" layoutY="112.0" maxWidth="-Infinity" prefHeight="558.0" prefWidth="434.0">
                <styleClass>
                   <String fx:value="card" />
                   <String fx:value="shadow" />
                </styleClass>
                <children>
-                  <VBox alignment="CENTER" layoutX="5.0" layoutY="16.200000762939453">
+                  <VBox alignment="CENTER" layoutX="5.0" layoutY="16.0" prefHeight="554.0" prefWidth="424.0">
                      <children>
                         <Label text="รายละเอียดกิจกรรม">
                            <styleClass>
@@ -172,13 +171,31 @@
                               <String fx:value="font-bold" />
                            </styleClass>
                         </Label>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Label text="เริ่ม : ">
+                                 <styleClass>
+                                    <String fx:value="text-base" />
+                                    <String fx:value="text-black" />
+                                    <String fx:value="font-bold" />
+                                 </styleClass>
+                              </Label>
+                              <Label fx:id="startAndEndDateTime" layoutX="10.0" layoutY="10.0" text="16 กันยายน 2566 14:00 - 17 กันยายน 2566 17:00">
+                                 <styleClass>
+                                    <String fx:value="text-base" />
+                                    <String fx:value="text-black" />
+                                    <String fx:value="font-bold" />
+                                 </styleClass>
+                              </Label>
+                           </children>
+                        </HBox>
                         <ScrollPane hbarPolicy="NEVER" prefHeight="483.0" prefWidth="406.0">
                            <content>
                               <VBox alignment="TOP_CENTER" prefWidth="412.0">
                                  <children>
                                     <Text fx:id="activityDetail" strokeType="OUTSIDE" strokeWidth="0.0" text="asd" wrappingWidth="350.0">
                                        <styleClass>
-                                          <String fx:value="text-lg" />
+                                          <String fx:value="text-base" />
                                           <String fx:value="text-black" />
                                        </styleClass></Text>
                                  </children>
@@ -190,7 +207,7 @@
                         </ScrollPane>
                      </children>
                   </VBox>
-                  <Button fx:id="closeModal" layoutX="370.0" layoutY="8.0" mnemonicParsing="false" onAction="#onHandleCloseModal" text="ปิด">
+                  <Button fx:id="closeModal" layoutX="390.0" layoutY="8.0" mnemonicParsing="false" onAction="#onHandleCloseModal" text="ปิด">
                      <styleClass>
                         <String fx:value="btn-danger" />
                         <String fx:value="text-sm" />

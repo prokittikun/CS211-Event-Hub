@@ -11,6 +11,14 @@ public class TeamMemberCollection {
         this.teamMembers = new ArrayList<>();
     }
 
+    public TeamMemberCollection(ArrayList<TeamMember> teamMembers) {
+        this.teamMembers = teamMembers;
+    }
+
+    public void setTeamMembers(ArrayList<TeamMember> teamMembers) {
+        this.teamMembers = teamMembers;
+    }
+
     public void addTeamMember(TeamMember teamMember) {
         this.teamMembers.add(teamMember);
     }
@@ -27,5 +35,8 @@ public class TeamMemberCollection {
         }
         return null;
     }
+
+
+
 
 }

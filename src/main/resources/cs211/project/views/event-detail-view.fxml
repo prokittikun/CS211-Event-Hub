@@ -17,7 +17,7 @@
 
 <ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.EventDetailController">
    <content>
-      <AnchorPane prefWidth="1200.0" styleClass="bg-dark" >
+      <AnchorPane prefWidth="1200.0" styleClass="bg-dark">
          <children>
             <BorderPane prefWidth="1200.0">
                <center>
@@ -44,6 +44,25 @@
                                                 <String fx:value="text-sm" />
                                              </styleClass>
                                           </Button>
+                                          <HBox alignment="CENTER">
+                                             <children>
+                                                <Label text="ช่วงเวลาที่เปิดรับลงทะเบียน : ">
+                                                   <styleClass>
+                                                      <String fx:value="text-black" />
+                                                      <String fx:value="text-lg" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Label fx:id="registrationPeriod" text="29 กรกฎาคม 2566 10:00 - 29 กรกฎาคม 2566 10:00">
+                                                   <styleClass>
+                                                      <String fx:value="text-black" />
+                                                      <String fx:value="text-lg" />
+                                                   </styleClass>
+                                                </Label>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="3.0" />
+                                             </VBox.margin>
+                                          </HBox>
                                           <HBox prefWidth="1104.0">
                                              <children>
                                                 <VBox alignment="TOP_CENTER" prefWidth="361.0" spacing="20.0">

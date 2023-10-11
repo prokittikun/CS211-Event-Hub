@@ -68,7 +68,7 @@ public class MyEventController {
                 myEventCard.setEventImage(myEventCardData.getImage());
                 myEventCard.setEventLocation(myEventCardData.getLocation());
                 myEventCard.setMyEventController(this);
-
+                myEventCard.setStatusEvent(myEventCardData.isStatus());
                 //Set Data
                 HashMap<String, Object> dataEventComponent = new HashMap<>();
                 dataEventComponent.put("eventId", myEventCardData.getId());

@@ -270,7 +270,7 @@ public class CreateTeamController {
     @FXML
     public void backToListTeam(){
         try {
-            FXRouter.goTo("listTeam");
+            FXRouter.goTo("listTeam", data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

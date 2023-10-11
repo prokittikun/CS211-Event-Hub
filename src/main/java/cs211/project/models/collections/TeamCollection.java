@@ -35,4 +35,14 @@ public class TeamCollection {
             }
         }
     }
+
+    public ArrayList<Team> findTeamByEventId(String eventId) {
+        ArrayList<Team> teams = new ArrayList<>();
+        for (Team team : this.teams) {
+            if (team.getEventId().equals(eventId)) {
+                teams.add(team);
+            }
+        }
+        return teams;
+    }
 }

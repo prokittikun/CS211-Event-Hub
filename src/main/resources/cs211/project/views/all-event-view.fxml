@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<ScrollPane hbarPolicy="NEVER" minHeight="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.AllEventController">
+<ScrollPane hbarPolicy="NEVER" minHeight="800.0" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.AllEventController">
    <content>
       <AnchorPane minHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient">
          <children>
@@ -146,6 +146,12 @@
                                                       <String fx:value="text-sm" />
                                                       <String fx:value="text-black" />
                                                    </styleClass></RadioButton>
+                                                <RadioButton fx:id="closestButton" mnemonicParsing="false" onAction="#onHandleClosestButton" text="กำลังมาถึง">
+                                                   <styleClass>
+                                                      <String fx:value="text-sm" />
+                                                      <String fx:value="text-black" />
+                                                   </styleClass>
+                                                </RadioButton>
                                              </children>
                                              <VBox.margin>
                                                 <Insets left="35.0" />

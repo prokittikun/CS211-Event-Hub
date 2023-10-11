@@ -3,6 +3,7 @@ package cs211.project.controllers;
 import cs211.project.models.*;
 import cs211.project.models.collections.*;
 import cs211.project.services.*;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -20,6 +21,7 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -70,9 +72,7 @@ public class TeamManagementController {
     @FXML
     private TableColumn<Activity, String> nameColumn;
     @FXML
-    private TableColumn<Activity, String> dateColumn;
-    @FXML
-    private TableColumn<Activity, String> timestampColumn;
+    private TableColumn<Activity, Label> statusColumn;
     @FXML
     private TableColumn<Activity, HBox> tool;
     private Datasource<TeamActivityCollection> teamActivityDatasource;
@@ -85,6 +85,9 @@ public class TeamManagementController {
 
     @FXML
     private Text activityDetail;
+
+    @FXML
+    private Label startAndEndDateTime;
 
     @FXML
     private Button closeModal;
@@ -134,17 +137,8 @@ public class TeamManagementController {
             @Override
             public void changed(ObservableValue observable, Activity oldValue, Activity newValue) {
                 if (newValue != null) {
-                    try {
-                        HashMap<String, Object> newData = new HashMap<>();
-                        newData.put("teamId", teamId.toString());
-                        newData.put("activityId", newValue.getId());
-                        newData.put("userId", data.get("userId"));
-                        newData.put("eventId", currentTeam.getEventId());
-                        newData.put("previousPage", previousPage);
-                        FXRouter.goTo("chat", newData);
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
+                    //open modal
+                    openModalDialog(newValue);
                 }
             }
         });
@@ -188,10 +182,27 @@ public class TeamManagementController {
 
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 
-        dateColumn.setCellValueFactory(new PropertyValueFactory<>("startDate"));
+        statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
 
-        timestampColumn.setCellValueFactory(new PropertyValueFactory<>("startTime"));
+        statusColumn.setCellValueFactory(cellData -> {
+            Activity activity = cellData.getValue();
+            boolean status = activity.getStatus();
+            Label label = new Label();
 
+            if (status) {
+                label.setText("เสร็จสิ้น");
+                label.getStyleClass().add("bg-green");
+            } else {
+                label.setText("รอดำนำเนินการ");
+                label.getStyleClass().add("bg-red-for-darkMode");
+            }
+            label.getStyleClass().add("text-white");
+            label.getStyleClass().add("rounded-20px");
+            label.getStyleClass().add("text-sm");
+            label.setStyle("-fx-padding: 5px 10px;");
+
+            return new SimpleObjectProperty<>(label);
+        });
 
         Callback<TableColumn<Activity, HBox>, TableCell<Activity, HBox>> cellFactory
                 = //
@@ -200,19 +211,24 @@ public class TeamManagementController {
                     public TableCell call(final TableColumn<Activity, HBox> param) {
                         final TableCell<Activity, HBox> cell = new TableCell<Activity, HBox>() {
 
+
                             final Button openmodalButton = new Button();
+
+                            final Button chatButton = new Button();
+
+                            final Button changeStatus = new Button();
                             final Button deleteButton = new Button();
 
                             final Button editButton = new Button();
 
                             @Override
-                            public void updateItem(HBox  item, boolean empty) {
+                            public void updateItem(HBox item, boolean empty) {
                                 super.updateItem(item, empty);
                                 if (empty) {
                                     setGraphic(null);
                                     setText(null);
                                 } else {
-                                    HBox hbox = new HBox(openmodalButton, deleteButton);
+                                    HBox hbox = new HBox();
                                     Activity activity = getTableView().getItems().get(getIndex());
 
                                     ImageView infoIcon = new ImageView(new Image(getClass().getResource("/cs211/project/views/assets/Icons/info.png").toExternalForm()));
@@ -226,8 +242,55 @@ public class TeamManagementController {
                                         openModalDialog(activity);
                                     });
 
+                                    ImageView chatIcon = new ImageView(new Image(getClass().getResource("/cs211/project/views/assets/Icons/chat.png").toExternalForm()));
+                                    chatIcon.setFitHeight(20);
+                                    chatIcon.setFitWidth(20);
 
-                                    ImageView trashIcon = new ImageView(new Image (getClass().getResource("/cs211/project/views/assets/Icons/trash-red.png").toExternalForm()));
+                                    chatButton.setGraphic(chatIcon);
+                                    chatButton.setStyle("-fx-background-color: transparent; -fx-cursor: hand;");
+                                    // open chat
+                                    chatButton.setOnAction(event -> {
+                                        try {
+                                            HashMap<String, Object> newData = new HashMap<>();
+                                            newData.put("teamId", teamId.toString());
+                                            newData.put("activityId", activity.getId());
+                                            newData.put("userId", data.get("userId"));
+                                            newData.put("eventId", currentTeam.getEventId());
+                                            newData.put("previousPage", previousPage);
+                                            FXRouter.goTo("chat", newData);
+                                        } catch (IOException e) {
+                                            throw new RuntimeException(e);
+                                        }
+                                    });
+
+                                    ImageView statusIcon = new ImageView(new Image(getClass().getResource("/cs211/project/views/assets/Icons/select.png").toExternalForm()));
+                                    statusIcon.setFitHeight(20);
+                                    statusIcon.setFitWidth(20);
+                                    changeStatus.setGraphic(statusIcon);
+                                    changeStatus.setStyle("-fx-background-color: transparent; -fx-cursor: hand;");
+                                    //change status
+                                    changeStatus.setOnAction(event -> {
+                                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+
+                                        if (activity.getStatus()) {
+                                            alert.setTitle("คุณต้องการเปลี่ยนกสถานะของกิจกรรมเป็น รอดำนำเนินการ ใช่หรือไม่ ?");
+                                            alert.setHeaderText("หากเปลี่ยนแล้วจะสามารถสื่อสารภายใต้กิจกรรมนี้ได้");
+                                        } else {
+                                            alert.setTitle("คุณต้องการเปลี่ยนกสถานะของกิจกรรมเป็น เสร็จสิ้น ใช่หรือไม่ ?");
+                                            alert.setHeaderText("หากเปลี่ยนแล้วจะ ไม่ สามารถสื่อสารภายใต้กิจกรรมนี้ได้");
+                                        }
+
+                                        Optional<ButtonType> result = alert.showAndWait();
+                                        ButtonType button = result.orElse(ButtonType.CANCEL);
+                                        if (button == ButtonType.OK) {
+                                            activity.setStatus(!activity.getStatus());
+                                            teamActivityDatasource.updateColumnById(activity.getId(), "status", activity.getStatus().toString());
+                                            showTable();
+                                        }
+
+                                    });
+
+                                    ImageView trashIcon = new ImageView(new Image(getClass().getResource("/cs211/project/views/assets/Icons/trash-red.png").toExternalForm()));
                                     trashIcon.setFitHeight(20);
                                     trashIcon.setFitWidth(20);
                                     deleteButton.setGraphic(trashIcon);
@@ -238,7 +301,7 @@ public class TeamManagementController {
                                         showTable();
                                     });
 
-                                    ImageView editIcon = new ImageView(new Image (getClass().getResource("/cs211/project/views/assets/Icons/edit-red.png").toExternalForm()));
+                                    ImageView editIcon = new ImageView(new Image(getClass().getResource("/cs211/project/views/assets/Icons/edit-red.png").toExternalForm()));
                                     editIcon.setFitHeight(20);
                                     editIcon.setFitWidth(20);
                                     editButton.setGraphic(editIcon);
@@ -260,9 +323,13 @@ public class TeamManagementController {
 
                                     hbox.getChildren().clear();
                                     if (isLeader || currentEvent.getUserId().equals(data.get("userId").toString())) {
-                                        hbox.getChildren().addAll(openmodalButton, editButton, deleteButton);
+                                        hbox.getChildren().addAll(chatButton, openmodalButton, changeStatus, editButton, deleteButton);
                                     } else {
-                                        hbox.getChildren().add(openmodalButton);
+                                        if(activity.getStatus()){
+                                            hbox.getChildren().addAll(openmodalButton);
+                                        }else{
+                                            hbox.getChildren().addAll(chatButton, openmodalButton);
+                                        }
                                     }
                                     hbox.alignmentProperty().set(javafx.geometry.Pos.CENTER);
                                     setGraphic(hbox);
@@ -279,8 +346,7 @@ public class TeamManagementController {
         scheduleTable.getColumns().clear();
         scheduleTable.getColumns().add(orderColumn);
         scheduleTable.getColumns().add(nameColumn);
-        scheduleTable.getColumns().add(dateColumn);
-        scheduleTable.getColumns().add(timestampColumn);
+        scheduleTable.getColumns().add(statusColumn);
         scheduleTable.getColumns().add(tool);
 
         scheduleTable.getItems().clear();
@@ -293,8 +359,8 @@ public class TeamManagementController {
     private void openModalDialog(Activity rowData) {
         backDrop.setVisible(true);
         modal.setVisible(true);
+        startAndEndDateTime.setText(DateTimeService.toString(rowData.getStartDate()) + " " + rowData.getStartTime() + " - " + DateTimeService.toString(rowData.getEndDate()) + " " + rowData.getEndTime());
         activityDetail.setText(rowData.getDetail());
-
     }
 
     @FXML
@@ -342,7 +408,6 @@ public class TeamManagementController {
             }
         });
     }
-
 
 
     @FXML

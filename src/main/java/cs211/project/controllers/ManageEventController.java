@@ -64,6 +64,18 @@ public class ManageEventController {
     private Label errorLabelStartTime;
 
     @FXML
+    private Label errorLabelCloseEndTime;
+
+    @FXML
+    private Label errorLabelCloseStartDate;
+
+    @FXML
+    private Label errorLabelOpenStartDate;
+
+    @FXML
+    private Label errorLabelOpenTimeDate;
+
+    @FXML
     private AnchorPane footer;
 
     @FXML
@@ -94,10 +106,23 @@ public class ManageEventController {
     private TextField textFieldStartTime;
 
     @FXML
+    private DatePicker pickerOpenDate;
+    @FXML
+    private TextField textFieldOpenTime;
+
+    @FXML
+    private DatePicker pickerCloseDate;
+    @FXML
+    private TextField textFieldCloseTime;
+
+    @FXML
     private ImageView imageView;
 
     private HashMap<String, Object> data;
     private Datasource<EventCollection> eventDatasource;
+
+
+
     private File imageFile;
 
     @FXML
@@ -114,6 +139,11 @@ public class ManageEventController {
         errorLabelEndTime.setText("");
         errorLabelMaxParticipant.setText("");
         errorDragImage.setText("");
+        errorLabelOpenStartDate.setText("");
+        errorLabelOpenTimeDate.setText("");
+        errorLabelCloseEndTime.setText("");
+        errorLabelCloseStartDate.setText("");
+
         //Datasource
         eventDatasource = new EventListFileDatasource("data/event", "event.csv");
 
@@ -147,6 +177,14 @@ public class ManageEventController {
             textFieldName.setText(event.getName());
             textAreaDetail.setText(event.getDetail());
             textFieldLocation.setText(event.getLocation());
+            pickerOpenDate.setValue(
+                    LocalDate.parse(event.getOpenDate())
+            );
+            textFieldOpenTime.setText(event.getOpenTime());
+            pickerCloseDate.setValue(
+                    LocalDate.parse(event.getCloseDate())
+            );
+            textFieldCloseTime.setText(event.getCloseTime());
             pickerStartDate.setValue(
                     LocalDate.parse(event.getStartDate())
             );
@@ -173,7 +211,11 @@ public class ManageEventController {
         //Remove EventId
         data.remove("eventId");
         try {
-            FXRouter.goTo("myEvent", data);
+            if(data.get("previousPage") == null){
+                FXRouter.goTo("myEvent", data);
+            }else {
+                FXRouter.goTo(data.get("previousPage").toString(), data);
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -252,7 +294,31 @@ public class ManageEventController {
         } else {
             errorLabelLocation.setText("");
         }
+        if(pickerOpenDate.getValue() == null){
+            errorLabelOpenStartDate.setText("Open Date is required");
+            isValid = false;
+        }
+        if(textFieldOpenTime.getText().isEmpty()){
+            errorLabelOpenTimeDate.setText("Open Time is required");
+            isValid = false;
+        }
+        if(textFieldOpenTime.getText().length() != 5){
+            errorLabelOpenTimeDate.setText("Open Time must be in format xx:xx");
+            isValid = false;
+        }
 
+        if(pickerCloseDate.getValue() == null){
+            errorLabelCloseStartDate.setText("Close Date is required");
+            isValid = false;
+        }
+        if(textFieldCloseTime.getText().length() != 5){
+            errorLabelCloseEndTime.setText("Close Time must be in format xx:xx");
+            isValid = false;
+        }
+        if(textFieldCloseTime.getText().isEmpty()){
+            errorLabelCloseEndTime.setText("Close Time is required");
+            isValid = false;
+        }
         if (pickerStartDate.getValue() == null) {
             errorLabelStartDate.setText("Start Date is required");
             isValid = false;
@@ -322,6 +388,10 @@ public class ManageEventController {
             String userId = (String) data.get("userId");
             String detail = textAreaDetail.getText();
             String location = textFieldLocation.getText();
+            String openDate = pickerOpenDate.getValue().toString();
+            String openTime = textFieldOpenTime.getText();
+            String closeDate = pickerCloseDate.getValue().toString();
+            String closeTime = textFieldCloseTime.getText();
             String startDate = pickerStartDate.getValue().toString();
             String startTime = textFieldStartTime.getText();
             String endDate = pickerEndDate.getValue().toString();
@@ -363,6 +433,10 @@ public class ManageEventController {
                             name,
                             detail,
                             location,
+                            openDate,
+                            openTime,
+                            closeDate,
+                            closeTime,
                             startDate,
                             startTime,
                             endDate,
@@ -384,6 +458,10 @@ public class ManageEventController {
                     newData.put("image", filename);
                     newData.put("detail", detail);
                     newData.put("location", location);
+                    newData.put("openDate", openDate);
+                    newData.put("openTime", openTime);
+                    newData.put("closeDate", closeDate);
+                    newData.put("closeTime", closeTime);
                     newData.put("startDate", startDate);
                     newData.put("startTime", startTime);
                     newData.put("endDate", endDate);

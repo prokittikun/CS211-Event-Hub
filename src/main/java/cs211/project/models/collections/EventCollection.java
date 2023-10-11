@@ -9,6 +9,7 @@ import cs211.project.services.comparator.MostEventParticipantComparator;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class EventCollection {
@@ -63,8 +64,8 @@ public class EventCollection {
             Event randomEvent = events.get(random.nextInt(events.size()));
                 selectedEvents.add(randomEvent);
         }
-
-        return new ArrayList<>(selectedEvents);
+        ArrayList<Event> events = new ArrayList<>(selectedEvents);
+        return events;
     }
 
     public ArrayList<Event> getPopularEvent() {
@@ -117,6 +118,17 @@ public class EventCollection {
         return filteredEvents;
     }
 
+    public ArrayList<Event> sortByBeforeEndDate() {
+        ArrayList<Event> filteredEvents = new ArrayList<>();
+        LocalDateTime now = LocalDateTime.now();
+        for (Event event : events) {
+            LocalDateTime eventEndDate = LocalDateTime.parse(event.getEndDate()+"T"+event.getEndTime());
+            if (eventEndDate.isAfter(now)) {
+                filteredEvents.add(event);
+            }
+        }
+        return filteredEvents;
+    }
     public ArrayList<Event> sortByComparator(Comparator<Event> comparator) {
         Collections.sort(events, comparator);
         return events;

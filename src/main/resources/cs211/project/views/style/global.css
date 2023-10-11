@@ -64,6 +64,7 @@
 
 .text-white{
     -fx-fill: white;
+    -fx-text-fill: white;
 }
 .text-black {
     -fx-fill: black;
@@ -96,12 +97,20 @@
     -fx-background-color: #C73618;
 }
 
+.bg-red-for-darkMode{
+    -fx-background-color: #C73618;
+}
+
 .bg-blue{
     -fx-background-color: #185EC7;
 }
 
 .bg-transparent{
     -fx-background-color: transparent;
+}
+
+.bg-green{
+    -fx-background-color: #1E9E1E;
 }
 
 .image-border{
@@ -161,7 +170,7 @@
 }
 .table-view .column-header {
     -fx-background-color: #F4F4F4;
-    -fx-border-color: -fx-grey-color;
+    /*-fx-border-color: -fx-grey-color;*/
 }
 .table-view .column-header .label{
     -fx-font-weight: bold;
