@@ -1,4 +1,5 @@
 package cs211.project.models;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -10,6 +11,10 @@ public class Event {
     private String name;
     private String detail;
     private String location;
+    private String openDate;
+    private String openTime;
+    private String closeDate;
+    private String closeTime;
     private String startDate;
     private String startTime;
     private String endDate;
@@ -24,7 +29,7 @@ public class Event {
 
     //Constructor
     public Event(String userId, String name, String detail,
-                 String location, String startDate, String startTime,
+                 String location, String openDate, String openTime, String closeDate, String closeTime, String startDate, String startTime,
                  String endDate, String endTime, int maxParticipant,
                  String image) {
 
@@ -33,6 +38,10 @@ public class Event {
         this.name = name;
         this.detail = detail;
         this.location = location;
+        this.openDate = openDate;
+        this.openTime = openTime;
+        this.closeDate = closeDate;
+        this.closeTime = closeTime;
         this.startDate = startDate;
         this.startTime = startTime;
         this.endDate = endDate;
@@ -45,12 +54,16 @@ public class Event {
     }
 
     //Constructor (HashMap)
-    public Event(HashMap<String, String> data){
+    public Event(HashMap<String, String> data) {
         this.id = UUID.fromString(data.get("id").trim());
         this.userId = UUID.fromString(data.get("userId").trim());
         this.name = data.get("name").trim();
         this.detail = data.get("detail").trim();
         this.location = data.get("location").trim();
+        this.openDate = data.get("openDate").trim();
+        this.openTime = data.get("openTime").trim();
+        this.closeDate = data.get("closeDate").trim();
+        this.closeTime = data.get("closeTime").trim();
         this.startDate = data.get("startDate").trim();
         this.startTime = data.get("startTime").trim();
         this.endDate = data.get("endDate").trim();
@@ -77,12 +90,13 @@ public class Event {
         }
     }
 
+
+    //Getter
     public String getStatus() {
         updateEventStatus();
         return progressStatus;
     }
 
-    //Getter
     public String getId() {
         return id.toString();
     }
@@ -101,6 +115,22 @@ public class Event {
 
     public String getLocation() {
         return location;
+    }
+
+    public String getOpenDate() {
+        return openDate;
+    }
+
+    public String getOpenTime() {
+        return openTime;
+    }
+
+    public String getCloseDate() {
+        return closeDate;
+    }
+
+    public String getCloseTime() {
+        return closeTime;
     }
 
     public String getStartDate() {
@@ -144,6 +174,7 @@ public class Event {
     public void setUserId(String userId) {
         this.userId = UUID.fromString(userId);
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -154,6 +185,22 @@ public class Event {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public void setOpenDate(String openDate) {
+        this.openDate = openDate;
+    }
+
+    public void setOpenTime(String openTime) {
+        this.openTime = openTime;
+    }
+
+    public void setCloseDate(String closeDate) {
+        this.closeDate = closeDate;
+    }
+
+    public void setCloseTime(String closeTime) {
+        this.closeTime = closeTime;
     }
 
     public void setStartDate(String startDate) {
@@ -201,6 +248,10 @@ public class Event {
         data.put("name", name);
         data.put("detail", detail);
         data.put("location", location);
+        data.put("openDate", openDate);
+        data.put("openTime", openTime);
+        data.put("closeDate", closeDate);
+        data.put("closeTime", closeTime);
         data.put("startDate", startDate);
         data.put("startTime", startTime);
         data.put("endDate", endDate);

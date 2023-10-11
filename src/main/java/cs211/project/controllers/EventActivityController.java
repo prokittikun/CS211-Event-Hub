@@ -241,6 +241,7 @@ public class EventActivityController {
                                             newData.put("eventId", eventId.toString());
                                             newData.put("activityId", activity.getId());
                                             newData.put("userId", data.get("userId"));
+                                            newData.put("previousPage", previousPage);
                                             FXRouter.goTo("createEventActivity", newData);
                                         } catch (IOException e) {
                                             throw new RuntimeException(e);
@@ -306,9 +307,13 @@ public class EventActivityController {
     }
 
     @FXML
-    void backToListTeam(ActionEvent event) {
+    void backToPreviousPage(ActionEvent event) {
         try {
-            FXRouter.goTo(this.previousPage, data);
+            if(previousPage.equals("myEvent")) {
+                FXRouter.goTo("myEvent", data);
+            }else{
+                FXRouter.goTo("eventDetail", data);
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

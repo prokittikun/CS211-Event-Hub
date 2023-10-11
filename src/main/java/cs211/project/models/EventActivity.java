@@ -34,6 +34,7 @@ public class EventActivity extends Activity{
         activity.put("startTime", this.getStartTime());
         activity.put("endDate", this.getEndDate());
         activity.put("endTime", this.getEndTime());
+        activity.put("status", this.getStatus().toString());
         return activity;
     }
 }
