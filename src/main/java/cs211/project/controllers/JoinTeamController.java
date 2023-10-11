@@ -132,12 +132,12 @@ public class JoinTeamController {
                         joinTeamCard.setJoinTeamButton(true, "ไม่อยู่ระหว่างการรับสมัคร");
                         System.out.println("not in range");
                     }
+                    joinTeamCard.checkTeamIsFull();
                     TeamMember isMe = teamMemberCollection.findTeamMemberById((String) data.get("userId"));
                     System.out.println("userId = " + (String) data.get("userId"));
                     if (isMe != null) {
                         joinTeamCard.isJoinedTeam();
                     }
-                    joinTeamCard.checkTeamIsFull();
                     joinTeamCard.setDate(DateTimeService.toString(team.getStartDate()) + " " + team.getStartTime(), DateTimeService.toString(team.getEndDate()) + " " + team.getEndTime());
                     javafx.application.Platform.runLater(() -> {
                         joinTeamVbox.getChildren().add(joinTeamCardComponent);

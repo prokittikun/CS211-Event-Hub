@@ -4,14 +4,17 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient"  xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.MyTeamController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.MyTeamController">
     <children>
         <BorderPane prefHeight="800.0" prefWidth="1200.0">
          <center>
@@ -23,27 +26,58 @@
                <children>
                   <BorderPane layoutX="2.0" layoutY="-1.0" prefHeight="600.0" prefWidth="1085.0">
                      <top>
-                        <HBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="1036.0" BorderPane.alignment="CENTER_LEFT">
-                           <children>
-                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="88.0" text="&lt; ย้อนกลับ" visible="false">
-                                 <styleClass>
-                                    <String fx:value="text-sm" />
-                                    <String fx:value="btn-outline-danger" />
-                                 </styleClass>
-                              </Button>
-                              <Pane prefHeight="51.0" prefWidth="360.0" />
-                              <Label prefHeight="51.0" prefWidth="141.0" text="ทีมของฉัน">
-                                 <styleClass>
-                                    <String fx:value="text-3xl" />
-                                    <String fx:value="font-bold" />
-                                    <String fx:value="text-black" />
-                                 </styleClass>
-                              </Label>
-                           </children>
+                        <VBox BorderPane.alignment="CENTER_LEFT">
                            <BorderPane.margin>
                               <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                            </BorderPane.margin>
-                        </HBox>
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="1036.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="88.0" text="&lt; ย้อนกลับ" visible="false">
+                                       <styleClass>
+                                          <String fx:value="text-sm" />
+                                          <String fx:value="btn-outline-danger" />
+                                       </styleClass>
+                                    </Button>
+                                    <Pane prefHeight="51.0" prefWidth="360.0" />
+                                    <Label prefHeight="51.0" prefWidth="141.0" text="ทีมของฉัน">
+                                       <styleClass>
+                                          <String fx:value="text-3xl" />
+                                          <String fx:value="font-bold" />
+                                          <String fx:value="text-black" />
+                                       </styleClass>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="42.0" prefWidth="1062.0" spacing="10.0">
+                                 <children>
+                                    <ImageView fitHeight="27.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@assets/Icons/black-sort.png" />
+                                       </image>
+                                    </ImageView>
+                                    <RadioButton fx:id="allTeamButton" mnemonicParsing="false" onAction="#onHandleAllTeamButton" text="ทั้งหมด">
+                                       <styleClass>
+                                          <String fx:value="text-sm" />
+                                          <String fx:value="text-black" />
+                                       </styleClass>
+                                    </RadioButton>
+                                    <RadioButton fx:id="inProgressButton" mnemonicParsing="false" onAction="#onHandleInProgressButton" text="อิเวนต์ที่กำลังเดินการ">
+                                       <styleClass>
+                                          <String fx:value="text-sm" />
+                                          <String fx:value="text-black" />
+                                       </styleClass>
+                                    </RadioButton>
+                                    <RadioButton fx:id="finishedButton" mnemonicParsing="false" onAction="#onHandleFinishedButton" text="อิเวนต์ที่สิ้นสุดไปแล้ว">
+                                       <styleClass>
+                                          <String fx:value="text-sm" />
+                                          <String fx:value="text-black" />
+                                       </styleClass>
+                                    </RadioButton>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
                      </top>
                      <center>
                         <ScrollPane hbarPolicy="NEVER" minWidth="519.0" prefHeight="518.0" prefWidth="1070.0" BorderPane.alignment="CENTER_LEFT">

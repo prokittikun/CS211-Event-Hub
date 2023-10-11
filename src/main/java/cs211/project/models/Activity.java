@@ -20,6 +20,9 @@ public class Activity {
     private String dateTimeStart;
     private String dateTimeEnd;
 
+    private Boolean status;
+
+
     private String order;
 
     public Activity(String id,  String name, String detail, String startDate, String startTime, String endDate, String endTime) {
@@ -33,6 +36,7 @@ public class Activity {
         this.endTime = endTime;
         this.setDateTimeStart();
         this.setDateTimeEnd();
+        this.status = false;
     }
 
     //constructor for hashmap
@@ -48,7 +52,7 @@ public class Activity {
         this.endTime = activity.get("endTime");
         this.setDateTimeStart();
         this.setDateTimeEnd();
-
+        this.status = Boolean.parseBoolean(activity.get("status"));
 
     }
 
@@ -122,6 +126,13 @@ public class Activity {
 
     public void setDateTimeEnd(){
         this.dateTimeEnd = DateTimeService.toString(this.endDate) + " " + this.endTime;
+    }
+
+    public void setStatus(Boolean status){
+        this.status = status;
+    }
+    public Boolean getStatus(){
+        return this.status;
     }
     public String getDateTimeStart() {
         return dateTimeStart;
