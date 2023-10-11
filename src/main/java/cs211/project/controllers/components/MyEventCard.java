@@ -44,7 +44,7 @@ public class MyEventCard {
     private Datasource<JoinEventCollection> datasourceJoinEvent;
 
     //Init
-    public MyEventCard(){
+    public MyEventCard() {
         eventDate = new Label();
         eventImage = new ImageView();
         eventLocation = new Label();
@@ -55,7 +55,7 @@ public class MyEventCard {
 
     //Init
     @FXML
-    public void initialize(){
+    public void initialize() {
         datasourceEvent = new EventListFileDatasource("data/event", "event.csv");
         datasourceTeam = new TeamListFileDatasource("data/team", "team.csv");
         datasourceTeamMember = new TeamMemberListFileDatasource("data/team", "teamMember.csv");
@@ -82,7 +82,7 @@ public class MyEventCard {
     }
 
     @FXML
-    public void goToParticipant(){
+    public void goToParticipant() {
         try {
             FXRouter.goTo("eventParticipant", data);
         } catch (IOException e) {
@@ -91,7 +91,7 @@ public class MyEventCard {
     }
 
     @FXML
-    public void goToActivityEvent(){
+    public void goToActivityEvent() {
         try {
             data.put("previousPage", "myEvent");
             FXRouter.goTo("eventActivity", data);
@@ -101,7 +101,7 @@ public class MyEventCard {
     }
 
     @FXML
-    public void onHandleDeleteEvent(){
+    public void onHandleDeleteEvent() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("คุณต้องการลบอีเวนต์นี้ใช่หรือไม่ ?");
         alert.setHeaderText("หากลบแล้วจะส่งผลให้ทีมภายใต้อีเวนต์นี้ถูกลบไปด้วย");
@@ -136,20 +136,19 @@ public class MyEventCard {
     @FXML
     public void onHandleEventStatus() {
         statusEvent = !statusEvent;
-        if(statusEvent){
+        if (statusEvent) {
+
+            eventToggleStatus.setText("ปิด");
+            eventToggleStatus.getStyleClass().remove("btn-success");
+            eventToggleStatus.getStyleClass().add("btn-danger");
+        } else {
             eventToggleStatus.setText("เปิด");
             eventToggleStatus.getStyleClass().remove("btn-danger");
             eventToggleStatus.getStyleClass().add("btn-success");
             eventToggleStatus.getStyleClass().add("btn-success");
-            datasourceEvent.updateColumnById(data.get("eventId").toString(), "status", "true");
-        }else{
-            eventToggleStatus.setText("ปิด");
-            eventToggleStatus.getStyleClass().remove("btn-success");
-            eventToggleStatus.getStyleClass().add("btn-danger");
-            datasourceEvent.updateColumnById(data.get("eventId").toString(), "status", "false");
         }
+        datasourceEvent.updateColumnById(data.get("eventId").toString(), "status", String.valueOf(statusEvent));
     }
-
 
 
     //Getter
@@ -191,7 +190,7 @@ public class MyEventCard {
     }
 
     public void setEventImage(String path) {
-        Image image = new Image("file:"+"data/image/event/"+path);
+        Image image = new Image("file:" + "data/image/event/" + path);
         eventImage.setImage(image);
         this.pathEventImage = path;
     }
@@ -210,6 +209,20 @@ public class MyEventCard {
 
     public void setParticipantEvent(String participantEvent) {
         this.participantEvent.setText(participantEvent);
+    }
+
+    public void setStatusEvent(boolean statusEvent) {
+        this.statusEvent = statusEvent;
+        if (statusEvent) {
+            eventToggleStatus.setText("ปิด");
+            eventToggleStatus.getStyleClass().remove("btn-success");
+            eventToggleStatus.getStyleClass().add("btn-danger");
+
+        } else {
+            eventToggleStatus.setText("เปิด");
+            eventToggleStatus.getStyleClass().remove("btn-danger");
+            eventToggleStatus.getStyleClass().add("btn-success");
+        }
     }
 
     public void setData(HashMap<String, Object> data) {

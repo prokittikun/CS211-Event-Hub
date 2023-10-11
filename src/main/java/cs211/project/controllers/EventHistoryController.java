@@ -1,6 +1,7 @@
 package cs211.project.controllers;
 
 import cs211.project.models.Event;
+import cs211.project.models.JoinEvent;
 import cs211.project.models.User;
 import cs211.project.models.collections.EventCollection;
 import cs211.project.models.collections.JoinEventCollection;
@@ -47,7 +48,7 @@ public class EventHistoryController {
     private TableColumn<Event, String> statusColumn;
     @FXML
     private TableColumn<Event, Void> toolColumn;
-
+    private EventCollection eventCollection;
     private UUID userId;
     private HashMap<String, Object> data;
     private Datasource<UserCollection> userListFileDatasource;
@@ -84,32 +85,42 @@ public class EventHistoryController {
         loadEventsIntoTable();
     }
 
+    private String getJoinTimeForEvent(String eventId) {
+        JoinEvent joinEvent = joinEventCollectionDatasource.query("eventId = " + eventId + " AND userId = " + this.userId).getJoinEvents().get(0);
+        return DateTimeService.toString(joinEvent.getJoinTime());
+    }
+
     private void loadEventsIntoTable() {
-        List<String> userEventIds = joinEventCollectionDatasource.readData().getEventIdsByUserId(userId);
-        List<Event> events = eventListFileDatasource.readData().getEvents();
-        //List<JoinEvent> joinEvents = joinEventCollectionDatasource.readData().getJoinEvents();
-
-        List<Event> userEvents = events.stream()
-                .filter(event -> userEventIds.contains(event.getId()))
-                .collect(Collectors.toList());
-
-        /*List<String> joinTimes = joinEvents.stream()
-                .map(JoinEvent::getJoinTime)
-                .collect(Collectors.toList());
-        List<JoinEvent> userJoinEvents = joinEvents.stream()
-                .filter(joinEvent -> userEventIds.contains(joinEvent.getEventId()))
-                .collect(Collectors.toList());*/
+        JoinEventCollection joinEventCollection = joinEventCollectionDatasource.query("userId = " + userId);
+        EventCollection eventCollection = new EventCollection();
+        for (JoinEvent joinEvent : joinEventCollection.getJoinEvents()) {
+            Event event = eventListFileDatasource.query("id = " + joinEvent.getEventId()).getEvents().get(0);
+            eventCollection.addEvent(event);
+        }
 
         orderColumn.setCellValueFactory(column -> {
             int rowIndex = eventHistoryTable.getItems().indexOf(column.getValue()) + 1;
             return new SimpleObjectProperty<>(rowIndex);
         });
-
         eventColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        //joinTimeColumn.setCellValueFactory(new PropertyValueFactory<>("joinTime"));
+        joinTimeColumn.setCellValueFactory(param -> {
+            Event event = param.getValue();
+            String joinTime = getJoinTimeForEvent(event.getId());
+            return new SimpleObjectProperty<>(joinTime);
+        });
         statusColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getStatus()));
 
-        eventHistoryTable.setItems(FXCollections.observableArrayList(userEvents));
+        eventHistoryTable.getColumns().clear();
+        eventHistoryTable.getColumns().add(orderColumn);
+        eventHistoryTable.getColumns().add(eventColumn);
+        eventHistoryTable.getColumns().add(joinTimeColumn);
+        eventHistoryTable.getColumns().add(statusColumn);
+
+        eventHistoryTable.getItems().clear();
+
+        for (Event event : eventCollection.getEvents()) {
+            eventHistoryTable.getItems().add(event);
+        }
     }
 
 }
