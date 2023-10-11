@@ -1,3 +1,4 @@
-id,teamId,name,detail,startDate,endDate,startTime,endTime,userId
-ec010eff-e426-47a9-86ca-949033fc1a4c,5061f9e4-f949-4a9a-97a3-30592dc72b93,First meeting,คุยรายละเอียดงาน มอบหมายงาน,2023-07-02,2023-07-02,10:00,20:00,null
-ef7004df-5685-41c2-98d8-4dd4b51c4efc,90443e50-7775-4402-bf47-52cd629f42b2,First meeting,แจ้งรายละเอียดงาน,2023-10-15,2023-10-15,9:00,16:00,null
+id,teamId,name,detail,startDate,endDate,startTime,endTime,status
+ec010eff-e426-47a9-86ca-949033fc1a4c,5061f9e4-f949-4a9a-97a3-30592dc72b93,First meeting,คุยรายละเอียดงาน มอบหมายงาน,2023-07-02,2023-07-02,10:00,20:00,false
+ef7004df-5685-41c2-98d8-4dd4b51c4efc,90443e50-7775-4402-bf47-52cd629f42b2,First meeting,แจ้งรายละเอียดงาน,2023-10-15,2023-10-15,9:00,16:00,true
+3b6cf524-ab80-4f1e-92f2-381a9eed9360,90443e50-7775-4402-bf47-52cd629f42b2,ทดสอบ,test,2023-11-09,2023-11-10,12:00,12:01,false

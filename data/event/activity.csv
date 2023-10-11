@@ -1,1 +1,2 @@
-id,eventId,name,detail,startDate,endDate,startTime,endTime
+id,eventId,name,detail,startDate,endDate,startTime,endTime,status
+730bb84d-cc7f-483d-89dc-6aed8c2b1ffa,2b11d6b5-1f98-4423-bc28-d8ed11d3c201,asd,asde,2023-10-30,2023-10-26,12:00,12:00,false
