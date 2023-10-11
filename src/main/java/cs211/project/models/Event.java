@@ -17,7 +17,7 @@ public class Event {
     private int maxParticipant;
     private String image;
     private boolean status;
-
+    private String progressStatus;
     private int participantCount;
 
     private LocalDateTime createAt;
@@ -61,6 +61,25 @@ public class Event {
         //set localDateTime from data.get(createAt)
         this.createAt = LocalDateTime.parse(data.get("createAt").trim());
 
+    }
+
+    public void updateEventStatus() {
+        LocalDateTime startDateTime = LocalDateTime.parse(startDate + "T" + startTime);
+        LocalDateTime endDateTime = LocalDateTime.parse(endDate + "T" + endTime);
+        LocalDateTime now = LocalDateTime.now();
+
+        if (now.isBefore(startDateTime)) {
+            progressStatus = "ยังไม่เริ่ม";
+        } else if (now.isAfter(startDateTime) && now.isBefore(endDateTime)) {
+            progressStatus = "กำลังดำเนินการ";
+        } else if (now.isAfter(endDateTime)) {
+            progressStatus = "เสร็จสิ้น";
+        }
+    }
+
+    public String getStatus() {
+        updateEventStatus();
+        return progressStatus;
     }
 
     //Getter
