@@ -7,6 +7,7 @@ import cs211.project.models.collections.JoinEventCollection;
 import cs211.project.models.collections.TeamCollection;
 import cs211.project.models.collections.UserCollection;
 import cs211.project.services.*;
+import cs211.project.services.alert.ToastAlert;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.DatePicker;
@@ -231,6 +232,7 @@ public class CreateTeamController {
                 newData.put("endTime", endTime);
 
                 teamDatasource.updateColumnsById(data.get("teamId").toString(), newData);
+                ToastAlert.show("แก้ไขทีมสำเร็จ", ToastAlert.AlertType.SUCCESS);
             }else {
                 //Check name is unique skip my id
                 try {
@@ -255,6 +257,7 @@ public class CreateTeamController {
                 TeamCollection teamCollection = new TeamCollection();
                 teamCollection.addTeam(team);
                 teamDatasource.writeData(teamCollection);
+                ToastAlert.show("สร้างทีมสำเร็จ", ToastAlert.AlertType.SUCCESS);
             }
             try {
                 FXRouter.goTo("listTeam", data);

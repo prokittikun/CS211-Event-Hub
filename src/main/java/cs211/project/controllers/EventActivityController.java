@@ -24,6 +24,7 @@ import javafx.util.Callback;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Optional;
 import java.util.UUID;
 
 public class EventActivityController {
@@ -225,8 +226,19 @@ public class EventActivityController {
                                     deleteButton.setStyle("-fx-background-color: transparent; -fx-cursor: hand;");
                                     //open delete modal
                                     deleteButton.setOnAction(event -> {
-                                        eventActivityDatasource.deleteById(activity.getId());
-                                        showTable();
+                                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                        alert.setTitle("คุณต้องการลบกิจกรรมนี้ใช่หรือไม่ ?");
+                                        alert.setHeaderText("หากลบแล้วจะไม่สามารถกู้คืนกลับมาได้");
+
+                                        Optional<ButtonType> result = alert.showAndWait();
+                                        ButtonType button = result.orElse(ButtonType.CANCEL);
+
+                                        if (button == ButtonType.OK) {
+                                            eventActivityDatasource.deleteById(activity.getId());
+                                            showTable();
+                                        } else {
+                                            alert.close();
+                                        }
                                     });
 
                                     ImageView editIcon = new ImageView(new Image (getClass().getResource("/cs211/project/views/assets/Icons/edit-red.png").toExternalForm()));
