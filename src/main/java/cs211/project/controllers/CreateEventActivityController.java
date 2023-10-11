@@ -261,7 +261,7 @@ public class CreateEventActivityController {
                 scheduleTable.getItems().add(newActivity);
                 eventActivityDatasource.writeData(activityCollectionForWriteData);
                 clearInput();
-                ToastAlert.show("Success.", ToastAlert.AlertType.SUCCESS);
+                ToastAlert.show("สร้างกิจกรรมสำเร็จ", ToastAlert.AlertType.SUCCESS);
             }else{
                 Map<String, String> updateData = new HashMap<>();
                 updateData.put("name", inputActivityName.getText());
@@ -273,7 +273,7 @@ public class CreateEventActivityController {
 
                 eventActivityDatasource.updateColumnsById(activityId.toString(), updateData);
                 showTable();
-                ToastAlert.show("Success.", ToastAlert.AlertType.SUCCESS);
+                ToastAlert.show("แก้ไขกิจกรรมสำเร็จ", ToastAlert.AlertType.SUCCESS);
             }
         }
     }
