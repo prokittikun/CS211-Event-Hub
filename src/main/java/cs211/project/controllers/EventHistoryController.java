@@ -1,6 +1,7 @@
 package cs211.project.controllers;
 
 import cs211.project.models.Event;
+import cs211.project.models.JoinEvent;
 import cs211.project.models.User;
 import cs211.project.models.collections.EventCollection;
 import cs211.project.models.collections.JoinEventCollection;
@@ -11,6 +12,7 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
@@ -82,6 +84,27 @@ public class EventHistoryController {
         JoinEventCollection joinEventCollection = joinEventCollectionDatasource.readData();
 
         loadEventsIntoTable();
+        toolColumn.setCellFactory(tc -> new TableCell<Event, Void>() {
+            private final ImageView infoIcon = new ImageView(new Image(getClass().getResource("/cs211/project/views/assets/Icons/info.png").toExternalForm()));
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    infoIcon.setFitHeight(20);
+                    infoIcon.setFitWidth(20);
+                    setGraphic(infoIcon);
+                    infoIcon.setOnMouseClicked(e -> {
+                        Event currentEvent = getTableRow().getItem();
+                        data.put("selectedEvent", currentEvent);
+                        onHandleGoToEventDetail(e);
+                    });
+                }
+            }
+        });
+
     }
 
     private void loadEventsIntoTable() {
@@ -106,10 +129,19 @@ public class EventHistoryController {
         });
 
         eventColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        //joinTimeColumn.setCellValueFactory(new PropertyValueFactory<>("joinTime"));
+        joinTimeColumn.setCellValueFactory(new PropertyValueFactory<>("startDate"));
         statusColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getStatus()));
 
         eventHistoryTable.setItems(FXCollections.observableArrayList(userEvents));
+    }
+
+    @FXML
+    public void onHandleGoToEventDetail(MouseEvent event) {
+        try {
+            FXRouter.goTo("eventDetail", data);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
