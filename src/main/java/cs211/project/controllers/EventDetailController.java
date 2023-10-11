@@ -2,8 +2,12 @@ package cs211.project.controllers;
 
 import cs211.project.controllers.components.EventCard;
 import cs211.project.models.Event;
+import cs211.project.models.Team;
+import cs211.project.models.TeamMember;
 import cs211.project.models.collections.EventCollection;
 import cs211.project.models.collections.JoinEventCollection;
+import cs211.project.models.collections.TeamCollection;
+import cs211.project.models.collections.TeamMemberCollection;
 import cs211.project.services.Datasource;
 import cs211.project.services.EventListFileDatasource;
 import cs211.project.services.FXRouter;
@@ -24,6 +28,7 @@ import javafx.scene.text.Text;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -65,12 +70,17 @@ public class EventDetailController {
     @FXML
     private Button joinTeamButton;
 
+    @FXML
+    private Label registrationPeriod;
     private List<EventCard> eventCardList;
     private HashMap<String, Object> data;
     private UUID eventId;
     private UUID userId;
     private Datasource<EventCollection> eventDatasource;
     private Datasource<JoinEventCollection> joinEventDatasource;
+    private Datasource<TeamMemberCollection> teamMemberDatasource;
+    private Datasource<TeamCollection> teamDatasource;
+
     private Event event;
     private EventCollection eventRecommendCollection;
 
@@ -85,9 +95,13 @@ public class EventDetailController {
         eventId = UUID.fromString((String) data.get("eventId"));
         userId = UUID.fromString((String) data.get("userId"));
         previousPage = (String) data.get("previousPage");
-        eventDatasource = new EventListFileDatasource("data/event","event.csv");
+        eventDatasource = new EventListFileDatasource("data/event", "event.csv");
         joinEventDatasource = new JoinEventListFileDatasource("data/event", "joinEvent.csv");
+        teamDatasource = new TeamListFileDatasource("data/team", "team.csv");
+        teamMemberDatasource = new TeamMemberListFileDatasource("data/team", "teamMember.csv");
         event = eventDatasource.query("id = " + eventId.toString()).getEvents().get(0);
+        eventRecommendCollection = new EventCollection();
+        checkInRegistrationPeriod();
         checkIsJoinEvent();
         initEventDetail();
 
@@ -110,7 +124,8 @@ public class EventDetailController {
             throw new RuntimeException(e);
         }
 
-        eventRecommendCollection = eventDatasource.query("status = true AND NOT id = " + eventId.toString());
+        EventCollection eventCollection = eventDatasource.query("status = true AND NOT id = " + eventId.toString());
+        eventRecommendCollection.setEvents(eventCollection.sortByBeforeEndDate());
         executorService.submit(() -> {
             for (Event event : eventRecommendCollection.getRandomEvent(5)) {
                 try {
@@ -131,7 +146,7 @@ public class EventDetailController {
                     HashMap<String, Object> data = new HashMap<>();
                     data.put("userId", this.data.get("userId"));
                     data.put("eventId", event.getId());
-                    data.put("previousPage", previousPage);
+                    data.put("previousPage", this.previousPage);
                     indexEventCard.setData(data);
                     javafx.application.Platform.runLater(() -> {
                         eventCardHbox.getChildren().add(eventComponent);
@@ -143,25 +158,49 @@ public class EventDetailController {
         });
     }
 
-    private void initEventDetail(){
+    private void checkInRegistrationPeriod() {
+        LocalDateTime currentDateTime = LocalDateTime.parse(DateTimeService.getCurrentDate() + "T" + DateTimeService.getCurrentTime());
+        LocalDateTime openDateTime = LocalDateTime.parse(event.getOpenDate() + "T" + event.getOpenTime());
+        LocalDateTime closeDateTime = LocalDateTime.parse(event.getCloseDate() + "T" + event.getCloseTime());
+        if (currentDateTime.isBefore(openDateTime) || currentDateTime.isAfter(closeDateTime)) {
+            registerEventButton.setDisable(true);
+            registerEventButton.setText("ไม่อยู่ในช่วงลงทะเบียน");
+        }
+    }
+
+    private void initEventDetail() {
         setEventName(event.getName());
         setEventLocation(event.getLocation());
         setEventDetail(event.getDetail());
-        setEventStartDateTime(DateTimeService.toString(event.getStartDate())+" "+event.getStartTime());
-        setEventEndDateTime(DateTimeService.toString(event.getEndDate())+" "+event.getEndTime());
+        setEventStartDateTime(DateTimeService.toString(event.getStartDate()) + " " + event.getStartTime());
+        setEventEndDateTime(DateTimeService.toString(event.getEndDate()) + " " + event.getEndTime());
         setEventImage(event.getImage());
-
+        setRegistrationPeriod(DateTimeService.toString(event.getOpenDate()) + " " + event.getOpenTime() + " - " + DateTimeService.toString(event.getCloseDate()) + " " + event.getCloseTime());
         JoinEventCollection joinEventCollection = joinEventDatasource.query("eventId = " + event.getId());
         setEventParticipant(joinEventCollection.getJoinEvents().size() + "/" + event.getMaxParticipant());
     }
 
     private void checkIsJoinEvent() {
         JoinEventCollection joinEventCollection = joinEventDatasource.query("eventId = " + event.getId() + " AND userId = " + userId.toString());
+        TeamMemberCollection teamMemberCollection = teamMemberDatasource.query("userId = " + userId.toString());
+        boolean isMemberOfTeamInEvent = false;
+        for (TeamMember teamMember : teamMemberCollection.getTeamMembers()) {
+            Team team = teamDatasource.query("id = " + teamMember.getTeamId()).getTeams().get(0);
+            if (team.getEventId().equals(eventId.toString())) {
+                isMemberOfTeamInEvent = true;
+                break;
+            }
+        }
         if (joinEventCollection.getJoinEvents().size() == 1 || event.getUserId().equals(userId.toString())) {
             registerEventButton.setText("ดูตารางกิจกรรม");
+            registerEventButton.setDisable(false);
             joinTeamButton.setVisible(false);
             isJoinEvent = true;
-        }else {
+        } else if (isMemberOfTeamInEvent) {
+            registerEventButton.setText("ดูตารางกิจกรรม");
+            registerEventButton.setDisable(false);
+            isJoinEvent = true;
+        } else {
             isJoinEvent = false;
         }
     }
@@ -176,7 +215,7 @@ public class EventDetailController {
                 HashMap<String, Object> data = new HashMap<>();
                 data.put("userId", this.data.get("userId"));
                 data.put("eventId", event.getId());
-                data.put("previousPage", "eventDetail");
+                data.put("previousPage", this.previousPage);
                 FXRouter.goTo("eventActivity", data);
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -188,7 +227,7 @@ public class EventDetailController {
                 return;
             }
             JoinEventCollection newJoinEventCollection = new JoinEventCollection();
-            newJoinEventCollection.addJoinEvent(new JoinEvent(UUID.randomUUID().toString(),eventId.toString(),userId.toString(), DateTimeService.getCurrentDate(),"0"));
+            newJoinEventCollection.addJoinEvent(new JoinEvent(UUID.randomUUID().toString(), eventId.toString(), userId.toString(), DateTimeService.getCurrentDate(), "0"));
             joinEventDatasource.writeData(newJoinEventCollection);
             ToastAlert.show("ลงทะเบียนสำเร็จแล้ว", ToastAlert.AlertType.SUCCESS);
             checkIsJoinEvent();
@@ -208,7 +247,7 @@ public class EventDetailController {
     @FXML
     void onHandleGoToPreviousPage(ActionEvent event) {
         try {
-            FXRouter.goTo(this.previousPage, data);
+            FXRouter.goTo((String) data.get("previousPage"), data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -229,6 +268,10 @@ public class EventDetailController {
     public void setEventImage(String eventImage) {
         Image image = new Image("file:data" + File.separator + "image" + File.separator + "event" + File.separator + eventImage);
         this.eventImage.setImage(image);
+    }
+
+    public void setRegistrationPeriod(String registrationPeriod) {
+        this.registrationPeriod.setText(registrationPeriod);
     }
 
     public String getEventLocation() {

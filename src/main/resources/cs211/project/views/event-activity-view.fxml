@@ -101,7 +101,7 @@
                            <children>
                               <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="1046.0">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#backToListTeam" text="&lt; ย้อนกลับ">
+                                    <Button mnemonicParsing="false" onAction="#backToPreviousPage" text="&lt; ย้อนกลับ">
                                        <styleClass>
                                           <String fx:value="btn-outline-danger" />
                                           <String fx:value="text-sm" />

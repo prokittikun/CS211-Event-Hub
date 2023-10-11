@@ -17,6 +17,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -68,6 +70,7 @@ public class IndexController {
         slider();
         data.remove("eventId");
         data.remove("teamId");
+        data.remove("previousPage");
         eventDatasource = new EventListFileDatasource("data/event", "event.csv");
         joinEventDatasource = new JoinEventListFileDatasource("data/event", "joinEvent.csv");
         eventCollection = new EventCollection();
@@ -90,7 +93,9 @@ public class IndexController {
             throw new RuntimeException(e);
         }
 
-        eventCollection = eventDatasource.query("status = true");
+        EventCollection events = eventDatasource.query("status = true");
+        eventCollection.setEvents(events.sortByBeforeEndDate());
+
         initPopularEvent();
         initClosestEvent();
         executorService.submit(() -> {
@@ -126,8 +131,10 @@ public class IndexController {
     }
 
     void initPopularEvent() {
-        EventCollection allEvent;
-        allEvent = eventDatasource.query("status = true");
+        EventCollection events = eventDatasource.query("status = true");
+        EventCollection allEvent = new EventCollection();
+        allEvent.setEvents(events.sortByBeforeEndDate());
+
         executorService.submit(() -> {
 
             for (Event cloesestEvent : allEvent.getPopularEvent()) {
@@ -161,9 +168,9 @@ public class IndexController {
     }
 
     void initClosestEvent() {
-        EventCollection allEvent;
-        allEvent = eventDatasource.query("status = true");
-        System.out.println("work");
+        EventCollection events = eventDatasource.query("status = true");
+        EventCollection allEvent = new EventCollection();
+        allEvent.setEvents(events.sortByBeforeEndDate());
         executorService.submit(() -> {
 
             for (Event popularEvent : allEvent.getClosestEvents()) {
@@ -214,6 +221,7 @@ public class IndexController {
         try {
             HashMap<String, Object> data = new HashMap<>();
             data.put("userId", (String) this.data.get("userId"));
+            data.put("previousPage", "index");
             FXRouter.goTo("createEvent", data);
         } catch (IOException e) {
             throw new RuntimeException(e);
