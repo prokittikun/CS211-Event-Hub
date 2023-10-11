@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient"  xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.ManageEventController">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.ManageEventController">
    <children>
       <BorderPane prefHeight="800.0" prefWidth="1200.0">
          <center>
@@ -259,7 +259,11 @@
                                                 <Label fx:id="errorLabelStartDate" styleClass="text-red" text="errorLabelStartDate" />
                                              </children>
                                           </VBox>
-                                          <Label styleClass="text-xl" text="เวลา" />
+                                          <Label text="เวลา">
+                                             <styleClass>
+                                                <String fx:value="text-xl" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
                                           <VBox prefHeight="50.0" prefWidth="245.0">
                                              <children>
                                                 <TextField fx:id="textFieldStartTime" prefHeight="31.0" prefWidth="240.0" promptText="กรุณาระบุเวลารูปแบบ xx.xx">
@@ -289,7 +293,11 @@
                                                 <Label fx:id="errorLabelEndDate" styleClass="text-red" text="errorLabelEndDate" />
                                              </children>
                                           </VBox>
-                                          <Label styleClass="text-xl" text="เวลา" />
+                                          <Label text="เวลา">
+                                             <styleClass>
+                                                <String fx:value="text-xl" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
                                           <VBox prefHeight="50.0" prefWidth="245.0">
                                              <children>
                                                 <TextField fx:id="textFieldEndTime" prefHeight="31.0" prefWidth="240.0" promptText="กรุณาระบุเวลาในรูปแบบ xx.xx">

@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="63.0" prefWidth="1200.0" styleClass="bg-white" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.NavbarController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="63.0" prefWidth="1200.0" styleClass="bg-white" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.NavbarController">
    <children>
       <HBox alignment="CENTER_LEFT" layoutY="5.0" prefHeight="45.0" prefWidth="1200.0" styleClass="bg-white">
          <children>
@@ -52,14 +52,6 @@
                               <String fx:value="text-black" />
                            </styleClass>
                         </Button>
-                        <ImageView fitHeight="14.0" fitWidth="108.0" onMouseClicked="#onHandleManageDropdown" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                           <image>
-                              <Image url="@assets/Icons/Vector.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets bottom="-3.0" left="-3.0" />
-                           </HBox.margin>
-                        </ImageView>
                      </children>
                   </HBox>
                   <Button mnemonicParsing="false" onAction="#onHandleGoToContactUs" prefHeight="147.0" prefWidth="106.0" text="ติดต่อเรา">
@@ -149,7 +141,7 @@
             <Insets bottom="5.0" left="5.0" right="5.0" />
          </padding>
       </HBox>
-      <Pane fx:id="manageDropdown" layoutX="297.0" layoutY="50.0" prefWidth="191.0" styleClass="card-light-gray">
+      <Pane fx:id="manageDropdown" layoutX="263.0" layoutY="49.0" prefWidth="191.0" styleClass="card-light-gray">
          <children>
             <VBox fx:id="managementOption" alignment="CENTER_LEFT" prefWidth="191.0">
                <children>
