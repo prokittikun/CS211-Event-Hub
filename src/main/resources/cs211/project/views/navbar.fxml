@@ -253,9 +253,9 @@
                         <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" onMouseClicked="#onHandleGoToHistory" prefWidth="209.0">
+                  <HBox alignment="CENTER_LEFT" onMouseClicked="#onHandleLogout" prefWidth="209.0">
                      <children>
-                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#onHandleLogout" onMouseClicked="#onHandleGoToHistory" prefHeight="40.0" prefWidth="213.0" text="ออกจากระบบ" textFill="RED">
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#onHandleLogout" onMouseClicked="#onHandleLogout" prefHeight="40.0" prefWidth="213.0" text="ออกจากระบบ" textFill="RED">
                            <styleClass>
                               <String fx:value="btn-transparent" />
                               <String fx:value="text-lg" />
