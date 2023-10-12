@@ -136,18 +136,8 @@ public class MyEventCard {
     @FXML
     public void onHandleEventStatus() {
         statusEvent = !statusEvent;
-        if (statusEvent) {
-
-            eventToggleStatus.setText("ปิด");
-            eventToggleStatus.getStyleClass().remove("btn-success");
-            eventToggleStatus.getStyleClass().add("btn-danger");
-        } else {
-            eventToggleStatus.setText("เปิด");
-            eventToggleStatus.getStyleClass().remove("btn-danger");
-            eventToggleStatus.getStyleClass().add("btn-success");
-            eventToggleStatus.getStyleClass().add("btn-success");
-        }
         datasourceEvent.updateColumnById(data.get("eventId").toString(), "status", String.valueOf(statusEvent));
+        setStatusEvent(statusEvent);
     }
 
 
@@ -214,14 +204,13 @@ public class MyEventCard {
     public void setStatusEvent(boolean statusEvent) {
         this.statusEvent = statusEvent;
         if (statusEvent) {
-            eventToggleStatus.setText("ปิด");
-            eventToggleStatus.getStyleClass().remove("btn-success");
-            eventToggleStatus.getStyleClass().add("btn-danger");
-
-        } else {
             eventToggleStatus.setText("เปิด");
             eventToggleStatus.getStyleClass().remove("btn-danger");
             eventToggleStatus.getStyleClass().add("btn-success");
+        } else {
+            eventToggleStatus.setText("ปิด");
+            eventToggleStatus.getStyleClass().remove("btn-success");
+            eventToggleStatus.getStyleClass().add("btn-danger");
         }
     }
 

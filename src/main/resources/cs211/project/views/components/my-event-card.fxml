@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane styleClass="bg-white" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.components.MyEventCard">
+<AnchorPane styleClass="bg-white" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.components.MyEventCard">
    <children>
       <Pane layoutX="15.0" prefHeight="125.0" prefWidth="1023.0" styleClass="card-light-gray">
          <children>
@@ -85,7 +85,7 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="15.0" prefWidth="418.0" spacing="10.0">
                            <children>
-                              <Button fx:id="eventToggleStatus" mnemonicParsing="false" onAction="#onHandleEventStatus" styleClass="btn-success" text="เปิด">
+                              <Button fx:id="eventToggleStatus" mnemonicParsing="false" onAction="#onHandleEventStatus" text="เปิด">
                                  <HBox.margin>
                                     <Insets top="-1.0" />
                                  </HBox.margin></Button>
@@ -108,13 +108,13 @@
                               <String fx:value="text-black" />
                            </styleClass>
                         </Label>
-                        <HBox alignment="CENTER" prefHeight="15.0" prefWidth="418.0" spacing="10.0">
+                        <HBox alignment="CENTER" prefHeight="15.0" spacing="10.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#goToActivityEvent" prefHeight="28.0" prefWidth="62.0" styleClass="btn-outline-danger" text="กิจกรรม">
+                              <Button mnemonicParsing="false" onAction="#goToActivityEvent" prefHeight="28.0" styleClass="btn-outline-danger" text="กิจกรรม">
                                  <HBox.margin>
                                     <Insets bottom="-1.0" />
                                  </HBox.margin></Button>
-                              <Button mnemonicParsing="false" onAction="#goToEditEvent" prefHeight="27.0" prefWidth="79.0" styleClass="btn-outline-danger" text="แก้ไขอีเว้นต์" />
+                              <Button mnemonicParsing="false" onAction="#goToEditEvent" prefHeight="27.0" styleClass="btn-outline-danger" text="แก้ไขอีเว้นต์" />
                               <Button mnemonicParsing="false" onAction="#onHandleDeleteEvent" styleClass="btn-danger" text="ลบอีเวนต์" />
                            </children>
                         </HBox>
