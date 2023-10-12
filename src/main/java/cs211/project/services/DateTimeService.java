@@ -53,7 +53,6 @@ public class DateTimeService {
             SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
 
             Date date = inputFormat.parse(inputDate);
-            date.setYear(date.getYear() + 543);
             int gregorianYear = Integer.parseInt(new SimpleDateFormat("yyyy").format(date));
 
             SimpleDateFormat thaiDateFormat = new SimpleDateFormat("dd MMMM yyyy", new Locale("th", "TH"));
