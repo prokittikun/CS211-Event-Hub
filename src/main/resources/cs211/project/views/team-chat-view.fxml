@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient"  xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.TeamChatController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.TeamChatController">
    <children>
       <BorderPane layoutX="-2.0" prefHeight="801.0" prefWidth="1203.0">
          <center>
@@ -143,6 +143,13 @@
                                              </styleClass>
                                           </Button>
                                           <Pane prefHeight="58.0" prefWidth="139.0" />
+                                          <Label text="ทีม : ">
+                                             <styleClass>
+                                                <String fx:value="text-3xl" />
+                                                <String fx:value="font-bold" />
+                                                <String fx:value="text-black" />
+                                             </styleClass>
+                                          </Label>
                                           <Label fx:id="teamName" text="ทีมพิธีกร">
                                              <styleClass>
                                                 <String fx:value="text-3xl" />

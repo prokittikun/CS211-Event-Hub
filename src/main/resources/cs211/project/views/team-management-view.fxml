@@ -90,8 +90,15 @@
                            <children>
                               <VBox prefHeight="602.0" prefWidth="685.0">
                                  <children>
-                                    <HBox alignment="BOTTOM_CENTER" prefHeight="3.0" prefWidth="665.0" spacing="10.0">
+                                    <HBox alignment="BOTTOM_CENTER" prefHeight="3.0" prefWidth="665.0" spacing="5.0">
                                        <children>
+                                          <Label text="ทีม : ">
+                                             <styleClass>
+                                                <String fx:value="text-3xl" />
+                                                <String fx:value="font-bold" />
+                                                <String fx:value="text-black" />
+                                             </styleClass>
+                                          </Label>
                                           <Label fx:id="teamName" text="ทีมพิธีกร">
                                              <styleClass>
                                                 <String fx:value="text-3xl" />
@@ -154,7 +161,7 @@
             </AnchorPane>
          </center>
       </BorderPane>
-      <AnchorPane fx:id="backDrop" prefHeight="801.0" prefWidth="1201.0" style="-fx-background-color: rgba(0, 0, 0, 0.15);">
+      <AnchorPane fx:id="backDrop" prefHeight="801.0" prefWidth="1201.0" style="-fx-background-color: rgba(0, 0, 0, 0.15);" visible="false">
          <children>
             <Pane fx:id="modal" layoutX="370.0" layoutY="112.0" maxWidth="-Infinity" prefHeight="558.0" prefWidth="434.0">
                <styleClass>
