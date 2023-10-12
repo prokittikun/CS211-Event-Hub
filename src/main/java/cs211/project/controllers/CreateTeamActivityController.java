@@ -286,7 +286,7 @@ public class CreateTeamActivityController {
                 scheduleTable.getItems().add(newActivity);
                 teamActivityDatasource.writeData(activityCollectionForWriteData);
                 clearInput();
-                ToastAlert.show("Success.", ToastAlert.AlertType.SUCCESS);
+                ToastAlert.show("สร้างกิจกรรมสำเร็จ", ToastAlert.AlertType.SUCCESS);
             }else{
                 Map<String, String> updateData = new HashMap<>();
                 updateData.put("name", inputActivityName.getText());
@@ -298,7 +298,7 @@ public class CreateTeamActivityController {
 
                 teamActivityDatasource.updateColumnsById(activityId.toString(), updateData);
                 showTable();
-                ToastAlert.show("Success.", ToastAlert.AlertType.SUCCESS);
+                ToastAlert.show("แก้ไขกิจกรรมสำเร็จ", ToastAlert.AlertType.SUCCESS);
             }
         }
 

@@ -449,7 +449,6 @@ public class ManageEventController {
                     eventCollection.addEvent(event);
                     eventDatasource.writeData(eventCollection);
                     ToastAlert.show("สร้างอีเว้นต์สำเร็จ", ToastAlert.AlertType.SUCCESS);
-//                    TimeUnit.SECONDS.sleep(1);
 
                 } else { //Edit
 
@@ -469,12 +468,10 @@ public class ManageEventController {
                     newData.put("maxParticipant", String.valueOf(maxParticipant));
                     eventDatasource.updateColumnsById(data.get("eventId").toString(), newData);
                     ToastAlert.show("แก้ไขอีเว้นต์สำเร็จ", ToastAlert.AlertType.SUCCESS);
-//                    TimeUnit.SECONDS.sleep(1);
                 }
 
                 //Go to My Event
                 try {
-                    TimeUnit.SECONDS.sleep(1);
                     data.remove("eventId");
                     FXRouter.goTo("myEvent", data);
                 } catch (IOException e) {
@@ -482,8 +479,6 @@ public class ManageEventController {
                 }
             } catch (IOException e) {
                 e.printStackTrace();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
             }
         }
     }

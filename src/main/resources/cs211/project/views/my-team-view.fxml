@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.MyTeamController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.MyTeamController">
     <children>
         <BorderPane prefHeight="800.0" prefWidth="1200.0">
          <center>
@@ -62,7 +62,7 @@
                                           <String fx:value="text-black" />
                                        </styleClass>
                                     </RadioButton>
-                                    <RadioButton fx:id="inProgressButton" mnemonicParsing="false" onAction="#onHandleInProgressButton" text="อิเวนต์ที่กำลังเดินการ">
+                                    <RadioButton fx:id="inProgressButton" mnemonicParsing="false" onAction="#onHandleInProgressButton" text="อิเวนต์ที่กำลังดำเนินการ">
                                        <styleClass>
                                           <String fx:value="text-sm" />
                                           <String fx:value="text-black" />
