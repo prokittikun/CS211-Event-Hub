@@ -31,7 +31,7 @@
                         <HBox alignment="CENTER_LEFT" prefHeight="67.0" prefWidth="1091.0">
                            <children>
                               <Pane prefHeight="67.0" prefWidth="432.0" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="จัดการอีเวนต์" wrappingWidth="169.2333984375">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="จัดการอิเวนต์" wrappingWidth="169.2333984375">
                                  <styleClass>
                                     <String fx:value="text-3xl" />
                                     <String fx:value="font-bold" />
@@ -39,7 +39,7 @@
                                  </styleClass>
                               </Text>
                               <Pane prefHeight="60.0" prefWidth="299.0" />
-                              <Button mnemonicParsing="false" onAction="#goToCreateEvent" prefHeight="35.0" text=" สร้างอีเวนต์">
+                              <Button mnemonicParsing="false" onAction="#goToCreateEvent" prefHeight="35.0" text=" สร้างอิเวนต์">
                                  <styleClass>
                                     <String fx:value="btn-danger" />
                                     <String fx:value="text-sm" />

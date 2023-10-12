@@ -219,7 +219,7 @@
                            <children>
                               <VBox prefHeight="71.0" prefWidth="1020.0">
                                  <children>
-                                    <Label alignment="BOTTOM_CENTER" prefHeight="65.0" prefWidth="998.0" text="                      อีเวนต์แนะนำ">
+                                    <Label alignment="BOTTOM_CENTER" prefHeight="65.0" prefWidth="998.0" text="                      อิเวนต์แนะนำ">
                                        <styleClass>
                                           <String fx:value="text-4xl" />
                                           <String fx:value="text-black" />

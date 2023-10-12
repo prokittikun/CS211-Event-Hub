@@ -35,6 +35,7 @@ public class LoginController {
 
     @FXML
     private Button registerButton;
+
     @FXML
     private Button guideButton;
 

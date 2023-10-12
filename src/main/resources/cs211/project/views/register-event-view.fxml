@@ -52,7 +52,7 @@
                                                          </children>
                                                       </VBox>
                                                       <AnchorPane prefHeight="100.0" prefWidth="218.0" />
-                                                      <Label prefHeight="100.0" prefWidth="729.0" styleClass="text-4xl" text="ลงทะเบียนเข้าร่วมอีเวนต์" />
+                                                      <Label prefHeight="100.0" prefWidth="729.0" styleClass="text-4xl" text="ลงทะเบียนเข้าร่วมอิเวนต์" />
                                                    </children>
                                                 </HBox>
                                                 <Label alignment="CENTER" prefHeight="100.0" prefWidth="1106.0" styleClass="text-4xl" text="&quot;สัปดาห์หนังสือแห่งชาติ ครั้งที่ 51&quot;">

@@ -81,29 +81,6 @@ public class EventHistoryController {
         JoinEventCollection joinEventCollection = joinEventCollectionDatasource.readData();
 
         loadEventsIntoTable();
-//        toolColumn.setCellFactory(tc -> new TableCell<Event, Button>() {
-//            final Button infoButton = new Button();
-//            private final ImageView infoIcon = new ImageView(new Image(getClass().getResource("/cs211/project/views/assets/Icons/info.png").toExternalForm()));
-//
-//            @Override
-//            protected void updateItem(Button item, boolean empty) {
-//                super.updateItem(item, empty);
-//                if (empty) {
-//                    setGraphic(null);
-//                } else {
-//                    infoIcon.setFitHeight(20);
-//                    infoIcon.setFitWidth(20);
-//                    infoButton.setGraphic(infoIcon);
-//                    infoButton.setStyle("-fx-background-color: transparent; -fx-cursor: hand;");
-//                    infoButton.setOnAction(e -> {
-//                        Event currentEvent = getTableView().getItems().get(getIndex());
-//                        System.out.println(currentEvent.getId());
-//                        data.put("eventId", currentEvent.getId());
-//                        onHandleGoToEventDetail(e);
-//                    });
-//                }
-//            }
-//        });
 
     }
 
@@ -133,12 +110,11 @@ public class EventHistoryController {
         statusColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getStatus()));
 
         Callback<TableColumn<Event, HBox>, TableCell<Event, HBox>> cellFactory
-                = //
+                =
                 new Callback<TableColumn<Event, HBox>, TableCell<Event, HBox>>() {
                     @Override
                     public TableCell call(final TableColumn<Event, HBox> param) {
                         final TableCell<Event, HBox> cell = new TableCell<Event, HBox>() {
-
 
                             final Button gotoEventButton = new Button();
 
@@ -158,7 +134,6 @@ public class EventHistoryController {
 
                                     gotoEventButton.setGraphic(infoIcon);
                                     gotoEventButton.setStyle("-fx-background-color: transparent; -fx-cursor: hand;");
-                                    // open modal
                                     gotoEventButton.setOnAction(event -> {
                                         data.put("eventId", currentEvent.getId());
                                         onHandleGoToEventDetail(event);

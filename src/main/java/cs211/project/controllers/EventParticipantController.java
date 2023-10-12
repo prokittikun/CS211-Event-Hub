@@ -122,7 +122,7 @@ public class EventParticipantController {
                                     //open delete modal
                                     deleteButton.setOnAction(event -> {
                                         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                                        alert.setTitle("คุณต้องการลบผู้เข้าร่วมอีเวนต์นี้ใช่หรือไม่ ?");
+                                        alert.setTitle("คุณต้องการลบผู้เข้าร่วมอิเวนต์นี้ใช่หรือไม่ ?");
                                         alert.setHeaderText("หากลบแล้วจะไม่สามารถนำกลับมาได้");
 
                                         Optional<ButtonType> result = alert.showAndWait();

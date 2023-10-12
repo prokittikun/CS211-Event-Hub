@@ -174,7 +174,7 @@
                               <Image url="@assets/Icons/settings.png" />
                            </image>
                         </ImageView>
-                        <Button mnemonicParsing="false" onMouseClicked="#onHandleGoToMyEvent" prefHeight="40.0" prefWidth="148.0" text="จัดการอีเวนต์">
+                        <Button mnemonicParsing="false" onMouseClicked="#onHandleGoToMyEvent" prefHeight="40.0" prefWidth="148.0" text="จัดการอิเวนต์">
                            <styleClass>
                               <String fx:value="btn-transparent" />
                               <String fx:value="text-base" />

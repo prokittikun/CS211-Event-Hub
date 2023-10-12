@@ -80,7 +80,7 @@ public class MyTeamCardController {
 
     //setter
     public void setActivityIsEnd() {
-        this.teamDetailButton.setText("อีเวนต์สิ้นสุดแล้ว");
+        this.teamDetailButton.setText("อิเวนต์สิ้นสุดแล้ว");
         this.teamDetailButton.setDisable(true);
         this.leaveTeamButton.setVisible(false);
     }

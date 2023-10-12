@@ -57,7 +57,7 @@
                         <HBox alignment="CENTER_LEFT" prefHeight="160.0" prefWidth="1200.0">
                            <children>
                               <Pane prefHeight="74.0" prefWidth="74.0" />
-                              <Button mnemonicParsing="false" onAction="#onHandleGoToCreateEvent" prefHeight="42.0" text=" สร้างอีเวนต์">
+                              <Button mnemonicParsing="false" onAction="#onHandleGoToCreateEvent" prefHeight="42.0" text=" สร้างอิเวนต์">
                                  <styleClass>
                                     <String fx:value="btn-danger" />
                                     <String fx:value="text-lg" />
@@ -72,7 +72,7 @@
                               </Button>
                               <VBox prefHeight="74.0" prefWidth="562.0">
                                  <children>
-                                    <Label alignment="BOTTOM_CENTER" prefHeight="65.0" prefWidth="998.0" text="                      อีเวนต์ล่าสุด">
+                                    <Label alignment="BOTTOM_CENTER" prefHeight="65.0" prefWidth="998.0" text="                      อิเวนต์ล่าสุด">
                                        <styleClass>
                                           <String fx:value="text-4xl" />
                                           <String fx:value="text-black" />
@@ -108,7 +108,7 @@
                         <VBox prefHeight="71.0" prefWidth="1020.0">
                            <children>
                               <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="15.0" prefWidth="1200.0" />
-                              <Label alignment="BOTTOM_CENTER" prefHeight="65.0" prefWidth="998.0" text="                      อีเวนต์แนะนำ">
+                              <Label alignment="BOTTOM_CENTER" prefHeight="65.0" prefWidth="998.0" text="                      อิเวนต์แนะนำ">
                                  <styleClass>
                                     <String fx:value="text-4xl" />
                                     <String fx:value="text-black" />
