@@ -62,7 +62,7 @@
                                  <children>
                                     <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="120.0" prefWidth="300.0">
                                        <children>
-                                          <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="300.0" text="อีเวนต์ทั้งหมด">
+                                          <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="300.0" text="อิเวนต์ทั้งหมด">
                                              <styleClass>
                                                 <String fx:value="text-xl" />
                                                 <String fx:value="text-black" />

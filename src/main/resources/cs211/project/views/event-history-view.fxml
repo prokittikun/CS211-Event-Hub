@@ -44,7 +44,7 @@
                                 <TableView fx:id="eventHistoryTable" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="540.0" prefWidth="900.0" styleClass="text-base" BorderPane.alignment="CENTER">
                                     <columns>
                                         <TableColumn fx:id="orderColumn" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" resizable="false" text="ลำดับ" />
-                                        <TableColumn fx:id="eventColumn" maxWidth="350.0" minWidth="350.0" prefWidth="350.0" resizable="false" text="อีเวนต์" />
+                                        <TableColumn fx:id="eventColumn" maxWidth="350.0" minWidth="350.0" prefWidth="350.0" resizable="false" text="อิเวนต์" />
                                         <TableColumn fx:id="joinTimeColumn" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" resizable="false" text="เข้าร่วมเมื่อวันที่" />
                                         <TableColumn fx:id="statusColumn" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" resizable="false" text="สถานะ" />
                                         <TableColumn fx:id="toolColumn" maxWidth="90.0" minWidth="90.0" prefWidth="90.0" />

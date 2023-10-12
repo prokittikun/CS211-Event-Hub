@@ -127,7 +127,7 @@ public class RegisterEventController {
     }
 
     public void setConfirmText() {
-//        this.confirmText.setText("คุณยืนยันที่จะลงทะเบียนเข้าร่วมงานอีเวนต์ " + event.getName() + " ซึ่งจัดขึ้นตั้งแต่วันที่ " + event.getStartDate() + " ถึงวันที่ " + event.getEndDate());
+//        this.confirmText.setText("คุณยืนยันที่จะลงทะเบียนเข้าร่วมงานอิเวนต์ " + event.getName() + " ซึ่งจัดขึ้นตั้งแต่วันที่ " + event.getStartDate() + " ถึงวันที่ " + event.getEndDate());
     }
 
     //    @FXML

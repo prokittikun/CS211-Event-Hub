@@ -103,8 +103,8 @@ public class MyEventCard {
     @FXML
     public void onHandleDeleteEvent() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("คุณต้องการลบอีเวนต์นี้ใช่หรือไม่ ?");
-        alert.setHeaderText("หากลบแล้วจะส่งผลให้ทีมภายใต้อีเวนต์นี้ถูกลบไปด้วย");
+        alert.setTitle("คุณต้องการลบอิเวนต์นี้ใช่หรือไม่ ?");
+        alert.setHeaderText("หากลบแล้วจะส่งผลให้ทีมภายใต้อิเวนต์นี้ถูกลบไปด้วย");
 
         Optional<ButtonType> result = alert.showAndWait();
         ButtonType button = result.orElse(ButtonType.CANCEL);

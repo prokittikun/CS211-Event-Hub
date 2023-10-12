@@ -115,7 +115,7 @@
                                     <Insets bottom="-1.0" />
                                  </HBox.margin></Button>
                               <Button mnemonicParsing="false" onAction="#goToEditEvent" prefHeight="27.0" styleClass="btn-outline-danger" text="แก้ไขอีเว้นต์" />
-                              <Button mnemonicParsing="false" onAction="#onHandleDeleteEvent" styleClass="btn-danger" text="ลบอีเวนต์" />
+                              <Button mnemonicParsing="false" onAction="#onHandleDeleteEvent" styleClass="btn-danger" text="ลบอิเวนต์" />
                            </children>
                         </HBox>
                      </children>
