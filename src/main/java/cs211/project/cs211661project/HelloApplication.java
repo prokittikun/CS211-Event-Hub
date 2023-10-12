@@ -1,6 +1,7 @@
 package cs211.project.cs211661project;
 
 import javafx.application.Application;
+import javafx.application.HostServices;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import cs211.project.services.FXRouter;
@@ -9,6 +10,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class HelloApplication extends Application {
+    private static HostServices hostServicesInstance;
     @Override
     public void start(Stage stage) throws IOException {
         Font.loadFont(getClass().getResourceAsStream("/cs211/project/views/assets/fonts/Kanit-Light.ttf"), 12);
@@ -29,6 +31,7 @@ public class HelloApplication extends Application {
         FXRouter.bind(this, stage, "Event Hub - Phuea Khrai Party",1200,800);
         configRoute();
         FXRouter.goTo("login");
+        hostServicesInstance = getHostServices();
     }
 
     private static void configRoute() {
@@ -66,6 +69,9 @@ public class HelloApplication extends Application {
         FXRouter.when("dashboard", resourcesPath + "dashboard-view.fxml");
         FXRouter.when("search", resourcesPath + "search-view.fxml");
         FXRouter.when("eventHistory", resourcesPath + "event-history-view.fxml");
+    }
+    public static HostServices getHostServicesStatic() {
+        return hostServicesInstance;
     }
 
     public static void main(String[] args) {

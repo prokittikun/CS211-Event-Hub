@@ -1,11 +1,13 @@
 package cs211.project.controllers;
 
+import cs211.project.cs211661project.HelloApplication;
 import cs211.project.models.User;
 import cs211.project.models.collections.UserCollection;
 import cs211.project.services.Datasource;
 import cs211.project.services.FXRouter;
 import cs211.project.services.DateTimeService;
 import cs211.project.services.UserListFileDatasource;
+import javafx.application.HostServices;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -13,6 +15,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -32,6 +35,8 @@ public class LoginController {
 
     @FXML
     private Button registerButton;
+    @FXML
+    private Button guideButton;
 
     private Datasource<UserCollection> userListFileDatasource;
 
@@ -84,5 +89,13 @@ public class LoginController {
             throw new RuntimeException(e);
         }
     }
+
+    @FXML
+    void handleGuideButtonClick(ActionEvent event) {
+        HostServices hostServices = HelloApplication.getHostServicesStatic();
+        String pdfURL = new File("data/user-guide.pdf").toURI().toString();
+        hostServices.showDocument(pdfURL);
+    }
+
 
 }

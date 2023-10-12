@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient"  xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.LoginController">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.LoginController">
    <children>
       <BorderPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-image: url('assets/background/bg.png'); -fx-background-size: cover;">
          <center>
@@ -156,12 +156,12 @@
                                     </Button>
                                     <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="360.0">
                                        <children>
-                                          <Label alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="27.0" prefWidth="180.0" text="ยังไม่มีบัญชี ?">
+                                          <Label alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="27.0" prefWidth="150.0" text="ยังไม่มีบัญชี ?">
                                              <styleClass>
                                                 <String fx:value="text-lg" />
                                                 <String fx:value="text-black" />
                                              </styleClass></Label>
-                                          <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="20.0" />
+                                          <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="40.0" />
                                           <Button fx:id="registerButton" mnemonicParsing="false" onAction="#handleRegisterButtonClick" prefHeight="40.0" prefWidth="97.0" text="สมัครสมาชิก" textFill="#c7371a">
                                              <styleClass>
                                                 <String fx:value="btn-transparent" />
@@ -172,12 +172,22 @@
                                                 <Insets left="-10.0" />
                                              </padding>
                                           </Button>
-                                          <Pane prefHeight="40.0" prefWidth="60.0" />
+                                          <Pane prefHeight="40.0" prefWidth="40.0" />
                                        </children>
                                        <VBox.margin>
                                           <Insets top="10.0" />
                                        </VBox.margin>
                                     </HBox>
+                                    <Button fx:id="guideButton" alignment="TOP_CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#handleGuideButtonClick" prefHeight="40.0" prefWidth="150.0" text="คู่มือการใช้งาน" textFill="#c7371a">
+                                       <styleClass>
+                                          <String fx:value="btn-transparent" />
+                                          <String fx:value="text-lg" />
+                                          <String fx:value="text-red" />
+                                       </styleClass>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" />
+                                       </VBox.margin>
+                                    </Button>
                                  </children>
                                  <VBox.margin>
                                     <Insets bottom="-20.0" />
