@@ -193,7 +193,7 @@ public class TeamManagementController {
                 label.setText("เสร็จสิ้น");
                 label.getStyleClass().add("bg-green");
             } else {
-                label.setText("รอดำนำเนินการ");
+                label.setText("รอดำเนินการ");
                 label.getStyleClass().add("bg-red-for-darkMode");
             }
             label.getStyleClass().add("text-white");
@@ -273,11 +273,11 @@ public class TeamManagementController {
                                         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 
                                         if (activity.getStatus()) {
-                                            alert.setTitle("คุณต้องการเปลี่ยนกสถานะของกิจกรรมเป็น รอดำนำเนินการ ใช่หรือไม่ ?");
+                                            alert.setTitle("คุณต้องการเปลี่ยนสถานะของกิจกรรมเป็นรอดำเนินการใช่หรือไม่ ?");
                                             alert.setHeaderText("หากเปลี่ยนแล้วจะสามารถสื่อสารภายใต้กิจกรรมนี้ได้");
                                         } else {
-                                            alert.setTitle("คุณต้องการเปลี่ยนกสถานะของกิจกรรมเป็น เสร็จสิ้น ใช่หรือไม่ ?");
-                                            alert.setHeaderText("หากเปลี่ยนแล้วจะ ไม่ สามารถสื่อสารภายใต้กิจกรรมนี้ได้");
+                                            alert.setTitle("คุณต้องการเปลี่ยนสถานะของกิจกรรมเป็นเสร็จสิ้นใช่หรือไม่ ?");
+                                            alert.setHeaderText("หากเปลี่ยนแล้วจะไม่สามารถสื่อสารภายใต้กิจกรรมนี้ได้");
                                         }
 
                                         Optional<ButtonType> result = alert.showAndWait();

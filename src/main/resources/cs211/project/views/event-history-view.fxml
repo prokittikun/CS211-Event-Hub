@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.EventHistoryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.EventHistoryController">
     <children>
         <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0">
             <bottom>
@@ -41,7 +41,7 @@
                                 </HBox>
                             </top>
                             <center>
-                                <TableView fx:id="eventHistoryTable" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onHandleGoToEventDetail" prefHeight="540.0" prefWidth="900.0" styleClass="text-base" BorderPane.alignment="CENTER">
+                                <TableView fx:id="eventHistoryTable" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="540.0" prefWidth="900.0" styleClass="text-base" BorderPane.alignment="CENTER">
                                     <columns>
                                         <TableColumn fx:id="orderColumn" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" resizable="false" text="ลำดับ" />
                                         <TableColumn fx:id="eventColumn" maxWidth="350.0" minWidth="350.0" prefWidth="350.0" resizable="false" text="อีเวนต์" />

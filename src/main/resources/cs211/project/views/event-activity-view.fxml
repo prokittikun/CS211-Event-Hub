@@ -16,14 +16,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient"  xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.EventActivityController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.EventActivityController">
    <children>
       <BorderPane prefHeight="799.0" prefWidth="1201.0">
          <bottom>
             <AnchorPane fx:id="footer" prefHeight="0.0" prefWidth="1212.0" BorderPane.alignment="CENTER" />
          </bottom>
          <center>
-            <VBox alignment="CENTER" spacing="20.0" BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
                <children>
                   <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="161.0" prefWidth="1058.0">
                      <children>
@@ -91,23 +91,23 @@
                         <String fx:value="shadow" />
                      </styleClass>
                   </Pane>
-                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="420.0" prefWidth="1058.0">
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="490.0" prefWidth="1058.0">
                      <styleClass>
                         <String fx:value="card" />
                         <String fx:value="shadow" />
                      </styleClass>
                      <children>
-                        <VBox alignment="TOP_CENTER" layoutX="7.0" layoutY="-1.0" prefHeight="433.0" prefWidth="1046.0">
+                        <VBox alignment="TOP_CENTER" layoutX="18.0" layoutY="-1.0" prefHeight="483.0" prefWidth="1033.0">
                            <children>
                               <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="1046.0">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#backToPreviousPage" text="&lt; ย้อนกลับ">
+                                    <Button mnemonicParsing="false" onAction="#backToPreviousPage" prefHeight="31.0" prefWidth="94.0" text="&lt; ย้อนกลับ">
                                        <styleClass>
                                           <String fx:value="btn-outline-danger" />
                                           <String fx:value="text-sm" />
                                        </styleClass>
                                     </Button>
-                                    <Pane prefHeight="54.0" prefWidth="316.0" />
+                                    <Pane prefHeight="54.0" prefWidth="297.0" />
                                     <Label prefHeight="70.0" prefWidth="223.0" text="ตารางกิจกรรม">
                                        <styleClass>
                                           <String fx:value="text-4xl" />
@@ -127,14 +127,14 @@
                                     <Insets left="15.0" right="15.0" />
                                  </padding>
                               </HBox>
-                              <TableView fx:id="scheduleTable" prefHeight="355.0" prefWidth="1037.0" styleClass="text-lg">
+                              <TableView fx:id="scheduleTable" prefHeight="447.0" prefWidth="1008.0" styleClass="text-lg">
                                 <columns>
-                                  <TableColumn fx:id="orderColumn" prefWidth="75.0" text="ลำดับ" />
-                                  <TableColumn fx:id="nameColumn" prefWidth="122.13330078125" text="ชื่อกิจกรรม" />
-                                    <TableColumn fx:id="detailColumn" prefWidth="273.0666961669922" text="รายละเอียด" />
-                                    <TableColumn fx:id="dateTimeStartColumn" prefWidth="201.60003662109375" text="วันเวลาที่เริ่ม" />
-                                    <TableColumn fx:id="dateTimeEndColumn" prefWidth="201.60003662109375" text="วันเวลาที่สิ้นสุด" />
-                                    <TableColumn fx:id="tool" prefWidth="166.5999755859375" text="เครื่องมือ" />
+                                  <TableColumn fx:id="orderColumn" prefWidth="61.33336615562439" text="ลำดับ" />
+                                  <TableColumn fx:id="nameColumn" prefWidth="205.86660766601562" text="ชื่อกิจกรรม" />
+                                    <TableColumn fx:id="detailColumn" prefWidth="130.933349609375" text="รายละเอียด" />
+                                    <TableColumn fx:id="dateTimeStartColumn" prefWidth="217.06668090820312" text="วันเวลาที่เริ่ม" />
+                                    <TableColumn fx:id="dateTimeEndColumn" prefWidth="222.66656494140625" text="วันเวลาที่สิ้นสุด" />
+                                    <TableColumn fx:id="tool" prefWidth="157.60003662109375" text="เครื่องมือ" />
                                 </columns>
                               </TableView>
                            </children>
@@ -145,6 +145,9 @@
                      </children>
                   </Pane>
                </children>
+               <BorderPane.margin>
+                  <Insets top="65.0" />
+               </BorderPane.margin>
             </VBox>
          </center>
       </BorderPane>
