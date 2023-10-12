@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 
-<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.IndexController">
+<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.IndexController">
    <content>
       <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="1532.0" prefWidth="1200.0" styleClass="bg-dark">
          <children>
@@ -32,33 +32,21 @@
                         <AnchorPane fx:id="mainSlide">
                            <children>
                               <ImageView fx:id="image1" fitHeight="300.0" fitWidth="587.0" layoutX="300.0" layoutY="-2.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@assets/banner/Transmission-Festival-Thailand-2023.jpg" />
-                                 </image>
                                  <viewport>
                                     <Rectangle2D />
                                  </viewport>
                               </ImageView>
                               <ImageView fx:id="image2" fitHeight="300.0" fitWidth="600.0" layoutX="-600.0" layoutY="-4.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@assets/banner/CoLiFes-2023.jpg" />
-                                 </image>
                                  <viewport>
                                     <Rectangle2D />
                                  </viewport>
                               </ImageView>
                               <ImageView fx:id="image3" fitHeight="300.0" fitWidth="600.0" layoutX="-600.0" layoutY="-4.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@assets/banner/Road-to-Sonic-Bang-2023.jpg" />
-                                 </image>
                                  <viewport>
                                     <Rectangle2D />
                                  </viewport>
                               </ImageView>
                               <ImageView fx:id="image4" fitHeight="300.0" fitWidth="600.0" layoutX="-600.0" layoutY="-4.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@assets/banner/ค่ายวิศว.jpg" />
-                                 </image>
                                  <viewport>
                                     <Rectangle2D />
                                  </viewport>

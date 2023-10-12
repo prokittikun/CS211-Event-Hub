@@ -13,6 +13,7 @@ import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
@@ -22,6 +23,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -67,7 +69,11 @@ public class IndexController {
     @FXML
     private void initialize() {
         data = FXRouter.getData();
-        slider();
+        image1.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/cs211/project/views/assets/banner/Transmission-Festival-Thailand-2023.jpg"))));
+        image2.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/cs211/project/views/assets/banner/CoLiFes-2023.jpg"))));
+        image3.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/cs211/project/views/assets/banner/Road-to-Sonic-Bang-2023.jpg"))));
+        image4.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/cs211/project/views/assets/banner/ค่ายวิศว.jpg"))));
+//        slider();
         data.remove("eventId");
         data.remove("teamId");
         data.remove("previousPage");
@@ -90,6 +96,7 @@ public class IndexController {
             AnchorPane footerComponent = footerComponentLoader.load();
             footer.getChildren().add(footerComponent);
         } catch (IOException e) {
+            System.err.println("navabar :" + e.getMessage());
             throw new RuntimeException(e);
         }
 
@@ -124,6 +131,7 @@ public class IndexController {
                         eventCardHbox.getChildren().add(eventComponent);
                     });
                 } catch (IOException e) {
+                    System.err.println("error init:" + e.getMessage());
                     throw new RuntimeException(e);
                 }
             }
@@ -404,6 +412,7 @@ public class IndexController {
                         }
                     }
                 } catch (Exception e) {
+                    System.err.println("Error : " + e.getMessage());
                     e.printStackTrace();
                 }
             }
