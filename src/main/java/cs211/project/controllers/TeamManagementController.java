@@ -297,8 +297,19 @@ public class TeamManagementController {
                                     deleteButton.setStyle("-fx-background-color: transparent; -fx-cursor: hand;");
                                     //open delete modal
                                     deleteButton.setOnAction(event -> {
-                                        teamActivityDatasource.deleteById(activity.getId());
-                                        showTable();
+                                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                        alert.setTitle("คุณต้องการลบกิจกรรม " + activity.getName() +" ใช่หรือไม่ ?");
+                                        alert.setHeaderText("หากลบแล้วจะไม่สามารถนำกลับมาได้");
+
+                                        Optional<ButtonType> result = alert.showAndWait();
+                                        ButtonType button = result.orElse(ButtonType.CANCEL);
+
+                                        if (button == ButtonType.OK) {
+                                            teamActivityDatasource.deleteById(activity.getId());
+                                            showTable();
+                                        } else {
+                                            alert.close();
+                                        }
                                     });
 
                                     ImageView editIcon = new ImageView(new Image(getClass().getResource("/cs211/project/views/assets/Icons/edit-red.png").toExternalForm()));

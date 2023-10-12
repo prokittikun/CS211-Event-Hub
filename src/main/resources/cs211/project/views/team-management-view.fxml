@@ -46,7 +46,7 @@
                                     </HBox>
                                     <ScrollPane hbarPolicy="NEVER" prefHeight="426.0" prefWidth="370.0" styleClass="bg-transparent">
                                        <content>
-                                          <VBox fx:id="memberVbox" prefWidth="370.0" />
+                                          <VBox fx:id="memberVbox" prefWidth="370.0" spacing="10.0" />
                                        </content>
                                     </ScrollPane>
 <!--                                    <HBox alignment="CENTER" prefHeight="55.0" prefWidth="374.0" spacing="25.0">-->
