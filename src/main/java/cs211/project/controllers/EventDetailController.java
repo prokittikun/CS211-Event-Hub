@@ -226,7 +226,7 @@ public class EventDetailController {
                 return;
             }
             JoinEventCollection newJoinEventCollection = new JoinEventCollection();
-            newJoinEventCollection.addJoinEvent(new JoinEvent(UUID.randomUUID().toString(), eventId.toString(), userId.toString(), DateTimeService.getCurrentDate(), "0"));
+            newJoinEventCollection.addJoinEvent(new JoinEvent(UUID.randomUUID().toString(), eventId.toString(), userId.toString(), DateTimeService.getCurrentDate()));
             joinEventDatasource.writeData(newJoinEventCollection);
             ToastAlert.show("ลงทะเบียนสำเร็จแล้ว", ToastAlert.AlertType.SUCCESS);
             checkIsJoinEvent();
