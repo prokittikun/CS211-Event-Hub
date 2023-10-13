@@ -9,7 +9,6 @@ import java.util.UUID;
 
 public class Activity {
     private UUID id;
-//    private UUID teamId;
     private String name;
     private String detail;
     private String startDate;
@@ -27,7 +26,6 @@ public class Activity {
 
     public Activity(String id,  String name, String detail, String startDate, String startTime, String endDate, String endTime) {
         this.id = UUID.fromString(id);
-//        this.teamId = UUID.fromString(teamId);
         this.name = name;
         this.detail = detail;
         this.startDate = startDate;
@@ -39,10 +37,8 @@ public class Activity {
         this.status = false;
     }
 
-    //constructor for hashmap
     public Activity(HashMap<String, String> activity) {
         this.id = UUID.fromString(activity.get("id"));
-//        this.teamId = UUID.fromString(activity.get("teamId"));
         this.name = activity.get("name");
         this.detail = activity.get("detail");
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -60,9 +56,6 @@ public class Activity {
         return id.toString();
     }
 
-//    public String getTeamId() {
-//        return teamId.toString();
-//    }
 
     public String getName() {
         return name;
@@ -92,9 +85,6 @@ public class Activity {
         this.id = UUID.fromString(id);
     }
 
-//    public void setTeamId(String teamId) {
-//        this.teamId = UUID.fromString(teamId);
-//    }
 
     public void setName(String name) {
         this.name = name;
@@ -141,18 +131,5 @@ public class Activity {
     public String getDateTimeEnd() {
         return  dateTimeEnd;
     }
-    //toHashMap
-//    public HashMap<String, String> toHashMap() {
-//        HashMap<String, String> activity = new HashMap<>();
-//        activity.put("id", this.id.toString());
-////        activity.put("teamId", this.teamId.toString());
-//        activity.put("name", this.name);
-//        activity.put("detail", this.detail);
-//        activity.put("startDate", this.startDate);
-//        activity.put("startTime", this.startTime);
-//        activity.put("endDate", this.endDate);
-//        activity.put("endTime", this.endTime);
-//        return activity;
-//    }
 
 }

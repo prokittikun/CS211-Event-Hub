@@ -71,7 +71,6 @@ public class Event {
         this.maxParticipant = Integer.parseInt(data.get("maxParticipant").trim());
         this.image = data.get("image").trim();
         this.status = Boolean.parseBoolean(data.get("status").trim());
-        //set localDateTime from data.get(createAt)
         this.createAt = LocalDateTime.parse(data.get("createAt").trim());
 
     }
@@ -279,13 +278,5 @@ public class Event {
                 ", status=" + status +
                 '}';
     }
-    //    @Override
-//    public int compareTo(Object o) {
-//        Event event = (Event) o;
-//        if (event.getMaxParticipant() >= this.getMaxParticipant()) {
-//            return 1;
-//        } else {
-//            return -1;
-//        }
-//    }
+
 }

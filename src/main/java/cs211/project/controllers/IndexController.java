@@ -73,7 +73,7 @@ public class IndexController {
         image2.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/cs211/project/views/assets/banner/CoLiFes-2023.jpg"))));
         image3.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/cs211/project/views/assets/banner/Road-to-Sonic-Bang-2023.jpg"))));
         image4.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/cs211/project/views/assets/banner/ค่ายวิศว.jpg"))));
-//        slider();
+        slider();
         data.remove("eventId");
         data.remove("teamId");
         data.remove("previousPage");

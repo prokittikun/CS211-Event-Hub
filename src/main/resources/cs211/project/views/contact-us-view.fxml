@@ -205,7 +205,7 @@
                                                             <String fx:value="text-black" />
                                                          </styleClass>
                                                       </Label>
-                                                      <Label text="6510405334 Computer Science">
+                                                      <Label text="6510405482 Computer Science">
                                                          <styleClass>
                                                             <String fx:value="text-xl" />
                                                             <String fx:value="text-black" />

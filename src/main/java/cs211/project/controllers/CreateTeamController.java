@@ -276,8 +276,4 @@ public class CreateTeamController {
         }
     }
 
-    @FXML
-    public void onHandelCreateTeam(){
-
-    }
 }

@@ -267,7 +267,6 @@ public class EventActivityController {
                                         hbox.getChildren().add(openmodalButton);
                                     }
 
-//                                    hbox.getChildren().add(openmodalButton, editButton);
 
                                     hbox.alignmentProperty().set(javafx.geometry.Pos.CENTER);
                                     setGraphic(hbox);
