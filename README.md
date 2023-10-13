@@ -47,13 +47,13 @@
 
 ## Download[![](https://raw.githubusercontent.com/aregtech/areg-sdk/master/docs/img/pin.svg)](#introduction)
 #### Jar file for Windows
-- Download <b>Event-Hub-for-Windows.zip</b> from [Release](https://github.com/CS211-661/cs211-661-project-phuea-khrai-party/releases)
+- Download <b>Event-Hub-for-Windows.zip</b> from [Release](https://github.com/prokittikun/CS211-Event-Hub/releases/tag/4.0.0) or [Click](https://github.com/prokittikun/CS211-Event-Hub/releases/download/4.0.0/Event-Hub-for-Windows.zip)
 
 #### Jar file for MacOs Intel
-- Download <b>Event-Hub-for-MacOs-intel.zip</b> from [Release](https://github.com/CS211-661/cs211-661-project-phuea-khrai-party/releases)
+- Download <b>Event-Hub-for-MacOs-chip-apple-intel.zip</b> from [Release](https://github.com/prokittikun/CS211-Event-Hub/releases/tag/4.0.0) or [Click](https://github.com/prokittikun/CS211-Event-Hub/releases/download/4.0.0/Event-Hub-for-macOs-chip-apple-intel.zip)
 
 #### Jar file for MacOs M1
-- Download <b>Event-Hub-for-MacOs-m1.zip</b> from [Release](https://github.com/CS211-661/cs211-661-project-phuea-khrai-party/releases)
+- Download <b>Event-Hub-for-MacOs-chip-apple-silicon.zip</b> from [Release](https://github.com/prokittikun/CS211-Event-Hub/releases/tag/4.0.0) or [Click](https://github.com/prokittikun/CS211-Event-Hub/releases/download/4.0.0/Event-Hub-for-macOs-chip-apple-silicon.zip)
 
 ## Installation[![](https://raw.githubusercontent.com/aregtech/areg-sdk/master/docs/img/pin.svg)](#introduction)
 ### Windows Installation
