@@ -187,7 +187,6 @@ public class MyTeamController {
     public void reloadData() {
         this.myTeamComponent.getChildren().clear();
         teamMemberCollection = teamMemberDatasource.query("userId = "+this.userId);
-//        this.teamMemberCollection = n
         initMyTeam();
     }
 

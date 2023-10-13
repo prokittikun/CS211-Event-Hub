@@ -11,7 +11,6 @@ public class ProfileImageController {
 
     @FXML
     private Circle profileImage;
-
     private String imagePath;
 
     public ProfileImageController() {
@@ -26,7 +25,6 @@ public class ProfileImageController {
         Image image = new Image("file:data" + File.separator + "image" + File.separator + "avatar" + File.separator + imageName);
         profileImage.setFill(new ImagePattern(image));
     }
-
     public String getImagePath() {
         return imagePath;
     }

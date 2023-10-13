@@ -110,22 +110,17 @@ public class MyEventCard {
         ButtonType button = result.orElse(ButtonType.CANCEL);
 
         if (button == ButtonType.OK) {
-
-
             //Delete TeamMember
             TeamCollection teamCollection = datasourceTeam.query("eventId = " + data.get("eventId").toString());
             for (Team team : teamCollection.getTeams()) {
                 datasourceTeamMember.deleteAllByColumnAndValue("teamId", team.getId());
                 //delete Team
                 datasourceTeam.deleteById(team.getId());
-                System.out.println(team.getId());
             }
             //Delete JoinEvent
             datasourceJoinEvent.deleteAllByColumnAndValue("eventId", (String) data.get("eventId"));
-
             //Delete Event
             datasourceEvent.deleteById((String) data.get("eventId"));
-
             myEventController.reload();
         } else {
             alert.close();

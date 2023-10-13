@@ -34,15 +34,9 @@ public class ProfileController {
     @FXML
     private AnchorPane footer;
     @FXML
-    private Button saveButton;
-    @FXML
     private Label registerDateLabel;
     @FXML
     private Label lastLoginDateLabel;
-    @FXML
-    private Button backButton;
-    @FXML
-    private Button editButton;
     @FXML
     private TextField firstNameField;
     @FXML

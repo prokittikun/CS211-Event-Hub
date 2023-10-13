@@ -38,7 +38,6 @@ public class ListTeamController {
     private Label dateLabel;
     @FXML
     private ImageView previewImageView;
-    private List<ListTeamCard> ListTeamCardList;
     private HashMap<String, Object> data;
     private Datasource<EventCollection> datasourceEvent;
     private Datasource<JoinEventCollection> datasourceJoinEvent;

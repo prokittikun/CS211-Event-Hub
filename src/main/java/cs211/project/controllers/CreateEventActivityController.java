@@ -4,7 +4,6 @@ import cs211.project.models.*;
 import cs211.project.models.collections.EventActivityCollection;
 import cs211.project.models.collections.EventCollection;
 import cs211.project.models.collections.JoinEventCollection;
-import cs211.project.models.collections.TeamActivityCollection;
 import cs211.project.services.*;
 import cs211.project.services.alert.ToastAlert;
 import javafx.event.ActionEvent;
@@ -15,8 +14,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.ImagePattern;
-
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;

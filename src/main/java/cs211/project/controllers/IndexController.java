@@ -18,9 +18,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
@@ -41,9 +38,6 @@ public class IndexController {
     private HBox popularEventCardHbox;
     @FXML
     private HBox comingEventCardHbox;
-    private List<EventCard> eventCardList;
-    private List<WhiteEventCard> popularEventCardList;
-    private List<WhiteEventCard> comingEventCardList;
     private HashMap<String, Object> data;
     private Datasource<EventCollection> eventDatasource;
     private Datasource<JoinEventCollection> joinEventDatasource;
@@ -60,9 +54,6 @@ public class IndexController {
 
     @FXML
     private ImageView image4;
-
-    @FXML
-    private AnchorPane mainSlide;
 
     private ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 

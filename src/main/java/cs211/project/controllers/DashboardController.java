@@ -1,6 +1,5 @@
 package cs211.project.controllers;
 
-import cs211.project.models.Event;
 import cs211.project.models.User;
 import cs211.project.models.collections.EventCollection;
 import cs211.project.models.collections.UserCollection;

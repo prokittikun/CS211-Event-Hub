@@ -47,8 +47,6 @@ public class TeamManagementController {
     @FXML
     private VBox memberVbox;
 
-    private List<TeamMemberCard> teamMemberCardList;
-
     private Datasource<TeamMemberCollection> teamMemberDatasource;
 
     private Datasource<TeamCollection> teamDatasource;
@@ -76,8 +74,6 @@ public class TeamManagementController {
     @FXML
     private TableColumn<Activity, HBox> tool;
     private Datasource<TeamActivityCollection> teamActivityDatasource;
-    private TeamActivityCollection activityCollection;
-
     private boolean isLeader = false;
 
     @FXML

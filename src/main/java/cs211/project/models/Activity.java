@@ -21,9 +21,6 @@ public class Activity {
 
     private Boolean status;
 
-
-    private String order;
-
     public Activity(String id,  String name, String detail, String startDate, String startTime, String endDate, String endTime) {
         this.id = UUID.fromString(id);
         this.name = name;
@@ -41,7 +38,6 @@ public class Activity {
         this.id = UUID.fromString(activity.get("id"));
         this.name = activity.get("name");
         this.detail = activity.get("detail");
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         this.startDate = activity.get("startDate");
         this.startTime = activity.get("startTime");
         this.endDate =  activity.get("endDate");

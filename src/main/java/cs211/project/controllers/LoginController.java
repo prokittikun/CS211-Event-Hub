@@ -33,12 +33,6 @@ public class LoginController {
     @FXML
     private Button loginButton;
 
-    @FXML
-    private Button registerButton;
-
-    @FXML
-    private Button guideButton;
-
     private Datasource<UserCollection> userListFileDatasource;
 
     public void initialize() {

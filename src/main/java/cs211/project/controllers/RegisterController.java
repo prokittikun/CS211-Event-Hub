@@ -51,9 +51,6 @@ public class RegisterController {
     @FXML
     private Button registerButton;
 
-    @FXML
-    private Button loginButton;
-
     private UserListFileDatasource userListFileDatasource = new UserListFileDatasource("data", "user.csv");
     private UserCollection userCollection;
 

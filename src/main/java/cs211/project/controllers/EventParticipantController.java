@@ -20,7 +20,6 @@ import javafx.util.Callback;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Objects;
 import java.util.Optional;
 
 public class EventParticipantController {

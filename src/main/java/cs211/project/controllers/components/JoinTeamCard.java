@@ -6,7 +6,6 @@ import cs211.project.models.TeamMember;
 import cs211.project.models.collections.TeamCollection;
 import cs211.project.models.collections.TeamMemberCollection;
 import cs211.project.services.Datasource;
-import cs211.project.services.DateTimeService;
 import cs211.project.services.TeamListFileDatasource;
 import cs211.project.services.TeamMemberListFileDatasource;
 import cs211.project.services.alert.ToastAlert;
@@ -14,9 +13,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.paint.ImagePattern;
-import javafx.scene.shape.Rectangle;
 
 import java.io.File;
 import java.lang.String;
@@ -39,8 +35,6 @@ public class JoinTeamCard {
     @FXML
     private Label dateLabel;
 
-//    @FXML
-//    private Button teamOrder;
     private HashMap<String, Object> data;
 
     private Datasource<TeamMemberCollection> teamMemberDatasource;
@@ -53,13 +47,11 @@ public class JoinTeamCard {
         this.teamParticipant = new Label();
         this.teamName = new Label();
         this.dateLabel = new Label();
-//        this.teamOrder = new Button();
     }
     @FXML
     private void initialize() {
         teamMemberDatasource = new TeamMemberListFileDatasource("data/team", "teamMember.csv");
         teamDatasource = new TeamListFileDatasource("data/team", "team.csv");
-//        teamOrder.setVisible(true);
     }
 
     private boolean teamIsFull(){
@@ -100,10 +92,6 @@ public class JoinTeamCard {
     public String getTeamParticipant() { return teamParticipant.getText(); }
 
     public String getTeamName() { return teamName.getText(); }
-
-//    public String getTeamOrder() {
-//        return teamOrder.getText();
-//    }
 
     public String getTeamId() {
         return teamId.toString();

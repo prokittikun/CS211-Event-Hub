@@ -2,9 +2,11 @@ package cs211.project.controllers.components;
 
 import cs211.project.controllers.ListTeamController;
 import cs211.project.models.collections.TeamCollection;
+import cs211.project.models.collections.TeamMemberCollection;
 import cs211.project.services.Datasource;
 import cs211.project.services.FXRouter;
 import cs211.project.services.TeamListFileDatasource;
+import cs211.project.services.TeamMemberListFileDatasource;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -36,13 +38,13 @@ public class ListTeamCard {
     private HashMap<String, Object> data;
 
     private Datasource<TeamCollection> datasourceTeam;
-    private TeamCollection teamList;
-
+    private Datasource<TeamMemberCollection> teamMemberDatasource;
     private ListTeamController teamController;
 
     @FXML
     public void initialize(){
         datasourceTeam = new TeamListFileDatasource("data/team", "team.csv");
+        teamMemberDatasource = new TeamMemberListFileDatasource("data/team", "teamMember.csv");
     }
 
     public ListTeamCard() {
@@ -82,6 +84,8 @@ public class ListTeamCard {
         ButtonType button = result.orElse(ButtonType.CANCEL);
 
         if (button == ButtonType.OK) {
+            //delete member
+            teamMemberDatasource.deleteAllByColumnAndValue("teamId", (String) data.get("teamId"));
             //Delete Team
             datasourceTeam.deleteById((String) data.get("teamId"));
             teamController.reload();

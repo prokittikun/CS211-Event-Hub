@@ -43,9 +43,7 @@ public class JoinTeamController {
     @FXML
     private VBox joinTeamVbox;
 
-    private List<JoinTeamCard> joinTeamCardList;
     private TeamCollection teamCollection;
-    private EventCollection eventCollection;
     private TeamListFileDatasource teamDatasource;
     private EventListFileDatasource eventDatasource;
     private JoinEventListFileDatasource joinEventDatasource;
@@ -61,7 +59,6 @@ public class JoinTeamController {
         System.out.println("data = " + data);
 
         eventId = UUID.fromString((String) data.get("eventId"));
-//        System.out.println("eventId"+eventId);
         eventDatasource = new EventListFileDatasource("data/event", "event.csv");
         teamDatasource = new TeamListFileDatasource("data/team", "team.csv");
         joinEventDatasource = new JoinEventListFileDatasource("data/event", "joinEvent.csv");
@@ -99,7 +96,6 @@ public class JoinTeamController {
     void initJoinTeam() {
         teamCollection = teamDatasource.query("eventId = " + eventId.toString());
         System.out.println(teamCollection.getTeams().size());
-//        final int[] i = {1};
         executorService.submit(() -> {
             LocalDateTime currentDateTime = LocalDateTime.parse(DateTimeService.getCurrentDate()+"T"+DateTimeService.getCurrentTime());
             for (Team team : teamCollection.getTeams()) {
@@ -108,19 +104,13 @@ public class JoinTeamController {
                     joinTeamCardLoader.setLocation(getClass().getResource("/cs211/project/views/components/join-team-card.fxml"));
                     AnchorPane joinTeamCardComponent = joinTeamCardLoader.load();
 
-//                    Event event = eventDatasource.query("id = " + team.getEventId()).getEvents().get(0);
                     JoinTeamCard joinTeamCard = joinTeamCardLoader.getController();
-//                    joinTeamCard.setEventDate(event.getStartDate());
-//                    joinTeamCard.setEventImage(event.getImage());
-//                    joinTeamCard.setEventLocation(event.getLocation());
-//                    joinTeamCard.setEventName(event.getName());
                     joinTeamCard.setTeamId(team.getId());
 
                     TeamMemberCollection teamMemberCollection = teamMemberDatasource.query("teamId = " + team.getId());
                     joinTeamCard.setTeamParticipant(teamMemberCollection.getTeamMembers().size() + "/" + team.getMaxMember());
 
                     joinTeamCard.setTeamName(team.getName());
-//                    joinTeamCard.setTeamOrder(Integer.toString(++i[0]));
                     joinTeamCard.setUserId((String) data.get("userId"));
                     joinTeamCard.setJoinTeamController(this);
                     LocalDateTime teamStartDateTime = LocalDateTime.parse(team.getStartDate() + "T" + team.getStartTime());
