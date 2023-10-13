@@ -50,10 +50,10 @@
 - Download <b>Event-Hub-for-Windows.zip</b> from [Release](https://github.com/CS211-661/cs211-661-project-phuea-khrai-party/releases)
 
 #### Jar file for MacOs Intel
-- Download <b>Event-Hub-for-MacOs.zip</b> from [Release](https://github.com/CS211-661/cs211-661-project-phuea-khrai-party/releases)
+- Download <b>Event-Hub-for-MacOs-intel.zip</b> from [Release](https://github.com/CS211-661/cs211-661-project-phuea-khrai-party/releases)
 
 #### Jar file for MacOs M1
-- Download <b>Event-Hub-for-MacOs.zip</b> from [Release](https://github.com/CS211-661/cs211-661-project-phuea-khrai-party/releases)
+- Download <b>Event-Hub-for-MacOs-m1.zip</b> from [Release](https://github.com/CS211-661/cs211-661-project-phuea-khrai-party/releases)
 
 ## Installation[![](https://raw.githubusercontent.com/aregtech/areg-sdk/master/docs/img/pin.svg)](#introduction)
 ### Windows Installation
