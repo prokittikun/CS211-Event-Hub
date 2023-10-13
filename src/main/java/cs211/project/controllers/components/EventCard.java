@@ -9,7 +9,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -22,13 +21,10 @@ public class EventCard {
     private Rectangle eventImage;
     @FXML
     private String imagePath;
-
     @FXML
     private Label eventLocation;
-
     @FXML
     private Text eventName;
-
     @FXML
     private Label eventParticipant;
     private HashMap<String, Object> data;

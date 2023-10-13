@@ -7,8 +7,6 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
-
-import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Objects;
@@ -18,27 +16,20 @@ public class ContactUsController {
     private AnchorPane navbar;
     @FXML
     private AnchorPane footer;
-
     @FXML
     private Circle professor1;
     @FXML
     private Circle professor2;
-
     @FXML
     private Circle professor3;
-
     @FXML
     private Circle professor4;
-
     @FXML
     private Circle admin1;
-
     @FXML
     private Circle admin2;
-
     @FXML
     private Circle admin3;
-
     @FXML
     private Circle admin4;
     private HashMap<String, Object> data;
@@ -50,18 +41,14 @@ public class ContactUsController {
         setProfessorImage();
         setAdminImage();
 
-        //Navbar
         FXMLLoader navbarComponentLoader = new FXMLLoader(getClass().getResource("/cs211/project/views/navbar.fxml"));
-        //Footer
         FXMLLoader footerComponentLoader = new FXMLLoader(getClass().getResource("/cs211/project/views/footer.fxml"));
         try {
-            //Navbar
             AnchorPane navbarComponent = navbarComponentLoader.load();
             NavbarController navbarController = navbarComponentLoader.getController();
             navbarController.setData(data);
             navbar.getChildren().add(navbarComponent);
 
-            //Footer
             AnchorPane footerComponent = footerComponentLoader.load();
             footer.getChildren().add(footerComponent);
         } catch (IOException e) {

@@ -117,10 +117,6 @@ public class JoinTeamCard {
 
     public void setTeamName(String teamName) { this.teamName.setText(teamName); }
 
-//    public void setTeamOrder(String teamOrder) {
-//        this.teamOrder.setText(teamOrder);
-//    }
-
     public void setTeamId(String teamId) {
         this.teamId = UUID.fromString(teamId);
     }
@@ -137,7 +133,6 @@ public class JoinTeamCard {
         this.joinTeamButton.setText(label);
         this.joinTeamButton.setDisable(visible);
     }
-
 
     public void setDate(String startDateTime, String endDateTime){
         this.dateLabel.setText("รับสมัคร " +startDateTime+" น. - "+endDateTime + " น.");
