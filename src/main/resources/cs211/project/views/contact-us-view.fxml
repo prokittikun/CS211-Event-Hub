@@ -66,7 +66,7 @@
                                                 <Image url="@assets/logo/Kasetsart.jpg" />
                                              </image>
                                           </ImageView>
-                                          <VBox prefHeight="88.0" prefWidth="583.0">
+                                          <VBox prefHeight="93.0" prefWidth="648.0">
                                              <children>
                                                 <Label text="มหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตบางเขน">
                                                    <styleClass>
