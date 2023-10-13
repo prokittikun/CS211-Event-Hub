@@ -13,11 +13,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.ContactUsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.ContactUsController">
    <children>
       <BorderPane layoutX="10.0" layoutY="10.0" prefHeight="800.0" prefWidth="1175.0">
          <center>
-            <VBox prefHeight="718.0" prefWidth="1175.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="215.0" prefWidth="1175.0" BorderPane.alignment="CENTER">
                <children>
                   <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="1118.0" />
                   <Pane prefHeight="38.0" prefWidth="1175.0" />
@@ -39,7 +39,7 @@
                                        <children>
                                           <VBox alignment="CENTER" prefHeight="100.0" prefWidth="333.0">
                                              <children>
-                                                <Button alignment="CENTER" mnemonicParsing="false" prefHeight="31.2" prefWidth="89.6" text="&lt; ย้อนกลับ">
+                                                <Button alignment="CENTER" mnemonicParsing="false" prefHeight="31.2" prefWidth="89.6" text="&lt; ย้อนกลับ" visible="false">
                                                    <styleClass>
                                                       <String fx:value="btn-outline-danger" />
                                                       <String fx:value="text-sm" />
@@ -48,10 +48,14 @@
                                              </children>
                                           </VBox>
                                           <AnchorPane prefHeight="100.0" prefWidth="516.0" />
-                                          <Label prefHeight="100.0" prefWidth="789.0" styleClass="text-4xl" text="ติดต่อเรา">
+                                          <Label prefHeight="100.0" prefWidth="789.0" text="ติดต่อเรา">
                                              <HBox.margin>
                                                 <Insets top="10.0" />
                                              </HBox.margin>
+                                             <styleClass>
+                                                <String fx:value="text-4xl" />
+                                                <String fx:value="text-black" />
+                                             </styleClass>
                                           </Label>
                                        </children>
                                     </HBox>
@@ -62,16 +66,25 @@
                                                 <Image url="@assets/logo/Kasetsart.jpg" />
                                              </image>
                                           </ImageView>
-                                          <VBox prefHeight="88.0" prefWidth="583.0">
+                                          <VBox prefHeight="93.0" prefWidth="648.0">
                                              <children>
                                                 <Label text="มหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตบางเขน">
                                                    <styleClass>
                                                       <String fx:value="text-xl" />
                                                       <String fx:value="font-bold" />
+                                                      <String fx:value="text-black" />
                                                    </styleClass>
                                                 </Label>
-                                                <Label styleClass="text-xl" text="เลขที่ 50 ถนนงามวงศ์วาน แขวงลาดยาว เขตจตุจักร กรุงเทพฯ " />
-                                                <Label layoutX="10.0" layoutY="28.0" styleClass="text-xl" text="1090050 Ngamwongwan Rd, Chatuchak Bangkok 10900 Thailand" />
+                                                <Label text="เลขที่ 50 ถนนงามวงศ์วาน แขวงลาดยาว เขตจตุจักร กรุงเทพฯ ">
+                                                   <styleClass>
+                                                      <String fx:value="text-xl" />
+                                                      <String fx:value="text-black" />
+                                                   </styleClass></Label>
+                                                <Label layoutX="10.0" layoutY="28.0" text="1090050 Ngamwongwan Rd, Chatuchak Bangkok 10900 Thailand">
+                                                   <styleClass>
+                                                      <String fx:value="text-xl" />
+                                                      <String fx:value="text-black" />
+                                                   </styleClass></Label>
                                              </children>
                                           </VBox>
                                        </children>
@@ -81,7 +94,11 @@
                                     </HBox>
                                     <VBox alignment="TOP_CENTER" prefHeight="189.0" prefWidth="1103.0">
                                        <children>
-                                          <Label styleClass="text-3xl" text="อาจารย์ที่ปรึกษา" />
+                                          <Label text="อาจารย์ประจำรายวิชา">
+                                             <styleClass>
+                                                <String fx:value="text-3xl" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
                                           <HBox alignment="CENTER" prefHeight="26.0" prefWidth="1103.0" spacing="20.0">
                                              <children>
                                                 <Circle fx:id="professor1" fill="DODGERBLUE" radius="32.0" stroke="BLACK" strokeType="INSIDE" styleClass="image-border" />
@@ -91,6 +108,7 @@
                                                          <styleClass>
                                                             <String fx:value="text-xl" />
                                                             <String fx:value="font-bold" />
+                                                            <String fx:value="text-black" />
                                                          </styleClass>
                                                       </Label>
                                                    </children>
@@ -103,6 +121,7 @@
                                                          <styleClass>
                                                             <String fx:value="text-xl" />
                                                             <String fx:value="font-bold" />
+                                                            <String fx:value="text-black" />
                                                          </styleClass>
                                                       </Label>
                                                    </children>
@@ -121,6 +140,7 @@
                                                          <styleClass>
                                                             <String fx:value="text-xl" />
                                                             <String fx:value="font-bold" />
+                                                            <String fx:value="text-black" />
                                                          </styleClass>
                                                       </Label>
                                                    </children>
@@ -133,6 +153,7 @@
                                                          <styleClass>
                                                             <String fx:value="text-xl" />
                                                             <String fx:value="font-bold" />
+                                                            <String fx:value="text-black" />
                                                          </styleClass>
                                                       </Label>
                                                    </children>
@@ -149,32 +170,46 @@
                                     </VBox>
                                     <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="220.0" prefHeight="190.0" prefWidth="1050.0">
                                        <children>
-                                          <Label styleClass="text-3xl" text="คณะผู้จัดทำ" />
+                                          <Label text="คณะผู้จัดทำ">
+                                             <styleClass>
+                                                <String fx:value="text-3xl" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
                                           <HBox alignment="CENTER" prefHeight="63.0" prefWidth="1070.0" spacing="20.0">
                                              <children>
                                                 <Circle fx:id="admin1" fill="DODGERBLUE" radius="32.0" stroke="BLACK" strokeType="INSIDE" styleClass="image-border" />
                                                 <VBox alignment="CENTER_LEFT" prefHeight="63.0" prefWidth="292.0">
                                                    <children>
-                                                      <Label text="นายกิตติคุณ บุญต่อยุทธ">
+                                                      <Label text="นายกิตติคุณ บุญต่อยุทธ (โปร)">
                                                          <styleClass>
                                                             <String fx:value="text-xl" />
                                                             <String fx:value="font-bold" />
+                                                            <String fx:value="text-black" />
                                                          </styleClass>
                                                       </Label>
-                                                      <Label layoutX="10.0" layoutY="27.0" styleClass="text-xl" text="6510405334, Computer Science" />
+                                                      <Label layoutX="10.0" layoutY="27.0" text="6510405334 Computer Science">
+                                                         <styleClass>
+                                                            <String fx:value="text-xl" />
+                                                            <String fx:value="text-black" />
+                                                         </styleClass></Label>
                                                    </children>
                                                 </VBox>
                                                 <Pane prefHeight="63.0" prefWidth="74.0" />
                                                 <Circle fx:id="admin2" fill="DODGERBLUE" radius="32.0" stroke="BLACK" strokeType="INSIDE" styleClass="image-border" />
                                                 <VBox alignment="CENTER_LEFT" layoutX="488.0" layoutY="10.0" prefHeight="63.0" prefWidth="292.0">
                                                    <children>
-                                                      <Label text="นายณัฐดนัย พิณะเวศน์">
+                                                      <Label text="นายณัฐดนัย พิณะเวศน์ (เจ)">
                                                          <styleClass>
                                                             <String fx:value="text-xl" />
                                                             <String fx:value="font-bold" />
+                                                            <String fx:value="text-black" />
                                                          </styleClass>
                                                       </Label>
-                                                      <Label styleClass="text-xl" text="6510405334, Computer Science" />
+                                                      <Label text="6510405482 Computer Science">
+                                                         <styleClass>
+                                                            <String fx:value="text-xl" />
+                                                            <String fx:value="text-black" />
+                                                         </styleClass></Label>
                                                    </children>
                                                 </VBox>
                                              </children>
@@ -187,26 +222,36 @@
                                                 <Circle fx:id="admin3" fill="DODGERBLUE" radius="32.0" stroke="BLACK" strokeType="INSIDE" styleClass="image-border" />
                                                 <VBox alignment="CENTER_LEFT" prefHeight="63.0" prefWidth="292.0">
                                                    <children>
-                                                      <Label text="นายจิรภัทร โควินทวงศ์">
+                                                      <Label text="นายจิรภัทร โควินทวงศ์ (เจ)">
                                                          <styleClass>
                                                             <String fx:value="text-xl" />
                                                             <String fx:value="font-bold" />
+                                                            <String fx:value="text-black" />
                                                          </styleClass>
                                                       </Label>
-                                                      <Label styleClass="text-xl" text="6510405393, Computer Science" />
+                                                      <Label text="6510405393 Computer Science">
+                                                         <styleClass>
+                                                            <String fx:value="text-xl" />
+                                                            <String fx:value="text-black" />
+                                                         </styleClass></Label>
                                                    </children>
                                                 </VBox>
                                                 <Pane prefHeight="63.0" prefWidth="74.0" />
                                                 <Circle fx:id="admin4" fill="DODGERBLUE" radius="32.0" stroke="BLACK" strokeType="INSIDE" styleClass="image-border" />
                                                 <VBox alignment="CENTER_LEFT" layoutX="488.0" layoutY="10.0" prefHeight="63.0" prefWidth="292.0">
                                                    <children>
-                                                      <Label text="นางสาวญาดา รัตนวราหะ">
+                                                      <Label text="นางสาวญาดา รัตนวราหะ (กิ้ว)">
                                                          <styleClass>
                                                             <String fx:value="text-xl" />
                                                             <String fx:value="font-bold" />
+                                                            <String fx:value="text-black" />
                                                          </styleClass>
                                                       </Label>
-                                                      <Label styleClass="text-xl" text="6510405431, Computer Science" />
+                                                      <Label text="6510405431 Computer Science">
+                                                         <styleClass>
+                                                            <String fx:value="text-xl" />
+                                                            <String fx:value="text-black" />
+                                                         </styleClass></Label>
                                                    </children>
                                                 </VBox>
                                              </children>
@@ -229,7 +274,7 @@
             </VBox>
          </center>
          <bottom>
-            <AnchorPane fx:id="footer" prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+            <AnchorPane fx:id="footer" prefHeight="71.0" prefWidth="1175.0" BorderPane.alignment="CENTER" />
          </bottom>
       </BorderPane>
       <AnchorPane fx:id="navbar" prefHeight="0.0" prefWidth="0.0" />

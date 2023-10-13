@@ -2,6 +2,7 @@ package cs211.project.models.collections;
 import cs211.project.models.JoinEvent;
 import java.util.ArrayList;
 import java.util.UUID;
+import java.util.List;
 
 public class JoinEventCollection {
     private ArrayList<JoinEvent> joinEvents;
@@ -35,4 +36,15 @@ public class JoinEventCollection {
         }
         return filteredJoinEvents;
     }
+
+    public List<String> getEventIdsByUserId(UUID userId) {
+        List<String> eventIds = new ArrayList<>();
+        for (JoinEvent joinEvent : joinEvents) {
+            if (joinEvent.getUserId().toString().equals(userId.toString())) {
+                eventIds.add(joinEvent.getEventId());
+            }
+        }
+        return eventIds;
+    }
+
 }

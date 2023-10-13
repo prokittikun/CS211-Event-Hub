@@ -10,15 +10,13 @@ public class JoinEvent {
     private String eventId;
     private String userId;
     private String joinTime;
-    private String status;
 
     //Constructor
-    public JoinEvent(String id, String eventId, String userId, String joinTime, String status) {
+    public JoinEvent(String id, String eventId, String userId, String joinTime) {
         this.id = UUID.fromString(id);
         this.eventId = eventId;
         this.userId = userId;
         this.joinTime = joinTime;
-        this.status = status;
     }
 
     //Constructor (HashMap)
@@ -27,7 +25,6 @@ public class JoinEvent {
         this.eventId = data.get("eventId").trim();
         this.userId = data.get("userId").trim();
         this.joinTime = data.get("joinTime").trim();
-        this.status = data.get("status").trim();
     }
 
     //Getter
@@ -47,10 +44,6 @@ public class JoinEvent {
         return joinTime;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
     //Setter
     public void setId(String id) {
         this.id = UUID.fromString(id);
@@ -68,10 +61,6 @@ public class JoinEvent {
         this.joinTime = joinTime;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     //Methods
     public HashMap<String, String> toHashMap() {
         HashMap<String, String> data = new HashMap<>();
@@ -79,7 +68,6 @@ public class JoinEvent {
         data.put("eventId", this.eventId);
         data.put("userId", this.userId);
         data.put("joinTime", this.joinTime);
-        data.put("status", this.status);
         return data;
     }
 }

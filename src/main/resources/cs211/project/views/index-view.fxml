@@ -13,66 +13,112 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient-yellow" stylesheets="@style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.IndexController">
-   <children>
-      <BorderPane prefHeight="800.0" prefWidth="1200.0">
-         <center>
-            <VBox alignment="CENTER_LEFT" prefHeight="395.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="130.0" prefWidth="1200.0" />
-                  <HBox alignment="CENTER" prefHeight="350.0" prefWidth="1200.0" spacing="30.0" VBox.vgrow="NEVER">
+<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.IndexController">
+   <content>
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="1532.0" prefWidth="1200.0" styleClass="bg-dark">
+         <children>
+            <BorderPane prefHeight="200.0" prefWidth="1200.0">
+               <center>
+                  <VBox minHeight="-Infinity" minWidth="1200.0" prefHeight="1480.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="33.0" text="&lt;">
-                           <HBox.margin>
-                              <Insets right="-50.0" />
-                           </HBox.margin>
-                           <styleClass>
-                              <String fx:value="btn-outline-danger" />
-                              <String fx:value="text-sm" />
-                           </styleClass>
-                        </Button>
-                        <ImageView fitHeight="208.0" fitWidth="567.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" style="-fx-view-order: 1;">
-                           <image>
-                              <Image url="@assets/banner/bookfair2023.jpg" />
-                           </image>
-                           <viewport>
-                              <Rectangle2D />
-                           </viewport>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </ImageView>
-                        <ImageView fitHeight="260.0" fitWidth="560.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@assets/banner/rockmountain2023.jpg" />
-                           </image>
-                           <viewport>
-                              <Rectangle2D />
-                           </viewport>
-                        </ImageView>
-                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="33.0" text="&gt;">
-                           <HBox.margin>
-                              <Insets left="-50.0" />
-                           </HBox.margin>
-                           <styleClass>
-                              <String fx:value="btn-outline-danger" />
-                              <String fx:value="text-sm" />
-                           </styleClass>
-                        </Button>
-                     </children>
-                     <padding>
-                        <Insets left="20.0" right="20.0" />
-                     </padding>
-                  </HBox>
-                  <HBox prefHeight="160.0" prefWidth="1200.0">
-                     <children>
+                        <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="1200.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="273.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="bg-gradient-yellow" width="1200.0">
+                           <VBox.margin>
+                              <Insets bottom="-240.0" />
+                           </VBox.margin>
+                        </Rectangle>
+                        <AnchorPane fx:id="mainSlide">
+                           <children>
+                              <ImageView fx:id="image1" fitHeight="300.0" fitWidth="587.0" layoutX="300.0" layoutY="-2.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                              </ImageView>
+                              <ImageView fx:id="image2" fitHeight="300.0" fitWidth="600.0" layoutX="-600.0" layoutY="-4.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                              </ImageView>
+                              <ImageView fx:id="image3" fitHeight="300.0" fitWidth="600.0" layoutX="-600.0" layoutY="-4.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                              </ImageView>
+                              <ImageView fx:id="image4" fitHeight="300.0" fitWidth="600.0" layoutX="-600.0" layoutY="-4.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                        <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="47.0" prefWidth="1200.0" />
+                        <HBox alignment="CENTER_LEFT" prefHeight="160.0" prefWidth="1200.0">
+                           <children>
+                              <Pane prefHeight="74.0" prefWidth="74.0" />
+                              <Button mnemonicParsing="false" onAction="#onHandleGoToCreateEvent" prefHeight="42.0" text=" สร้างอิเวนต์">
+                                 <styleClass>
+                                    <String fx:value="btn-danger" />
+                                    <String fx:value="text-lg" />
+                                 </styleClass>
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@assets/Icons/plus.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <VBox prefHeight="74.0" prefWidth="562.0">
+                                 <children>
+                                    <Label alignment="BOTTOM_CENTER" prefHeight="65.0" prefWidth="998.0" text="                      อิเวนต์ล่าสุด">
+                                       <styleClass>
+                                          <String fx:value="text-4xl" />
+                                          <String fx:value="text-black" />
+                                       </styleClass></Label>
+                                    <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="998.0" text="                                       Latest Event">
+                                       <VBox.margin>
+                                          <Insets top="-10.0" />
+                                       </VBox.margin>
+                                       <styleClass>
+                                          <String fx:value="text-xl" />
+                                          <String fx:value="text-black" />
+                                       </styleClass>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <Button alignment="TOP_RIGHT" mnemonicParsing="false" onAction="#onHandleGoToAllEvent" prefHeight="35.0" prefWidth="331.0" styleClass="btn-transparent">
+                                 <graphic>
+                                    <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="129.0" text="แสดงทั้งหมด">
+                                       <styleClass>
+                                          <String fx:value="text-lg" />
+                                          <String fx:value="text-red" />
+                                       </styleClass>
+                                    </Label>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox fx:id="eventCardHbox" prefHeight="434.0" spacing="10.0">
+                           <padding>
+                              <Insets left="55.0" right="55.0" top="10.0" />
+                           </padding>
+                        </HBox>
                         <VBox prefHeight="71.0" prefWidth="1020.0">
                            <children>
-                              <Label alignment="BOTTOM_CENTER" prefHeight="65.0" prefWidth="998.0" styleClass="text-4xl" text="                      อีเวนต์ล่าสุด" />
-                              <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="998.0" styleClass="text-xl" text="                                       Latest Event">
+                              <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="15.0" prefWidth="1200.0" />
+                              <Label alignment="BOTTOM_CENTER" prefHeight="65.0" prefWidth="998.0" text="                      อิเวนต์แนะนำ">
+                                 <styleClass>
+                                    <String fx:value="text-4xl" />
+                                    <String fx:value="text-black" />
+                                 </styleClass></Label>
+                              <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="998.0" text="                                       Recommended Event">
                                  <VBox.margin>
                                     <Insets top="-10.0" />
                                  </VBox.margin>
+                                 <styleClass>
+                                    <String fx:value="text-xl" />
+                                    <String fx:value="text-black" />
+                                 </styleClass>
                               </Label>
                            </children>
                         </VBox>

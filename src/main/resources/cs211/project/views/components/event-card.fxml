@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -11,12 +12,16 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane onMouseClicked="#onHandleGoToEventDetail" prefHeight="315.0" prefWidth="206.0" stylesheets="@../style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.components.EventCard">
+<AnchorPane onMouseClicked="#onHandleGoToEventDetail" prefHeight="315.0" prefWidth="206.0" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.components.EventCard">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="5.0" layoutY="5.0" prefHeight="354.0" prefWidth="194.0" spacing="5.0">
          <children>
             <Rectangle fx:id="eventImage" arcHeight="5.0" arcWidth="5.0" fill="#99c5ef" height="234.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="174.0" />
-            <Text fx:id="eventName" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-line-spacing: 0;" styleClass="text-lg" text="สัปดาห์หนังสือแห่งชาติ ครั้งที่ 51" wrappingWidth="175.0" />
+            <Text fx:id="eventName" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-line-spacing: 0;" text="สัปดาห์หนังสือแห่งชาติ ครั้งที่ 51" wrappingWidth="175.0">
+               <styleClass>
+                  <String fx:value="text-lg" />
+                  <String fx:value="text-black" />
+               </styleClass></Text>
             <HBox alignment="CENTER_LEFT" prefHeight="11.0" prefWidth="174.0">
                <children>
                   <ImageView fitHeight="61.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
@@ -24,7 +29,11 @@
                         <Image url="@../assets/Icons/marker.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="eventLocation" styleClass="text-sm" text="ศูนย์การประชุมแห่งชาติสิริกิติ์" />
+                  <Label fx:id="eventLocation" text="ศูนย์การประชุมแห่งชาติสิริกิติ์">
+                     <styleClass>
+                        <String fx:value="text-sm" />
+                        <String fx:value="text-black" />
+                     </styleClass></Label>
                </children>
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="187.0" spacing="5.0">
@@ -34,8 +43,12 @@
                         <Image url="@../assets/Icons/calendar.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="eventDate" prefHeight="18.0" prefWidth="81.0" styleClass="text-xs" text="29 ก.ค. 2566" />
-                  <HBox alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="103.0">
+                  <Label fx:id="eventDate" prefHeight="18.0" prefWidth="81.0" text="29 ก.ค. 2566">
+                     <styleClass>
+                        <String fx:value="text-xs" />
+                        <String fx:value="text-black" />
+                     </styleClass></Label>
+                  <HBox alignment="CENTER_RIGHT" minWidth="70.0" prefHeight="18.0">
                      <children>
                         <ImageView fitHeight="32.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -43,7 +56,11 @@
                            </image>
                         </ImageView>
                         <Pane prefHeight="18.0" prefWidth="4.0" />
-                        <Label fx:id="eventParticipant" prefHeight="18.0" styleClass="text-xs" text="250/500000" />
+                        <Label fx:id="eventParticipant" prefHeight="18.0" text="250/500000">
+                           <styleClass>
+                              <String fx:value="text-xs" />
+                              <String fx:value="text-black" />
+                           </styleClass></Label>
                      </children>
                   </HBox>
                </children>
@@ -54,4 +71,8 @@
          </padding>
       </VBox>
    </children>
+   <styleClass>
+      <String fx:value="cursor-hand" />
+      <String fx:value="event-card" />
+   </styleClass>
 </AnchorPane>

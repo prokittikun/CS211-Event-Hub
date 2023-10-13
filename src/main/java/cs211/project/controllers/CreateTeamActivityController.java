@@ -1,16 +1,9 @@
 package cs211.project.controllers;
 
-import cs211.project.models.Activity;
-import cs211.project.models.Event;
-import cs211.project.models.Team;
-import cs211.project.models.User;
+import cs211.project.models.*;
 import cs211.project.models.collections.*;
 import cs211.project.services.*;
 import cs211.project.services.alert.ToastAlert;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -118,7 +111,7 @@ public class CreateTeamActivityController {
     private Datasource<UserCollection> userDatasource;
 
     private Datasource<TeamCollection> teamDatasource;
-    private Datasource<ActivityCollection> activityDatasource;
+    private Datasource<TeamActivityCollection> teamActivityDatasource;
 
     private HashMap<String, Object> data;
 
@@ -129,7 +122,7 @@ public class CreateTeamActivityController {
 
     private UUID activityId;
 
-    private ActivityCollection activityCollection;
+    private TeamActivityCollection activityCollection;
     private boolean isEdit = false;
 
     @FXML
@@ -153,7 +146,7 @@ public class CreateTeamActivityController {
         joinEventDatasource = new JoinEventListFileDatasource("data/event", "joinEvent.csv");
         userDatasource = new UserListFileDatasource("data", "user.csv");
         teamDatasource = new TeamListFileDatasource("data/team", "team.csv");
-        activityDatasource = new ActivityListFileDatasource("data/team", "activity.csv");
+        teamActivityDatasource = new TeamActivityListFileDatasource("data/team", "activity.csv");
         initHeader();
         //Navbar
         FXMLLoader navbarComponentLoader = new FXMLLoader(getClass().getResource("/cs211/project/views/navbar.fxml"));
@@ -180,7 +173,7 @@ public class CreateTeamActivityController {
 
 
         if(activityId != null){
-            Activity activity = activityDatasource.query("id = " + activityId.toString()).getActivities().get(0);
+            Activity activity = teamActivityDatasource.query("id = " + activityId.toString()).getActivities().get(0);
             inputActivityName.setText(activity.getName());
             inputActivityDetail.setText(activity.getDetail());
 
@@ -196,7 +189,7 @@ public class CreateTeamActivityController {
     }
 
     private void showTable() {
-        activityCollection = activityDatasource.query("teamId = " + teamId.toString());
+        activityCollection = teamActivityDatasource.query("teamId = " + teamId.toString());
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("startDate"));
@@ -286,26 +279,42 @@ public class CreateTeamActivityController {
 
         if(isAllInputValid){
             if(!isEdit){
-                ActivityCollection activityCollectionForWriteData = new ActivityCollection();
-                Activity newActivity = new Activity(UUID.randomUUID().toString(), teamId.toString(), inputActivityName.getText(), inputActivityDetail.getText(), inputActivityDateStart.getValue().toString(), inputActivityTimeStart.getText(), inputActivityDateEnd.getValue().toString(), inputActivityTimeEnd.getText());
+                TeamActivityCollection activityCollectionForWriteData = new TeamActivityCollection();
+                String startTime = inputActivityTimeStart.getText();
+                String endTime = inputActivityTimeEnd.getText();
+                if(startTime.contains(".")){
+                    startTime = startTime.replace(".", ":");
+                }
+                if(endTime.contains(".")){
+                    endTime = endTime.replace(".", ":");
+                }
+                TeamActivity newActivity = new TeamActivity(UUID.randomUUID().toString(), teamId.toString(), inputActivityName.getText(), inputActivityDetail.getText(), inputActivityDateStart.getValue().toString(), startTime, inputActivityDateEnd.getValue().toString(), endTime);
                 activityCollectionForWriteData.addNewActivity(newActivity);
                 activityCollection.addNewActivity(newActivity);
                 scheduleTable.getItems().add(newActivity);
-                activityDatasource.writeData(activityCollectionForWriteData);
+                teamActivityDatasource.writeData(activityCollectionForWriteData);
                 clearInput();
-                ToastAlert.show("Success.", ToastAlert.AlertType.SUCCESS);
+                ToastAlert.show("สร้างกิจกรรมสำเร็จ", ToastAlert.AlertType.SUCCESS);
             }else{
                 Map<String, String> updateData = new HashMap<>();
+                String startTime = inputActivityTimeStart.getText();
+                String endTime = inputActivityTimeEnd.getText();
+                if(startTime.contains(".")){
+                    startTime = startTime.replace(".", ":");
+                }
+                if(endTime.contains(".")){
+                    endTime = endTime.replace(".", ":");
+                }
                 updateData.put("name", inputActivityName.getText());
                 updateData.put("detail", inputActivityDetail.getText());
                 updateData.put("startDate", inputActivityDateStart.getValue().toString());
-                updateData.put("startTime", inputActivityTimeStart.getText());
+                updateData.put("startTime", startTime);
                 updateData.put("endDate", inputActivityDateEnd.getValue().toString());
-                updateData.put("endTime", inputActivityTimeEnd.getText());
+                updateData.put("endTime", endTime);
 
-                activityDatasource.updateColumnsById(activityId.toString(), updateData);
+                teamActivityDatasource.updateColumnsById(activityId.toString(), updateData);
                 showTable();
-                ToastAlert.show("Success.", ToastAlert.AlertType.SUCCESS);
+                ToastAlert.show("แก้ไขกิจกรรมสำเร็จ", ToastAlert.AlertType.SUCCESS);
             }
         }
 

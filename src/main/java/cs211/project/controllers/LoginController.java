@@ -1,11 +1,13 @@
 package cs211.project.controllers;
 
+import cs211.project.cs211661project.HelloApplication;
 import cs211.project.models.User;
 import cs211.project.models.collections.UserCollection;
 import cs211.project.services.Datasource;
 import cs211.project.services.FXRouter;
 import cs211.project.services.DateTimeService;
 import cs211.project.services.UserListFileDatasource;
+import javafx.application.HostServices;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -13,16 +15,14 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
 public class LoginController {
 
     @FXML
-    private Label usernameError;
-
-    @FXML
-    private Label passwordError;
+    private Label loginError;
 
     @FXML
     private TextField usernameField;
@@ -36,17 +36,13 @@ public class LoginController {
     @FXML
     private Button loginButton;
 
-    @FXML
-    private Button registerButton;
-
     private Datasource<UserCollection> userListFileDatasource;
 
     public void initialize() {
         userListFileDatasource = new UserListFileDatasource("data", "user.csv");
 
         loginButton.setDisable(true);
-        usernameError.setText("");
-        passwordError.setText("");
+        loginError.setText("");
 
         // Listener to check if both fields are filled to enable the login button
         usernameField.textProperty().addListener((observable, oldValue, newValue) -> validateFields());
@@ -75,13 +71,12 @@ public class LoginController {
             try {
                 HashMap<String, Object> data = new HashMap<>();
                 data.put("userId", user.getId());
-                FXRouter.goTo("profile", data);
+                FXRouter.goTo("index", data);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         } else {
-            usernameError.setText("ชื่อผู้ใช้ไม่ถูกต้อง");
-            passwordError.setText("รหัสผ่านไม่ถูกต้อง");
+            loginError.setText("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง");
         }
     }
 
@@ -93,5 +88,13 @@ public class LoginController {
         stage.setScene(scene);
         stage.show();
     }
+
+    @FXML
+    void handleGuideButtonClick(ActionEvent event) {
+        HostServices hostServices = HelloApplication.getHostServicesStatic();
+        String pdfURL = new File("data/user-guide.pdf").toURI().toString();
+        hostServices.showDocument(pdfURL);
+    }
+
 
 }

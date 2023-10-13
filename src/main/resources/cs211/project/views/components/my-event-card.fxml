@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane stylesheets="@../style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.components.MyEventCard">
+<AnchorPane styleClass="bg-white" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.components.MyEventCard">
    <children>
-      <Pane layoutX="15.0" prefHeight="125.0" prefWidth="1023.0" styleClass="card-light-gray" stylesheets="@../style/global.css">
+      <Pane layoutX="15.0" prefHeight="125.0" prefWidth="1023.0" styleClass="card-light-gray">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="126.0" prefWidth="998.0" spacing="10.0">
                <children>
@@ -31,58 +31,91 @@
                         <Image url="@../assets/cover/freshyFestival2023.png" />
                      </image>
                   </ImageView>
-                  <VBox alignment="CENTER_LEFT" prefHeight="126.0" prefWidth="450.0" spacing="4.0">
+                  <VBox alignment="CENTER_LEFT" prefHeight="126.0" prefWidth="741.0" spacing="4.0">
                      <children>
-                        <Label fx:id="eventTitle" prefHeight="30.0" prefWidth="450.0" text="KU Freshy Festival 2023">
+                        <Label fx:id="eventTitle" prefHeight="29.0" prefWidth="602.0" text="KU Freshy Festival 2023">
                            <styleClass>
                               <String fx:value="text-3xl" />
                               <String fx:value="font-bold" />
+                              <String fx:value="text-black" />
                            </styleClass>
                         </Label>
                         <HBox alignment="CENTER_LEFT" prefHeight="19.0" prefWidth="418.0" spacing="10.0">
                            <children>
-                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../assets/Icons/marker.png" />
                                  </image>
                               </ImageView>
-                              <Label fx:id="eventLocation" text="Kasartsart University" />
+                              <Label fx:id="eventLocation" text="Kasartsart University">
+                                 <HBox.margin>
+                                    <Insets left="-10.0" />
+                                 </HBox.margin>
+                                 <styleClass>
+                                    <String fx:value="text-black" />
+                                    <String fx:value="text-sm" />
+                                 </styleClass></Label>
                               <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../assets/Icons/calendar.png" />
                                  </image>
                               </ImageView>
-                              <Label fx:id="eventDate" text="29 ก.ค 2566" />
+                              <Label fx:id="eventDate" text="29 ก.ค 2566">
+                                 <HBox.margin>
+                                    <Insets left="-5.0" />
+                                 </HBox.margin>
+                                 <styleClass>
+                                    <String fx:value="text-black" />
+                                    <String fx:value="text-sm" />
+                                 </styleClass></Label>
                               <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../assets/Icons/user.png" />
                                  </image>
                               </ImageView>
-                              <Label fx:id="participantEvent" text="31/50" />
+                              <Label fx:id="participantEvent" text="31/50">
+                                 <HBox.margin>
+                                    <Insets left="-5.0" />
+                                 </HBox.margin>
+                                 <styleClass>
+                                    <String fx:value="text-sm" />
+                                    <String fx:value="text-black" />
+                                 </styleClass></Label>
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="15.0" prefWidth="418.0" spacing="10.0">
                            <children>
-                              <Button fx:id="eventToggleStatus" mnemonicParsing="false" onAction="#onHandleEventStatus" styleClass="btn-success" text="เปิด" />
-                              <Button fx:id="goToParticipant" mnemonicParsing="false" styleClass="btn-outline-danger" text="รายชื่อผู้เข้าร่วม" />
+                              <Button fx:id="eventToggleStatus" mnemonicParsing="false" onAction="#onHandleEventStatus" text="เปิด">
+                                 <HBox.margin>
+                                    <Insets top="-1.0" />
+                                 </HBox.margin></Button>
+                              <Button mnemonicParsing="false" onAction="#goToListTeam" styleClass="btn-outline-danger" text="รายชื่อทีม" />
+                              <Button mnemonicParsing="false" onAction="#goToParticipant" styleClass="btn-outline-danger" text="รายชื่อผู้เข้าร่วม" />
                            </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
                         </HBox>
                      </children>
                   </VBox>
                   <Pane prefHeight="126.0" prefWidth="177.0" />
-                  <VBox alignment="CENTER" prefHeight="126.0" prefWidth="245.0" spacing="4.0">
+                  <VBox alignment="CENTER" prefHeight="126.0" prefWidth="414.0" spacing="4.0">
                      <children>
                         <Label text="บริหารจัดการ">
                            <styleClass>
                               <String fx:value="text-2xl" />
                               <String fx:value="font-bold" />
+                              <String fx:value="text-black" />
                            </styleClass>
                         </Label>
-                        <HBox alignment="CENTER" prefHeight="15.0" prefWidth="418.0" spacing="10.0">
+                        <HBox alignment="CENTER" prefHeight="15.0" spacing="10.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#goToFormEvent" styleClass="btn-outline-danger" text="สร้างฟอร์ม" />
-                              <Button mnemonicParsing="false" onAction="#goToListTeam" styleClass="btn-outline-danger" text="รายชื่อทีม" />
-                              <Button mnemonicParsing="false" onAction="#goToEditEvent" styleClass="btn-danger" text="แก้ไข้เวนต์" />
+                              <Button mnemonicParsing="false" onAction="#goToActivityEvent" prefHeight="28.0" styleClass="btn-outline-danger" text="กิจกรรม">
+                                 <HBox.margin>
+                                    <Insets bottom="-1.0" />
+                                 </HBox.margin></Button>
+                              <Button mnemonicParsing="false" onAction="#goToEditEvent" prefHeight="27.0" styleClass="btn-outline-danger" text="แก้ไขอีเว้นต์" />
+                              <Button mnemonicParsing="false" onAction="#onHandleDeleteEvent" styleClass="btn-danger" text="ลบอิเวนต์" />
                            </children>
                         </HBox>
                      </children>

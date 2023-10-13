@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.EventHistoryController">
+    <children>
+        <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0">
+            <bottom>
+                <AnchorPane fx:id="footer" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="65.0" prefWidth="1200.0" BorderPane.alignment="CENTER" />
+            </bottom>
+            <center>
+                <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+                    <styleClass>
+                        <String fx:value="card" />
+                        <String fx:value="shadow" />
+                    </styleClass>
+                    <BorderPane.margin>
+                        <Insets top="65.0" />
+                    </BorderPane.margin>
+                    <children>
+                        <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0">
+                            <top>
+                                <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+                                    <children>
+                                        <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="1000.0" text="ประวัติการเข้าร่วม">
+                                            <styleClass>
+                                                <String fx:value="text-3xl" />
+                                                <String fx:value="font-bold" />
+                                    <String fx:value="text-black" />
+                                            </styleClass>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                            </top>
+                            <center>
+                                <TableView fx:id="eventHistoryTable" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="540.0" prefWidth="900.0" styleClass="text-base" BorderPane.alignment="CENTER">
+                                    <columns>
+                                        <TableColumn fx:id="orderColumn" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" resizable="false" text="ลำดับ" />
+                                        <TableColumn fx:id="eventColumn" maxWidth="350.0" minWidth="350.0" prefWidth="350.0" resizable="false" text="อิเวนต์" />
+                                        <TableColumn fx:id="joinTimeColumn" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" resizable="false" text="เข้าร่วมเมื่อวันที่" />
+                                        <TableColumn fx:id="statusColumn" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" resizable="false" text="สถานะ" />
+                                        <TableColumn fx:id="toolColumn" maxWidth="90.0" minWidth="90.0" prefWidth="90.0" />
+                                    </columns>
+                                    <BorderPane.margin>
+                                        <Insets />
+                                    </BorderPane.margin>
+                                </TableView>
+                            </center>
+                        </BorderPane>
+                    </children>
+                </Pane>
+            </center>
+        </BorderPane>
+        <AnchorPane fx:id="navbar" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="56.0" prefWidth="1200.0" />
+    </children>
+</AnchorPane>

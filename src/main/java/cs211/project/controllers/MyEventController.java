@@ -7,12 +7,11 @@ import cs211.project.models.collections.JoinEventCollection;
 import cs211.project.services.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.UUID;
 
 public class MyEventController {
     @FXML
@@ -25,14 +24,16 @@ public class MyEventController {
     private Datasource<JoinEventCollection> datasourceJoinEvent;
     private EventCollection myEventList;
     private HashMap<String, Object> data;
-    private HashMap<String, Object> dataEventComponent;
-    private UUID userId;
 
     @FXML
     private void initialize() {
         data = FXRouter.getData();
-        //Get userId
-        userId = UUID.fromString((String) data.get("userId"));
+        data.remove("eventId");
+        //Datasource
+        datasource = new EventListFileDatasource("data/event", "event.csv");
+        myEventList = datasource.query("userId = " + data.get("userId"));
+        //Filter JoinEvent by eventId
+        datasourceJoinEvent = new JoinEventListFileDatasource("data/event", "joinEvent.csv");
 
         //Navbar
         FXMLLoader navbarComponentLoader = new FXMLLoader(getClass().getResource("/cs211/project/views/navbar.fxml"));
@@ -53,20 +54,10 @@ public class MyEventController {
             throw new RuntimeException(e);
         }
 
-        //Datasource
-        datasource = new EventListFileDatasource("data/event", "event.csv");
-
-        //Condition
-        myEventList = datasource.query("userId = " + userId.toString());
-
-        //Filter JoinEvent by eventId
-        datasourceJoinEvent = new JoinEventListFileDatasource("data/event", "joinEvent.csv");
-
         //Component
         int i = 0;
         for (Event myEventCardData : myEventList.getEvents()) {
             //Reset
-            dataEventComponent = new HashMap<>();
             try {
                 FXMLLoader myEventCardControllerLoader = new FXMLLoader();
                 myEventCardControllerLoader.setLocation(getClass().getResource("/cs211/project/views/components/my-event-card.fxml"));
@@ -77,8 +68,10 @@ public class MyEventController {
                 myEventCard.setEventDate(myEventCardData.getStartDate());
                 myEventCard.setEventImage(myEventCardData.getImage());
                 myEventCard.setEventLocation(myEventCardData.getLocation());
-
+                myEventCard.setMyEventController(this);
+                myEventCard.setStatusEvent(myEventCardData.isStatus());
                 //Set Data
+                HashMap<String, Object> dataEventComponent = new HashMap<>();
                 dataEventComponent.put("eventId", myEventCardData.getId());
                 dataEventComponent.put("userId", myEventCardData.getUserId());
                 myEventCard.setData(dataEventComponent);
@@ -87,7 +80,6 @@ public class MyEventController {
                 JoinEventCollection joinEventList = datasourceJoinEvent.query("eventId = " + myEventCardData.getId());
                 myEventCard.setParticipantEvent(joinEventList.getJoinEvents().size() + "/" + myEventCardData.getMaxParticipant());
 
-
                 myEventCard.setOrderNumber(String.valueOf(++i));
                 //Insert to Component
                 myEventComponent.getChildren().add(myEventCardComponent);
@@ -95,17 +87,20 @@ public class MyEventController {
                 throw new RuntimeException(e);
             }
 
-            //Reset data
-            dataEventComponent = new HashMap<>();
         }
     }
 
     @FXML
-    public void goToCreateEvent(){
+    public void goToCreateEvent() {
         try {
             FXRouter.goTo("createEvent", data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void reload() {
+        myEventComponent.getChildren().clear();
+        initialize();
     }
 }

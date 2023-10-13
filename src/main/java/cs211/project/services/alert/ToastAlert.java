@@ -7,11 +7,15 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import javafx.scene.control.MenuBar;
+
+import java.util.Objects;
 
 public class ToastAlert {
     public enum AlertType {
@@ -20,6 +24,7 @@ public class ToastAlert {
 
     public static void show(String message, AlertType alertType) {
         Stage stage = new Stage();
+        Font.loadFont(Objects.requireNonNull(ToastAlert.class.getResource("/cs211/project/views/assets/fonts/Kanit-Regular.ttf")).toExternalForm(), 10);
         stage.initOwner(null);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setAlwaysOnTop(true);
@@ -29,12 +34,11 @@ public class ToastAlert {
 
         StackPane stackPane = new StackPane(label);
         stackPane.setAlignment(Pos.TOP_RIGHT);
-        stackPane.setPrefWidth(300);
+        stackPane.setPrefWidth(Region.USE_COMPUTED_SIZE);
         stackPane.setPadding(new Insets(10));
 
         String backgroundColor = alertType == AlertType.SUCCESS ? "rgba(0, 128, 0, 0.7)" : "rgba(255, 0, 0, 0.7)";
         stackPane.setStyle("-fx-background-color: " + backgroundColor + ";" +
-                "-fx-border-color: white;" +
                 "-fx-border-width: 1px;" +
                 "-fx-border-radius: 5px;");
 

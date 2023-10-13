@@ -1,0 +1,76 @@
+@startuml
+class cs211.project.models.collections.TeamMemberCollection {
+- ArrayList<TeamMember> teamMembers
++ void setTeamMembers(ArrayList<TeamMember>)
++ void addTeamMember(TeamMember)
++ ArrayList<TeamMember> getTeamMembers()
++ TeamMember findTeamMemberById(String)
+}
+class cs211.project.models.collections.TeamActivityCollection {
++ void addNewActivity(TeamActivity)
++ ArrayList<TeamActivity> getActivities()
+}
+class cs211.project.models.collections.EventCollection {
+- ArrayList<Event> events
++ ArrayList<Event> getEvents()
++ void setEvents(ArrayList<Event>)
++ void addEvent(Event)
++ ArrayList<Event> filterByUserId(String)
++ Event findEventById(String)
++ ArrayList<Event> getRandomEvent(int)
++ ArrayList<Event> getPopularEvent()
++ ArrayList<Event> getClosestEvents()
++ ArrayList<Event> getLatestEvents()
++ ArrayList<Event> sortByBeforeEndDate()
++ ArrayList<Event> sortByComparator(Comparator<Event>)
+}
+class cs211.project.models.collections.TeamCollection {
+- ArrayList<Team> teams
++ void addTeam(Team)
++ ArrayList<Team> getTeams()
++ void isNameExist(String)
++ void isNameExits(String,String)
++ ArrayList<Team> findTeamByEventId(String)
+}
+class cs211.project.models.collections.JoinEventCollection {
+- ArrayList<JoinEvent> joinEvents
++ ArrayList<JoinEvent> getJoinEvents()
++ void setJoinEvents(ArrayList<JoinEvent>)
++ void addJoinEvent(JoinEvent)
++ ArrayList<JoinEvent> filterByEventId(String)
++ List<String> getEventIdsByUserId(UUID)
+}
+class cs211.project.models.collections.AnswerCollection {
+- ArrayList<Answer> answers
++ void addAnswer(Answer)
++ ArrayList<Answer> getAnswers()
+}
+class cs211.project.models.collections.ActivityCollection {
+- ArrayList<T> activities
++ void addNewActivity(T)
++ ArrayList<T> getActivities()
+}
+class cs211.project.models.collections.UserCollection {
+- List<User> users
++ boolean addUser(User)
++ User findUserByUsername(String)
++ User findUserById(String)
++ List<User> findUsersByRole(String)
++ boolean deleteUserById(String)
++ List<User> getAllUsers()
++ void loadUsersFromHashMaps(List<HashMap<String,String>>)
+}
+class cs211.project.models.collections.EventActivityCollection {
++ void addNewActivity(EventActivity)
++ ArrayList<EventActivity> getActivities()
+}
+class cs211.project.models.collections.ChatCollection {
+- ArrayList<Chat> chats
++ void addNewChat(Chat)
++ ArrayList<Chat> getChats()
+}
+
+
+cs211.project.models.collections.ActivityCollection <|-- cs211.project.models.collections.TeamActivityCollection
+cs211.project.models.collections.ActivityCollection <|-- cs211.project.models.collections.EventActivityCollection
+@enduml

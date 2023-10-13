@@ -56,7 +56,15 @@ public class DataFileManager {
             for(HashMap<String, String> datum: data){
                 ArrayList<String> values = new ArrayList<>();
                 for(String header : headers){
-                    values.add(datum.get(header));
+                    String value = datum.get(header);
+                    if(value != null){
+                        value = value.replace(",", "[COMMA]");
+                        value = value.replace("\n", "[NEWLINE]");
+                        values.add(value);
+
+                    }else{
+                        values.add("");
+                    }
                 }
                 buffer.write(String.join(",", values));
                 buffer.newLine();
@@ -99,6 +107,8 @@ public class DataFileManager {
                 HashMap<String, String> temp = new HashMap<>();
                 int index = 0;
                 for(String datum: data){
+                    datum = datum.replace("[COMMA]", ",");
+                    datum = datum.replace("[NEWLINE]", "\n");
                     temp.put(this.headers.get(index++), datum);
                 }
                 this.data.add(temp);
@@ -326,7 +336,15 @@ public class DataFileManager {
             for (HashMap<String, String> datum : data) {
                 ArrayList<String> values = new ArrayList<>();
                 for (String header : headers) {
-                    values.add(datum.get(header));
+                    String value = datum.get(header);
+                    if(value != null){
+                        value = value.replace(",", "[COMMA]");
+                        value = value.replace("\n", "[NEWLINE]");
+                        values.add(value);
+
+                    }else{
+                        values.add("");
+                    }
                 }
                 buffer.write(String.join(",", values));
                 buffer.newLine();

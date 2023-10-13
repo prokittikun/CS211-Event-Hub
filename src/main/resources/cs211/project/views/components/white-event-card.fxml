@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="315.0" prefWidth="206.0" stylesheets="@../style/global.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.components.WhiteEventCard">
+<AnchorPane onMouseClicked="#onHandleGoToEventDetail" prefHeight="315.0" prefWidth="206.0" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.components.WhiteEventCard">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="5.0" layoutY="5.0" prefHeight="354.0" prefWidth="194.0" spacing="5.0">
          <children>
@@ -44,12 +44,12 @@
                         <Image url="@../assets/Icons/white_calendar.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="eventDate" prefHeight="18.0" prefWidth="81.0" text="29 ก.ค. 2566" textFill="WHITE">
+                  <Label fx:id="eventDate" prefHeight="18.0" prefWidth="94.0" text="29 ก.ค. 2566" textFill="WHITE">
                      <styleClass>
                         <String fx:value="text-white" />
                         <String fx:value="text-xs" />
                      </styleClass></Label>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="103.0">
+                  <HBox alignment="CENTER_RIGHT" minWidth="72.0" prefHeight="18.0">
                      <children>
                         <ImageView fitHeight="32.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -73,4 +73,8 @@
          </padding>
       </VBox>
    </children>
+   <styleClass>
+      <String fx:value="cursor-hand" />
+      <String fx:value="event-card" />
+   </styleClass>
 </AnchorPane>

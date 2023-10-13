@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 
-<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.JoinTeamController">
+<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.JoinTeamController">
    <content>
-      <AnchorPane prefHeight="800.0" prefWidth="1200.0" styleClass="bg-white" stylesheets="@style/global.css">
+      <AnchorPane prefHeight="800.0" prefWidth="1200.0" styleClass="bg-dark">
          <children>
             <BorderPane prefHeight="800.0" prefWidth="1200.0">
                <center>
@@ -34,26 +34,27 @@
                                     <Insets top="-220.0" />
                                  </HBox.margin>
                                  <children>
-                                    <VBox alignment="TOP_CENTER" prefHeight="693.0" prefWidth="1102.0">
+                                    <VBox alignment="TOP_CENTER" prefHeight="632.0" prefWidth="1102.0">
                                        <children>
-                                          <Button mnemonicParsing="false" prefWidth="89.0" text="&lt; ย้อนกลับ">
+                                          <Button mnemonicParsing="false" onAction="#onHandleBackToEventDetail" prefWidth="89.0" text="&lt; ย้อนกลับ">
                                              <styleClass>
                                                 <String fx:value="btn-outline-danger" />
                                                 <String fx:value="text-sm" />
                                              </styleClass>
                                           </Button>
-                                          <Label fx:id="eventName" alignment="CENTER" prefHeight="87.0" prefWidth="661.0" text="สัปดาห์หนังสือแห่งชาติ ครั้งที่ 51">
+                                          <Label fx:id="eventName" alignment="CENTER" prefHeight="87.0" prefWidth="1106.0" text="สัปดาห์หนังสือแห่งชาติ ครั้งที่ 51">
                                              <styleClass>
                                                 <String fx:value="text-5xl" />
                                                 <String fx:value="font-bold" />
+                                                <String fx:value="text-black" />
                                              </styleClass>
                                              <VBox.margin>
-                                                <Insets top="-10.0" />
+                                                <Insets />
                                              </VBox.margin>
                                           </Label>
                                           <ScrollPane hbarPolicy="NEVER" prefHeight="485.0" prefWidth="1102.0" styleClass="bg-white">
                                              <content>
-                                                <VBox fx:id="joinTeamVbox" alignment="TOP_RIGHT" minHeight="485.0" prefWidth="1102.0" spacing="15.0" styleClass="bg-white" />
+                                                <VBox fx:id="joinTeamVbox" alignment="TOP_RIGHT" minHeight="459.0" prefHeight="459.0" prefWidth="1102.0" spacing="15.0" styleClass="bg-white" />
                                              </content>
                                           </ScrollPane>
                                        </children>
@@ -68,6 +69,9 @@
                                  </children>
                               </Pane>
                            </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
                         </HBox>
                      </children>
                   </VBox>
@@ -76,7 +80,7 @@
                   <AnchorPane fx:id="footer" prefHeight="57.0" prefWidth="1200.0" BorderPane.alignment="CENTER" />
                </bottom>
             </BorderPane>
-            <AnchorPane fx:id="navbar" prefHeight="200.0" prefWidth="200.0" />
+            <AnchorPane fx:id="navbar" prefHeight="0.0" prefWidth="1200.0" />
          </children>
       </AnchorPane>
    </content>

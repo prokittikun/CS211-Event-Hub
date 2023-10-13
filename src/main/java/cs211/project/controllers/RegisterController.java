@@ -51,9 +51,6 @@ public class RegisterController {
     @FXML
     private Button registerButton;
 
-    @FXML
-    private Button loginButton;
-
     private UserListFileDatasource userListFileDatasource = new UserListFileDatasource("data", "user.csv");
     private UserCollection userCollection;
 
@@ -64,6 +61,12 @@ public class RegisterController {
         usernameError.setText("");
         passwordError.setText("");
         confirmPasswordError.setText("");
+
+        firstNameField.setPromptText("ชื่อ");
+        lastNameField.setPromptText("นามสกุล");
+        usernameField.setPromptText("ชื่อผู้ใช้");
+        passwordField.setPromptText("รหัสผ่าน");
+        confirmPasswordField.setPromptText("ยืนยันรหัสผ่าน");
 
         firstNameField.textProperty().addListener((observable, oldValue, newValue) -> validateFields());
         lastNameField.textProperty().addListener((observable, oldValue, newValue) -> validateFields());
@@ -89,7 +92,12 @@ public class RegisterController {
         validatePassword();
         validateConfirmPassword();
 
-        if (firstNameError.getText().isEmpty() &&
+        String username = usernameField.getText();
+        UserCollection users = userListFileDatasource.query("username = " + username);
+
+        if (!users.getAllUsers().isEmpty()) {
+            usernameError.setText("ชื่อผู้ใช้นี้มีอยู่แล้ว");
+        } else if (firstNameError.getText().isEmpty() &&
                 lastNameError.getText().isEmpty() &&
                 usernameError.getText().isEmpty() &&
                 passwordError.getText().isEmpty() &&
@@ -97,12 +105,13 @@ public class RegisterController {
 
             HashMap<String, String> userData = new HashMap<>();
             userData.put("id", UUID.randomUUID().toString());
+            userData.put("avatar", "default.jpg");
             userData.put("firstName", firstNameField.getText());
             userData.put("lastName", lastNameField.getText());
             userData.put("username", usernameField.getText());
             userData.put("password", passwordField.getText());
             userData.put("role", "user");
-            userData.put("createdAt", DateTimeService.getCurrentDate());
+            userData.put("createdAt", DateTimeService.getCurrentDateTime());
 
             User newUser = new User(userData);
             UserCollection newUserCollection = new UserCollection();

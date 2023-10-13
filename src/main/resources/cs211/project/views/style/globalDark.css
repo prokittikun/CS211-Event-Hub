@@ -1,0 +1,264 @@
+.kanit {
+    -fx-font-family: 'Kanit', sans-serif;
+}
+
+.prompt{
+    -fx-font-family: 'Prompt', sans-serif;
+}
+
+.sarabun{
+    -fx-font-family: 'Sarabun', sans-serif;
+}
+
+.font-bold {
+    -fx-font-weight: 700 !important;
+}
+
+.font-light{
+    -fx-font-weight: 300 !important;
+}
+
+.btn-danger{
+    -fx-background-radius: 12px;
+    -fx-background-color: #897BD5;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+
+.btn-success{
+    -fx-background-radius: 12px;
+    -fx-background-color: #1E9E1E;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+
+.btn-outline-danger {
+    -fx-background-radius: 12px;
+    -fx-border-radius: 12px;
+    -fx-border-width: 1px;
+    -fx-border-color: #897BD5;
+    -fx-background-color: white;
+    -fx-text-fill: #897BD5;
+    -fx-cursor: hand;
+}
+.btn-transparent{
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+.btn-outline-danger:hover {
+    -fx-background-radius: 12px;
+    -fx-background-color: #897BD5;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+
+/* Font size and line height styles for different text sizes */
+
+.text-white{
+    -fx-fill: white;
+    -fx-text-fill: white;
+}
+.text-black {
+    -fx-fill: white;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: white;
+/*    fill image to white color*/
+}
+
+.text-red{
+    -fx-text-fill: #C73618;
+}
+.bg-gray {
+    -fx-background-radius: 8px; /* Border radius */
+    -fx-fill: #E0E0E0; /* Background color */
+}
+
+.bg-dark{
+    -fx-background-color: #282E44;
+}
+.bg-gradient {
+    /*-fx-background-color: transparent, linear-gradient(to bottom, rgba(241, 0, 0, 0.7) 0%, rgba(255, 138, 0, 0.0) 65%);*/
+    -fx-background-color: #282E44;
+}
+
+
+.bg-gradient-yellow {
+    -fx-fill: linear-gradient(to right, rgba(157, 176, 208, 0.70) 0%, rgba(233, 196, 89, 0.70) 100%);
+    /*-fx-background-insets: 0 0 468px 0;*/
+}
+
+
+.bg-white{
+    -fx-background-color: #0F172A;
+}
+
+.bg-red{
+    -fx-background-color: #8B0064;
+}
+
+.bg-red-for-darkMode{
+    -fx-background-color: #C73618;
+}
+
+.bg-blue{
+    -fx-background-color: #486285;
+}
+
+.bg-transparent{
+    -fx-background-color: transparent;
+}
+
+.bg-green{
+    -fx-background-color: #1E9E1E;
+}
+
+.image-border{
+    -fx-stroke: linear-gradient(#DA2864, #9AE1E2); /* Set both the image and the gradient */
+}
+
+.card{
+    -fx-background-color: #0F172A;
+    -fx-background-radius: 20px;
+}
+
+.card-white{
+    -fx-background-color: white;
+    -fx-background-radius: 20px;
+}
+
+.card-light-gray{
+    -fx-background-radius: 20px;
+    -fx-background-color: #B5B4ED;
+}
+.card-theme-toggle{
+    -fx-background-radius: 20px;
+    -fx-background-color: #B5B4ED;
+
+}
+.dashed-border-red {
+    -fx-border-color: white;
+    -fx-border-radius: 20px;
+    -fx-border-style: dashed;
+    -fx-border-width: 3px;
+    -fx-border-insets: -2px;
+}
+
+.shadow{
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.11), 2, 0, 2, 4);
+}
+
+.rounded-20px{
+    -fx-background-radius: 20px;
+}
+
+.cursor-hand{
+    -fx-cursor: hand;
+}
+
+.table-button {
+    -fx-background-color: -fx-primary-color;
+    -fx-cursor: hand;
+}
+.table-view {
+    -fx-border-color: transparent;
+    -fx-background-color: transparent; /* OR  -fx-background-insets: 0.0; */
+}
+.table-view .column-header-background,
+.table-view .column-header-background .filler,
+.table-view .corner {
+    -fx-background-color: transparent;
+}
+.table-view .column-header {
+    -fx-background-color: #F4F4F4;
+    /*-fx-border-color: -fx-grey-color;*/
+}
+.table-view .column-header .label{
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+.table-view .table-cell {
+    -fx-text-fill: white;
+}
+/* This is just magic */
+.table-row-cell:filled {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent -fx-lightest-grey-color -fx-lightest-grey-color -fx-lightest-grey-color, transparent;
+    -fx-border-insets: 0, 1;
+}
+.table-row-cell:empty {
+    -fx-background-color: transparent;
+}
+.table-row-cell:filled:hover {
+    -fx-background-color: -fx-light-grey-color;
+}
+.table-row-cell:filled:selected:hover {
+    -fx-background-color: -fx-light-grey-color;
+}
+.table-row-cell:filled:selected {
+    -fx-background-color: #eaeaea;
+    -fx-background-insets: 0.0;
+    -fx-background-radius: 0.0;
+}
+.table-row-cell:filled:selected .table-cell {
+    -fx-text-fill: black;
+}
+.table-view .cell:filled{
+    -fx-cell-size: 30;
+    -fx-alignment: center;
+}
+.check-box-table-cell > .check-box:selected .box .mark {
+    -fx-background-color: white;
+}
+.check-box-table-cell > .check-box:selected .box{
+    -fx-background-color: -fx-accent-color;
+}
+.table-view .placeholder .label {
+    -fx-text-fill: red;
+    -fx-padding:20px;
+}
+
+.text-area  {
+    -fx-background-color: #282E44;
+    text-area-background: blue ;
+}
+.text-area .content{
+    -fx-background-color: #B5B4ED;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.radio-button .radio {
+    -fx-border-width: 1px;
+    -fx-border-color: white;
+    -fx-background-color: #0F172A;
+    -fx-background-image: null;
+    -fx-border-radius: 15px;
+    -fx-padding: 4px;
+}
+.radio-button .radio:selected {
+    -fx-background-color: white;
+    -fx-background-image: null;
+}
+.radio-button -radio:armed {
+    -fx-background-color: white;
+    -fx-background-image: null;
+}
+.radio-button -radio:determinate {
+    -fx-background-color: white;
+    -fx-background-image: null;
+}
+.radio-button -radio:indeterminate {
+    -fx-background-color: white;
+    -fx-background-image: null;
+}
+.radio-button .dot {
+    -fx-background-radius: 18px;
+    -fx-padding: 8px;
+}
+

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="bg-gradient" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.ListTeamController">
+   <children>
+      <BorderPane prefHeight="800.0" prefWidth="1200.0">
+         <bottom>
+            <AnchorPane fx:id="footer" prefHeight="0.0" prefWidth="1200.0" BorderPane.alignment="CENTER" />
+         </bottom>
+         <center>
+            <VBox prefHeight="200.0" prefWidth="1200.0" spacing="20.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="155.0" prefWidth="1040.0">
+                     <children>
+                        <HBox alignment="CENTER" layoutY="-1.0" prefHeight="156.0" prefWidth="1041.0">
+                           <children>
+                              <ImageView fx:id="previewImageView" fitHeight="128.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true" />
+                              <VBox alignment="CENTER_LEFT" prefHeight="133.0" prefWidth="856.0">
+                                 <children>
+                                    <Label fx:id="nameLabel" text="nameLabel">
+                                       <styleClass>
+                                          <String fx:value="text-4xl" />
+                                          <String fx:value="font-bold" />
+                                          <String fx:value="text-black" />
+                                       </styleClass>
+                                    </Label>
+                                    <HBox fx:id="" prefHeight="32.0" prefWidth="856.0" spacing="10.0">
+                                       <children>
+                                          <ImageView fitHeight="29.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@assets/Icons/marker.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="locationLabel" opacity="0.6" text="locationLabel">
+                                             <styleClass>
+                                                <String fx:value="text-lg" />
+                                                <String fx:value="font-light" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="856.0" spacing="10.0" styleClass="text-lg">
+                                       <children>
+                                          <ImageView fitHeight="23.0" fitWidth="23.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@assets/Icons/calendar.png" />
+                                             </image>
+                                             <HBox.margin>
+                                                <Insets left="5.0" />
+                                             </HBox.margin>
+                                          </ImageView>
+                                          <Label fx:id="dateLabel" opacity="0.6" text="dateLabel">
+                                             <styleClass>
+                                                <String fx:value="font-light" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
+                                          <ImageView fitHeight="23.0" fitWidth="18.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@assets/Icons/user.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="participantLabel" opacity="0.6" text="participantLabel">
+                                             <styleClass>
+                                                <String fx:value="font-light" />
+                                                <String fx:value="text-black" />
+                                             </styleClass></Label>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </HBox>
+                     </children>
+                     <styleClass>
+                        <String fx:value="card" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="471.0" prefWidth="1040.0">
+                     <styleClass>
+                        <String fx:value="card" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                     <children>
+                        <VBox layoutX="23.0" layoutY="55.0" prefHeight="394.0" prefWidth="992.0">
+                           <children>
+                              <ScrollPane hbarPolicy="NEVER" prefHeight="379.0" prefWidth="992.0">
+                                 <content>
+                                    <VBox fx:id="teamComponent" alignment="TOP_CENTER" minHeight="375.0" prefHeight="375.0" prefWidth="986.0" spacing="10.0">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <padding>
+                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                       </padding></VBox>
+                                 </content>
+                                 <VBox.margin>
+                                    <Insets top="15.0" />
+                                 </VBox.margin>
+                              </ScrollPane>
+                           </children></VBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="1044.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#backToMyEvent" styleClass="btn-outline-danger" text="&lt; ย้อนกลับ" />
+                              <Pane prefHeight="35.0" prefWidth="376.0" />
+                              <Label text="รายชื่อทีม">
+                                 <styleClass>
+                                    <String fx:value="text-2xl" />
+                                    <String fx:value="text-black" />
+                                    <String fx:value="font-bold" />
+                                 </styleClass>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin></Label>
+                              <Pane prefHeight="46.0" prefWidth="334.0" />
+                              <Button mnemonicParsing="false" onAction="#goToCreateTeam" prefHeight="30.0" styleClass="btn-danger" text=" สร้างทีม">
+                                 <graphic>
+                                    <ImageView fitHeight="28.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@assets/Icons/plus.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </Pane>
+               </children>
+               <BorderPane.margin>
+                  <Insets top="65.0" />
+               </BorderPane.margin>
+               <padding>
+                  <Insets bottom="10.0" left="80.0" right="50.0" top="10.0" />
+               </padding>
+            </VBox>
+         </center>
+      </BorderPane>
+      <AnchorPane fx:id="navbar" layoutX="-1.0" layoutY="-3.0" prefHeight="0.0" prefWidth="0.0" />
+   </children>
+</AnchorPane>

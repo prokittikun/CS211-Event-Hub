@@ -8,7 +8,9 @@ import cs211.project.services.TeamListFileDatasource;
 import cs211.project.services.TeamMemberListFileDatasource;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -21,6 +23,7 @@ import javafx.scene.shape.Circle;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 public class TeamMemberCard {
@@ -84,17 +87,49 @@ public class TeamMemberCard {
 
     @FXML
     void onHandleChangeRole(ActionEvent event) {
-        teamDatasource.updateColumnById(teamId.toString(), "leaderId", userId.toString());
-        this.teamManagementController.reloadData();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("คุณต้องการตั้งผู้ใช้นี้เป็นหัวหน้าทีมใช่หรือไม่ ?");
+        alert.setHeaderText("หากมีผู้ใช้อื่นที่มีสิทธิ์เป็นหัวหน้าทีมอยู่ ระบบจะทำการสลับตำแหน่งให้อัตโนมัติ เนื่องจากสามารถมีหัวหน้าได้เพียงคนเดียว");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        ButtonType button = result.orElse(ButtonType.CANCEL);
+
+        if (button == ButtonType.OK) {
+            teamDatasource.updateColumnById(teamId.toString(), "leaderId", userId.toString());
+            this.teamManagementController.reloadData();
+        } else {
+            alert.close();
+        }
+
     }
 
     @FXML
     void onHandleDeleteTeamMember(ActionEvent event) {
-        Map<String, String> conditions = new HashMap<>();
-        conditions.put("userId", userId.toString());
-        conditions.put("teamId", teamId.toString());
-        teamMemberDatasource.deleteByConditions(conditions);
-        this.teamManagementController.reloadData();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("คุณต้องการลบผู้ใช้นี้ออกจากทีมใช่หรือไม่ ?");
+        alert.setHeaderText("หากลบแล้วผู้ใช้นี้จะไม่สามารถดำเนินการใดๆภายใต้ทีมนี้ได้");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        ButtonType button = result.orElse(ButtonType.CANCEL);
+
+        if (button == ButtonType.OK) {
+            //check is leader cannot delete
+            if (isLeader) {
+                Alert alert2 = new Alert(Alert.AlertType.ERROR);
+                alert2.setTitle("ไม่สามารถลบผู้ใช้นี้ออกจากทีมได้");
+                alert2.setHeaderText("ผู้ใช้นี้เป็นหัวหน้าทีม ไม่สามารถลบออกจากทีมได้ หากต้องการลบกรุณาเปลี่ยนหัวหน้าทีมก่อน");
+                alert2.showAndWait();
+                return;
+            }
+            Map<String, String> conditions = new HashMap<>();
+            conditions.put("userId", userId.toString());
+            conditions.put("teamId", teamId.toString());
+            teamMemberDatasource.deleteByConditions(conditions);
+            this.teamManagementController.reloadData();
+        } else {
+            alert.close();
+        }
+
     }
     public String getImage() {
         return image.getFill().toString();

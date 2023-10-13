@@ -12,11 +12,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="78.0" prefWidth="359.0" stylesheets="@../style/global.css" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.components.TeamMemberCard">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="77.0" prefWidth="359.0" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs211.project.controllers.components.TeamMemberCard">
    <children>
-      <Pane layoutX="-1.0" layoutY="1.0" maxHeight="-Infinity" prefHeight="78.0" prefWidth="386.0" stylesheets="@../style/global.css">
+      <Pane layoutX="-1.0" layoutY="1.0" maxHeight="-Infinity" prefHeight="78.0" prefWidth="386.0">
          <children>
-            <HBox alignment="CENTER_LEFT" layoutX="-5.0" layoutY="-5.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="81.0" prefWidth="365.0" spacing="10.0" styleClass="bg-white" stylesheets="@../style/global.css">
+            <HBox alignment="CENTER_LEFT" layoutX="-5.0" layoutY="-5.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="81.0" prefWidth="365.0" spacing="10.0" styleClass="bg-white">
                <children>
                   <Circle fx:id="image" fill="WHITE" radius="31.0" stroke="BLACK" strokeType="INSIDE" styleClass="image-border" />
                   <VBox alignment="CENTER_LEFT" prefHeight="87.0" prefWidth="221.0">
@@ -25,9 +25,14 @@
                            <styleClass>
                               <String fx:value="text-xl" />
                               <String fx:value="font-bold" />
+                              <String fx:value="text-black" />
                            </styleClass>
                         </Label>
-                        <Label fx:id="role" styleClass="text-xl" text="หัวหน้า" />
+                        <Label fx:id="role" text="หัวหน้า">
+                           <styleClass>
+                              <String fx:value="text-xl" />
+                              <String fx:value="text-black" />
+                           </styleClass></Label>
                      </children>
                   </VBox>
                   <ImageView fx:id="dropdown" fitHeight="35.0" fitWidth="35.0" onMouseClicked="#onHandleMenuDropdownClick" pickOnBounds="true" preserveRatio="true" styleClass="cursor-hand">
@@ -42,18 +47,19 @@
             </HBox>
          </children>
       </Pane>
-      <Pane fx:id="menuDropdown" layoutX="164.0" layoutY="2.0" prefWidth="155.0">
+      <Pane fx:id="menuDropdown" layoutX="153.0" layoutY="1.0" prefWidth="166.0">
          <styleClass>
             <String fx:value="shadow" />
             <String fx:value="card-light-gray" />
          </styleClass>
          <children>
-            <VBox fx:id="dropdownVBox" alignment="CENTER" prefWidth="155.0">
+            <VBox fx:id="dropdownVBox" alignment="CENTER" prefWidth="166.0">
                <children>
                   <Button fx:id="changeRoleButton" mnemonicParsing="false" onAction="#onHandleChangeRole" text="เพิ่มความเป็นหัวหน้าทีม">
                      <styleClass>
                         <String fx:value="btn-transparent" />
                         <String fx:value="text-sm" />
+                        <String fx:value="text-black" />
                      </styleClass>
                   </Button>
                   <Pane fx:id="border" prefHeight="1.0" prefWidth="146.0" style="-fx-background-color: #868686;" styleClass="bg-white" />

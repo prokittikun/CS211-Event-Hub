@@ -1,0 +1,312 @@
+@startuml
+class cs211.project.services.DataFileManager {
+- String directoryName
+- String fileName
+- ArrayList<HashMap<String,String>> data
+- ArrayList<String> headers
+- void findHeader()
++ void writeData(ArrayList<HashMap<String,String>>)
+- void readData()
++ ArrayList<HashMap<String,String>> findById(String)
++ ArrayList<HashMap<String,String>> findAllByColumnsAndValue(Map<String,String>)
++ ArrayList<HashMap<String,String>> getData()
++ void updateColumnById(String,String,String)
++ void updateColumnsById(String,Map<String,String>)
++ void deleteById(String)
++ void deleteByColumnAndValue(String,String)
+- boolean matchesConditions(HashMap<String,String>,Map<String,String>)
++ ArrayList<HashMap<String,String>> query(String)
++ ArrayList<HashMap<String,String>> queryWithOffsetAndLimit(String,int,int)
+- Predicate<HashMap<String,String>> parseQuery(String)
++ void deleteByConditions(Map<String,String>)
+- void saveData()
+}
+class cs211.project.services.comparator.ClosestEventComparator {
++ int compare(Event,Event)
+}
+class cs211.project.services.alert.ToastAlert {
++ {static} void show(String,AlertType)
+}
+enum cs211.project.services.alert.AlertType {
++  SUCCESS
++  ERROR
+}
+class cs211.project.services.EventDateDifference {
++ Event event
++ long dateDifference
+}
+class cs211.project.services.FXRouter {
+- {static} String WINDOW_TITLE
+- {static} Double WINDOW_WIDTH
+- {static} Double WINDOW_HEIGHT
+- {static} Double FADE_ANIMATION_DURATION
+- {static} FXRouter router
+- {static} Object mainRef
+- {static} Stage window
+- {static} String windowTitle
+- {static} Double windowWidth
+- {static} Double windowHeight
+- {static} String animationType
+- {static} Double animationDuration
+- {static} AbstractMap<String,RouteScene> routes
+- {static} RouteScene currentRoute
+- {static} String globalStylesheet
+- {static} String currentFontSizeStylesheet
++ {static} boolean isDarkTheme
++ {static} String currentFontSize
++ {static} String currentFontStyleClass
++ {static} void bind(Object,Stage)
++ {static} void bind(Object,Stage,String)
++ {static} void bind(Object,Stage,double,double)
++ {static} void bind(Object,Stage,String,double,double)
+- {static} void checkInstances(Object,Stage)
++ {static} void when(String,String)
++ {static} void when(String,String,String)
++ {static} void when(String,String,double,double)
++ {static} void when(String,String,String,double,double)
++ {static} void goTo(String)
++ {static} void goTo(String,HashMap<String,Object>)
+- {static} void loadNewRoute(RouteScene)
++ {static} void reloadCurrentRoute()
++ {static} void startFrom(String)
++ {static} void startFrom(String,HashMap<String,Object>)
++ {static} void setAnimationType(String)
++ {static} void setAnimationType(String,double)
++ {static} void setGlobalStylesheet(String)
++ {static} void setCurrentFontSizeStylesheet(String,String)
++ {static} void setCurrentFontStyleClass(String)
+- {static} void routeAnimation(Parent)
++ {static} HashMap<String,Object> getData()
+}
+class cs211.project.services.FXRouter$RouteScene {
+- String scenePath
+- String windowTitle
+- double sceneWidth
+- double sceneHeight
+- HashMap<String,Object> data
+- {static} String getWindowTitle()
+- {static} double getWindowWidth()
+- {static} double getWindowHeight()
+}
+class cs211.project.services.TeamListFileDatasource {
+- String directoryName
+- String fileName
+- DataFileManager dataFileManager
+- void checkFileIsExisted()
++ TeamCollection readData()
++ void writeData(TeamCollection)
++ void deleteById(String)
++ void deleteAllByColumnAndValue(String,String)
++ void updateColumnById(String,String,String)
++ void deleteByConditions(Map<String,String>)
++ void updateColumnsById(String,Map<String,String>)
++ TeamCollection findById(String)
++ TeamCollection findAllByColumnsAndValue(Map<String,String>)
++ TeamCollection query(String)
++ TeamCollection queryWithOffsetAndLimit(String,int,int)
+}
+class cs211.project.services.DateTimeService {
++ {static} String getCurrentDate()
++ {static} String getCurrentTime()
++ {static} String convertDateFormat(String)
++ {static} String toString(String)
++ {static} String getCurrentDateTime()
+}
+interface cs211.project.services.Datasource {
+~ T readData()
+~ void writeData(T)
+~ void deleteById(String)
+~ void deleteAllByColumnAndValue(String,String)
+~ void deleteByConditions(Map<String,String>)
+~ void updateColumnById(String,String,String)
+~ void updateColumnsById(String,Map<String,String>)
+~ T findById(String)
+~ T findAllByColumnsAndValue(Map<String,String>)
+~ T query(String)
+~ T queryWithOffsetAndLimit(String,int,int)
+}
+class cs211.project.services.comparator.MostEventParticipantComparator {
++ int compare(Event,Event)
+}
+class cs211.project.services.QuestionListFileDatasource {
+- String directoryName
+- String fileName
+- DataFileManager dataFileManager
+- void checkFileIsExisted()
++ QuestionCollection readData()
++ void writeData(QuestionCollection)
++ void deleteById(String)
++ void deleteAllByColumnAndValue(String,String)
++ void deleteByConditions(Map<String,String>)
++ void updateColumnById(String,String,String)
++ void updateColumnsById(String,Map<String,String>)
++ QuestionCollection findById(String)
++ QuestionCollection findAllByColumnsAndValue(Map<String,String>)
++ QuestionCollection query(String)
++ QuestionCollection queryWithOffsetAndLimit(String,int,int)
+}
+class cs211.project.services.UserListFileDatasource {
+- String directoryName
+- String fileName
+- DataFileManager dataFileManager
+- void checkFileIsExisted()
++ UserCollection readData()
++ void writeData(UserCollection)
++ void deleteById(String)
++ void deleteAllByColumnAndValue(String,String)
++ void deleteByConditions(Map<String,String>)
++ void updateColumnById(String,String,String)
++ void updateColumnsById(String,Map<String,String>)
++ UserCollection findById(String)
++ UserCollection findAllByColumnsAndValue(Map<String,String>)
++ UserCollection query(String)
++ UserCollection queryWithOffsetAndLimit(String,int,int)
+}
+class cs211.project.services.comparator.LeastEventParticipantComparator {
++ int compare(Event,Event)
+}
+class cs211.project.services.JoinEventListFileDatasource {
+- String directoryName
+- String fileName
+- DataFileManager dataFileManager
+- void checkFileIsExisted()
++ JoinEventCollection readData()
++ void writeData(JoinEventCollection)
++ void deleteById(String)
++ void deleteAllByColumnAndValue(String,String)
++ void updateColumnById(String,String,String)
++ void updateColumnsById(String,Map<String,String>)
++ void deleteByConditions(Map<String,String>)
++ JoinEventCollection findById(String)
++ JoinEventCollection findAllByColumnsAndValue(Map<String,String>)
++ JoinEventCollection query(String)
++ JoinEventCollection queryWithOffsetAndLimit(String,int,int)
+}
+class cs211.project.services.TeamActivityListFileDatasource {
+- String directoryName
+- String fileName
+- DataFileManager dataFileManager
+- void checkFileIsExisted()
++ TeamActivityCollection readData()
++ void writeData(TeamActivityCollection)
++ void deleteById(String)
++ void deleteAllByColumnAndValue(String,String)
++ void updateColumnById(String,String,String)
++ void deleteByConditions(Map<String,String>)
++ void updateColumnsById(String,Map<String,String>)
++ TeamActivityCollection findById(String)
++ TeamActivityCollection findAllByColumnsAndValue(Map<String,String>)
++ TeamActivityCollection query(String)
++ TeamActivityCollection queryWithOffsetAndLimit(String,int,int)
+}
+class cs211.project.services.ChatListFileDatasource {
+- String directoryName
+- String fileName
+- DataFileManager dataFileManager
+- void checkFileIsExisted()
++ ChatCollection readData()
++ void writeData(ChatCollection)
++ void deleteById(String)
++ void deleteAllByColumnAndValue(String,String)
++ void updateColumnById(String,String,String)
++ void deleteByConditions(Map<String,String>)
++ void updateColumnsById(String,Map<String,String>)
++ ChatCollection findById(String)
++ ChatCollection findAllByColumnsAndValue(Map<String,String>)
++ ChatCollection query(String)
++ ChatCollection queryWithOffsetAndLimit(String,int,int)
+}
+class cs211.project.services.comparator.OldestEventComparator {
++ int compare(Event,Event)
+}
+class cs211.project.services.TeamMemberListFileDatasource {
+- String directoryName
+- String fileName
+- DataFileManager dataFileManager
+- void checkFileIsExisted()
++ TeamMemberCollection readData()
++ void writeData(TeamMemberCollection)
++ void deleteById(String)
++ void deleteAllByColumnAndValue(String,String)
++ void updateColumnById(String,String,String)
++ void deleteByConditions(Map<String,String>)
++ void updateColumnsById(String,Map<String,String>)
++ TeamMemberCollection findById(String)
++ TeamMemberCollection findAllByColumnsAndValue(Map<String,String>)
++ TeamMemberCollection query(String)
++ TeamMemberCollection queryWithOffsetAndLimit(String,int,int)
+}
+class cs211.project.services.comparator.LatestEventComparator {
++ int compare(Event,Event)
+}
+class cs211.project.services.EventListFileDatasource {
+- String directoryName
+- String fileName
+- DataFileManager dataFileManager
+- Datasource<JoinEventCollection> joinEventDatasource
+- void checkFileIsExisted()
++ EventCollection readData()
++ void writeData(EventCollection)
++ void deleteById(String)
++ void deleteAllByColumnAndValue(String,String)
++ void updateColumnById(String,String,String)
++ void updateColumnsById(String,Map<String,String>)
++ void deleteByConditions(Map<String,String>)
++ EventCollection findById(String)
++ EventCollection findAllByColumnsAndValue(Map<String,String>)
++ EventCollection query(String)
++ EventCollection queryWithOffsetAndLimit(String,int,int)
+}
+class cs211.project.services.EventActivityListFileDatasource {
+- String directoryName
+- String fileName
+- DataFileManager dataFileManager
+- void checkFileIsExisted()
++ EventActivityCollection readData()
++ void writeData(EventActivityCollection)
++ void deleteById(String)
++ void deleteAllByColumnAndValue(String,String)
++ void updateColumnById(String,String,String)
++ void deleteByConditions(Map<String,String>)
++ void updateColumnsById(String,Map<String,String>)
++ EventActivityCollection findById(String)
++ EventActivityCollection findAllByColumnsAndValue(Map<String,String>)
++ EventActivityCollection query(String)
++ EventActivityCollection queryWithOffsetAndLimit(String,int,int)
+}
+class cs211.project.services.AnswerListFileDatasource {
+- String directoryName
+- String fileName
+- DataFileManager dataFileManager
+- void checkFileIsExisted()
++ AnswerCollection readData()
++ void writeData(AnswerCollection)
++ void deleteById(String)
++ void deleteAllByColumnAndValue(String,String)
++ void deleteByConditions(Map<String,String>)
++ void updateColumnById(String,String,String)
++ void updateColumnsById(String,Map<String,String>)
++ AnswerCollection findById(String)
++ AnswerCollection findAllByColumnsAndValue(Map<String,String>)
++ AnswerCollection query(String)
++ AnswerCollection queryWithOffsetAndLimit(String,int,int)
+}
+
+
+java.util.Comparator <|.. cs211.project.services.comparator.ClosestEventComparator
+cs211.project.services.FXRouter +.. cs211.project.services.FXRouter$RouteScene
+cs211.project.services.Datasource <|.. cs211.project.services.TeamListFileDatasource
+java.util.Comparator <|.. cs211.project.services.comparator.MostEventParticipantComparator
+cs211.project.services.Datasource <|.. cs211.project.services.QuestionListFileDatasource
+cs211.project.services.Datasource <|.. cs211.project.services.UserListFileDatasource
+java.util.Comparator <|.. cs211.project.services.comparator.LeastEventParticipantComparator
+cs211.project.services.Datasource <|.. cs211.project.services.JoinEventListFileDatasource
+cs211.project.services.Datasource <|.. cs211.project.services.TeamActivityListFileDatasource
+cs211.project.services.Datasource <|.. cs211.project.services.ChatListFileDatasource
+java.util.Comparator <|.. cs211.project.services.comparator.OldestEventComparator
+cs211.project.services.Datasource <|.. cs211.project.services.TeamMemberListFileDatasource
+java.util.Comparator <|.. cs211.project.services.comparator.LatestEventComparator
+cs211.project.services.Datasource <|.. cs211.project.services.EventListFileDatasource
+cs211.project.services.Datasource <|.. cs211.project.services.EventActivityListFileDatasource
+cs211.project.services.Datasource <|.. cs211.project.services.AnswerListFileDatasource
+@enduml

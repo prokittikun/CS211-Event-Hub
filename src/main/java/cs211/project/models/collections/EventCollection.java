@@ -1,10 +1,15 @@
 package cs211.project.models.collections;
+
 import cs211.project.models.Event;
 import cs211.project.models.JoinEvent;
 import cs211.project.services.EventDateDifference;
+import cs211.project.services.comparator.ClosestEventComparator;
+import cs211.project.services.comparator.LatestEventComparator;
+import cs211.project.services.comparator.MostEventParticipantComparator;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class EventCollection {
@@ -26,11 +31,11 @@ public class EventCollection {
     }
 
     //Method
-    public void addEvent (Event event){
+    public void addEvent(Event event) {
         this.events.add(event);
     }
 
-    public ArrayList<Event> filterByUserId(String userId){
+    public ArrayList<Event> filterByUserId(String userId) {
         ArrayList<Event> filteredEvents = new ArrayList<>();
         for (Event event : events) {
             if (event.getUserId().equals(userId)) {
@@ -49,110 +54,84 @@ public class EventCollection {
         return null;
     }
 
-    public ArrayList<Event> getRandomNEvent(String currentEventId, int n) {
-        ArrayList<Event> filteredEvents = new ArrayList<>();
+    public ArrayList<Event> getRandomEvent(int n) {
         Set<Event> selectedEvents = new HashSet<>();
-        ArrayList<Event> eventsToExclude = new ArrayList<>();
-        String eventIdToExclude = currentEventId;
 
-        Event eventToExclude = findEventById(eventIdToExclude);
-        if (eventToExclude != null) {
-            eventsToExclude.add(eventToExclude);
-        }
 
         Random random = new Random();
 
         while (selectedEvents.size() < n && selectedEvents.size() < events.size()) {
             Event randomEvent = events.get(random.nextInt(events.size()));
-            if (!eventsToExclude.contains(randomEvent)) {
                 selectedEvents.add(randomEvent);
-            }
         }
-
-        filteredEvents.addAll(selectedEvents);
-
-        return filteredEvents;
+        ArrayList<Event> events = new ArrayList<>(selectedEvents);
+        return events;
     }
 
-    public ArrayList<Event> getPopularEvent(JoinEventCollection joinEventCollection) {
-        HashMap<String, Double> filteredEvents = new HashMap<>();
-        for (Event event : events) {
-            int participants = joinEventCollection.filterByEventId(event.getId()).size();
-            double participantPercentage = ((double) participants / event.getMaxParticipant()) * 100;
-            filteredEvents.put(event.getId(), participantPercentage);
-        }
+    public ArrayList<Event> getPopularEvent() {
 
-        List<Map.Entry<String, Double>> entryList = new ArrayList<>(filteredEvents.entrySet());
-
-        Collections.sort(entryList, new Comparator<Map.Entry<String, Double>>() {
-            @Override
-            public int compare(Map.Entry<String, Double> entry1, Map.Entry<String, Double> entry2) {
-                return Double.compare(entry2.getValue(), entry1.getValue());
-            }
-        });
-
-        ArrayList<Event> sortedEvents = new ArrayList<>();
+        this.sortByComparator(new MostEventParticipantComparator());
+        ArrayList<Event> popular = new ArrayList<>();
 
         int count = 0;
-        for (Map.Entry<String, Double> entry : entryList) {
-            if (count >= 2) {
+        for (Event event : events) {
+            if (count == 2) {
                 break;
             }
+            popular.add(event);
+            count++;
 
-            String eventId = entry.getKey();
-            Event event = findEventById(eventId);
-            if (event != null) {
-                sortedEvents.add(event);
-                count++;
-            }
         }
 
-        return sortedEvents;
+        return popular;
     }
 
-        public ArrayList<Event> getClosestEvents() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date currentDate = new Date();
-
-        List<EventDateDifference> eventDateDifferences = new ArrayList<>();
-
-        for (Event event : events) {
-            try {
-                Date startDate = dateFormat.parse(event.getStartDate());
-                long dateDifference = Math.abs(startDate.getTime() - currentDate.getTime());
-                eventDateDifferences.add(new EventDateDifference(event, dateDifference));
-            } catch (ParseException e) {
-                throw new RuntimeException(e);
-            }
-        }
-
-        Collections.sort(eventDateDifferences, (e1, e2) -> Long.compare(e1.dateDifference, e2.dateDifference));
-
+    public ArrayList<Event> getClosestEvents() {
+        this.sortByComparator(new ClosestEventComparator());
         ArrayList<Event> closestEvents = new ArrayList<>();
 
         int count = 0;
-        for (EventDateDifference eventDateDifference : eventDateDifferences) {
-            closestEvents.add(eventDateDifference.event);
-            count++;
-            if (count >= 2) {
+        for (Event event : events) {
+            if (count == 2) {
                 break;
             }
+            closestEvents.add(event);
+            count++;
+
         }
 
         return closestEvents;
     }
 
     public ArrayList<Event> getLatestEvents() {
+        this.sortByComparator(new LatestEventComparator());
         ArrayList<Event> filteredEvents = new ArrayList<>();
-        for (int i = events.size() - 5; i < events.size(); i++) {
-            Event event = events.get(i);
-            if (event == null) {
-                return null;
+        int count = 0;
+        for (Event event : events) {
+            if (count == 5 || event == null) {
+                break;
             }
             filteredEvents.add(event);
+            count++;
+
         }
         return filteredEvents;
     }
 
+    public ArrayList<Event> sortByBeforeEndDate() {
+        ArrayList<Event> filteredEvents = new ArrayList<>();
+        LocalDateTime now = LocalDateTime.now();
+        for (Event event : events) {
+            LocalDateTime eventEndDate = LocalDateTime.parse(event.getEndDate()+"T"+event.getEndTime());
+            if (eventEndDate.isAfter(now)) {
+                filteredEvents.add(event);
+            }
+        }
+        return filteredEvents;
+    }
+    public ArrayList<Event> sortByComparator(Comparator<Event> comparator) {
+        Collections.sort(events, comparator);
+        return events;
+    }
 
 }
