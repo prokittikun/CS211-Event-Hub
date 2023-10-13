@@ -90,7 +90,6 @@ public class EventParticipantController {
 
     private void showTable() {
         JoinEventCollection joinEvents = joinEventDatasource.query("eventId = " + data.get("eventId"));
-        System.out.println(joinEvents.toString());
 
         nameTable.setCellValueFactory(new PropertyValueFactory<>("userId"));
         dateRegTable.setCellValueFactory(new PropertyValueFactory<>("joinTime"));

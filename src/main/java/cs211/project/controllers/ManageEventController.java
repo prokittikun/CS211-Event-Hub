@@ -418,7 +418,6 @@ public class ManageEventController {
                                         filename
                         );
                 // COPY WITH FLAG REPLACE FILE IF FILE IS EXIST
-                System.out.println(imageFile.toPath());
                 Files.copy(
                         imageFile.toPath(),
                         target,

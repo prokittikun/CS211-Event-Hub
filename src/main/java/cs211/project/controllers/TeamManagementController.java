@@ -155,7 +155,6 @@ public class TeamManagementController {
             return cell;
         });
         orderColumn.setSortable(false);
-//        System.out.println(activityCollection);
         showTable();
     }
 

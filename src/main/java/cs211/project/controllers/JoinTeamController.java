@@ -56,7 +56,6 @@ public class JoinTeamController {
     @FXML
     private void initialize() {
         data = FXRouter.getData();
-        System.out.println("data = " + data);
 
         eventId = UUID.fromString((String) data.get("eventId"));
         eventDatasource = new EventListFileDatasource("data/event", "event.csv");
@@ -95,7 +94,6 @@ public class JoinTeamController {
 
     void initJoinTeam() {
         teamCollection = teamDatasource.query("eventId = " + eventId.toString());
-        System.out.println(teamCollection.getTeams().size());
         executorService.submit(() -> {
             LocalDateTime currentDateTime = LocalDateTime.parse(DateTimeService.getCurrentDate()+"T"+DateTimeService.getCurrentTime());
             for (Team team : teamCollection.getTeams()) {
@@ -117,14 +115,11 @@ public class JoinTeamController {
                     LocalDateTime teamEndDateTime = LocalDateTime.parse(team.getEndDate() + "T" + team.getEndTime());
                     if (currentDateTime.isAfter(teamStartDateTime) && currentDateTime.isBefore(teamEndDateTime)) {
                         joinTeamCard.setJoinTeamButton(false,"เข้าร่วมทีม");
-                        System.out.println("In range");
                     }else{
                         joinTeamCard.setJoinTeamButton(true, "ไม่อยู่ระหว่างการรับสมัคร");
-                        System.out.println("not in range");
                     }
                     joinTeamCard.checkTeamIsFull();
                     TeamMember isMe = teamMemberCollection.findTeamMemberById((String) data.get("userId"));
-                    System.out.println("userId = " + (String) data.get("userId"));
                     if (isMe != null) {
                         joinTeamCard.isJoinedTeam();
                     }

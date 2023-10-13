@@ -97,7 +97,6 @@ public class IndexController {
         initPopularEvent();
         initClosestEvent();
         executorService.submit(() -> {
-            System.out.println(eventCollection.getEvents().size());
             for (Event event : eventCollection.getLatestEvents()) {
                 try {
                     FXMLLoader eventCardLoader = new FXMLLoader();

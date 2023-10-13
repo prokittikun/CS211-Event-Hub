@@ -101,9 +101,7 @@ public class MyTeamController {
             for (TeamMember teamMember : teamMemberCollection.getTeamMembers()) {
                 try {
                     Team team = teamDatasource.query("id = " + teamMember.getTeamId()).getTeams().get(0);
-                    System.out.println(team.getName());
                     Event event = eventDatasource.query("id = " + team.getEventId()).getEvents().get(0);
-                    System.out.println(event.getName());
 
                     FXMLLoader myTeamCardLoader = new FXMLLoader();
                     myTeamCardLoader.setLocation(getClass().getResource("/cs211/project/views/components/my-team-card-component.fxml"));
