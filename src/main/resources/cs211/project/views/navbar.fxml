@@ -203,7 +203,7 @@
                               <Image url="@assets/Icons/user-pen.png" />
                            </image>
                         </ImageView>
-                        <Button mnemonicParsing="false" onMouseClicked="#onHandleGoToMyProfile" prefHeight="40.0" prefWidth="113.0" text="แก้ไขโปรไฟล์">
+                        <Button mnemonicParsing="false" onMouseClicked="#onHandleGoToMyProfile" prefHeight="40.0" prefWidth="113.0" text="แก้ไขโพรไฟล์">
                            <styleClass>
                               <String fx:value="btn-transparent" />
                               <String fx:value="text-base" />
