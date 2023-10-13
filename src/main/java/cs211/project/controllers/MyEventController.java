@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -90,7 +91,7 @@ public class MyEventController {
     }
 
     @FXML
-    public void goToCreateEvent(){
+    public void goToCreateEvent() {
         try {
             FXRouter.goTo("createEvent", data);
         } catch (IOException e) {

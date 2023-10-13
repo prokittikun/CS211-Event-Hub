@@ -173,34 +173,34 @@ public class CreateTeamController {
         //Validate
         boolean isValid = true;
         if(textFieldName.getText().isEmpty()){
-            errorLabelName.setText("Name is required");
+            errorLabelName.setText("โปรดระบุชื่อทีม");
             isValid = false;
         }
         if(textFieldMaxParticipant.getText().isEmpty()){
-            errorLabelMaxParticipant.setText("Max Participant is required");
+            errorLabelMaxParticipant.setText("โปรดระบุจำนวนสมาชิก");
             isValid = false;
         }
         //Check Max Participant is number
         try {
             Integer.parseInt(textFieldMaxParticipant.getText());
         } catch (NumberFormatException e) {
-            errorLabelMaxParticipant.setText("Max Participant must be number");
+            errorLabelMaxParticipant.setText("จำนวนสมาชิกต้องเป็นตัวเลขเท่านั้น");
             isValid = false;
         }
         if(textFieldStartTime.getText().isEmpty()){
-            errorLabelStartTime.setText("Start Time is required");
+            errorLabelStartTime.setText("เวลาเริ่มต้นจำเป็นต้องระบุ");
             isValid = false;
         }
         if(textFieldEndTime.getText().isEmpty()){
-            errorLabelEndTime.setText("End Time is required");
+            errorLabelEndTime.setText("เวลาสิ้นสุดจำเป็นต้องระบุ");
             isValid = false;
         }
         if(datePickerStartDate.getValue() == null){
-            errorLabelStartDate.setText("Start Date is required");
+            errorLabelStartDate.setText("วันที่เริ่มต้นจำเป็นต้องระบุ");
             isValid = false;
         }
         if(datePickerEndDate.getValue() == null){
-            errorLabelEndDate.setText("End Date is required");
+            errorLabelEndDate.setText("วันที่สิ้นสุดจำเป็นต้องระบุ");
             isValid = false;
         }
 
@@ -221,6 +221,12 @@ public class CreateTeamController {
             String startTime = textFieldStartTime.getText();
             String endTime = textFieldEndTime.getText();
 
+            if(startTime.contains(".")){
+                startTime = startTime.replace(".", ":");
+            }
+            if(endTime.contains(".")){
+                endTime = endTime.replace(".", ":");
+            }
             if(data.get("teamId") != null){
                 //Update
                 HashMap<String, String> newData = new HashMap<>();

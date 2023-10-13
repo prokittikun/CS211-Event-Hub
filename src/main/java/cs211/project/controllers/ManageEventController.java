@@ -275,94 +275,94 @@ public class ManageEventController {
         //Validate
         boolean isValid = true;
         if (textFieldName.getText().isEmpty()) {
-            errorLabelName.setText("Name is required");
+            errorLabelName.setText("กรุณากรอกชื่ออีเว้นต์");
             isValid = false;
         } else {
             errorLabelName.setText("");
         }
 
         if (textAreaDetail.getText().isEmpty()) {
-            errorLabelDetail.setText("Detail is required");
+            errorLabelDetail.setText("กรุณากรอกรายละเอียด");
             isValid = false;
         } else {
             errorLabelDetail.setText("");
         }
 
         if (textFieldLocation.getText().isEmpty()) {
-            errorLabelLocation.setText("Location is required");
+            errorLabelLocation.setText("กรุณากรอกสถานที่ที่จัดกิจกรรม");
             isValid = false;
         } else {
             errorLabelLocation.setText("");
         }
         if(pickerOpenDate.getValue() == null){
-            errorLabelOpenStartDate.setText("Open Date is required");
+            errorLabelOpenStartDate.setText("กรุณากรอกวันที่เปิดรับสมัคร");
             isValid = false;
         }
         if(textFieldOpenTime.getText().isEmpty()){
-            errorLabelOpenTimeDate.setText("Open Time is required");
+            errorLabelOpenTimeDate.setText("กรุณากรอกเวลาเปิดรับสมัคร");
             isValid = false;
         }
         if(textFieldOpenTime.getText().length() != 5){
-            errorLabelOpenTimeDate.setText("Open Time must be in format xx:xx");
+            errorLabelOpenTimeDate.setText("เวลาเปิดรับสมัครต้องอยู่ในรูปแบบ xx:xx");
             isValid = false;
         }
 
         if(pickerCloseDate.getValue() == null){
-            errorLabelCloseStartDate.setText("Close Date is required");
+            errorLabelCloseStartDate.setText("กรุณากรอกวันที่ปิดรับสมัคร");
             isValid = false;
         }
         if(textFieldCloseTime.getText().length() != 5){
-            errorLabelCloseEndTime.setText("Close Time must be in format xx:xx");
+            errorLabelCloseEndTime.setText("เวลาปิดรับสมัครต้องอยู่ในรูปแบบ xx:xx");
             isValid = false;
         }
         if(textFieldCloseTime.getText().isEmpty()){
-            errorLabelCloseEndTime.setText("Close Time is required");
+            errorLabelCloseEndTime.setText("กรุณากรอกเวลาปิดรับสมัคร");
             isValid = false;
         }
         if (pickerStartDate.getValue() == null) {
-            errorLabelStartDate.setText("Start Date is required");
+            errorLabelStartDate.setText("กรุณากรอกวันที่เริ่มกิจกรรม");
             isValid = false;
         } else {
             errorLabelStartDate.setText("");
         }
 
         if (textFieldStartTime.getText().isEmpty()) {
-            errorLabelStartTime.setText("Start Time is required");
+            errorLabelStartTime.setText("กรุณากรอกเวลาเริ่มกิจกรรม");
             isValid = false;
         } else {
             errorLabelStartTime.setText("");
         }
 
         if (textFieldStartTime.getText().length() != 5) {
-            errorLabelStartTime.setText("Start Time must be in format xx:xx");
+            errorLabelStartTime.setText("เวลาเริ่มกิจกรรมต้องอยู่ในรูปแบบ xx:xx");
             isValid = false;
         } else {
             errorLabelStartTime.setText("");
         }
 
         if (pickerEndDate.getValue() == null) {
-            errorLabelEndDate.setText("End Date is required");
+            errorLabelEndDate.setText("กรุณากรอกวันที่สิ้นสุดกิจกรรม");
             isValid = false;
         } else {
             errorLabelEndDate.setText("");
         }
 
         if (textFieldEndTime.getText().isEmpty()) {
-            errorLabelEndTime.setText("End Time is required");
+            errorLabelEndTime.setText("กรุณากรอกเวลาสิ้นสุดกิจกรรม");
             isValid = false;
         } else {
             errorLabelEndTime.setText("");
         }
 
         if (textFieldEndTime.getText().length() != 5) {
-            errorLabelEndTime.setText("End Time must be in format xx:xx");
+            errorLabelEndTime.setText("เวลาสิ้นสุดกิจกรรมต้องอยู่ในรูปแบบ xx:xx");
             isValid = false;
         } else {
             errorLabelEndTime.setText("");
         }
 
         if (textFieldMaxParticipant.getText().isEmpty()) {
-            errorLabelMaxParticipant.setText("Max Participant is required");
+            errorLabelMaxParticipant.setText("กรุณากรอกจำนวนผู้เข้าร่วมกิจกรรม");
             isValid = false;
         } else {
             errorLabelMaxParticipant.setText("");
@@ -371,12 +371,12 @@ public class ManageEventController {
         try {
             int maxParticipant = Integer.parseInt(textFieldMaxParticipant.getText());
         } catch (NumberFormatException e) {
-            errorLabelMaxParticipant.setText("Max Participant must be a number");
+            errorLabelMaxParticipant.setText("จำนวนผู้เข้าร่วมกิจกรรมต้องเป็นตัวเลขเท่านั้น");
             isValid = false;
         }
 
         if (imageView.getImage() == null) {
-            errorDragImage.setText("Image is required");
+            errorDragImage.setText("กรุณาอัพโหลดรูปภาพ");
             isValid = false;
         } else {
             errorDragImage.setText("");
@@ -427,6 +427,18 @@ public class ManageEventController {
                 );
 
                 //Create Event
+                if (startTime.contains(".")) {
+                    startTime = startTime.replace(".", ":");
+                }
+                if (endTime.contains(".")) {
+                    endTime = endTime.replace(".", ":");
+                }
+                if (openTime.contains(".")) {
+                    openTime = openTime.replace(".", ":");
+                }
+                if (closeTime.contains(".")) {
+                    closeTime = closeTime.replace(".", ":");
+                }
                 if (data.get("eventId") == null) {
                     Event event = new Event(
                             userId,
@@ -453,6 +465,18 @@ public class ManageEventController {
                 } else { //Edit
 
                     HashMap<String, String> newData = new HashMap<>();
+                    if(startTime.contains(".")){
+                        startTime = startTime.replace(".",":");
+                    }
+                    if(endTime.contains(".")){
+                        endTime = endTime.replace(".",":");
+                    }
+                    if(openTime.contains(".")){
+                        openTime = openTime.replace(".",":");
+                    }
+                    if(closeTime.contains(".")){
+                        closeTime = closeTime.replace(".",":");
+                    }
                     newData.put("name", name);
                     newData.put("image", filename);
                     newData.put("detail", detail);

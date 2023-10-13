@@ -255,7 +255,15 @@ public class CreateEventActivityController {
         if(isAllInputValid){
             if(!isEdit){
                 EventActivityCollection activityCollectionForWriteData = new EventActivityCollection();
-                EventActivity newActivity = new EventActivity(UUID.randomUUID().toString(), eventId.toString(), inputActivityName.getText(), inputActivityDetail.getText(), inputActivityDateStart.getValue().toString(), inputActivityTimeStart.getText(), inputActivityDateEnd.getValue().toString(), inputActivityTimeEnd.getText());
+                String startTime = inputActivityTimeStart.getText();
+                String endTime = inputActivityTimeEnd.getText();
+                if(startTime.contains(".")){
+                    startTime = startTime.replace(".", ":");
+                }
+                if(endTime.contains(".")){
+                    endTime = endTime.replace(".", ":");
+                }
+                EventActivity newActivity = new EventActivity(UUID.randomUUID().toString(), eventId.toString(), inputActivityName.getText(), inputActivityDetail.getText(), inputActivityDateStart.getValue().toString(), startTime, inputActivityDateEnd.getValue().toString(), endTime);
                 activityCollectionForWriteData.addNewActivity(newActivity);
                 eventActivityCollection.addNewActivity(newActivity);
                 scheduleTable.getItems().add(newActivity);
@@ -264,12 +272,20 @@ public class CreateEventActivityController {
                 ToastAlert.show("สร้างกิจกรรมสำเร็จ", ToastAlert.AlertType.SUCCESS);
             }else{
                 Map<String, String> updateData = new HashMap<>();
+                String startTime = inputActivityTimeStart.getText();
+                String endTime = inputActivityTimeEnd.getText();
+                if(startTime.contains(".")){
+                    startTime = startTime.replace(".", ":");
+                }
+                if(endTime.contains(".")){
+                    endTime = endTime.replace(".", ":");
+                }
                 updateData.put("name", inputActivityName.getText());
                 updateData.put("detail", inputActivityDetail.getText());
                 updateData.put("startDate", inputActivityDateStart.getValue().toString());
-                updateData.put("startTime", inputActivityTimeStart.getText());
+                updateData.put("startTime", startTime);
                 updateData.put("endDate", inputActivityDateEnd.getValue().toString());
-                updateData.put("endTime", inputActivityTimeEnd.getText());
+                updateData.put("endTime", endTime);
 
                 eventActivityDatasource.updateColumnsById(activityId.toString(), updateData);
                 showTable();
